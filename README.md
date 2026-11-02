@@ -1,6 +1,6 @@
 # NEAR Intents Investment Thesis
 
-A quantitative model that answers one question: at what daily volume do NEAR Intents protocol buybacks cover NEAR token issuance? Built for the NEAR Hackathon 2026 — Investment Thesis track.
+A quantitative model that answers one question: at what daily volume do NEAR Intents protocol buybacks cover NEAR token issuance? Built for the NEAR Hackathon 2026, Investment Thesis track.
 
 ## Live Site
 
@@ -21,7 +21,7 @@ A quantitative model that answers one question: at what daily volume do NEAR Int
 | Capture rate (30d trailing) | 5.91 bps |
 | HSP-029 activation | Nov 2, 2026 |
 
-HSP-029 cuts the issuance cap from 2.5% to 1.6% over 24 months. At flat volume and current capture rate, this raises the offset ratio from 19.2% today to 30.0% by late 2028 — meaningful progress, but break-even still requires 3.3x volume growth at the 1.6% floor.
+HSP-029 cuts the issuance cap from 2.5% to 1.6% over 24 months. At flat volume and current capture rate, this raises the offset ratio from 19.2% today to 30.0% by late 2028. Break-even still requires 3.3x volume growth at the 1.6% floor.
 
 ## What It Measures
 
@@ -38,7 +38,7 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = circ
 
 ## Quantitative Models
 
-**Monte Carlo volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon using six methods — GBM-Normal (30d / 90d / full history), GBM-StudentT (degrees of freedom ν=2.66, fitted by MLE), and block-bootstrap (recent 180d and full 692d). Probability of crossing the $424M break-even ranges from 17% under the pessimistic scenario to 99% under the full-history upper bound. The range is the answer, not any single number.
+**Monte Carlo volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon using six methods: GBM-Normal (30d / 90d / full history), GBM-StudentT (degrees of freedom ν=2.66, fitted by MLE), and block-bootstrap (recent 180d and full 692d). Probability of crossing the $424M break-even ranges from 17% under the pessimistic scenario to 99% under the full-history upper bound. The range is the answer, not any single number.
 
 **Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. Average treatment effect: 1.10x (95% bootstrap CI: 0.97–1.25x). Permutation rank: 3/4. No statistically significant negative volume impact detected.
 
@@ -46,7 +46,7 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = circ
 
 | Source | Coverage | Status |
 |---|---|---|
-| DefiLlama API (volume, fees, revenue) | 692 days — Nov 2024 to Nov 2026 | Complete |
+| DefiLlama API (volume, fees, revenue) | 692 days, Nov 2024 to Nov 2026 | Complete |
 | FastNEAR neardata (on-chain events) | intents.near, shard 7, dip4 standard | Ingesting |
 | NEAR RPC (supply, block metadata) | rpc.mainnet.near.org | Complete |
 
@@ -88,5 +88,5 @@ data/
 
 ## Track
 
-NEAR Hackathon 2026 — Investment Thesis
+NEAR Hackathon 2026, Investment Thesis
 Deadline: November 14, 2026

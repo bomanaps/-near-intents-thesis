@@ -1,0 +1,10 @@
+__pycache__/
+.mypy_cache/
+*.pyc
+.env
+
+# ingestion output — large and growing, not committed
+data/raw/fastnear/
+
+# cached control data fetched at runtime
+data/raw/controls/

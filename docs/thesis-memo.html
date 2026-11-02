@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NEAR Intents Investment Thesis</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+/* editorial memo — neutral warm tones, serif-led */
+:root {
+  --bg:        #faf9f6;
+  --surface:   #ffffff;
+  --border:    #e2ddd5;
+  --muted:     #c8c0b4;
+  --text-dim:  #8a7f72;
+  --text:      #3a3228;
+  --text-hi:   #1a1410;
+  --accent:    #1a5fa8;
+  --accent-lo: rgba(26,95,168,.07);
+  --rule:      #d0c8be;
+  --marker:    #b34a00;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #111010;
+    --surface:   #191714;
+    --border:    #2a2620;
+    --muted:     #4a4540;
+    --text-dim:  #7a7060;
+    --text:      #c8bfb0;
+    --text-hi:   #ede8e0;
+    --accent:    #5c9fd6;
+    --accent-lo: rgba(92,159,214,.10);
+    --rule:      #2a2620;
+    --marker:    #d4713a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #111010;
+  --surface:   #191714;
+  --border:    #2a2620;
+  --muted:     #4a4540;
+  --text-dim:  #7a7060;
+  --text:      #c8bfb0;
+  --text-hi:   #ede8e0;
+  --accent:    #5c9fd6;
+  --accent-lo: rgba(92,159,214,.10);
+  --rule:      #2a2620;
+  --marker:    #d4713a;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 16px;
+  line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+.page { max-width: 720px; margin: 0 auto; padding-block: 56px 80px; }
+
+/* cover */
+.cover { border-bottom: 2px solid var(--text-hi); padding-bottom: 32px; margin-bottom: 40px; }
+.cover-eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+.cover-title { font-family: 'Lora', Georgia, serif; font-size: clamp(26px, 5vw, 44px); font-weight: 600; color: var(--text-hi); line-height: 1.15; text-wrap: balance; margin-bottom: 20px; }
+.cover-meta { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px 32px; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px; }
+.meta-pair { display: flex; flex-direction: column; gap: 2px; }
+.meta-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim); }
+.meta-value { font-family: 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 500; color: var(--text-hi); }
+
+/* abstract */
+.abstract { background: var(--accent-lo); border-left: 3px solid var(--accent); padding: 20px 24px; margin-bottom: 40px; font-style: italic; font-size: 15px; color: var(--text); line-height: 1.8; }
+
+/* body copy */
+h2 { font-family: 'Lora', Georgia, serif; font-size: 20px; font-weight: 600; color: var(--text-hi); margin-top: 44px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); text-wrap: balance; }
+h3 { font-family: 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--marker); margin-top: 28px; margin-bottom: 8px; }
+p { margin-bottom: 16px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--text-hi); font-weight: 600; }
+em { color: var(--text-dim); }
+
+/* callout box */
+.callout { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 20px 24px; margin-block: 24px; }
+.callout-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 12px; }
+
+/* data table in memo */
+.memo-table { width: 100%; border-collapse: collapse; margin-block: 20px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-variant-numeric: tabular-nums; }
+.memo-table th { border-bottom: 2px solid var(--rule); padding: 6px 12px 8px; text-align: right; color: var(--text-dim); letter-spacing: .06em; font-size: 10px; text-transform: uppercase; }
+.memo-table th:first-child { text-align: left; }
+.memo-table td { border-bottom: 1px solid var(--border); padding: 8px 12px; text-align: right; color: var(--text); }
+.memo-table td:first-child { text-align: left; color: var(--text-dim); }
+.memo-table tr:last-child td { border-bottom: none; }
+
+/* footnotes */
+.footnotes { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--border); font-family: 'Inter', system-ui, sans-serif; font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+.footnotes ol { padding-left: 20px; }
+.footnotes li { margin-bottom: 6px; }
+
+/* model limits section */
+.model-limits { margin-top: 48px; }
+.model-limits h2 { font-family: 'Lora', Georgia, serif; font-size: 22px; color: var(--text-hi); margin-bottom: 20px; }
+.model-limits h3 { font-family: 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-dim); margin-bottom: 10px; margin-top: 24px; }
+.model-limits ul { padding-left: 18px; display: flex; flex-direction: column; gap: 7px; }
+.model-limits li { font-size: 13px; color: var(--text); line-height: 1.6; }
+.model-limits .falsify { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--text); background: var(--accent-lo); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-top: 16px; line-height: 1.6; }
+.model-limits .did-finding { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--text); background: var(--accent-lo); border-left: 3px solid var(--accent); padding: 10px 14px; border-radius: 0 4px 4px 0; margin-top: 16px; line-height: 1.6; }
+
+/* verdict */
+.verdict-box { background: var(--text-hi); color: var(--bg); border-radius: 4px; padding: 24px 28px; margin-top: 40px; }
+.verdict-box .verdict-label { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; opacity: .6; margin-bottom: 10px; }
+.verdict-box .verdict-body { font-family: 'Lora', Georgia, serif; font-size: 16px; line-height: 1.75; }
+
+@media (max-width: 580px) {
+  .page { padding-block: 32px 56px; }
+  .cover-title { font-size: 26px; }
+  h2 { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+<article class="page">
+
+  <div class="cover">
+    <div class="cover-eyebrow">Investment Thesis Memo</div>
+    <h1 class="cover-title">NEAR Intents: Can Protocol Buybacks Ever Cover Token Issuance?</h1>
+    <div class="cover-meta">
+      <div class="meta-pair"><span class="meta-label">Date</span><span class="meta-value">November 2, 2026</span></div>
+      <div class="meta-pair"><span class="meta-label">Protocol</span><span class="meta-value">NEAR Protocol</span></div>
+      <div class="meta-pair"><span class="meta-label">Mechanism</span><span class="meta-value">NEAR Intents (intents.near)</span></div>
+      <div class="meta-pair"><span class="meta-label">Governance event</span><span class="meta-value">HSP-029 activation</span></div>
+      <div class="meta-pair"><span class="meta-label">Model inputs</span><span class="meta-value">DefiLlama · 692d avg (Nov 2024–Nov 2026)</span></div>
+      <div class="meta-pair"><span class="meta-label">NEAR price used</span><span class="meta-value">$4.37</span></div>
+    </div>
+  </div>
+
+  <div class="abstract">
+    At today's NEAR Intents volume of $127M/day, protocol buybacks offset ~19 cents of every dollar of new token issuance.
+    HSP-029, activated November 2, 2026, sets a 24-month ramp from 2.5% to 1.6% annual issuance,
+    which lifts that ceiling to ~30 cents by late 2028. Neither path reaches break-even at flat volume.
+    The critical condition: Intents volume must reach $424–663M/day, 3.3–5.2× its current level,
+    depending on which issuance regime and capture rate scenario prevails.
+  </div>
+
+  <h2>1. Background and Mechanism</h2>
+
+  <p>
+    NEAR Intents is the protocol's intent-based cross-chain execution layer, deployed at
+    <em>intents.near</em> (and its earlier form, <em>defuse-alpha.near</em>). Users submit signed intents (requests to swap, bridge, or transfer assets across chains) that competing solvers fill.
+    The protocol charges solvers a fee on matched volume; a portion of that fee flows to the treasury
+    as protocol revenue, which the NEAR Foundation uses to buy back NEAR on the open market.
+  </p>
+  <p>
+    NEAR's token model allows validators to mint new NEAR up to an annual <strong>issuance cap</strong>,
+    currently 2.5% of circulating supply. On a 1.310B-token supply at $4.37, this produces roughly
+    <strong>89,700 NEAR ($392,000) of new supply every day</strong>. Buybacks must exceed this rate for
+    the token to be net deflationary; anything below 100% offset means the treasury is still adding
+    to circulating supply on net.
+  </p>
+
+  <h2>2. The Break-Even Formula</h2>
+
+  <p>The model has three variables:</p>
+
+  <div class="callout">
+    <div class="callout-label">Core Identity</div>
+    <p><strong>Break-even volume ($/day) = (NEAR issued/day × NEAR price) ÷ capture rate</strong></p>
+    <p style="margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--text-dim);">
+      B = (S × cap / 365 × P) / r<br>
+      where S = supply, cap = annual issuance cap, P = NEAR price, r = fee capture rate
+    </p>
+  </div>
+
+  <p>
+    At 5.91 basis points capture rate and the current 2.5% cap:
+    break-even requires <strong>$663M/day</strong>, 5.2× today's Intents volume.
+    Cutting the cap to 1.6% (HSP-029 floor) reduces that threshold to <strong>$424M/day</strong> (3.3×).
+  </p>
+
+  <h2>3. Current Metrics</h2>
+
+  <table class="memo-table">
+    <thead>
+      <tr>
+        <th>Metric</th>
+        <th>Value</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>NEAR supply</td><td>1,309,640,573</td><td>As of Nov 2026</td></tr>
+      <tr><td>NEAR price</td><td>$4.37</td><td>Model input (spot)</td></tr>
+      <tr><td>Annual issuance cap (current)</td><td>2.5%</td><td>Pre-HSP-029</td></tr>
+      <tr><td>NEAR issued per day</td><td>89,701</td><td>$391,995 at spot</td></tr>
+      <tr><td>Intents volume (30d avg)</td><td>$127M/day</td><td>DefiLlama 30d avg</td></tr>
+      <tr><td>Capture rate (DefiLlama 30d)</td><td>5.91 bps</td><td>Revenue ÷ volume</td></tr>
+      <tr><td>Daily buyback (best case)</td><td>17,215 NEAR</td><td>$75,222/day</td></tr>
+      <tr><td>Offset ratio</td><td>19.2%</td><td>Buyback ÷ issuance</td></tr>
+    </tbody>
+  </table>
+
+  <h2>4. HSP-029: The Governance Catalyst</h2>
+
+  <p>
+    HSP-029 was submitted to governance in Q4 2026 and activated on November 2, 2026.
+    It mandates a linear reduction in the annual issuance cap from <strong>2.5% → 1.6%</strong>
+    over 24 months — stepping down by 0.9 percentage points evenly across the ramp.
+    The 1.6% floor holds permanently once reached in November 2028.
+  </p>
+
+  <h3>What HSP-029 Changes</h3>
+
+  <p>
+    At the floor, daily NEAR issuance drops from 89,701 to <strong>57,409 NEAR</strong>, a 36% reduction.
+    The offset ratio improves from 19.2% to <strong>30.0%</strong> at flat volume.
+    The break-even volume requirement falls from $663M to <strong>$424M/day</strong>.
+    Both figures assume the 5.91 bps capture rate holds; under the conservative 4.11 bps estimate
+    the floor-scenario break-even is $610M/day.
+  </p>
+
+  <h3>What HSP-029 Does Not Change</h3>
+
+  <p>
+    The proposal does not touch the capture rate, the solver fee structure, or the protocol's ability
+    to direct revenue to buybacks rather than operational costs. The fee-switch mechanism
+    (activating a protocol-level take from solver fees, rather than relying on voluntary contribution)
+    is a separate governance question and is the single lever that could most directly improve the
+    offset ratio without requiring volume growth.
+  </p>
+
+  <h2>5. Scenario Analysis</h2>
+
+  <table class="memo-table">
+    <thead>
+      <tr>
+        <th>Issuance</th>
+        <th>Capture</th>
+        <th>Offset</th>
+        <th>Break-Even Vol</th>
+        <th>Multiple</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>2.5% (today)</td><td>5.91 bps</td><td>19.2%</td><td>$663M/day</td><td>5.2×</td></tr>
+      <tr><td>2.5% (today)</td><td>4.11 bps</td><td>13.3%</td><td>$954M/day</td><td>7.5×</td></tr>
+      <tr><td>1.6% (HSP-029 floor)</td><td>5.91 bps</td><td>30.0%</td><td>$424M/day</td><td>3.3×</td></tr>
+      <tr><td>1.6% (HSP-029 floor)</td><td>4.11 bps</td><td>21.0%</td><td>$610M/day</td><td>4.8×</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    None of the four combinations reaches break-even at flat $127M/day volume.
+    The most optimistic path, full HSP-029 ramp plus best capture rate, reduces
+    the required volume growth from 5.2× to 3.3×.
+  </p>
+
+  <h2>6. What Must Be True for Break-Even</h2>
+
+  <p>Three conditions must hold simultaneously:</p>
+
+  <p>
+    <strong>Volume growth of 3.3–5.2×.</strong>
+    Intents volume needs to reach $424–663M/day. That is plausible if NEAR becomes the
+    primary settlement layer for cross-chain DeFi volume from Ethereum, Solana, and Bitcoin,
+    but it requires winning solver share in a competitive market where UniswapX, CoW Protocol,
+    and 1inch are already established.
+  </p>
+
+  <p>
+    <strong>HSP-029 holding at the floor.</strong>
+    The 24-month ramp is governance-enforced; a subsequent proposal could raise the cap again.
+    The investment case is structurally weakened if issuance reverts upward before volume catches up.
+  </p>
+
+  <p>
+    <strong>Capture rate staying at or above 5.91 bps.</strong>
+    The 4.11 bps estimate (90d trailing revenue/volume) represents the conservative case.
+    If more of the fee revenue is absorbed by solvers through rebates or competitive pressure,
+    the effective capture rate compresses and the break-even volume rises.
+  </p>
+
+  <h2>7. Key Risks</h2>
+
+  <p>
+    <strong>Volume concentration risk.</strong>
+    If a small number of solvers or routes account for the majority of Intents volume,
+    any disruption to that activity (a competing protocol, a solver exit, a bridge exploit)
+    causes an outsized drop in buyback revenue.
+  </p>
+  <p>
+    <strong>Price sensitivity.</strong>
+    The break-even formula is linear in NEAR price: a 50% NEAR price decline
+    (to ~$2.19) requires 50% more volume to break even, all else equal.
+    Conversely, a price rally to $8+ cuts the required volume in half.
+  </p>
+  <p>
+    <strong>HSP-029 reversal.</strong>
+    Governance proposals can be overridden. A future proposal restoring the 2.5% cap
+    would widen the gap back to the worst-case scenario.
+  </p>
+
+  <h2>8. The Fee-Switch Option</h2>
+
+  <p>
+    The most structurally important upgrade not yet priced into the model is a
+    <strong>protocol-level fee switch</strong> — a governance-controlled mechanism that
+    sets a minimum protocol take (analogous to Uniswap's fee switch or the Curve gauge weight system).
+    Under the current model, the protocol receives whatever solvers contribute voluntarily.
+    A fee switch at 5 bps on matched Intents volume would double the effective capture rate,
+    cutting break-even volume in half — from $479M to ~$240M/day under the HSP-029 floor scenario.
+    That target is within reach of a single large routing deal or an Ethereum L2 integration.
+  </p>
+
+  <div class="verdict-box">
+    <div class="verdict-label">Verdict · November 2, 2026</div>
+    <div class="verdict-body">
+      NEAR Intents is a genuine economic engine for NEAR, but at current scale it offsets
+      19 cents of issuance per dollar created. HSP-029 raises that ceiling to 30 cents over
+      two years, meaningful progress but structurally insufficient without volume growth.
+      The investment thesis becomes sound when two of the three following conditions are met:
+      (1) Intents daily volume crosses $450M, (2) the fee switch activates at ≥5 bps, or
+      (3) NEAR price sustains above $8. The fee-switch decision is the single highest-conviction
+      near-term catalyst because it is in governance's control and volume-independent.
+      Until then, HSP-029 is a necessary but not sufficient step toward a self-sustaining
+      buyback loop.
+    </div>
+  </div>
+
+  <section class="model-limits">
+    <h2>9. Quantitative Model Limitations</h2>
+
+    <h3>Monte Carlo Volume Forecast</h3>
+    <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
+      Probabilities span 17–99% across six scenarios because each method captures a
+      different slice of history. No single number is the "answer." The range is the answer.
+    </p>
+    <ul>
+      <li>Student-t degrees-of-freedom fit by MLE at ν=2.66: with ν&lt;3, variance is theoretically infinite. Even the fat-tail GBM underestimates the most extreme events.</li>
+      <li>GBM variants assume volume is independent of NEAR token price. If price and volume are correlated (both driven by macro sentiment), GBM path variance is understated.</li>
+      <li>Block-bootstrap preserves historical autocorrelation but cannot model structural breaks — a protocol exploit, regulatory ban, or competitor routing the majority of flow off-chain.</li>
+      <li>Break-even thresholds are fixed at the $4.37 spot price at model run date. The interactive dashboard lets you explore price sensitivity directly.</li>
+      <li>GBM 12/24/36-month probabilities are numerically equal because the process either crosses the threshold early in the path or drifts permanently below — not a model error.</li>
+    </ul>
+    <div class="falsify">
+      <strong>Falsification threshold:</strong> if the realised 7-day average volume stays below $60M for 60 or more consecutive days — less than half today's $125M — the 90d base-case scenario is rejected. The 30d pessimistic scenario becomes operative.
+    </div>
+
+    <h3>Fee-Switch Difference-in-Differences</h3>
+    <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
+      ATT = 1.10× (95% CI: 0.97–1.25×). The confidence interval includes 1.0: no statistically
+      significant volume impact is detected relative to the three controls.
+    </p>
+    <ul>
+      <li>Four units total (NEAR + 3 controls): the permutation distribution has only four distinct points. The 75th-percentile rank is a weak signal, not a statistically powerful one.</li>
+      <li>Controls (1inch, Paraswap, Jupiter) are larger, more mature aggregators with different liquidity depth and routing characteristics.</li>
+      <li>The 90-day window coincided with a broader DeFi volume contraction; the market cycle is not isolated from the treatment effect.</li>
+      <li>Pre-period slopes differ: NEAR's pre-trend was +0.003/day while controls averaged −0.002/day. This suggests the parallel trends assumption is imperfect — the DiD estimate may conflate trend with treatment.</li>
+      <li>Bootstrap CIs are constructed by resampling within pre/post periods independently. Within-period autocorrelation is not preserved, which may narrow the stated intervals.</li>
+    </ul>
+    <div class="did-finding">
+      <strong>Interpretation:</strong> the fee switch did not detectably harm volume relative to peers. This is consistent with either (a) no harm or (b) insufficient statistical power to detect a modest effect at this sample size.
+    </div>
+  </section>
+
+  <div class="footnotes">
+    <ol>
+      <li>Capture rates sourced from DefiLlama API for intents.near: 5.91 bps is the 30d trailing revenue/volume; 4.11 bps is the 90d trailing revenue/volume.</li>
+      <li>HSP-029 ramp computed as: cap(t) = 0.025 − 0.009 × min(t, 24)/24, where t is months since activation (Nov 2, 2026).</li>
+      <li>Break-even date calculations assume flat volume and flat NEAR price over the projection window. Neither assumption is likely to hold; the model is a structural baseline, not a forecast.</li>
+      <li>All NEAR amounts computed with Python <code>Decimal</code> arithmetic at full precision; USD conversions apply the $4.37 spot price.</li>
+      <li>Aggregate volume and fee data sourced from DefiLlama API (fees and dex volume endpoints for intents.near), covering 692 days of history from November 2024 to November 2026.</li>
+    </ol>
+  </div>
+
+</article>
+</body>
+</html>

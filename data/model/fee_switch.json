@@ -1,0 +1,101 @@
+{
+  "meta": {
+    "fee_switch_date": "2026-02-23",
+    "window_days": 90,
+    "treatment": "near_intents",
+    "controls": [
+      "1inch",
+      "paraswap",
+      "jupiter"
+    ],
+    "methodology": "Difference-in-differences on log daily volume; 90-day symmetric window",
+    "caveats": [
+      "4 units total (NEAR + 3 controls) \u2014 permutation distribution has only 4 points; interpret with caution",
+      "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols \u2014 different growth dynamics from a young NEAR Intents",
+      "90-day window coincided with broader DeFi volume contraction; market cycle not isolated",
+      "DiD identifies relative performance vs controls, not absolute causal effect of the fee switch",
+      "Bootstrap CI resamples within pre/post periods independently; temporal autocorrelation within periods not preserved"
+    ]
+  },
+  "units": {
+    "near_intents": {
+      "pre_avg": 78847719.74444444,
+      "post_avg": 63780317.67032967,
+      "pre_days": 90,
+      "post_days": 91,
+      "log_growth": -0.21207375179756854,
+      "growth_ratio": 0.8089050371659428,
+      "pre_slope": 0.002965070284936194
+    },
+    "1inch": {
+      "pre_avg": 183788997.02222222,
+      "post_avg": 119950905.86813186,
+      "pre_days": 90,
+      "post_days": 91,
+      "log_growth": -0.4267058029630163,
+      "growth_ratio": 0.6526555333104539,
+      "pre_slope": -0.0019634405792795964
+    },
+    "paraswap": {
+      "pre_avg": 73661252.8888889,
+      "post_avg": 70966541.76923077,
+      "pre_days": 90,
+      "post_days": 91,
+      "log_growth": -0.0372683966683334,
+      "growth_ratio": 0.963417522591927,
+      "pre_slope": -0.0004971908740223117
+    },
+    "jupiter": {
+      "pre_avg": 57069072.1,
+      "post_avg": 36181001.703296706,
+      "pre_days": 90,
+      "post_days": 91,
+      "log_growth": -0.455728159194074,
+      "growth_ratio": 0.63398615698356,
+      "pre_slope": -0.004156226331184493
+    }
+  },
+  "did_estimate": {
+    "att_log": 0.09449370114423933,
+    "att_ratio": 1.0991022400247101,
+    "bootstrap_ci_95": {
+      "att_ratio_lo": 0.9667676474690294,
+      "att_ratio_hi": 1.2454790064399486,
+      "att_log_lo": -0.03379709423255407,
+      "att_log_hi": 0.2195202000501003,
+      "n_bootstrap": 1000
+    },
+    "interpretation": "NEAR volume changed by 1.10x (95% CI: 0.97\u20131.25x) relative to aggregator controls in the 90 days after the fee switch. CI includes 1.0 \u2014 no statistically significant volume impact detected."
+  },
+  "permutation_test": {
+    "placebo_atts": {
+      "near_intents": 0.09449370114423933,
+      "1inch": -0.19168236707635766,
+      "paraswap": 0.32756750798321954,
+      "jupiter": -0.2303788420511013
+    },
+    "real_att": 0.09449370114423933,
+    "rank": 3,
+    "percentile": 0.75,
+    "note": "NEAR ATT ranks 3/4 among permutations (percentile=75%). NEAR is not an outlier \u2014 consistent with no treatment effect."
+  },
+  "parallel_trends": {
+    "near_slope": 0.002965070284936194,
+    "control_slopes": {
+      "1inch": -0.0019634405792795964,
+      "paraswap": -0.0004971908740223117,
+      "jupiter": -0.004156226331184493
+    },
+    "mean_control_slope": -0.002205619261495467,
+    "slope_diff_near_vs_controls": 0.005170689546431661,
+    "assessment": "Pre-period slopes differ \u2014 DiD estimate may conflate trends with treatment effect"
+  },
+  "full_history_context": {
+    "pre_avg_usd": 30592183.202272728,
+    "post_avg_usd": 89812662.0515873,
+    "pre_days": 440,
+    "post_days": 252,
+    "growth_ratio": 2.935804269272126,
+    "note": "Full pre/post split includes NEAR Intents early growth phase (Dec 2024 onward); inflates apparent post-switch growth"
+  }
+}

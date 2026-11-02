@@ -47,7 +47,7 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = circ
 | Source | Coverage | Status |
 |---|---|---|
 | DefiLlama API (volume, fees, revenue) | 692 days, Nov 2024 to Nov 2026 | Complete |
-| FastNEAR neardata (on-chain events) | intents.near, shard 7, dip4 standard | Ingesting |
+| FastNEAR neardata (on-chain events) | intents.near, shard 7, dip4 standard — [download dataset](https://huggingface.co/datasets/bomankari/near-intents-onchain-events) | Ingesting |
 | NEAR RPC (supply, block metadata) | rpc.mainnet.near.org | Complete |
 
 On-chain ingestion is ongoing. DefiLlama data is the primary source for all models. FastNEAR data will provide solver concentration (HHI) and token-pair breakdown once ingestion completes.

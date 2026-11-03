@@ -1137,7 +1137,7 @@
         "n_blocks": 6,
         "window_days": 180
       },
-      "note": "Recent 180d only \u2014 excludes early protocol growth phase; representative of current regime",
+      "note": "Recent 180d only; excludes early protocol growth phase; representative of current regime",
       "crossing_probs": {
         "hsp029_424M": {
           "12": 0.7179,
@@ -1413,7 +1413,7 @@
         "n_blocks": 23,
         "window_days": 691
       },
-      "note": "Full 692d history \u2014 includes early explosive growth phase (Dec 2024\u2013mid 2025); upper bound estimate",
+      "note": "Full 692d history; includes early explosive growth phase (Dec 2024-mid 2025); upper bound estimate",
       "crossing_probs": {
         "hsp029_424M": {
           "12": 0.9898,

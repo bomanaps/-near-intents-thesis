@@ -136,7 +136,7 @@ em { color: var(--text-dim); }
       <div class="meta-pair"><span class="meta-label">Date</span><span class="meta-value">November 2, 2026</span></div>
       <div class="meta-pair"><span class="meta-label">Protocol</span><span class="meta-value">NEAR Protocol</span></div>
       <div class="meta-pair"><span class="meta-label">Mechanism</span><span class="meta-value">NEAR Intents (intents.near)</span></div>
-      <div class="meta-pair"><span class="meta-label">Governance event</span><span class="meta-value">HSP-029 activation</span></div>
+      <div class="meta-pair"><span class="meta-label">Governance event</span><span class="meta-value">HSP-029 vote passed (ratification pending)</span></div>
       <div class="meta-pair"><span class="meta-label">Model inputs</span><span class="meta-value">DefiLlama · 692d avg (Nov 2024-Nov 2026)</span></div>
       <div class="meta-pair"><span class="meta-label">NEAR price used</span><span class="meta-value">$4.37</span></div>
     </div>
@@ -144,8 +144,9 @@ em { color: var(--text-dim); }
 
   <div class="abstract">
     At today's NEAR Intents volume of $127M/day, protocol buybacks offset ~19 cents of every dollar of new token issuance.
-    HSP-029, activated November 2, 2026, sets a 24-month ramp from 2.5% to 1.6% annual issuance,
-    which lifts that ceiling to ~30 cents by late 2028. Neither path reaches break-even at flat volume.
+    HSP-029, approved by governance on November 2, 2026 with ratification steps still pending,
+    sets a 24-month ramp from 2.5% to 1.6% annual issuance, which lifts that ceiling to ~30 cents
+    roughly two years after the ramp starts (base case: mid 2029). Neither path reaches break-even at flat volume.
     The critical condition: Intents volume must reach $424-663M/day, 3.3-5.2× its current level,
     depending on which issuance regime and capture rate scenario prevails.
   </div>
@@ -261,10 +262,30 @@ em { color: var(--text-dim); }
   <h2>4. HSP-029: The Governance Catalyst</h2>
 
   <p>
-    HSP-029 was submitted to governance in Q4 2026 and activated on November 2, 2026.
-    It mandates a linear reduction in the annual issuance cap from <strong>2.5% → 1.6%</strong>
-    over 24 months, stepping down by 0.9 percentage points evenly across the ramp.
-    The 1.6% floor holds permanently once reached in November 2028.
+    HSP-029 was submitted to the House of Stake in October 2026 and passed its vote on
+    November 2, 2026 with roughly 99.96% support. It mandates a linear reduction in the annual
+    issuance cap from <strong>2.5% → 1.6%</strong> over 24 months, stepping down by 0.9 percentage
+    points evenly across the ramp. The 1.6% floor holds permanently once reached, 24 months after
+    the ramp activates.
+  </p>
+
+  <h3>The Vote Is Not Activation</h3>
+
+  <p>
+    The proposal is explicit that it <em>"cannot take effect on a House of Stake vote alone."</em>
+    Per its own implementation plan, activation occurs <strong>one full quarter after
+    ratification</strong>, and <em>"validator adoption is ultimately what makes it binding"</em>:
+    each validator independently adopts the protocol upgrade that carries the new cap. The
+    proposal names no calendar dates. Ratification occurs when the Security Council veto window
+    closes on November 16, 2026 (no veto has been issued at the time of writing), so the earliest
+    possible ramp start is <strong>mid February 2027</strong> (one quarter of grace, instant
+    validator adoption). This memo's base case assumes <strong>April 2027</strong>, allowing a realistic
+    adoption lag, with a late case of July 2027. Under the base case the 1.6% floor arrives around
+    <strong>April 2029</strong>, not late 2028. Most public commentary, and several competing
+    analyses, model the ramp from the vote date; that reading has no basis in the proposal text
+    and overstates the near-term offset trajectory. The dashboard exposes the ramp start as an
+    explicit assumption, including the as-voted date as a labeled counterfactual. The vote passed
+    3,287,729 veNEAR for, 0 against, across 36 votes.
   </p>
 
   <h3>What HSP-029 Changes</h3>
@@ -353,9 +374,10 @@ em { color: var(--text-dim); }
     Conversely, a price rally to $8+ cuts the required volume in half.
   </p>
   <p>
-    <strong>HSP-029 reversal.</strong>
-    Governance proposals can be overridden. A future proposal restoring the 2.5% cap
-    would widen the gap back to the worst-case scenario.
+    <strong>HSP-029 reversal or non-adoption.</strong>
+    The ramp has not activated: ratification steps and validator adoption are still ahead, and a
+    proposal that is never adopted by validators never binds. Even after activation, a future
+    proposal restoring the 2.5% cap would widen the gap back to the worst-case scenario.
   </p>
 
   <h2>8. The Fee-Switch Option</h2>
@@ -374,7 +396,7 @@ em { color: var(--text-dim); }
     <div class="verdict-label">Verdict · November 2, 2026</div>
     <div class="verdict-body">
       NEAR Intents is a genuine economic engine for NEAR, but at current scale it offsets
-      19 cents of issuance per dollar created. HSP-029 raises that ceiling to 30 cents over
+      19 cents of issuance per dollar created. HSP-029, once ratified and adopted, raises that ceiling to 30 cents over
       two years, meaningful progress but structurally insufficient without volume growth.
       The investment thesis becomes sound when two of the three following conditions are met:
       (1) Intents daily volume crosses $450M, (2) the fee switch activates at ≥5 bps, or
@@ -424,10 +446,11 @@ em { color: var(--text-dim); }
   <div class="footnotes">
     <ol>
       <li>Capture rates sourced from DefiLlama API for intents.near: 5.91 bps is the 30d trailing revenue/volume; 4.11 bps is the 90d trailing revenue/volume.</li>
-      <li>HSP-029 ramp computed as: cap(t) = 0.025 - 0.009 × min(t, 24)/24, where t is months since activation (Nov 2, 2026).</li>
+      <li>HSP-029 ramp computed as: cap(t) = 0.025 - 0.009 × min(t, 24)/24, where t is months since ramp activation. The vote passed Nov 2, 2026; per the proposal, activation occurs one full quarter after ratification and requires validator adoption. Base case assumed here: April 1, 2027.</li>
       <li>Break-even date calculations assume flat volume and flat NEAR price over the projection window. Neither assumption is likely to hold; the model is a structural baseline, not a forecast.</li>
       <li>All NEAR amounts computed with Python <code>Decimal</code> arithmetic at full precision; USD conversions apply the $4.37 spot price.</li>
       <li>Aggregate volume and fee data sourced from DefiLlama API (fees and dex volume endpoints for intents.near), covering 692 days of history from November 2024 to November 2026.</li>
+      <li>HSP-029 proposal text and vote record: https://houseofstake.org/proposals/cmuyez8j80000ru0sz6emyqpe</li>
       <li>All figures in this memo are as of November 2, 2026. The interactive dashboard fetches live data on every page load; this memo is a dated analysis and is not auto-updated.</li>
     </ol>
   </div>

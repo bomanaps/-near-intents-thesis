@@ -21,9 +21,9 @@ All figures as of November 2, 2026. The live dashboard fetches current data on e
 | Break-even at 2.5% issuance cap | $663M / day |
 | Break-even at 1.6% cap (HSP-029 floor) | $424M / day |
 | Capture rate (30d trailing) | 5.91 bps |
-| HSP-029 activation | Nov 2, 2026 |
+| HSP-029 vote passed | Nov 2, 2026 (ramp pending ratification) |
 
-HSP-029 cuts the issuance cap from 2.5% to 1.6% over 24 months. At flat volume and current capture rate, this raises the offset ratio from 19.2% today to 30.0% by late 2028. Break-even still requires 3.3x volume growth at the 1.6% floor.
+HSP-029 cuts the issuance cap from 2.5% to 1.6% over 24 months. The Nov 2 vote is not activation: per the proposal, the ramp starts one full quarter after ratification and validator adoption makes it binding, so the base case assumed here is an April 2027 start, putting the 30.0% flat-volume offset ceiling around April 2029. Break-even still requires 3.3x volume growth at the 1.6% floor. The dashboard exposes the ramp start date as an explicit assumption.
 
 ## What It Measures
 

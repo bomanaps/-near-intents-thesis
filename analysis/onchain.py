@@ -11,7 +11,8 @@ and computes, from token_diff settlement events:
 
 Settlement structure (verified empirically on this dataset):
   one receipt = one settlement batch; a bilateral trade is a receipt with two
-  entries whose diffs mirror each other, one side a named solver account and
+  entries whose diffs mirror net of fees (sum of diffs plus fees equals zero
+  exactly on every bilateral receipt checked), one side a named solver account and
   the other a user. Each side pays fees_collected in the token it gives.
 
 Outputs data/model/onchain.json and docs/data/onchain.json.
@@ -86,6 +87,19 @@ def leg_usd(tok: str, raw_amount: int, prices: dict) -> float | None:
             return None
         return amt / 10**dec * price
     return None
+
+
+def entry_fee_bps(entry: dict) -> list[float]:
+    diff = {t: int(v) for t, v in entry["diff"].items()}
+    out = []
+    for tok, fee in (entry.get("fees_collected") or {}).items():
+        if tok in diff and diff[tok] != 0:
+            out.append(int(fee) / abs(diff[tok]) * 1e4)
+    return out
+
+
+def pick_solver(a: dict, b: dict, fills: dict) -> dict:
+    return a if fills[a["account_id"]] >= fills[b["account_id"]] else b
 
 
 def entry_usd(diff: dict, prices: dict) -> float | None:
@@ -174,7 +188,7 @@ def main() -> None:
 
         if len(entries) == 2:
             a, b = entries
-            solver = a if account_fills[a["account_id"]] >= account_fills[b["account_id"]] else b
+            solver = pick_solver(a, b, account_fills)
             solver_fills[solver["account_id"]] += 1
             usd = entry_usd({t: int(v) for t, v in solver["diff"].items()}, prices)
             if usd is not None:

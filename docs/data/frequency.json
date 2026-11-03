@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "generated_at": "2026-11-03T17:54:44Z",
+  "question": "days on which daily protocol revenue covered full daily issuance",
+  "matched_days": 557,
+  "parquet_days": 693,
+  "supply_assumption": 1309640573,
+  "price_source": "coins.llama.fi chart, coingecko:near, daily closes",
+  "caveats": [
+   "Supply held at the current total; the approximation error over the window is under one percent",
+   "Days without a matched price close are excluded and counted in parquet_days minus matched_days"
+  ]
+ },
+ "coverage": {
+  "cap25": {
+   "cap": 0.025,
+   "days_covered": 6,
+   "share": 0.0108,
+   "covered_dates": [
+    "2025-11-21",
+    "2025-12-01",
+    "2026-01-15",
+    "2026-02-02",
+    "2026-02-26",
+    "2026-03-27"
+   ]
+  },
+  "cap16": {
+   "cap": 0.016,
+   "days_covered": 8,
+   "share": 0.0144,
+   "covered_dates": [
+    "2025-11-21",
+    "2025-12-01",
+    "2026-01-15",
+    "2026-02-02",
+    "2026-02-06",
+    "2026-02-26",
+    "2026-03-27",
+    "2026-06-05"
+   ]
+  }
+ },
+ "best_day": {
+  "date": "2026-01-15",
+  "revenue_usd": 355826.0,
+  "share_of_cap25_issuance": 2.2
+ }
+}

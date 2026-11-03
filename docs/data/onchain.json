@@ -1,19 +1,19 @@
 {
  "meta": {
-  "generated_at": "2026-11-03T07:09:32Z",
+  "generated_at": "2026-11-03T17:54:45Z",
   "source": "FastNEAR neardata, intents.near, dip4 token_diff events",
   "block_range": [
    222253603,
-   222262474
+   222272582
   ],
-  "blocks_with_fills": 1024,
-  "chain_hours_covered_est": 2.71,
+  "blocks_with_fills": 1745,
+  "chain_hours_covered_est": 5.8,
   "coverage_note": "contiguous window starting Oct 28, 2026; ingestion ongoing",
-  "n_receipts": 1151,
-  "n_entries": 2854,
-  "bilateral_receipts": 797,
-  "multiparty_receipts": 354,
-  "usd_valued_entry_share": 0.9587,
+  "n_receipts": 1936,
+  "n_entries": 4893,
+  "bilateral_receipts": 1291,
+  "multiparty_receipts": 645,
+  "usd_valued_entry_share": 0.9448,
   "caveats": [
    "Window covers a few chain hours of one day; time-of-day bias applies to solver and corridor shares",
    "USD values derived from stablecoin legs where present, else live major-asset prices; unvalued entries excluded from volume shares",
@@ -22,7 +22,7 @@
   ]
  },
  "explicit_fee": {
-  "n_samples": 2806,
+  "n_samples": 4820,
   "median_bps": 0.01,
   "p25_bps": 0.01,
   "p75_bps": 0.0102,
@@ -32,139 +32,139 @@
   "finding": "The explicit protocol fee at the settlement contract is roughly 0.01 bps per side, hundreds of times below the 5.91 bps revenue rate implied by DefiLlama. Protocol revenue is therefore generated off the settlement contract (application-layer fees or solver arrangements), not by a contract-enforced take. The capture rate behind the break-even model is policy, not protocol."
  },
  "solvers": {
-  "hhi": 0.3256,
-  "top3_share": 0.8636,
-  "distinct_solver_accounts": 17,
+  "hhi": 0.2257,
+  "top3_share": 0.7487,
+  "distinct_solver_accounts": 21,
   "top": [
    {
     "account": "0x8c60fa34790d4661ae4b5302f2a654539352e81b",
-    "fills": 98,
-    "usd_volume": 611232.95,
-    "share": 0.4388
+    "fills": 132,
+    "usd_volume": 763702.92,
+    "share": 0.3496
    },
    {
     "account": "blockzen-1-main.near",
-    "fills": 398,
-    "usd_volume": 492297.83,
-    "share": 0.3534
+    "fills": 601,
+    "usd_volume": 612497.93,
+    "share": 0.2804
    },
    {
     "account": "27695d3e216982e4b32db97ca046ae31b1feb354710e65f0f420859bdbcd8e2c",
-    "fills": 3,
-    "usd_volume": 99489.95,
-    "share": 0.0714
-   },
-   {
-    "account": "solver-priv-liq.near",
-    "fills": 23,
-    "usd_volume": 45792.19,
-    "share": 0.0329
-   },
-   {
-    "account": "kipseli.near",
-    "fills": 109,
-    "usd_volume": 44915.92,
-    "share": 0.0322
+    "fills": 4,
+    "usd_volume": 259387.79,
+    "share": 0.1187
    },
    {
     "account": "crux-solver.near",
-    "fills": 38,
-    "usd_volume": 30554.02,
-    "share": 0.0219
+    "fills": 85,
+    "usd_volume": 154603.75,
+    "share": 0.0708
    },
    {
-    "account": "6af11753e21c3499f0c579d703879d0259c8a09155f4bc9c6d651a8fa09830ff",
-    "fills": 3,
-    "usd_volume": 22302.43,
-    "share": 0.016
+    "account": "solver-priv-liq.near",
+    "fills": 35,
+    "usd_volume": 118063.54,
+    "share": 0.054
+   },
+   {
+    "account": "kipseli.near",
+    "fills": 190,
+    "usd_volume": 86986.52,
+    "share": 0.0398
+   },
+   {
+    "account": "433d1f6e5452c9f6087af460d1c6b799587132caabeb2477a0ad37e3e0b88d0c",
+    "fills": 2,
+    "usd_volume": 55712.35,
+    "share": 0.0255
    },
    {
     "account": "6247d9c671ca6a80cf2c75e26edb8cd75ebf00fcd3c56c39107d6ca20c9cfb29",
-    "fills": 11,
-    "usd_volume": 17169.15,
-    "share": 0.0123
-   },
-   {
-    "account": "0x4f77780141b0770a33d270ee255beb25c9568c7b",
-    "fills": 40,
-    "usd_volume": 12277.9,
-    "share": 0.0088
+    "fills": 18,
+    "usd_volume": 30869.61,
+    "share": 0.0141
    },
    {
     "account": "brlabs-solver.near",
-    "fills": 20,
-    "usd_volume": 6888.52,
-    "share": 0.0049
+    "fills": 49,
+    "usd_volume": 27700.57,
+    "share": 0.0127
+   },
+   {
+    "account": "0x94845333028b1204fbe14e1278fd4adde46b22ce.near",
+    "fills": 29,
+    "usd_volume": 23539.35,
+    "share": 0.0108
    }
   ]
  },
  "corridors": [
   {
    "pair": "USDC.eth / USDT.tron",
-   "usd_volume": 983072.08,
-   "share": 0.1992,
-   "entries": 121
+   "usd_volume": 1253014.3,
+   "share": 0.1522,
+   "entries": 203
   },
   {
    "pair": "USDT.eth / USDT.tron",
-   "usd_volume": 569596.53,
-   "share": 0.1154,
-   "entries": 133
-  },
-  {
-   "pair": "BTC / USDT.tron",
-   "usd_volume": 565064.82,
-   "share": 0.1145,
-   "entries": 66
+   "usd_volume": 982792.84,
+   "share": 0.1193,
+   "entries": 245
   },
   {
    "pair": "USDT.tron / other",
-   "usd_volume": 418095.16,
-   "share": 0.0847,
-   "entries": 107
+   "usd_volume": 916988.66,
+   "share": 0.1114,
+   "entries": 171
   },
   {
-   "pair": "USDC.eth / USDT.eth",
-   "usd_volume": 319744.08,
-   "share": 0.0648,
-   "entries": 228
+   "pair": "BTC / USDT.tron",
+   "usd_volume": 622701.48,
+   "share": 0.0756,
+   "entries": 102
   },
   {
    "pair": "BTC / USDT.eth",
-   "usd_volume": 307601.95,
-   "share": 0.0623,
-   "entries": 54
+   "usd_volume": 604140.47,
+   "share": 0.0734,
+   "entries": 118
   },
   {
    "pair": "USDT.eth / other",
-   "usd_volume": 212576.32,
-   "share": 0.0431,
-   "entries": 243
+   "usd_volume": 474855.44,
+   "share": 0.0577,
+   "entries": 481
   },
   {
-   "pair": "SOL / USDT.tron",
-   "usd_volume": 207593.4,
-   "share": 0.0421,
-   "entries": 30
+   "pair": "USDC.eth / USDT.eth",
+   "usd_volume": 450735.58,
+   "share": 0.0547,
+   "entries": 413
   },
   {
-   "pair": "USDT.arb / USDT.tron",
-   "usd_volume": 204414.95,
-   "share": 0.0414,
-   "entries": 10
+   "pair": "BTC / other",
+   "usd_volume": 430545.78,
+   "share": 0.0523,
+   "entries": 75
   },
   {
    "pair": "BTC / USDC.eth",
-   "usd_volume": 199339.7,
-   "share": 0.0404,
-   "entries": 29
+   "usd_volume": 364513.55,
+   "share": 0.0443,
+   "entries": 62
+  },
+  {
+   "pair": "USDC.eth / other",
+   "usd_volume": 265407.08,
+   "share": 0.0322,
+   "entries": 256
   }
  ],
  "wash_screen": {
   "bilateral_self_fills": 0,
   "bilateral_self_fill_share": 0.0,
-  "user_round_trip_entries": 89,
-  "user_round_trip_share": 0.0833,
+  "user_round_trip_entries": 203,
+  "user_round_trip_share": 0.1106,
   "note": "Solver accounts excluded from the round-trip metric since market makers legitimately trade both directions"
  }
 }

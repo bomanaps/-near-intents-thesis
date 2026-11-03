@@ -255,7 +255,7 @@ td:first-child{text-align:left;color:var(--faint)}
   <!-- scenario table -->
   <div class="panel">
     <div class="panel-title">Scenario Matrix</div>
-    <div class="panel-desc">Four combinations of issuance × capture. Volume column uses current slider value.</div>
+    <div class="panel-desc">Issuance × capture combinations, plus a contract-enforced fee switch adding 5 bps to the current slider capture rate. Volume column uses current slider value.</div>
     <div class="tbl-wrap">
       <table>
         <thead><tr>
@@ -269,11 +269,11 @@ td:first-child{text-align:left;color:var(--faint)}
 
   <!-- Revenue Reconciliation -->
   <div class="panel" style="margin-bottom:24px">
-    <div class="panel-title">Revenue Reconciliation: NEAR RPC vs DefiLlama</div>
+    <div class="panel-title">Revenue Reconciliation: revenue.near.org vs DefiLlama</div>
     <div class="panel-desc">Two sources report different numbers. The gap is real and fully explained below.</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:14px">
       <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">NEAR RPC: Gross Wallet Inflows</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">revenue.near.org: Gross Wallet Inflows</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--hi)">$16.71M</div>
         <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5">Every token entering the buyback wallet, including solver settlements that transit and are rebated back out during execution</div>
       </div>
@@ -284,7 +284,7 @@ td:first-child{text-align:left;color:var(--faint)}
       </div>
     </div>
     <div style="background:var(--surf2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6">
-      Gap: $8.0M (ratio 1.92x). Solvers settle through the buyback wallet during execution; the net rebate flows back out. NEAR RPC counts gross; DefiLlama counts net. Using the gross figure would overstate the capture rate by nearly 2x and produce a falsely optimistic break-even. This model uses DefiLlama throughout.
+      Gap: $8.0M (ratio 1.92x). Solvers settle through the buyback wallet during execution; the net rebate flows back out. revenue.near.org counts gross; DefiLlama counts net. Using the gross figure would overstate the capture rate by nearly 2x and produce a falsely optimistic break-even. This model uses DefiLlama throughout.
     </div>
   </div>
 
@@ -346,8 +346,8 @@ td:first-child{text-align:left;color:var(--faint)}
   <div class="model-panels">
 
     <div class="panel" id="forecast">
-      <div class="panel-title">Volume Forecast: Break-Even Probability</div>
-      <div class="panel-desc">10,000 Monte Carlo simulations · 3-year horizon · 6 methods compared</div>
+      <div class="panel-title">Volume Forecast: Sustained Break-Even Probability</div>
+      <div class="panel-desc">10,000 simulations · 3-year horizon · trend extrapolation vs block bootstrap · thresholds recomputed at every run</div>
       <div id="forecast-wrap"></div>
       <div class="falsify-note" id="falsify-note"></div>
       <div class="caveat-box">
@@ -539,26 +539,35 @@ td:first-child{text-align:left;color:var(--faint)}
     {iso:'2.5% cap (today)',cap:0.025,bpsList:[5.91,4.11]},
     {iso:'1.6% (HSP-029 floor)',cap:0.016,bpsList:[5.91,4.11]},
   ];
+  function addScenarioRow(tbody,label,capVal,b){
+    const c=compute(price,volM,capVal,b);
+    const pct=(c.offset*100).toFixed(1)+'%';
+    const cls=c.offset>=1?'b-green':c.offset>=0.25?'b-amber':'b-red';
+    const mult=(c.bev/(volM*1e6)).toFixed(1)+'x';
+    const tr=document.createElement('tr');
+    const cells=[label,fmt(c.issued,0),fmt(c.bought,0),null,fmtUSD(c.bev)+'/day',mult];
+    cells.forEach((txt,i)=>{
+      const td=document.createElement('td');
+      if(i===3){
+        const badge=document.createElement('span');
+        badge.className='badge '+cls;
+        badge.textContent=pct;
+        td.appendChild(badge);
+      } else td.textContent=txt;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  }
+
   function updateTable(){
     const tbody=document.getElementById('sc-tbody');
     tbody.innerHTML='';
     SCENARIOS.forEach(s=>{
-      s.bpsList.forEach(b=>{
-        const c=compute(price,volM,s.cap,b);
-        const pct=(c.offset*100).toFixed(1)+'%';
-        const cls=c.offset>=1?'b-green':c.offset>=0.25?'b-amber':'b-red';
-        const mult=(c.bev/(volM*1e6)).toFixed(1)+'×';
-        const tr=document.createElement('tr');
-        tr.innerHTML=`
-          <td>${s.iso} · ${b} bps</td>
-          <td>${fmt(c.issued,0)}</td>
-          <td>${fmt(c.bought,0)}</td>
-          <td><span class="badge ${cls}">${pct}</span></td>
-          <td>${fmtUSD(c.bev)}/day</td>
-          <td>${mult}</td>`;
-        tbody.appendChild(tr);
-      });
+      s.bpsList.forEach(b=>addScenarioRow(tbody,s.iso+' · '+b+' bps',s.cap,b));
     });
+    const fsBps=Math.round((bps+5)*100)/100;
+    addScenarioRow(tbody,'2.5% + fee switch · '+fsBps.toFixed(2)+' bps',0.025,fsBps);
+    addScenarioRow(tbody,'1.6% + fee switch · '+fsBps.toFixed(2)+' bps',0.016,fsBps);
   }
 
   // --- ramp chart ---
@@ -784,60 +793,57 @@ td:first-child{text-align:left;color:var(--faint)}
 (function(){
   const FC_FALLBACK={
     meta:{
-      student_t_fit:{df:2.66},
-      falsification_threshold:{
-        condition:'7-day average volume < $60M sustained for 60+ days (less than half current $125M)',
-        action:'Switch to pessimistic (30d) scenario as operative model'
+      near_price:3.85,capture_bps_30d:5.87,data_through:'2026-11-02',
+      break_even_thresholds:{
+        cap16:{usd:377000000,label:'$377M (1.6% cap)'},
+        cap25:{usd:588000000,label:'$588M (2.5% cap)'}
       },
+      crossing_definition:'sustained: 30-day average volume reaches the threshold, not a one-day touch',
       caveats:[
-        'Student-t df=2.66: variance theoretically infinite (v<3)',
-        'GBM assumes price-independent volume; NEAR price correlation not modelled',
-        'Block-bootstrap cannot model structural breaks or regime change',
-        'Thresholds fixed at current NEAR price; use sliders above for sensitivity',
-        'GBM 12/24/36mo probabilities equal: paths spike early or stay permanently below'
+        'Drift estimated from a trending window extrapolates that trend; +122%/yr (365d) and +396%/yr (180d) are not sustainable indefinitely, so long-horizon probabilities are upper bounds',
+        'A random walk cannot anticipate structural breaks, new integrations, or saturation of the current growth driver',
+        'Thresholds move with NEAR price and capture rate; they are recomputed at every run and shown in the header',
+        'Residual bootstrap preserves the empirical error distribution but assumes errors are exchangeable over time',
+        'The two windows disagree because the regime changed; the disagreement is information, not error'
       ]
     },
     scenarios:{
-      gbm_normal_30d:{crossing_probs:{hsp029_424M:{'12':0.1727},cap25_663M:{'12':0.1021}}},
-      gbm_normal_90d:{crossing_probs:{hsp029_424M:{'12':0.255},cap25_663M:{'12':0.1656}}},
-      gbm_normal_full:{crossing_probs:{hsp029_424M:{'12':0.2266},cap25_663M:{'12':0.1481}}},
-      gbm_t_90d:{crossing_probs:{hsp029_424M:{'12':0.1727},cap25_663M:{'12':0.111}}},
-      block_bootstrap_recent_180d:{crossing_probs:{hsp029_424M:{'12':0.7179},cap25_663M:{'12':0.5583}}},
-      block_bootstrap_full_692d:{crossing_probs:{hsp029_424M:{'12':0.9898},cap25_663M:{'12':0.9785}}}
+      rw_drift_365d:{label:'Trend 365d',note:'positive drift (+122%/yr) · unit root imposed',crossing_probs:{cap16:{'12':0.326},cap25:{'12':0.063}}},
+      rw_drift_recent_180d:{label:'Trend 180d',note:'positive drift (+396%/yr) · unit root imposed',crossing_probs:{cap16:{'12':0.943},cap25:{'12':0.635}}},
+      block_bootstrap_recent_180d:{label:'Bootstrap 180d',note:'30d blocks of daily log returns · positive drift',crossing_probs:{cap16:{'12':0.77},cap25:{'12':0.695}}},
+      block_bootstrap_full:{label:'Bootstrap 663d',note:'30d blocks · includes early growth phase · upper bound',crossing_probs:{cap16:{'12':0.965},cap25:{'12':0.938}}}
     }
   };
-
-  function scenarioLabels(meta){
-    const df=meta&&meta.student_t_fit&&meta.student_t_fit.df?meta.student_t_fit.df.toFixed(2):'2.66';
-    return {
-      gbm_normal_30d:['GBM 30d (pessimistic)','recent 30d trend extrapolated',false],
-      gbm_normal_90d:['GBM 90d (base case)','90d trend · slight positive drift',false],
-      gbm_normal_full:['GBM 692d (full history)','full-history drift',false],
-      gbm_t_90d:['GBM-t 90d (fat tails)','v='+df+' MLE · heavier tails',false],
-      block_bootstrap_recent_180d:['Bootstrap 180d','recent regime · current behaviour',false],
-      block_bootstrap_full_692d:['Bootstrap 692d','full history · upper bound',true]
-    };
-  }
 
   function renderForecast(fc){
     const wrap=document.getElementById('forecast-wrap');
     wrap.innerHTML='';
-    const labels=scenarioLabels(fc.meta);
+    const meta=fc.meta;
+    const thr=meta.break_even_thresholds;
     const tbl=document.createElement('table');
     tbl.className='prob-table';
-    tbl.innerHTML='<thead><tr><th style="text-align:left">Scenario</th><th>P($424M) 12mo</th><th>P($663M) 12mo</th></tr></thead>';
+    const thead=document.createElement('thead');
+    const hr=document.createElement('tr');
+    const h0=document.createElement('th');
+    h0.style.textAlign='left'; h0.textContent='Scenario';
+    hr.appendChild(h0);
+    ['cap16','cap25'].forEach(k=>{
+      const th=document.createElement('th');
+      th.textContent='P('+((thr[k]&&thr[k].label)||k)+') 12mo';
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr); tbl.appendChild(thead);
     const tbody=document.createElement('tbody');
-    Object.keys(labels).forEach(key=>{
+    Object.keys(fc.scenarios).forEach(key=>{
       const sc=fc.scenarios[key];
-      if(!sc) return;
-      const [label,note,isUpper]=labels[key];
-      const p424=sc.crossing_probs.hsp029_424M['12'];
-      const p663=sc.crossing_probs.cap25_663M['12'];
-      const cls=p424>=0.5?'c-green':p424>=0.2?'c-amber':'';
+      const isUpper=(sc.note||'').includes('upper bound');
+      const p16=sc.crossing_probs.cap16['12'];
+      const p25=sc.crossing_probs.cap25['12'];
+      const cls=p16>=0.5?'c-green':p16>=0.2?'c-amber':'';
       const tr=document.createElement('tr');
       if(isUpper) tr.style.background='rgba(245,166,35,0.07)';
       const tdName=document.createElement('td');
-      tdName.appendChild(document.createTextNode(label));
+      tdName.appendChild(document.createTextNode(sc.label||key));
       if(isUpper){
         const tag=document.createElement('span');
         tag.style.cssText="font-size:9px;color:var(--amber);font-family:'IBM Plex Mono',monospace";
@@ -847,27 +853,25 @@ td:first-child{text-align:left;color:var(--faint)}
       tdName.appendChild(document.createElement('br'));
       const small=document.createElement('small');
       small.style.cssText='font-size:9px;color:var(--dim)';
-      small.textContent=note;
+      small.textContent=sc.note||'';
       tdName.appendChild(small);
-      const td424=document.createElement('td');
-      td424.className=cls;
-      td424.textContent=(p424*100).toFixed(1)+'%';
-      const td663=document.createElement('td');
-      td663.textContent=(p663*100).toFixed(1)+'%';
-      tr.appendChild(tdName);tr.appendChild(td424);tr.appendChild(td663);
+      const td16=document.createElement('td');
+      td16.className=cls;
+      td16.textContent=(p16*100).toFixed(1)+'%';
+      const td25=document.createElement('td');
+      td25.textContent=(p25*100).toFixed(1)+'%';
+      tr.appendChild(tdName);tr.appendChild(td16);tr.appendChild(td25);
       tbody.appendChild(tr);
     });
     tbl.appendChild(tbody);
     wrap.appendChild(tbl);
 
-    const ft=fc.meta&&fc.meta.falsification_threshold;
-    document.getElementById('falsify-note').textContent=ft
-      ?'Falsification threshold: '+ft.condition+'. '+ft.action+'.'
-      :'';
+    document.getElementById('falsify-note').textContent=
+      'Crossing definition: '+meta.crossing_definition+'. Thresholds computed at NEAR $'+meta.near_price+' and '+meta.capture_bps_30d+' bps capture; data through '+meta.data_through+'.';
 
     const ul=document.getElementById('forecast-caveats');
     ul.innerHTML='';
-    ((fc.meta&&fc.meta.caveats)||[]).forEach(c=>{
+    (meta.caveats||[]).forEach(c=>{
       const li=document.createElement('li');
       li.textContent=c;
       ul.appendChild(li);

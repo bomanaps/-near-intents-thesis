@@ -380,10 +380,10 @@ if __name__ == "__main__":
         if "error" in u:
             print(f"{k:<15} ERROR: {u['error'][:40]}")
             continue
-        pre  = f"${u['pre_avg']/1e6:.1f}M" if u.get("pre_avg") else "n/a"
-        post = f"${u['post_avg']/1e6:.1f}M" if u.get("post_avg") else "n/a"
-        gr   = f"{u['growth_ratio']:.2f}x" if u.get("growth_ratio") else "n/a"
-        sl   = f"{u['pre_slope']:.5f}" if u.get("pre_slope") else "n/a"
+        pre  = f"${u['pre_avg']/1e6:.1f}M" if u.get("pre_avg") is not None else "n/a"
+        post = f"${u['post_avg']/1e6:.1f}M" if u.get("post_avg") is not None else "n/a"
+        gr   = f"{u['growth_ratio']:.2f}x" if u.get("growth_ratio") is not None else "n/a"
+        sl   = f"{u['pre_slope']:.5f}" if u.get("pre_slope") is not None else "n/a"
         print(f"{k:<15} {pre:>12} {post:>12} {gr:>8} {sl:>12}")
     print()
     did = result["did_estimate"]

@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/raw/daily_metrics.parquet data/model/forecast.json data/model/fee_switch.json docs/data/forecast.json docs/data/fee_switch.json
+          git add data/raw/daily_metrics.parquet data/model/forecast.json data/model/fee_switch.json data/model/frequency.json docs/data/forecast.json docs/data/fee_switch.json docs/data/frequency.json
           if git diff --cached --quiet; then
             echo "No data changes; nothing to commit."
           else

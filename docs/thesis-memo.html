@@ -161,10 +161,10 @@ em { color: var(--text-dim); }
   </p>
   <p>
     NEAR's token model allows validators to mint new NEAR up to an annual <strong>issuance cap</strong>,
-    currently 2.5% of circulating supply. On a 1.310B-token supply at $4.37, this produces roughly
+    currently 2.5% of total supply. On a 1.310B-token total supply at $4.37, this produces roughly
     <strong>89,700 NEAR ($392,000) of new supply every day</strong>. Buybacks must exceed this rate for
     the token to be net deflationary; anything below 100% offset means the treasury is still adding
-    to circulating supply on net.
+    to supply on net.
   </p>
 
   <h2>2. The Break-Even Formula</h2>
@@ -208,16 +208,27 @@ em { color: var(--text-dim); }
     </tbody>
   </table>
 
+  <h3>How Often Has Revenue Actually Covered Issuance?</h3>
+
+  <p>
+    A claim often repeated in NEAR commentary is that revenue already exceeds issuance "on
+    volatile days." The exact count, from 557 days of history with matched price data: daily
+    protocol revenue covered the full 2.5%-cap issuance on <strong>6 days (1.1%)</strong>, and
+    would have covered the 1.6%-floor issuance on 8 days. The best single day, January 15, 2026,
+    covered 2.5%-cap issuance 2.2 times over. Break-even days exist, but they are rare spikes,
+    not a trend; the structural gap is the subject of this memo.
+  </p>
+
   <h3>Revenue Reconciliation: Two Sources, One Right Answer</h3>
 
   <p>
-    Two data sources report different cumulative revenue figures for NEAR Intents. The NEAR RPC
-    buyback wallet shows <strong>$16.71M</strong> in total inflows; DefiLlama reports
+    Two data sources report different cumulative revenue figures for NEAR Intents. NEAR's public
+    revenue dashboard (revenue.near.org), which tallies the buyback wallet, shows <strong>$16.71M</strong> in total inflows; DefiLlama reports
     <strong>$8.71M</strong> in protocol revenue. This 1.92x gap is not a data error. It reflects
     what each source is measuring.
   </p>
   <p>
-    The NEAR RPC figure is a gross wallet count: it tallies every token entering the buyback
+    The revenue.near.org figure is a gross wallet count: it tallies every token entering the buyback
     address, including solver settlements that transit during execution and are subsequently
     rebated back out. The DefiLlama figure is the net protocol revenue: the portion that
     permanently accrues to the protocol after those rebates. The difference (~$8M) is solver
@@ -226,7 +237,7 @@ em { color: var(--text-dim); }
   <p>
     This model uses the DefiLlama net figure throughout. It is the correct input for the
     5.91 bps capture rate (revenue divided by volume) and for all offset and break-even
-    calculations. A model built on the gross NEAR RPC figure would overstate the effective
+    calculations. A model built on the gross revenue.near.org figure would overstate the effective
     capture rate by nearly 2x and produce a falsely optimistic break-even threshold.
   </p>
 
@@ -380,16 +391,36 @@ em { color: var(--text-dim); }
     proposal restoring the 2.5% cap would widen the gap back to the worst-case scenario.
   </p>
 
-  <h2>8. The Fee-Switch Option</h2>
+  <h2>8. The Fee-Switch Option: The Argument Only This Data Can Make</h2>
 
   <p>
     The most structurally important upgrade not yet priced into the model is a
-    <strong>protocol-level fee switch</strong>: a governance-controlled mechanism that
-    sets a minimum protocol take (analogous to Uniswap's fee switch or the Curve gauge weight system).
-    Under the current model, the protocol receives whatever solvers contribute voluntarily.
-    A fee switch at 5 bps on matched Intents volume would double the effective capture rate,
-    cutting break-even volume in half, from $479M to ~$240M/day under the HSP-029 floor scenario.
-    That target is within reach of a single large routing deal or an Ethereum L2 integration.
+    <strong>protocol-level fee switch</strong>: a contract-enforced take on matched Intents
+    volume, analogous to Uniswap's fee switch. Two findings from this project's own data combine
+    into an argument for it that neither finding supports alone.
+  </p>
+  <p>
+    <strong>First, the current capture is policy, not protocol.</strong> Decoded settlement
+    events show the contract itself collects roughly 0.01 bps per side (Section 3); the 5.91 bps
+    the buyback actually receives is generated off-contract and can change in either direction
+    without governance. Revenue this soft deserves a discount; a contract-enforced take removes
+    that discount.
+  </p>
+  <p>
+    <strong>Second, demand did not flinch when fees switched on.</strong> The
+    difference-in-differences analysis of the February 23, 2026 fee activation (Section 9) finds
+    no statistically significant volume impact relative to three aggregator controls (ATT 1.10x,
+    CI 0.97 to 1.25). Within the power of this test, Intents demand tolerated the introduction of
+    fees.
+  </p>
+  <p>
+    Together: a contract-enforced take of 5 bps on top of the current effective capture is
+    the one lever that is simultaneously in governance's control, volume-independent, and
+    empirically consistent with no demand damage. At 10.91 bps total capture and a $3.85 NEAR
+    price, break-even volume falls to roughly <strong>$203M/day at the 1.6% floor</strong>
+    (1.6x current volume, versus 2.9x without it) and $317M/day at the current cap. The offset
+    ratio at today's volume rises to roughly 64% at the floor. No competing analysis can make
+    this argument, because it requires both the on-chain fee measurement and the counterfactual.
   </p>
 
   <div class="verdict-box">
@@ -410,22 +441,20 @@ em { color: var(--text-dim); }
   <section class="model-limits">
     <h2>9. Quantitative Model Limitations</h2>
 
-    <h3>Monte Carlo Volume Forecast</h3>
+    <h3>Volume Forecast</h3>
     <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
-      Probabilities span 17-99% across six scenarios because each method captures a
-      different slice of history. No single number is the "answer." The range is the answer.
+      Break-even is defined as a sustained crossing: the 30-day average volume reaching the
+      threshold, not a one-day spike touching it. Thresholds are recomputed at every model run
+      from the live NEAR price and the current 30-day capture rate, so they move with the market
+      rather than freezing at a publication-date price.
     </p>
     <ul>
-      <li>Student-t degrees-of-freedom fit by MLE at ν=2.66: with ν&lt;3, variance is theoretically infinite. Even the fat-tail GBM underestimates the most extreme events.</li>
-      <li>GBM variants assume volume is independent of NEAR token price. If price and volume are correlated (both driven by macro sentiment), GBM path variance is understated.</li>
-      <li>Block-bootstrap preserves historical autocorrelation but cannot model structural breaks: a protocol exploit, regulatory ban, or competitor routing the majority of flow off-chain.</li>
-      <li>Break-even thresholds are fixed at the $4.37 spot price at model run date. The interactive dashboard lets you explore price sensitivity directly.</li>
-      <li>GBM 12/24/36-month probabilities are numerically equal because the process either crosses the threshold early in the path or drifts permanently below; not a model error.</li>
+      <li>Two model classes were tested and rejected before this one, and the rejections are recorded in the model output. GBM on daily volume double-counted the Ito correction in calibration, and its one-year dispersion (daily sigma near 0.35 compounding to 6.8 annualized) makes any crossing probability an artifact. An unconstrained AR(1) on the smoothed series fits phi near 0.998, indistinguishable from a unit root, so its implied stationary level is an unstable extrapolation.</li>
+      <li>The model used is a random walk with drift on the log 30-day average, residual bootstrap, no normality assumption, with a 30-day block bootstrap of daily returns as a non-parametric check.</li>
+      <li>Trend extrapolation is the model's honest weakness: the fitted drifts (roughly +122%/yr on the 365d window, +396%/yr on 180d) reflect genuine recent growth but cannot continue indefinitely, so long-horizon probabilities are upper bounds.</li>
+      <li>The calibration windows disagree because the regime changed mid-2026; the disagreement is information about regime uncertainty, not a defect to average away.</li>
+      <li>A random walk cannot anticipate structural breaks: an exploit, a lost integration, or saturation of the current growth driver.</li>
     </ul>
-    <div class="falsify">
-      <strong>Falsification threshold:</strong> if the realised 7-day average volume stays below $60M for 60 or more consecutive days, less than half today's $125M, the 90d base-case scenario is rejected. The 30d pessimistic scenario becomes operative.
-    </div>
-
     <h3>Fee-Switch Difference-in-Differences</h3>
     <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
       ATT = 1.10× (95% CI: 0.97-1.25×). The confidence interval includes 1.0: no statistically

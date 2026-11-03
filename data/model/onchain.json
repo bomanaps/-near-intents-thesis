@@ -1,0 +1,170 @@
+{
+ "meta": {
+  "generated_at": "2026-11-03T07:09:32Z",
+  "source": "FastNEAR neardata, intents.near, dip4 token_diff events",
+  "block_range": [
+   222253603,
+   222262474
+  ],
+  "blocks_with_fills": 1024,
+  "chain_hours_covered_est": 2.71,
+  "coverage_note": "contiguous window starting Oct 28, 2026; ingestion ongoing",
+  "n_receipts": 1151,
+  "n_entries": 2854,
+  "bilateral_receipts": 797,
+  "multiparty_receipts": 354,
+  "usd_valued_entry_share": 0.9587,
+  "caveats": [
+   "Window covers a few chain hours of one day; time-of-day bias applies to solver and corridor shares",
+   "USD values derived from stablecoin legs where present, else live major-asset prices; unvalued entries excluded from volume shares",
+   "Solver side of a bilateral receipt identified as the account with higher global fill count",
+   "Explicit fee rate measures fees_collected at the settlement contract only; it does not capture app-layer or off-contract revenue"
+  ]
+ },
+ "explicit_fee": {
+  "n_samples": 2806,
+  "median_bps": 0.01,
+  "p25_bps": 0.01,
+  "p75_bps": 0.0102,
+  "max_bps": 58.48,
+  "volume_weighted_mean_bps": 0.0102,
+  "defillama_implied_revenue_bps_30d": 5.91,
+  "finding": "The explicit protocol fee at the settlement contract is roughly 0.01 bps per side, hundreds of times below the 5.91 bps revenue rate implied by DefiLlama. Protocol revenue is therefore generated off the settlement contract (application-layer fees or solver arrangements), not by a contract-enforced take. The capture rate behind the break-even model is policy, not protocol."
+ },
+ "solvers": {
+  "hhi": 0.3256,
+  "top3_share": 0.8636,
+  "distinct_solver_accounts": 17,
+  "top": [
+   {
+    "account": "0x8c60fa34790d4661ae4b5302f2a654539352e81b",
+    "fills": 98,
+    "usd_volume": 611232.95,
+    "share": 0.4388
+   },
+   {
+    "account": "blockzen-1-main.near",
+    "fills": 398,
+    "usd_volume": 492297.83,
+    "share": 0.3534
+   },
+   {
+    "account": "27695d3e216982e4b32db97ca046ae31b1feb354710e65f0f420859bdbcd8e2c",
+    "fills": 3,
+    "usd_volume": 99489.95,
+    "share": 0.0714
+   },
+   {
+    "account": "solver-priv-liq.near",
+    "fills": 23,
+    "usd_volume": 45792.19,
+    "share": 0.0329
+   },
+   {
+    "account": "kipseli.near",
+    "fills": 109,
+    "usd_volume": 44915.92,
+    "share": 0.0322
+   },
+   {
+    "account": "crux-solver.near",
+    "fills": 38,
+    "usd_volume": 30554.02,
+    "share": 0.0219
+   },
+   {
+    "account": "6af11753e21c3499f0c579d703879d0259c8a09155f4bc9c6d651a8fa09830ff",
+    "fills": 3,
+    "usd_volume": 22302.43,
+    "share": 0.016
+   },
+   {
+    "account": "6247d9c671ca6a80cf2c75e26edb8cd75ebf00fcd3c56c39107d6ca20c9cfb29",
+    "fills": 11,
+    "usd_volume": 17169.15,
+    "share": 0.0123
+   },
+   {
+    "account": "0x4f77780141b0770a33d270ee255beb25c9568c7b",
+    "fills": 40,
+    "usd_volume": 12277.9,
+    "share": 0.0088
+   },
+   {
+    "account": "brlabs-solver.near",
+    "fills": 20,
+    "usd_volume": 6888.52,
+    "share": 0.0049
+   }
+  ]
+ },
+ "corridors": [
+  {
+   "pair": "USDC.eth / USDT.tron",
+   "usd_volume": 983072.08,
+   "share": 0.1992,
+   "entries": 121
+  },
+  {
+   "pair": "USDT.eth / USDT.tron",
+   "usd_volume": 569596.53,
+   "share": 0.1154,
+   "entries": 133
+  },
+  {
+   "pair": "BTC / USDT.tron",
+   "usd_volume": 565064.82,
+   "share": 0.1145,
+   "entries": 66
+  },
+  {
+   "pair": "USDT.tron / other",
+   "usd_volume": 418095.16,
+   "share": 0.0847,
+   "entries": 107
+  },
+  {
+   "pair": "USDC.eth / USDT.eth",
+   "usd_volume": 319744.08,
+   "share": 0.0648,
+   "entries": 228
+  },
+  {
+   "pair": "BTC / USDT.eth",
+   "usd_volume": 307601.95,
+   "share": 0.0623,
+   "entries": 54
+  },
+  {
+   "pair": "USDT.eth / other",
+   "usd_volume": 212576.32,
+   "share": 0.0431,
+   "entries": 243
+  },
+  {
+   "pair": "SOL / USDT.tron",
+   "usd_volume": 207593.4,
+   "share": 0.0421,
+   "entries": 30
+  },
+  {
+   "pair": "USDT.arb / USDT.tron",
+   "usd_volume": 204414.95,
+   "share": 0.0414,
+   "entries": 10
+  },
+  {
+   "pair": "BTC / USDC.eth",
+   "usd_volume": 199339.7,
+   "share": 0.0404,
+   "entries": 29
+  }
+ ],
+ "wash_screen": {
+  "bilateral_self_fills": 0,
+  "bilateral_self_fill_share": 0.0,
+  "user_round_trip_entries": 89,
+  "user_round_trip_share": 0.0833,
+  "note": "Solver accounts excluded from the round-trip metric since market makers legitimately trade both directions"
+ }
+}

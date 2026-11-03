@@ -42,6 +42,8 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = circ
 
 **Monte Carlo volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon using six methods: GBM-Normal (30d / 90d / full history), GBM-StudentT (degrees of freedom ν=2.66, fitted by MLE), and block-bootstrap (recent 180d and full 692d). Probability of crossing the $424M break-even ranges from 17% under the pessimistic scenario to 99% under the full-history upper bound. The range is the answer, not any single number.
 
+**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot: the explicit contract fee is ~0.01 bps per side vs the 5.91 bps revenue rate implied by DefiLlama (so the capture rate is policy, not protocol), the top 3 solvers fill 86% of volume (HHI 0.33), and the volume screens clean (zero self-fills). Reruns automatically as ingestion grows.
+
 **Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. Average treatment effect: 1.10x (95% bootstrap CI: 0.97-1.25x). Permutation rank: 3/4. No statistically significant negative volume impact detected.
 
 ## Data Sources
@@ -82,6 +84,9 @@ docs/
 model/
   forecast.py         Monte Carlo volume forecast
   fee_switch.py       difference-in-differences analysis
+
+analysis/
+  onchain.py          on-chain evidence from decoded dip4 events
 
 ingest/
   fastnear_ingest.py  FastNEAR on-chain event ingestion

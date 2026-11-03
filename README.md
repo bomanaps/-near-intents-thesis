@@ -12,6 +12,8 @@ A quantitative model that answers one question: at what daily volume do NEAR Int
 
 ## Key Findings
 
+All figures as of November 2, 2026. The live dashboard fetches current data on every page load.
+
 | Metric | Value |
 |---|---|
 | Current daily volume (30d avg) | $127M |

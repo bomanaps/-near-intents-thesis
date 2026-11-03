@@ -220,12 +220,12 @@ footer {
       <div class="card-link">Read memo</div>
     </a>
     <a class="card" href="dashboard.html#forecast">
-      <div class="card-tag">Quantitative · Monte Carlo</div>
+      <div class="card-tag">Quantitative · Simulation</div>
       <div class="card-title">Volume Forecast</div>
       <div class="card-desc">
-        10,000 simulations across 6 methods: GBM-Normal (3 windows),
-        GBM-StudentT (ν=2.66 MLE), block-bootstrap (180d + 692d).
-        P(break-even) ranges 17-99% depending on regime assumption.
+        10,000 simulations, sustained-crossing definition: the 30-day average
+        must reach break-even, not a one-day spike. Trend extrapolation vs
+        block bootstrap; thresholds recomputed from live price at every run.
       </div>
       <div class="card-link">View forecast panel</div>
     </a>

@@ -2,7 +2,7 @@
 Async ingestion of intents.near EVENT_JSON logs via FastNEAR neardata API.
 
 Verified facts baked into this script (do not change without re-verification):
-  - intents.near is on shard 7 for the entire 22-day window (Oct 11 - Nov 2, 2026)
+  - intents.near is on shard 7 for the entire ingestion window (Oct 11, 2026 onward)
   - shard 3 returns null across this range; no shard-split handling needed
   - logs live at: receipt_execution_outcomes[*].execution_outcome.outcome.logs
   - skip events from failed receipts (race-condition artifacts from competing solvers)
@@ -34,7 +34,7 @@ NEARDATA_URL = "https://mainnet.neardata.xyz/v0/block/{height}/shard/7"
 INTENTS_ACCOUNTS = frozenset({"intents.near", "defuse-alpha.near"})
 
 BLOCK_START_DEFAULT = 222_253_590   # Oct 28, 2026; 5 days before tip
-BLOCK_END_DEFAULT   = 222_746_488   # Nov 2, 2026 tip
+BLOCK_END_DEFAULT   = 222_898_897   # Nov 3, 2026 tip; pass --end to extend further
 
 MAX_CONCURRENT = 1       # rate-limited to 30 blocks/min: concurrency doesn't help
 RATE_SLEEP     = 2.1     # 28.6 blocks/min; safely under the 30/min free-tier limit

@@ -40,7 +40,7 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = circ
 
 **Monte Carlo volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon using six methods: GBM-Normal (30d / 90d / full history), GBM-StudentT (degrees of freedom ν=2.66, fitted by MLE), and block-bootstrap (recent 180d and full 692d). Probability of crossing the $424M break-even ranges from 17% under the pessimistic scenario to 99% under the full-history upper bound. The range is the answer, not any single number.
 
-**Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. Average treatment effect: 1.10x (95% bootstrap CI: 0.97–1.25x). Permutation rank: 3/4. No statistically significant negative volume impact detected.
+**Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. Average treatment effect: 1.10x (95% bootstrap CI: 0.97-1.25x). Permutation rank: 3/4. No statistically significant negative volume impact detected.
 
 ## Data Sources
 

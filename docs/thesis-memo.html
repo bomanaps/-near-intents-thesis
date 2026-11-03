@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap">
 
 <style>
-/* editorial memo — neutral warm tones, serif-led */
+/* editorial memo: neutral warm tones, serif-led */
 :root {
   --bg:        #faf9f6;
   --surface:   #ffffff;
@@ -137,7 +137,7 @@ em { color: var(--text-dim); }
       <div class="meta-pair"><span class="meta-label">Protocol</span><span class="meta-value">NEAR Protocol</span></div>
       <div class="meta-pair"><span class="meta-label">Mechanism</span><span class="meta-value">NEAR Intents (intents.near)</span></div>
       <div class="meta-pair"><span class="meta-label">Governance event</span><span class="meta-value">HSP-029 activation</span></div>
-      <div class="meta-pair"><span class="meta-label">Model inputs</span><span class="meta-value">DefiLlama · 692d avg (Nov 2024–Nov 2026)</span></div>
+      <div class="meta-pair"><span class="meta-label">Model inputs</span><span class="meta-value">DefiLlama · 692d avg (Nov 2024-Nov 2026)</span></div>
       <div class="meta-pair"><span class="meta-label">NEAR price used</span><span class="meta-value">$4.37</span></div>
     </div>
   </div>
@@ -146,7 +146,7 @@ em { color: var(--text-dim); }
     At today's NEAR Intents volume of $127M/day, protocol buybacks offset ~19 cents of every dollar of new token issuance.
     HSP-029, activated November 2, 2026, sets a 24-month ramp from 2.5% to 1.6% annual issuance,
     which lifts that ceiling to ~30 cents by late 2028. Neither path reaches break-even at flat volume.
-    The critical condition: Intents volume must reach $424–663M/day, 3.3–5.2× its current level,
+    The critical condition: Intents volume must reach $424-663M/day, 3.3-5.2× its current level,
     depending on which issuance regime and capture rate scenario prevails.
   </div>
 
@@ -207,12 +207,34 @@ em { color: var(--text-dim); }
     </tbody>
   </table>
 
+  <h3>Revenue Reconciliation: Two Sources, One Right Answer</h3>
+
+  <p>
+    Two data sources report different cumulative revenue figures for NEAR Intents. The NEAR RPC
+    buyback wallet shows <strong>$16.71M</strong> in total inflows; DefiLlama reports
+    <strong>$8.71M</strong> in protocol revenue. This 1.92x gap is not a data error. It reflects
+    what each source is measuring.
+  </p>
+  <p>
+    The NEAR RPC figure is a gross wallet count: it tallies every token entering the buyback
+    address, including solver settlements that transit during execution and are subsequently
+    rebated back out. The DefiLlama figure is the net protocol revenue: the portion that
+    permanently accrues to the protocol after those rebates. The difference (~$8M) is solver
+    rebate flow: value that moved through the wallet but did not stay.
+  </p>
+  <p>
+    This model uses the DefiLlama net figure throughout. It is the correct input for the
+    5.91 bps capture rate (revenue divided by volume) and for all offset and break-even
+    calculations. A model built on the gross NEAR RPC figure would overstate the effective
+    capture rate by nearly 2x and produce a falsely optimistic break-even threshold.
+  </p>
+
   <h2>4. HSP-029: The Governance Catalyst</h2>
 
   <p>
     HSP-029 was submitted to governance in Q4 2026 and activated on November 2, 2026.
     It mandates a linear reduction in the annual issuance cap from <strong>2.5% → 1.6%</strong>
-    over 24 months — stepping down by 0.9 percentage points evenly across the ramp.
+    over 24 months, stepping down by 0.9 percentage points evenly across the ramp.
     The 1.6% floor holds permanently once reached in November 2028.
   </p>
 
@@ -267,8 +289,8 @@ em { color: var(--text-dim); }
   <p>Three conditions must hold simultaneously:</p>
 
   <p>
-    <strong>Volume growth of 3.3–5.2×.</strong>
-    Intents volume needs to reach $424–663M/day. That is plausible if NEAR becomes the
+    <strong>Volume growth of 3.3-5.2×.</strong>
+    Intents volume needs to reach $424-663M/day. That is plausible if NEAR becomes the
     primary settlement layer for cross-chain DeFi volume from Ethereum, Solana, and Bitcoin,
     but it requires winning solver share in a competitive market where UniswapX, CoW Protocol,
     and 1inch are already established.
@@ -311,11 +333,11 @@ em { color: var(--text-dim); }
 
   <p>
     The most structurally important upgrade not yet priced into the model is a
-    <strong>protocol-level fee switch</strong> — a governance-controlled mechanism that
+    <strong>protocol-level fee switch</strong>: a governance-controlled mechanism that
     sets a minimum protocol take (analogous to Uniswap's fee switch or the Curve gauge weight system).
     Under the current model, the protocol receives whatever solvers contribute voluntarily.
     A fee switch at 5 bps on matched Intents volume would double the effective capture rate,
-    cutting break-even volume in half — from $479M to ~$240M/day under the HSP-029 floor scenario.
+    cutting break-even volume in half, from $479M to ~$240M/day under the HSP-029 floor scenario.
     That target is within reach of a single large routing deal or an Ethereum L2 integration.
   </p>
 
@@ -339,30 +361,30 @@ em { color: var(--text-dim); }
 
     <h3>Monte Carlo Volume Forecast</h3>
     <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
-      Probabilities span 17–99% across six scenarios because each method captures a
+      Probabilities span 17-99% across six scenarios because each method captures a
       different slice of history. No single number is the "answer." The range is the answer.
     </p>
     <ul>
       <li>Student-t degrees-of-freedom fit by MLE at ν=2.66: with ν&lt;3, variance is theoretically infinite. Even the fat-tail GBM underestimates the most extreme events.</li>
       <li>GBM variants assume volume is independent of NEAR token price. If price and volume are correlated (both driven by macro sentiment), GBM path variance is understated.</li>
-      <li>Block-bootstrap preserves historical autocorrelation but cannot model structural breaks — a protocol exploit, regulatory ban, or competitor routing the majority of flow off-chain.</li>
+      <li>Block-bootstrap preserves historical autocorrelation but cannot model structural breaks: a protocol exploit, regulatory ban, or competitor routing the majority of flow off-chain.</li>
       <li>Break-even thresholds are fixed at the $4.37 spot price at model run date. The interactive dashboard lets you explore price sensitivity directly.</li>
-      <li>GBM 12/24/36-month probabilities are numerically equal because the process either crosses the threshold early in the path or drifts permanently below — not a model error.</li>
+      <li>GBM 12/24/36-month probabilities are numerically equal because the process either crosses the threshold early in the path or drifts permanently below; not a model error.</li>
     </ul>
     <div class="falsify">
-      <strong>Falsification threshold:</strong> if the realised 7-day average volume stays below $60M for 60 or more consecutive days — less than half today's $125M — the 90d base-case scenario is rejected. The 30d pessimistic scenario becomes operative.
+      <strong>Falsification threshold:</strong> if the realised 7-day average volume stays below $60M for 60 or more consecutive days, less than half today's $125M, the 90d base-case scenario is rejected. The 30d pessimistic scenario becomes operative.
     </div>
 
     <h3>Fee-Switch Difference-in-Differences</h3>
     <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
-      ATT = 1.10× (95% CI: 0.97–1.25×). The confidence interval includes 1.0: no statistically
+      ATT = 1.10× (95% CI: 0.97-1.25×). The confidence interval includes 1.0: no statistically
       significant volume impact is detected relative to the three controls.
     </p>
     <ul>
       <li>Four units total (NEAR + 3 controls): the permutation distribution has only four distinct points. The 75th-percentile rank is a weak signal, not a statistically powerful one.</li>
       <li>Controls (1inch, Paraswap, Jupiter) are larger, more mature aggregators with different liquidity depth and routing characteristics.</li>
       <li>The 90-day window coincided with a broader DeFi volume contraction; the market cycle is not isolated from the treatment effect.</li>
-      <li>Pre-period slopes differ: NEAR's pre-trend was +0.003/day while controls averaged −0.002/day. This suggests the parallel trends assumption is imperfect — the DiD estimate may conflate trend with treatment.</li>
+      <li>Pre-period slopes differ: NEAR's pre-trend was +0.003/day while controls averaged -0.002/day. This suggests the parallel trends assumption is imperfect; the DiD estimate may conflate trend with treatment.</li>
       <li>Bootstrap CIs are constructed by resampling within pre/post periods independently. Within-period autocorrelation is not preserved, which may narrow the stated intervals.</li>
     </ul>
     <div class="did-finding">
@@ -373,7 +395,7 @@ em { color: var(--text-dim); }
   <div class="footnotes">
     <ol>
       <li>Capture rates sourced from DefiLlama API for intents.near: 5.91 bps is the 30d trailing revenue/volume; 4.11 bps is the 90d trailing revenue/volume.</li>
-      <li>HSP-029 ramp computed as: cap(t) = 0.025 − 0.009 × min(t, 24)/24, where t is months since activation (Nov 2, 2026).</li>
+      <li>HSP-029 ramp computed as: cap(t) = 0.025 - 0.009 × min(t, 24)/24, where t is months since activation (Nov 2, 2026).</li>
       <li>Break-even date calculations assume flat volume and flat NEAR price over the projection window. Neither assumption is likely to hold; the model is a structural baseline, not a forecast.</li>
       <li>All NEAR amounts computed with Python <code>Decimal</code> arithmetic at full precision; USD conversions apply the $4.37 spot price.</li>
       <li>Aggregate volume and fee data sourced from DefiLlama API (fees and dex volume endpoints for intents.near), covering 692 days of history from November 2024 to November 2026.</li>

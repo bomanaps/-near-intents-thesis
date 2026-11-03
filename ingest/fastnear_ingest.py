@@ -2,17 +2,17 @@
 Async ingestion of intents.near EVENT_JSON logs via FastNEAR neardata API.
 
 Verified facts baked into this script (do not change without re-verification):
-  - intents.near is on shard 7 for the entire 22-day window (Oct 11 – Nov 2, 2026)
-  - shard 3 returns null across this range — no shard-split handling needed
+  - intents.near is on shard 7 for the entire 22-day window (Oct 11 - Nov 2, 2026)
+  - shard 3 returns null across this range; no shard-split handling needed
   - logs live at: receipt_execution_outcomes[*].execution_outcome.outcome.logs
   - skip events from failed receipts (race-condition artifacts from competing solvers)
-  - nep245 events on intents.near are normal (multi-token registry) — not anomalies
+  - nep245 events on intents.near are normal (multi-token registry); not anomalies
   - 22-day window: block 220_784_790 to 222_746_488 (~1.96M blocks)
 
 Outputs:
-  events.jsonl       — one JSON line per valid dip4 event
-  anomalies.jsonl    — one JSON line per anomaly (for review)
-  checkpoint.txt     — last fully processed block height (enables resume)
+  events.jsonl       : one JSON line per valid dip4 event
+  anomalies.jsonl    : one JSON line per anomaly (for review)
+  checkpoint.txt     : last fully processed block height (enables resume)
 
 Usage:
   python3 fastnear_ingest.py                        # start or resume
@@ -33,11 +33,11 @@ import aiohttp
 NEARDATA_URL = "https://mainnet.neardata.xyz/v0/block/{height}/shard/7"
 INTENTS_ACCOUNTS = frozenset({"intents.near", "defuse-alpha.near"})
 
-BLOCK_START_DEFAULT = 222_253_590   # Oct 28, 2026 — 5 days before tip
+BLOCK_START_DEFAULT = 222_253_590   # Oct 28, 2026; 5 days before tip
 BLOCK_END_DEFAULT   = 222_746_488   # Nov 2, 2026 tip
 
 MAX_CONCURRENT = 1       # rate-limited to 30 blocks/min: concurrency doesn't help
-RATE_SLEEP     = 2.1     # 28.6 blocks/min — safely under the 30/min free-tier limit
+RATE_SLEEP     = 2.1     # 28.6 blocks/min; safely under the 30/min free-tier limit
 RETRY_LIMIT    = 4
 RETRY_BACKOFF  = [3, 8, 20, 60]  # longer backoffs to let rate-limit window reset
 CHECKPOINT_EVERY = 500   # flush checkpoint every N blocks
@@ -126,7 +126,7 @@ def process_block(height: int, data: dict, events_f, anomaly_f) -> dict:
             continue
         seen_receipt_ids.add(receipt_id)
 
-        # Skip failed executions — logs from failures are race-condition artifacts
+        # Skip failed executions; logs from failures are race-condition artifacts
         is_failure = "Failure" in status
         if is_failure:
             if logs:
@@ -152,7 +152,7 @@ def process_block(height: int, data: dict, events_f, anomaly_f) -> dict:
 
             std = ev.get("standard", "")
             if std != "dip4":
-                # nep245 events on intents.near are expected (multi-token registry) — count not panic
+                # nep245 events on intents.near are expected (multi-token registry); count not panic
                 stats["skipped_nondip4"] += 1
                 if std not in ("nep245",):
                     log_anomaly(anomaly_f, height, "unexpected_standard",
@@ -263,7 +263,7 @@ async def ingest(start: int, end: int, out_dir: Path):
                     continue
                 height, data = res
                 if data is None:
-                    # null = block not on this shard (normal — skip silently)
+                    # null = block not on this shard (normal; skip silently)
                     pass
                 elif "_fetch_error" in data:
                     log_anomaly(anomaly_f, height, "fetch_error", data["_fetch_error"])

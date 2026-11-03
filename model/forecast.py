@@ -1,7 +1,7 @@
 """
 Monte Carlo volume forecast and break-even probability for NEAR Intents.
 
-Three simulation methods — results compared, not cherry-picked:
+Three simulation methods; results compared, not cherry-picked:
 
   1. GBM-Normal   : standard Geometric Brownian Motion, Z ~ N(0,1)
   2. GBM-StudentT : GBM with Student-t residuals, df estimated by MLE (ν=2.66)
@@ -10,13 +10,13 @@ Three simulation methods — results compared, not cherry-picked:
                     Preserves autocorrelation and regime structure without distributional
                     assumptions. No parametric model needed.
 
-Parameters for GBM variants derived from three windows — all data-driven:
+Parameters for GBM variants derived from three windows; all data-driven:
   30d  (recent):    mu=-0.01385/day, sigma=0.3423/day  [pessimistic]
   90d  (mid-term):  mu=+0.00138/day, sigma=0.3525/day  [base case]
-  full (692d hist): mu=+0.01133/day, sigma=0.6192/day  [optimistic — includes early growth phase]
+  full (692d hist): mu=+0.01133/day, sigma=0.6192/day  [optimistic; includes early growth phase]
 
 Student-t degrees-of-freedom estimated by MLE on full log-return series: ν=2.66
-  ν < 4 means variance is theoretically infinite — extreme tail events are plausible.
+  ν < 4 means variance is theoretically infinite; extreme tail events are plausible.
   GBM-Normal systematically underestimates these tails.
 
 Falsification threshold (stated up front):
@@ -155,7 +155,7 @@ def pct_paths(paths: np.ndarray, step_weeks: int = 4) -> dict[str, list[float]]:
 def run() -> dict:
     vol, log_ret, start, last_dt = load_data()
 
-    # Fit Student-t by MLE — do not hand-pick df
+    # Fit Student-t by MLE; do not hand-pick df
     t_df, t_loc, t_scale = spstats.t.fit(log_ret)
     # Rescale sigma to match empirical std when using t residuals
     t_sigma_adj = float(np.std(log_ret))  # use same sigma, different tail shape
@@ -199,15 +199,15 @@ def run() -> dict:
     }
 
     # --- Block Bootstrap: two windows ---
-    # Full history (692d): includes early explosive growth phase — optimistic upper bound
-    # Recent 180d: excludes early phase — more conservative, closer to current regime
+    # Full history (692d): includes early explosive growth phase; optimistic upper bound
+    # Recent 180d: excludes early phase; more conservative, closer to current regime
     for bb_label, bb_window in [("recent_180d", 180), ("full_692d", len(log_ret))]:
         ret_slice = log_ret[-bb_window:]
         paths_bb = _bootstrap_paths(ret_slice, start, N_SIMS, HORIZON_DAYS, BLOCK_SIZE, rng)
         note = (
-            "Recent 180d only — excludes early protocol growth phase; representative of current regime"
+            "Recent 180d only; excludes early protocol growth phase; representative of current regime"
             if bb_window == 180
-            else "Full 692d history — includes early explosive growth phase (Dec 2024–mid 2025); upper bound estimate"
+            else "Full 692d history; includes early explosive growth phase (Dec 2024-mid 2025); upper bound estimate"
         )
         scenarios[f"block_bootstrap_{bb_label}"] = {
             "method": "Block-Bootstrap",
@@ -254,7 +254,7 @@ def run() -> dict:
 if __name__ == "__main__":
     result = run()
     meta = result["meta"]
-    print(f"Forecast — {meta['n_sims']:,} sims, {meta['horizon_days']}d horizon")
+    print(f"Forecast; {meta['n_sims']:,} sims, {meta['horizon_days']}d horizon")
     print(f"Start: ${meta['start_vol_usd']/1e6:.1f}M  Date: {meta['start_date']}")
     print(f"Student-t fit: df={meta['student_t_fit']['df']:.2f}")
     print()

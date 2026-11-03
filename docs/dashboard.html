@@ -156,7 +156,7 @@ td:first-child{text-align:left;color:var(--faint)}
 .caveat-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
 .caveat-list{list-style:none;display:flex;flex-direction:column;gap:5px}
 .caveat-list li{font-size:11px;color:var(--faint);line-height:1.5;padding-left:14px;position:relative}
-.caveat-list li::before{content:'—';position:absolute;left:0;color:var(--dim)}
+.caveat-list li::before{content:'·';position:absolute;left:0;color:var(--dim)}
 .prob-table{width:100%;border-collapse:collapse;margin-top:10px}
 .prob-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding:5px 8px;text-align:right;border-bottom:1px solid var(--border)}
 .prob-table th:first-child{text-align:left}
@@ -174,8 +174,8 @@ td:first-child{text-align:left;color:var(--faint)}
 <div class="page">
   <div class="hdr">
     <div class="hdr-eye">Investment Thesis · NEAR Protocol · Live Model</div>
-    <div class="hdr-title">NEAR Intents — Break-Even Explorer</div>
-    <div class="hdr-sub">Adjust any parameter — all outputs update instantly · HSP-029 activated Nov 2, 2026</div>
+    <div class="hdr-title">NEAR Intents: Break-Even Explorer</div>
+    <div class="hdr-sub">Adjust any parameter, all outputs update instantly · HSP-029 activated Nov 2, 2026</div>
   </div>
 
   <!-- sliders -->
@@ -241,11 +241,11 @@ td:first-child{text-align:left;color:var(--faint)}
           <input type="date" id="c-date" value="2029-11-02">
         </div>
         <div class="calc-output" id="calc-out">
-          <div class="calc-line"><span>Break-even volume</span><span id="co-bev">—</span></div>
-          <div class="calc-line"><span>Days remaining</span><span id="co-days">—</span></div>
-          <div class="calc-line"><span>Required CAGR</span><span id="co-cagr">—</span></div>
-          <div class="calc-line"><span>Required monthly growth</span><span id="co-monthly">—</span></div>
-          <div class="calc-line"><span>Comparable growth</span><span id="co-comp">—</span></div>
+          <div class="calc-line"><span>Break-even volume</span><span id="co-bev">·</span></div>
+          <div class="calc-line"><span>Days remaining</span><span id="co-days">·</span></div>
+          <div class="calc-line"><span>Required CAGR</span><span id="co-cagr">·</span></div>
+          <div class="calc-line"><span>Required monthly growth</span><span id="co-monthly">·</span></div>
+          <div class="calc-line"><span>Comparable growth</span><span id="co-comp">·</span></div>
         </div>
       </div>
     </div>
@@ -266,16 +266,37 @@ td:first-child{text-align:left;color:var(--faint)}
     </div>
   </div>
 
+  <!-- Revenue Reconciliation -->
+  <div class="panel" style="margin-bottom:24px">
+    <div class="panel-title">Revenue Reconciliation: NEAR RPC vs DefiLlama</div>
+    <div class="panel-desc">Two sources report different numbers. The gap is real and fully explained below.</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:14px">
+      <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">NEAR RPC: Gross Wallet Inflows</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--hi)">$16.71M</div>
+        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5">Every token entering the buyback wallet, including solver settlements that transit and are rebated back out during execution</div>
+      </div>
+      <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">DefiLlama: Net Protocol Revenue (this model)</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--green)">$8.71M</div>
+        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5">Protocol revenue after solver rebates, the permanent keep. Basis for the 5.91 bps capture rate and all offset calculations above</div>
+      </div>
+    </div>
+    <div style="background:var(--surf2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6">
+      Gap: $8.0M (ratio 1.92x). Solvers settle through the buyback wallet during execution; the net rebate flows back out. NEAR RPC counts gross; DefiLlama counts net. Using the gross figure would overstate the capture rate by nearly 2x and produce a falsely optimistic break-even. This model uses DefiLlama throughout.
+    </div>
+  </div>
+
   <!-- real historical volume -->
   <div class="ramp-wrap" style="margin-bottom:0">
-    <div class="panel-title" style="margin-bottom:4px">Historical Daily Volume — Last 180 Days</div>
-    <div class="panel-desc" style="margin-bottom:14px">Real data from DefiLlama · May 2026 – Nov 1, 2026 · highlighted bars = days above $200M</div>
+    <div class="panel-title" style="margin-bottom:4px">Historical Daily Volume: Last 180 Days</div>
+    <div class="panel-desc" style="margin-bottom:14px">Real data from DefiLlama · May 2026 - Nov 1, 2026 · highlighted bars = days above $200M</div>
     <div id="hist-chart-wrap"></div>
   </div>
 
   <!-- HSP-029 ramp -->
   <div class="ramp-wrap" style="margin-top:12px">
-    <div class="panel-title" style="margin-bottom:4px">HSP-029 Ramp — Offset Ratio Over Time</div>
+    <div class="panel-title" style="margin-bottom:4px">HSP-029 Ramp: Offset Ratio Over Time</div>
     <div class="panel-desc" style="margin-bottom:14px">At current slider volume + capture rate. Break-even line shown in green.</div>
     <svg id="ramp-svg" viewBox="0 0 800 230" width="100%" preserveAspectRatio="xMidYMid meet"></svg>
   </div>
@@ -284,7 +305,7 @@ td:first-child{text-align:left;color:var(--faint)}
   <div class="model-panels">
 
     <div class="panel" id="forecast">
-      <div class="panel-title">Volume Forecast — Break-Even Probability</div>
+      <div class="panel-title">Volume Forecast: Break-Even Probability</div>
       <div class="panel-desc">10,000 Monte Carlo simulations · 3-year horizon · 6 methods compared</div>
       <div id="forecast-wrap"></div>
       <div class="falsify-note" id="falsify-note"></div>
@@ -295,12 +316,12 @@ td:first-child{text-align:left;color:var(--faint)}
     </div>
 
     <div class="panel" id="did">
-      <div class="panel-title">Fee Switch — Volume Impact (DiD)</div>
+      <div class="panel-title">Fee Switch: Volume Impact (DiD)</div>
       <div class="panel-desc">Difference-in-differences · Feb 23, 2026 · 90-day symmetric window · 3 controls</div>
       <svg id="did-svg" viewBox="0 0 340 200" width="100%" preserveAspectRatio="xMidYMid meet" style="margin-top:8px"></svg>
       <div class="att-box">
         <div class="att-row"><span>Avg treatment effect (ATT)</span><span>1.10×</span></div>
-        <div class="att-row"><span>95% bootstrap CI</span><span>0.97 – 1.25×</span></div>
+        <div class="att-row"><span>95% bootstrap CI</span><span>0.97 - 1.25×</span></div>
         <div class="att-row"><span>Permutation rank</span><span>3 / 4 (75th pct)</span></div>
         <div class="att-row"><span>Verdict</span><span style="color:var(--text);font-weight:400">No significant impact detected</span></div>
       </div>
@@ -441,7 +462,7 @@ td:first-child{text-align:left;color:var(--faint)}
     const c=compute(price,volM,cap,bps);
     const days=Math.round((target-NOW_DATE)/(86400000));
     document.getElementById('co-bev').textContent=fmtUSD(c.bev)+'/day';
-    document.getElementById('co-days').textContent=days<=0?'—':fmt(days)+' days';
+    document.getElementById('co-days').textContent=days<=0?'·':fmt(days)+' days';
     if(days>0 && c.bev>volM*1e6){
       const mult=c.bev/(volM*1e6);
       const years=days/365;
@@ -449,20 +470,20 @@ td:first-child{text-align:left;color:var(--faint)}
       const monthly=Math.pow(mult,1/(days/30.5))-1;
       document.getElementById('co-cagr').textContent=(cagr*100).toFixed(1)+'% / yr';
       document.getElementById('co-monthly').textContent=(monthly*100).toFixed(2)+'% / mo';
-      let comp='—';
+      let comp='·';
       if(cagr<0.30) comp='below Solana peak growth';
       else if(cagr<0.80) comp='similar to Ethereum 2021';
-      else if(cagr<1.5) comp='similar to NEAR 2021–22 peak';
+      else if(cagr<1.5) comp='similar to NEAR 2021-22 peak';
       else comp='above any L1 historical CAGR';
       document.getElementById('co-comp').textContent=comp;
     } else if(c.bev<=volM*1e6){
       document.getElementById('co-cagr').textContent='Already at break-even';
-      document.getElementById('co-monthly').textContent='—';
-      document.getElementById('co-comp').textContent='—';
+      document.getElementById('co-monthly').textContent='·';
+      document.getElementById('co-comp').textContent='·';
     } else {
       document.getElementById('co-cagr').textContent='Date in past';
-      document.getElementById('co-monthly').textContent='—';
-      document.getElementById('co-comp').textContent='—';
+      document.getElementById('co-monthly').textContent='·';
+      document.getElementById('co-comp').textContent='·';
     }
   }
 
@@ -695,7 +716,7 @@ td:first-child{text-align:left;color:var(--faint)}
     'Student-t df=2.66: variance theoretically infinite (ν<3)',
     'GBM assumes price-independent volume; NEAR price correlation not modelled',
     'Block-bootstrap cannot model structural breaks or regime change',
-    'Thresholds fixed at current NEAR price — use sliders above for sensitivity',
+    'Thresholds fixed at current NEAR price; use sliders above for sensitivity',
     'GBM 12/24/36mo probabilities equal: paths spike early or stay permanently below',
   ];
 
@@ -722,7 +743,7 @@ td:first-child{text-align:left;color:var(--faint)}
   wrap.appendChild(tbl);
 
   document.getElementById('falsify-note').textContent=
-    'Falsification threshold: if 7-day avg volume stays below $60M for 60+ consecutive days, base case (90d) is rejected — switch to 30d pessimistic scenario.';
+    'Falsification threshold: if 7-day avg volume stays below $60M for 60+ consecutive days, base case (90d) is rejected; switch to 30d pessimistic scenario.';
 
   const ul=document.getElementById('forecast-caveats');
   CAVEATS.forEach(c=>{
@@ -741,7 +762,7 @@ td:first-child{text-align:left;color:var(--faint)}
     {label:'Jupiter',      ratio:0.634,treatment:false},
   ];
   const CAVEATS=[
-    '4 units total — permutation distribution has only 4 points; interpret with caution',
+    '4 units total; permutation distribution has only 4 points; interpret with caution',
     'Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols',
     '90-day window coincided with broader DeFi volume contraction; not isolated',
     'DiD estimates relative impact vs controls, not absolute causal effect',

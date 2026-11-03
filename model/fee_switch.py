@@ -2,7 +2,7 @@
 Difference-in-differences analysis of the Feb 23, 2026 NEAR Intents fee switch.
 
 Design:
-  Treatment : NEAR Intents — fee switch activated Feb 23, 2026
+  Treatment : NEAR Intents; fee switch activated Feb 23, 2026
   Controls  : 1inch, Paraswap, Jupiter (3 aggregators, all from DefiLlama)
   Window    : 90 days pre / 90 days post the switch date
   Outcome   : log daily volume (multiplicative DiD)
@@ -11,12 +11,12 @@ ATT (Average Treatment effect on the Treated):
   ATT_log = log_growth_NEAR - mean(log_growth_controls)
   ATT_ratio = exp(ATT_log)   [multiplicative: 1.0 = no effect]
 
-Permutation (placebo) test — addresses the "only 2 controls" concern:
+Permutation (placebo) test; addresses the "only 2 controls" concern:
   Re-run DiD treating each control as the "treatment" unit in turn, using the
   remaining units as controls. Collect the distribution of placebo ATTs.
   If the real NEAR ATT sits outside the central 80% of the placebo distribution,
   it is a statistically unusual result. With 4 units (NEAR + 3 controls) this
-  gives 4 permutations — small but standard for this design (Ferman-Pinto 2019).
+  gives 4 permutations; small but standard for this design (Ferman-Pinto 2019).
 
 Bootstrap CI on ATT:
   Resample pre-period and post-period rows for each unit independently,
@@ -30,7 +30,7 @@ Parallel trends test:
 What we do NOT claim:
   - Causality: the DiD identifies relative volume change, not the cause
   - 90-day window coincided with a broader DeFi volume slowdown
-  - NEAR was a growing protocol vs mature controls — different baseline dynamics
+  - NEAR was a growing protocol vs mature controls; different baseline dynamics
 
 Inputs:  data/raw/daily_metrics.parquet, DefiLlama API (live fetch)
 Outputs: data/model/fee_switch.json
@@ -173,9 +173,9 @@ def permutation_test(all_lgs: dict[str, float | None]) -> dict:
         "note": (
             f"NEAR ATT ranks {rank}/{len(all_vals)} among permutations "
             f"(percentile={pct_rank:.0%}). "
-            + ("NEAR is an outlier — result is unusual relative to controls."
+            + ("NEAR is an outlier; result is unusual relative to controls."
                if pct_rank > 0.8 or pct_rank < 0.2
-               else "NEAR is not an outlier — consistent with no treatment effect.")
+               else "NEAR is not an outlier; consistent with no treatment effect.")
         ),
     }
 
@@ -246,14 +246,14 @@ def _interpret_did(att_ratio: float | None, bsci: dict) -> str:
     lo, hi = bsci.get("att_ratio_lo"), bsci.get("att_ratio_hi")
     if lo is None or hi is None:
         return f"NEAR volume changed by {att_ratio:.2f}x relative to controls. Bootstrap CI not available."
-    ci_str = f"(95% CI: {lo:.2f}–{hi:.2f}x)"
+    ci_str = f"(95% CI: {lo:.2f}-{hi:.2f}x)"
     incl = lo <= 1.0 <= hi
     return (
         f"NEAR volume changed by {att_ratio:.2f}x {ci_str} relative to aggregator controls "
         f"in the 90 days after the fee switch. "
-        + ("CI includes 1.0 — no statistically significant volume impact detected."
+        + ("CI includes 1.0; no statistically significant volume impact detected."
            if incl
-           else f"CI excludes 1.0 — suggests {'positive' if att_ratio > 1 else 'negative'} impact at 95% confidence.")
+           else f"CI excludes 1.0; suggests {'positive' if att_ratio > 1 else 'negative'} impact at 95% confidence.")
     )
 
 
@@ -329,8 +329,8 @@ def run() -> dict:
             "controls":        list(CONTROLS.keys()),
             "methodology":     "Difference-in-differences on log daily volume; 90-day symmetric window",
             "caveats": [
-                "4 units total (NEAR + 3 controls) — permutation distribution has only 4 points; interpret with caution",
-                "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols — different growth dynamics from a young NEAR Intents",
+                "4 units total (NEAR + 3 controls); permutation distribution has only 4 points; interpret with caution",
+                "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols; different growth dynamics from a young NEAR Intents",
                 "90-day window coincided with broader DeFi volume contraction; market cycle not isolated",
                 "DiD identifies relative performance vs controls, not absolute causal effect of the fee switch",
                 "Bootstrap CI resamples within pre/post periods independently; temporal autocorrelation within periods not preserved",
@@ -350,9 +350,9 @@ def run() -> dict:
             "mean_control_slope":  float(np.mean(valid_slopes)) if valid_slopes else None,
             "slope_diff_near_vs_controls": float(pt_diff) if pt_diff else None,
             "assessment": (
-                "Pre-period slopes similar — parallel trends assumption plausible"
+                "Pre-period slopes similar; parallel trends assumption plausible"
                 if pt_diff is not None and pt_diff < 0.005
-                else "Pre-period slopes differ — DiD estimate may conflate trends with treatment effect"
+                else "Pre-period slopes differ; DiD estimate may conflate trends with treatment effect"
             ),
         },
         "full_history_context": {
@@ -372,7 +372,7 @@ def run() -> dict:
 
 if __name__ == "__main__":
     result = run()
-    print(f"Fee switch DiD — window ±{result['meta']['window_days']}d around {result['meta']['fee_switch_date']}")
+    print(f"Fee switch DiD; window ±{result['meta']['window_days']}d around {result['meta']['fee_switch_date']}")
     print()
     print(f"{'Unit':<15} {'Pre avg':>12} {'Post avg':>12} {'Growth':>8} {'Pre slope':>12}")
     print("-" * 65)
@@ -380,10 +380,10 @@ if __name__ == "__main__":
         if "error" in u:
             print(f"{k:<15} ERROR: {u['error'][:40]}")
             continue
-        pre  = f"${u['pre_avg']/1e6:.1f}M" if u.get("pre_avg") else "—"
-        post = f"${u['post_avg']/1e6:.1f}M" if u.get("post_avg") else "—"
-        gr   = f"{u['growth_ratio']:.2f}x" if u.get("growth_ratio") else "—"
-        sl   = f"{u['pre_slope']:.5f}" if u.get("pre_slope") else "—"
+        pre  = f"${u['pre_avg']/1e6:.1f}M" if u.get("pre_avg") else "n/a"
+        post = f"${u['post_avg']/1e6:.1f}M" if u.get("post_avg") else "n/a"
+        gr   = f"{u['growth_ratio']:.2f}x" if u.get("growth_ratio") else "n/a"
+        sl   = f"{u['pre_slope']:.5f}" if u.get("pre_slope") else "n/a"
         print(f"{k:<15} {pre:>12} {post:>12} {gr:>8} {sl:>12}")
     print()
     did = result["did_estimate"]

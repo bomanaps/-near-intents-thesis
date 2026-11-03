@@ -82,6 +82,40 @@ def run_step(label: str, script: str) -> None:
         sys.exit(f"FAILED: {script} exited with code {result.returncode}")
 
 
+SUPPLY = 1_309_640_573
+PRICE_URL = "https://coins.llama.fi/prices/current/coingecko:near"
+
+
+def print_headline_metrics() -> None:
+    df = pd.read_parquet(DATA_OUT).sort_values("date")
+    last30 = df.tail(30)
+    vol_m = last30["volume_usd"].mean() / 1e6
+    bps = last30["rev_capture_bps"].mean()
+    last_date = last30["date"].iloc[-1]
+
+    print("\nHeadline metrics (for README / memo refresh):")
+    print(f"  data through        : {last_date}")
+    print(f"  30d avg volume      : ${vol_m:.1f}M/day")
+    print(f"  capture rate (30d)  : {bps:.2f} bps")
+
+    try:
+        with urllib.request.urlopen(PRICE_URL, timeout=15) as r:
+            price = json.load(r)["coins"]["coingecko:near"]["price"]
+    except Exception as e:
+        print(f"  NEAR price fetch failed ({e}); price-dependent metrics skipped")
+        return
+
+    rate = bps / 10_000
+    vol = vol_m * 1e6
+    for cap in (0.025, 0.016):
+        issued = SUPPLY * cap / 365
+        bought = vol * rate / price
+        offset = bought / issued
+        bev = issued * price / rate
+        print(f"  at {cap*100:.1f}% cap, ${price:.2f}: offset {offset*100:.1f}%, "
+              f"break-even ${bev/1e6:.0f}M/day ({bev/vol:.1f}x current)")
+
+
 def main() -> None:
     if "--no-fetch" in sys.argv:
         print("[1/4] Skipping fetch (--no-fetch); using committed parquet")
@@ -102,6 +136,8 @@ def main() -> None:
     for name in ("forecast.json", "fee_switch.json"):
         shutil.copy2(ROOT / "data" / "model" / name, docs_data / name)
     print(f"\n[4/4] Published both JSONs to {docs_data.relative_to(ROOT)}/")
+
+    print_headline_metrics()
 
     print("\nDone. Outputs: data/model/*.json and docs/data/*.json")
     print("On-chain FastNEAR ingestion is a separate ongoing process and is not required here.")

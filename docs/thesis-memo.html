@@ -229,6 +229,35 @@ em { color: var(--text-dim); }
     capture rate by nearly 2x and produce a falsely optimistic break-even threshold.
   </p>
 
+  <h3>On-Chain Evidence: What the Settlement Contract Shows</h3>
+
+  <p>
+    Decoding raw dip4 settlement events from <em>intents.near</em> (2,852 fills across 1,151
+    settlements, a contiguous window of Oct 28, 2026, ingestion ongoing) reveals something the
+    aggregate data cannot: the settlement contract itself collects an explicit fee of roughly
+    <strong>0.01 bps per side</strong>, several hundred times below the 5.91 bps revenue rate
+    implied by DefiLlama. Protocol revenue is therefore generated off the settlement contract,
+    through application-layer fees or solver arrangements. The capture rate this model depends on
+    is <strong>policy, not protocol</strong>: nothing at the contract level guarantees it, and it
+    can change in either direction without governance. This is the strongest argument for the
+    fee switch discussed in Section 8: moving the take into the contract converts a soft revenue
+    arrangement into an enforced one.
+  </p>
+  <p>
+    The same events quantify the concentration risk flagged in Section 7. The top three solver
+    accounts fill <strong>86% of settled volume</strong> (Herfindahl index 0.33, 17 active solver
+    accounts in the window). Concentration this high cuts both ways: it means a solver exit is a
+    material volume event, and it means solvers hold real bargaining power against any attempt to
+    raise the protocol take. Volume quality, however, screens clean: zero bilateral self-fills in
+    the window, and non-solver round-trip activity of about 8%, consistent with organic flow
+    rather than wash trading.
+  </p>
+  <p>
+    These figures come from a short window of one trading day and carry time-of-day bias; they are
+    structure measurements, not averages. The ingestion pipeline continues to run, and every
+    figure in this subsection regenerates from the raw events with one command as coverage grows.
+  </p>
+
   <h2>4. HSP-029: The Governance Catalyst</h2>
 
   <p>

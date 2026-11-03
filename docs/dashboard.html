@@ -288,6 +288,37 @@ td:first-child{text-align:left;color:var(--faint)}
     </div>
   </div>
 
+  <!-- On-chain evidence -->
+  <div class="panel" style="margin-bottom:24px">
+    <div class="panel-title">On-Chain Evidence: Decoded dip4 Settlements</div>
+    <div class="panel-desc" id="oc-coverage">Raw token_diff events decoded from intents.near via FastNEAR · ingestion ongoing</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:14px">
+      <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Explicit Fee at Contract</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--hi)" id="oc-fee">0.01 bps</div>
+        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5" id="oc-fee-sub">per side, median of 2,806 fills, vs 5.91 bps implied by DefiLlama revenue</div>
+      </div>
+      <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Solver Concentration</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--amber)" id="oc-solver">86.4%</div>
+        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5" id="oc-solver-sub">top 3 solvers' share of settled volume · HHI 0.33 · 17 active solver accounts</div>
+      </div>
+      <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:6px">Volume Quality Screen</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--green)" id="oc-wash">0 self-fills</div>
+        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5" id="oc-wash-sub">no bilateral trade settled against the same account · user round-trip share 8.3%</div>
+      </div>
+    </div>
+    <div style="margin-bottom:14px" id="oc-corridors"></div>
+    <div style="background:var(--surf2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6" id="oc-finding">
+      The settlement contract collects roughly 0.01 bps per side, hundreds of times below the 5.91 bps revenue rate the break-even model uses. Protocol revenue is therefore generated off the settlement contract, through application-layer fees or solver arrangements. The capture rate is policy, not protocol: it can be changed without governance, in either direction. This strengthens the case that a contract-enforced fee switch is the decisive catalyst.
+    </div>
+    <div class="caveat-box">
+      <div class="caveat-title">Coverage and limitations</div>
+      <ul class="caveat-list" id="oc-caveats"></ul>
+    </div>
+  </div>
+
   <!-- real historical volume -->
   <div class="ramp-wrap" style="margin-bottom:0">
     <div class="panel-title" style="margin-bottom:4px">Historical Daily Volume: Last 180 Days</div>
@@ -928,6 +959,83 @@ td:first-child{text-align:left;color:var(--faint)}
   renderDiD(DID_FALLBACK);
 })();
 
+// --- On-chain evidence panel (renders from JSON; fallback embedded) ---
+(function(){
+  const OC_FALLBACK={
+    meta:{
+      n_receipts:1151,n_entries:2852,chain_hours_covered_est:2.71,
+      coverage_note:'contiguous window starting Oct 28, 2026; ingestion ongoing',
+      caveats:[
+        'Window covers a few chain hours of one day; time-of-day bias applies to solver and corridor shares',
+        'USD values derived from stablecoin legs where present, else live major-asset prices; unvalued entries excluded from volume shares',
+        'Solver side of a bilateral receipt identified as the account with higher global fill count',
+        'Explicit fee rate measures fees_collected at the settlement contract only; it does not capture app-layer or off-contract revenue'
+      ]
+    },
+    explicit_fee:{n_samples:2806,median_bps:0.01,volume_weighted_mean_bps:0.0102,defillama_implied_revenue_bps_30d:5.91},
+    solvers:{hhi:0.3256,top3_share:0.8636,distinct_solver_accounts:17},
+    wash_screen:{bilateral_self_fills:0,user_round_trip_share:0.0833},
+    corridors:[
+      {pair:'USDC.eth / USDT.tron',share:0.1992},
+      {pair:'USDT.eth / USDT.tron',share:0.1154},
+      {pair:'BTC / USDT.tron',share:0.1145},
+      {pair:'USDT.tron / other',share:0.0847},
+      {pair:'USDC.eth / USDT.eth',share:0.0648}
+    ]
+  };
+
+  function renderOnchain(d){
+    const m=d.meta,f=d.explicit_fee,sv=d.solvers,w=d.wash_screen;
+    document.getElementById('oc-coverage').textContent=
+      'Raw token_diff events from intents.near via FastNEAR · '+m.n_receipts.toLocaleString()+' settlements · ~'+m.chain_hours_covered_est+'h of chain time · '+m.coverage_note;
+    document.getElementById('oc-fee').textContent=f.median_bps+' bps';
+    document.getElementById('oc-fee-sub').textContent=
+      'per side, median of '+f.n_samples.toLocaleString()+' fills, vs '+f.defillama_implied_revenue_bps_30d+' bps implied by DefiLlama revenue';
+    document.getElementById('oc-solver').textContent=(sv.top3_share*100).toFixed(1)+'%';
+    document.getElementById('oc-solver-sub').textContent=
+      "top 3 solvers' share of settled volume · HHI "+sv.hhi.toFixed(2)+' · '+sv.distinct_solver_accounts+' active solver accounts';
+    document.getElementById('oc-wash').textContent=w.bilateral_self_fills+' self-fills';
+    document.getElementById('oc-wash-sub').textContent=
+      'no bilateral trade settled against the same account · user round-trip share '+(w.user_round_trip_share*100).toFixed(1)+'%';
+
+    const cw=document.getElementById('oc-corridors');
+    cw.innerHTML='';
+    const title=document.createElement('div');
+    title.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:8px";
+    title.textContent='Corridor mix by settled USD volume';
+    cw.appendChild(title);
+    (d.corridors||[]).slice(0,5).forEach(c=>{
+      const row=document.createElement('div');
+      row.style.cssText='display:flex;align-items:center;gap:10px;margin-bottom:5px';
+      const lbl=document.createElement('span');
+      lbl.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text);width:180px;flex-shrink:0";
+      lbl.textContent=c.pair;
+      const track=document.createElement('div');
+      track.style.cssText='flex:1;height:8px;background:var(--surf2);border-radius:4px;overflow:hidden';
+      const bar=document.createElement('div');
+      bar.style.cssText='height:100%;background:var(--accent);opacity:.75;border-radius:4px';
+      bar.style.width=Math.min(c.share*100*2.5,100)+'%';
+      track.appendChild(bar);
+      const pct=document.createElement('span');
+      pct.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--faint);width:46px;text-align:right";
+      pct.textContent=(c.share*100).toFixed(1)+'%';
+      row.appendChild(lbl);row.appendChild(track);row.appendChild(pct);
+      cw.appendChild(row);
+    });
+
+    const ul=document.getElementById('oc-caveats');
+    ul.innerHTML='';
+    (m.caveats||[]).forEach(c=>{
+      const li=document.createElement('li');
+      li.textContent=c;
+      ul.appendChild(li);
+    });
+  }
+
+  window.renderOnchain=renderOnchain;
+  renderOnchain(OC_FALLBACK);
+})();
+
 // --- live data orchestrator ---
 (function(){
   const badge=document.getElementById('data-badge');
@@ -980,6 +1088,9 @@ td:first-child{text-align:left;color:var(--faint)}
   })();
   (async()=>{
     try{ window.renderDiD(await getJSON('data/fee_switch.json')); }catch(e){}
+  })();
+  (async()=>{
+    try{ window.renderOnchain(await getJSON('data/onchain.json')); }catch(e){}
   })();
 })();
 </script>

@@ -9,7 +9,9 @@ Steps:
      and rebuild data/raw/daily_metrics.parquet
   2. Run model/forecast.py   (Monte Carlo volume forecast)
   3. Run model/fee_switch.py (fee switch difference-in-differences)
-  4. Copy both model JSONs into docs/data/ so the GitHub Pages dashboard
+  4. Run analysis/onchain.py (on-chain evidence; skipped when the local
+     FastNEAR events file is absent, e.g. on the GitHub Actions runner)
+  5. Copy the model JSONs into docs/data/ so the GitHub Pages dashboard
      serves them (Pages only publishes the docs/ folder)
 
 On-chain FastNEAR ingestion runs separately (ingest/fastnear_ingest.py) and is
@@ -47,7 +49,7 @@ def fetch_series(url: str, col: str) -> pd.DataFrame:
 
 
 def fetch_daily_metrics() -> None:
-    print("[1/4] Fetching DefiLlama data for near-intents")
+    print("[1/5] Fetching DefiLlama data for near-intents")
     frames = []
     for col, url in ENDPOINTS.items():
         df = fetch_series(url, col)
@@ -118,7 +120,7 @@ def print_headline_metrics() -> None:
 
 def main() -> None:
     if "--no-fetch" in sys.argv:
-        print("[1/4] Skipping fetch (--no-fetch); using committed parquet")
+        print("[1/5] Skipping fetch (--no-fetch); using committed parquet")
     else:
         try:
             fetch_daily_metrics()
@@ -128,14 +130,20 @@ def main() -> None:
             else:
                 sys.exit(f"FAILED: fetch failed and no cached parquet exists: {e}")
 
-    run_step("[2/4]", "model/forecast.py")
-    run_step("[3/4]", "model/fee_switch.py")
+    run_step("[2/5]", "model/forecast.py")
+    run_step("[3/5]", "model/fee_switch.py")
+
+    events = ROOT / "data" / "raw" / "fastnear" / "events.jsonl"
+    if events.exists():
+        run_step("[4/5]", "analysis/onchain.py")
+    else:
+        print("\n[4/5] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
 
     docs_data = ROOT / "docs" / "data"
     docs_data.mkdir(parents=True, exist_ok=True)
     for name in ("forecast.json", "fee_switch.json"):
         shutil.copy2(ROOT / "data" / "model" / name, docs_data / name)
-    print(f"\n[4/4] Published both JSONs to {docs_data.relative_to(ROOT)}/")
+    print(f"\n[5/5] Published both JSONs to {docs_data.relative_to(ROOT)}/")
 
     print_headline_metrics()
 

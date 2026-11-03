@@ -25,7 +25,7 @@
       "post_days": 91,
       "log_growth": -0.21207375179756854,
       "growth_ratio": 0.8089050371659428,
-      "pre_slope": 0.002965070284936194
+      "pre_slope": 0.0029650702849362835
     },
     "1inch": {
       "pre_avg": 183788997.02222222,
@@ -34,7 +34,7 @@
       "post_days": 91,
       "log_growth": -0.4267058029630163,
       "growth_ratio": 0.6526555333104539,
-      "pre_slope": -0.0019634405792795964
+      "pre_slope": -0.0019634405792796875
     },
     "paraswap": {
       "pre_avg": 73661252.8888889,
@@ -43,7 +43,7 @@
       "post_days": 91,
       "log_growth": -0.0372683966683334,
       "growth_ratio": 0.963417522591927,
-      "pre_slope": -0.0004971908740223117
+      "pre_slope": -0.0004971908740222824
     },
     "jupiter": {
       "pre_avg": 57069072.1,
@@ -52,7 +52,7 @@
       "post_days": 91,
       "log_growth": -0.455728159194074,
       "growth_ratio": 0.63398615698356,
-      "pre_slope": -0.004156226331184493
+      "pre_slope": -0.00415622633118451
     }
   },
   "did_estimate": {
@@ -80,22 +80,22 @@
     "note": "NEAR ATT ranks 3/4 among permutations (percentile=75%). NEAR is not an outlier; consistent with no treatment effect."
   },
   "parallel_trends": {
-    "near_slope": 0.002965070284936194,
+    "near_slope": 0.0029650702849362835,
     "control_slopes": {
-      "1inch": -0.0019634405792795964,
-      "paraswap": -0.0004971908740223117,
-      "jupiter": -0.004156226331184493
+      "1inch": -0.0019634405792796875,
+      "paraswap": -0.0004971908740222824,
+      "jupiter": -0.00415622633118451
     },
-    "mean_control_slope": -0.002205619261495467,
-    "slope_diff_near_vs_controls": 0.005170689546431661,
+    "mean_control_slope": -0.002205619261495493,
+    "slope_diff_near_vs_controls": 0.005170689546431777,
     "assessment": "Pre-period slopes differ; DiD estimate may conflate trends with treatment effect"
   },
   "full_history_context": {
     "pre_avg_usd": 30592183.202272728,
-    "post_avg_usd": 89812662.0515873,
+    "post_avg_usd": 90071453.12648222,
     "pre_days": 440,
-    "post_days": 252,
-    "growth_ratio": 2.935804269272126,
+    "post_days": 253,
+    "growth_ratio": 2.9442636548996184,
     "note": "Full pre/post split includes NEAR Intents early growth phase (Dec 2024 onward); inflates apparent post-switch growth"
   }
 }

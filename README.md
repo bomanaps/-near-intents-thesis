@@ -56,19 +56,26 @@ On-chain ingestion is ongoing. DefiLlama data is the primary source for all mode
 
 ```bash
 pip install pandas pyarrow scipy numpy aiohttp
-python model/forecast.py        # Monte Carlo forecast -> data/model/forecast.json
-python model/fee_switch.py      # DiD analysis -> data/model/fee_switch.json
+python run_all.py               # fetch fresh DefiLlama data, run both models, publish JSONs to docs/data/
+python run_all.py --no-fetch    # same, but use the committed data instead of fetching
 ```
+
+Each model can also run standalone: `python model/forecast.py` or `python model/fee_switch.py`.
+
+The dashboard fetches live DefiLlama data in the browser on every page load (volume, revenue, NEAR price) and reads model outputs from `docs/data/*.json`. If the live fetch fails it falls back to the embedded snapshot and says so in the header badge.
 
 Open `docs/index.html` locally or visit the live site linked above.
 
 ## Files
 
 ```
+run_all.py            one-command pipeline: fetch data, run models, publish JSONs
+
 docs/
   index.html          landing page
   dashboard.html      interactive break-even explorer
   thesis-memo.html    written investment thesis
+  data/               model JSONs served to the dashboard by GitHub Pages
 
 model/
   forecast.py         Monte Carlo volume forecast

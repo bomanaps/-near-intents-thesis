@@ -116,6 +116,7 @@ input[type=range]::-moz-range-thumb{
 
 /* heatmap */
 #heatmap-svg{width:100%;overflow:visible}
+#heatmap-svg text{fill:var(--text);font-family:'IBM Plex Mono',monospace}
 
 /* growth calc */
 .calc-row{display:flex;flex-direction:column;gap:12px}
@@ -175,7 +176,7 @@ td:first-child{text-align:left;color:var(--faint)}
   <div class="hdr">
     <div class="hdr-eye">Investment Thesis · NEAR Protocol · Live Model</div>
     <div class="hdr-title">NEAR Intents: Break-Even Explorer</div>
-    <div class="hdr-sub">Adjust any parameter, all outputs update instantly · HSP-029 activated Nov 2, 2026</div>
+    <div class="hdr-sub">Adjust any parameter, all outputs update instantly · HSP-029 activated Nov 2, 2026 · <span id="data-badge">snapshot data: Nov 1, 2026</span></div>
   </div>
 
   <!-- sliders -->
@@ -320,10 +321,10 @@ td:first-child{text-align:left;color:var(--faint)}
       <div class="panel-desc">Difference-in-differences · Feb 23, 2026 · 90-day symmetric window · 3 controls</div>
       <svg id="did-svg" viewBox="0 0 340 200" width="100%" preserveAspectRatio="xMidYMid meet" style="margin-top:8px"></svg>
       <div class="att-box">
-        <div class="att-row"><span>Avg treatment effect (ATT)</span><span>1.10×</span></div>
-        <div class="att-row"><span>95% bootstrap CI</span><span>0.97 - 1.25×</span></div>
-        <div class="att-row"><span>Permutation rank</span><span>3 / 4 (75th pct)</span></div>
-        <div class="att-row"><span>Verdict</span><span style="color:var(--text);font-weight:400">No significant impact detected</span></div>
+        <div class="att-row"><span>Avg treatment effect (ATT)</span><span id="att-val">1.10x</span></div>
+        <div class="att-row"><span>95% bootstrap CI</span><span id="att-ci">0.97 - 1.25x</span></div>
+        <div class="att-row"><span>Permutation rank</span><span id="att-rank">3 / 4 (75th pct)</span></div>
+        <div class="att-row"><span>Verdict</span><span id="att-verdict" style="color:var(--text);font-weight:400">No significant impact detected</span></div>
       </div>
       <div class="caveat-box">
         <div class="caveat-title">Model limitations</div>
@@ -337,7 +338,7 @@ td:first-child{text-align:left;color:var(--faint)}
 <script>
 (function(){
   const SUPPLY = 1_309_640_573;
-  const NOW_DATE = new Date('2026-11-02');
+  let NOW_DATE = new Date('2026-11-02');
   const HSP_START_DATE = new Date('2026-11-02');
 
   function hspCap(t){ return Math.max(0.016, 0.025 - 0.009 * Math.min(t, 24) / 24); }
@@ -414,7 +415,7 @@ td:first-child{text-align:left;color:var(--faint)}
     g.appendChild(crossV); g.appendChild(crossH);
     // x-axis labels
     [0,5,10,15,19].forEach(xi=>{
-      hmSvg.appendChild(elSvg('text',{x:PAD_HM.left+xi*cellW+cellW/2,y:HM_H-4,'text-anchor':'middle','font-size':9},'$'+(HM_PRICES[xi]<2?HM_PRICES[xi].toFixed(1):Math.round(HM_PRICES[xi]))));
+      hmSvg.appendChild(elSvg('text',{x:PAD_HM.left+xi*cellW+cellW/2,y:PAD_HM.top+cH+14,'text-anchor':'middle','font-size':9},'$'+(HM_PRICES[xi]<2?HM_PRICES[xi].toFixed(1):Math.round(HM_PRICES[xi]))));
     });
     // y-axis labels
     [0,5,10,15,19].forEach(yi=>{
@@ -424,7 +425,7 @@ td:first-child{text-align:left;color:var(--faint)}
     });
     hmSvg.appendChild(g);
     // axis title
-    hmSvg.appendChild(elSvg('text',{x:PAD_HM.left+cW/2,y:HM_H,'text-anchor':'middle','font-size':9},'NEAR Price'));
+    hmSvg.appendChild(elSvg('text',{x:PAD_HM.left+cW/2,y:PAD_HM.top+cH+30,'text-anchor':'middle','font-size':9,fill:'var(--faint)'},'NEAR Price'));
   }
 
   function updateHeatmap(){
@@ -637,15 +638,37 @@ td:first-child{text-align:left;color:var(--faint)}
   buildHeatmap();
   updateAll();
   setTimeout(()=>{ if(window.buildHistChart) window.buildHistChart(); }, 0);
+
+  window.setModelInputs=function(o){
+    if(o.price){
+      price=o.price;
+      document.getElementById('s-price').value=price;
+      document.getElementById('v-price').textContent='$'+price.toFixed(2);
+    }
+    if(o.volM){
+      volM=o.volM;
+      document.getElementById('s-vol').value=volM;
+      document.getElementById('v-vol').textContent=volM>=1000?'$'+fmt(volM/1000,1)+'B':'$'+Math.round(volM)+'M';
+    }
+    if(o.bps){
+      bps=o.bps;
+      document.getElementById('s-bps').value=bps;
+      document.getElementById('v-bps').textContent=bps.toFixed(2)+' bps';
+    }
+    if(o.nowDate) NOW_DATE=o.nowDate;
+    updateAll();
+  };
 })();
 
 // --- historical volume chart ---
 (function(){
   const HIST = [{"date":"2026-05-06","vol":80.62},{"date":"2026-05-07","vol":58.05},{"date":"2026-05-08","vol":52.03},{"date":"2026-05-09","vol":45.42},{"date":"2026-05-10","vol":41.99},{"date":"2026-05-11","vol":56.7},{"date":"2026-05-12","vol":55.42},{"date":"2026-05-13","vol":55.92},{"date":"2026-05-14","vol":57.25},{"date":"2026-05-15","vol":59.96},{"date":"2026-05-16","vol":41.76},{"date":"2026-05-17","vol":42.75},{"date":"2026-05-18","vol":65.47},{"date":"2026-05-19","vol":59.22},{"date":"2026-05-20","vol":68.12},{"date":"2026-05-21","vol":61.46},{"date":"2026-05-22","vol":79.44},{"date":"2026-05-23","vol":83.84},{"date":"2026-05-24","vol":51.85},{"date":"2026-05-25","vol":92.3},{"date":"2026-05-26","vol":107.99},{"date":"2026-05-27","vol":92.37},{"date":"2026-05-28","vol":82.39},{"date":"2026-05-29","vol":53.56},{"date":"2026-05-30","vol":58.34},{"date":"2026-05-31","vol":133.57},{"date":"2026-06-01","vol":105.3},{"date":"2026-06-02","vol":85.66},{"date":"2026-06-03","vol":87.96},{"date":"2026-06-04","vol":122.94},{"date":"2026-06-05","vol":223.91},{"date":"2026-06-06","vol":62.7},{"date":"2026-06-07","vol":65.03},{"date":"2026-06-08","vol":91.5},{"date":"2026-06-09","vol":81.21},{"date":"2026-06-10","vol":71.68},{"date":"2026-06-11","vol":90.05},{"date":"2026-06-12","vol":102.38},{"date":"2026-06-13","vol":33.42},{"date":"2026-06-14","vol":41.29},{"date":"2026-06-15","vol":111.23},{"date":"2026-06-16","vol":88.88},{"date":"2026-06-17","vol":69.56},{"date":"2026-06-18","vol":70.22},{"date":"2026-06-19","vol":45.4},{"date":"2026-06-20","vol":37.71},{"date":"2026-06-21","vol":44.45},{"date":"2026-06-22","vol":82.17},{"date":"2026-06-23","vol":74.25},{"date":"2026-06-24","vol":93.06},{"date":"2026-06-25","vol":66.8},{"date":"2026-06-26","vol":61.26},{"date":"2026-06-27","vol":39.03},{"date":"2026-06-28","vol":46.19},{"date":"2026-06-29","vol":65.43},{"date":"2026-06-30","vol":94.01},{"date":"2026-07-01","vol":99.06},{"date":"2026-07-02","vol":96.45},{"date":"2026-07-03","vol":72.09},{"date":"2026-07-04","vol":55.38},{"date":"2026-07-05","vol":47.46},{"date":"2026-07-06","vol":93.98},{"date":"2026-07-07","vol":86.75},{"date":"2026-07-08","vol":88.77},{"date":"2026-07-09","vol":80.05},{"date":"2026-07-10","vol":81.72},{"date":"2026-07-11","vol":46.16},{"date":"2026-07-12","vol":44.78},{"date":"2026-07-13","vol":82.44},{"date":"2026-07-14","vol":98.76},{"date":"2026-07-15","vol":100.88},{"date":"2026-07-16","vol":85.28},{"date":"2026-07-17","vol":58.2},{"date":"2026-07-18","vol":48.45},{"date":"2026-07-19","vol":41.16},{"date":"2026-07-20","vol":63.89},{"date":"2026-07-21","vol":107.03},{"date":"2026-07-22","vol":83.75},{"date":"2026-07-23","vol":60.19},{"date":"2026-07-24","vol":60.3},{"date":"2026-07-25","vol":46.06},{"date":"2026-07-26","vol":49.19},{"date":"2026-07-27","vol":56.9},{"date":"2026-07-28","vol":71.13},{"date":"2026-07-29","vol":54.69},{"date":"2026-07-30","vol":76.28},{"date":"2026-07-31","vol":68.35},{"date":"2026-08-01","vol":55.89},{"date":"2026-08-02","vol":36.46},{"date":"2026-08-03","vol":72.34},{"date":"2026-08-04","vol":57.49},{"date":"2026-08-05","vol":72.97},{"date":"2026-08-06","vol":83.87},{"date":"2026-08-07","vol":72.66},{"date":"2026-08-08","vol":58.13},{"date":"2026-08-09","vol":40.46},{"date":"2026-08-10","vol":75.77},{"date":"2026-08-11","vol":78.24},{"date":"2026-08-12","vol":73.7},{"date":"2026-08-13","vol":69.76},{"date":"2026-08-14","vol":77.92},{"date":"2026-08-15","vol":31.74},{"date":"2026-08-16","vol":50.14},{"date":"2026-08-17","vol":90.15},{"date":"2026-08-18","vol":80.87},{"date":"2026-08-19","vol":134.18},{"date":"2026-08-20","vol":136.22},{"date":"2026-08-21","vol":165.41},{"date":"2026-08-22","vol":142.41},{"date":"2026-08-23","vol":111.31},{"date":"2026-08-24","vol":145.64},{"date":"2026-08-25","vol":145.15},{"date":"2026-08-26","vol":126.01},{"date":"2026-08-27","vol":133.22},{"date":"2026-08-28","vol":110.62},{"date":"2026-08-29","vol":56.6},{"date":"2026-08-30","vol":68.31},{"date":"2026-08-31","vol":123.66},{"date":"2026-09-01","vol":131.32},{"date":"2026-09-02","vol":143.23},{"date":"2026-09-03","vol":169.51},{"date":"2026-09-04","vol":209.38},{"date":"2026-09-05","vol":101.24},{"date":"2026-09-06","vol":141.01},{"date":"2026-09-07","vol":109.24},{"date":"2026-09-08","vol":104.74},{"date":"2026-09-09","vol":198.86},{"date":"2026-09-10","vol":150.77},{"date":"2026-09-11","vol":147.25},{"date":"2026-09-12","vol":111.68},{"date":"2026-09-13","vol":87.33},{"date":"2026-09-14","vol":121.31},{"date":"2026-09-15","vol":131.47},{"date":"2026-09-16","vol":134.12},{"date":"2026-09-17","vol":303.42},{"date":"2026-09-18","vol":227.85},{"date":"2026-09-19","vol":126.49},{"date":"2026-09-20","vol":118.56},{"date":"2026-09-21","vol":270.83},{"date":"2026-09-22","vol":223.24},{"date":"2026-09-23","vol":215.03},{"date":"2026-09-24","vol":175.82},{"date":"2026-09-25","vol":180.52},{"date":"2026-09-26","vol":93.55},{"date":"2026-09-27","vol":120.59},{"date":"2026-09-28","vol":167.86},{"date":"2026-09-29","vol":213.68},{"date":"2026-09-30","vol":173.18},{"date":"2026-10-01","vol":125.04},{"date":"2026-10-02","vol":124.14},{"date":"2026-10-03","vol":76.63},{"date":"2026-10-04","vol":64.35},{"date":"2026-10-05","vol":117.18},{"date":"2026-10-06","vol":126.23},{"date":"2026-10-07","vol":119.71},{"date":"2026-10-08","vol":256.07},{"date":"2026-10-09","vol":255.7},{"date":"2026-10-10","vol":153.19},{"date":"2026-10-11","vol":122.77},{"date":"2026-10-12","vol":139.5},{"date":"2026-10-13","vol":133.64},{"date":"2026-10-14","vol":145.43},{"date":"2026-10-15","vol":99.64},{"date":"2026-10-16","vol":88.17},{"date":"2026-10-17","vol":130.73},{"date":"2026-10-18","vol":138.81},{"date":"2026-10-19","vol":97.67},{"date":"2026-10-20","vol":121.45},{"date":"2026-10-21","vol":151.45},{"date":"2026-10-22","vol":132.26},{"date":"2026-10-23","vol":95.55},{"date":"2026-10-24","vol":85.99},{"date":"2026-10-25","vol":89.29},{"date":"2026-10-26","vol":134.32},{"date":"2026-10-27","vol":141.26},{"date":"2026-10-28","vol":112.39},{"date":"2026-10-29","vol":141.72},{"date":"2026-10-30","vol":191.9},{"date":"2026-10-31","vol":73.43},{"date":"2026-11-01","vol":81.93}];
 
-  function buildHistChart(){
+  function buildHistChart(data){
     const wrap=document.getElementById('hist-chart-wrap');
     if(!wrap) return;
+    const ROWS=data&&data.length?data:HIST;
+    wrap.innerHTML='';
     const SVG_NS='http://www.w3.org/2000/svg';
     const W=800,H=160,PAD={top:14,right:12,bottom:28,left:46};
     const cW=W-PAD.left-PAD.right, cH=H-PAD.top-PAD.bottom;
@@ -655,10 +678,10 @@ td:first-child{text-align:left;color:var(--faint)}
     svg.setAttribute('preserveAspectRatio','xMidYMid meet');
     svg.style.fontFamily="'IBM Plex Mono',monospace";
 
-    const vols=HIST.map(d=>d.vol);
+    const vols=ROWS.map(d=>d.vol);
     const yMax=Math.ceil(Math.max(...vols)/50)*50;
     const avg30=vols.slice(-30).reduce((a,b)=>a+b,0)/30;
-    const barW=cW/HIST.length;
+    const barW=cW/ROWS.length;
 
     function yp(v){return PAD.top+(1-v/yMax)*cH;}
     function el(tag,a,t){const e=document.createElementNS(SVG_NS,tag);Object.entries(a||{}).forEach(([k,v])=>e.setAttribute(k,v));if(t!==undefined)e.textContent=t;return e;}
@@ -672,7 +695,7 @@ td:first-child{text-align:left;color:var(--faint)}
     });
 
     // bars
-    HIST.forEach((d,i)=>{
+    ROWS.forEach((d,i)=>{
       const bh=(d.vol/yMax)*cH;
       const x=PAD.left+i*barW;
       const isHigh=d.vol>200;
@@ -686,7 +709,7 @@ td:first-child{text-align:left;color:var(--faint)}
 
     // x-axis month labels
     let lastMonth='';
-    HIST.forEach((d,i)=>{
+    ROWS.forEach((d,i)=>{
       const m=d.date.slice(0,7);
       if(m!==lastMonth){
         lastMonth=m;
@@ -703,123 +726,261 @@ td:first-child{text-align:left;color:var(--faint)}
   window.buildHistChart=buildHistChart;
 })();
 
-// --- Forecast probability table ---
+// --- Forecast probability table (renders from JSON; fallback embedded) ---
 (function(){
-  const SCENARIOS=[
-    {label:'GBM 30d (pessimistic)',p424:0.1727,p663:0.1021,note:'recent 30d trend extrapolated'},
-    {label:'GBM 90d (base case)', p424:0.255, p663:0.1656,note:'90d trend · slight positive drift'},
-    {label:'GBM-t 90d (fat tails)',p424:0.1727,p663:0.111, note:'ν=2.66 MLE · heavier tails'},
-    {label:'Bootstrap 180d',       p424:0.7179,p663:0.5583,note:'recent regime · current behaviour'},
-    {label:'Bootstrap 692d',       p424:0.9898,p663:0.9785,note:'full history · upper bound'},
-  ];
-  const CAVEATS=[
-    'Student-t df=2.66: variance theoretically infinite (ν<3)',
-    'GBM assumes price-independent volume; NEAR price correlation not modelled',
-    'Block-bootstrap cannot model structural breaks or regime change',
-    'Thresholds fixed at current NEAR price; use sliders above for sensitivity',
-    'GBM 12/24/36mo probabilities equal: paths spike early or stay permanently below',
-  ];
+  const FC_FALLBACK={
+    meta:{
+      student_t_fit:{df:2.66},
+      falsification_threshold:{
+        condition:'7-day average volume < $60M sustained for 60+ days (less than half current $125M)',
+        action:'Switch to pessimistic (30d) scenario as operative model'
+      },
+      caveats:[
+        'Student-t df=2.66: variance theoretically infinite (v<3)',
+        'GBM assumes price-independent volume; NEAR price correlation not modelled',
+        'Block-bootstrap cannot model structural breaks or regime change',
+        'Thresholds fixed at current NEAR price; use sliders above for sensitivity',
+        'GBM 12/24/36mo probabilities equal: paths spike early or stay permanently below'
+      ]
+    },
+    scenarios:{
+      gbm_normal_30d:{crossing_probs:{hsp029_424M:{'12':0.1727},cap25_663M:{'12':0.1021}}},
+      gbm_normal_90d:{crossing_probs:{hsp029_424M:{'12':0.255},cap25_663M:{'12':0.1656}}},
+      gbm_normal_full:{crossing_probs:{hsp029_424M:{'12':0.2266},cap25_663M:{'12':0.1481}}},
+      gbm_t_90d:{crossing_probs:{hsp029_424M:{'12':0.1727},cap25_663M:{'12':0.111}}},
+      block_bootstrap_recent_180d:{crossing_probs:{hsp029_424M:{'12':0.7179},cap25_663M:{'12':0.5583}}},
+      block_bootstrap_full_692d:{crossing_probs:{hsp029_424M:{'12':0.9898},cap25_663M:{'12':0.9785}}}
+    }
+  };
 
-  const wrap=document.getElementById('forecast-wrap');
-  const tbl=document.createElement('table');
-  tbl.className='prob-table';
-  tbl.innerHTML=`<thead><tr>
-    <th style="text-align:left">Scenario</th>
-    <th>P($424M)</th>
-    <th>P($663M)</th>
-  </tr></thead>`;
-  const tbody=document.createElement('tbody');
-  SCENARIOS.forEach(s=>{
-    const cls=s.p424>=0.5?'c-green':s.p424>=0.2?'c-amber':'';
-    const isUpperBound=s.note.includes('upper bound');
-    const tr=document.createElement('tr');
-    if(isUpperBound) tr.style.background='rgba(245,166,35,0.07)';
-    tr.innerHTML=`<td>${s.label}${isUpperBound?' <span style="font-size:9px;color:var(--amber);font-family:\'IBM Plex Mono\',monospace">[upper bound]</span>':''}<br><small style="font-size:9px;color:var(--dim)">${s.note}</small></td>
-      <td class="${cls}">${(s.p424*100).toFixed(1)}%</td>
-      <td>${(s.p663*100).toFixed(1)}%</td>`;
-    tbody.appendChild(tr);
-  });
-  tbl.appendChild(tbody);
-  wrap.appendChild(tbl);
-
-  document.getElementById('falsify-note').textContent=
-    'Falsification threshold: if 7-day avg volume stays below $60M for 60+ consecutive days, base case (90d) is rejected; switch to 30d pessimistic scenario.';
-
-  const ul=document.getElementById('forecast-caveats');
-  CAVEATS.forEach(c=>{
-    const li=document.createElement('li');
-    li.textContent=c;
-    ul.appendChild(li);
-  });
-})();
-
-// --- DiD horizontal bar chart ---
-(function(){
-  const UNITS=[
-    {label:'NEAR Intents',ratio:0.809,treatment:true},
-    {label:'1inch',        ratio:0.653,treatment:false},
-    {label:'Paraswap',     ratio:0.963,treatment:false},
-    {label:'Jupiter',      ratio:0.634,treatment:false},
-  ];
-  const CAVEATS=[
-    '4 units total; permutation distribution has only 4 points; interpret with caution',
-    'Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols',
-    '90-day window coincided with broader DeFi volume contraction; not isolated',
-    'DiD estimates relative impact vs controls, not absolute causal effect',
-    'Bootstrap CI does not preserve within-period temporal autocorrelation',
-  ];
-
-  const SVG_NS='http://www.w3.org/2000/svg';
-  const svg=document.getElementById('did-svg');
-  const W=340,H=200;
-  const PAD={top:20,right:70,bottom:32,left:86};
-  const cW=W-PAD.left-PAD.right, cH=H-PAD.top-PAD.bottom;
-
-  function el(tag,a,t){
-    const e=document.createElementNS(SVG_NS,tag);
-    Object.entries(a||{}).forEach(([k,v])=>e.setAttribute(k,v));
-    if(t!==undefined)e.textContent=t;
-    return e;
+  function scenarioLabels(meta){
+    const df=meta&&meta.student_t_fit&&meta.student_t_fit.df?meta.student_t_fit.df.toFixed(2):'2.66';
+    return {
+      gbm_normal_30d:['GBM 30d (pessimistic)','recent 30d trend extrapolated',false],
+      gbm_normal_90d:['GBM 90d (base case)','90d trend · slight positive drift',false],
+      gbm_normal_full:['GBM 692d (full history)','full-history drift',false],
+      gbm_t_90d:['GBM-t 90d (fat tails)','v='+df+' MLE · heavier tails',false],
+      block_bootstrap_recent_180d:['Bootstrap 180d','recent regime · current behaviour',false],
+      block_bootstrap_full_692d:['Bootstrap 692d','full history · upper bound',true]
+    };
   }
 
-  const barH=Math.floor(cH/UNITS.length*0.55);
-  const rowH=cH/UNITS.length;
-  const xMin=0.5,xMax=1.15;
-  function xp(v){return PAD.left+(v-xMin)/(xMax-xMin)*cW;}
+  function renderForecast(fc){
+    const wrap=document.getElementById('forecast-wrap');
+    wrap.innerHTML='';
+    const labels=scenarioLabels(fc.meta);
+    const tbl=document.createElement('table');
+    tbl.className='prob-table';
+    tbl.innerHTML='<thead><tr><th style="text-align:left">Scenario</th><th>P($424M) 12mo</th><th>P($663M) 12mo</th></tr></thead>';
+    const tbody=document.createElement('tbody');
+    Object.keys(labels).forEach(key=>{
+      const sc=fc.scenarios[key];
+      if(!sc) return;
+      const [label,note,isUpper]=labels[key];
+      const p424=sc.crossing_probs.hsp029_424M['12'];
+      const p663=sc.crossing_probs.cap25_663M['12'];
+      const cls=p424>=0.5?'c-green':p424>=0.2?'c-amber':'';
+      const tr=document.createElement('tr');
+      if(isUpper) tr.style.background='rgba(245,166,35,0.07)';
+      const tdName=document.createElement('td');
+      tdName.appendChild(document.createTextNode(label));
+      if(isUpper){
+        const tag=document.createElement('span');
+        tag.style.cssText="font-size:9px;color:var(--amber);font-family:'IBM Plex Mono',monospace";
+        tag.textContent=' [upper bound]';
+        tdName.appendChild(tag);
+      }
+      tdName.appendChild(document.createElement('br'));
+      const small=document.createElement('small');
+      small.style.cssText='font-size:9px;color:var(--dim)';
+      small.textContent=note;
+      tdName.appendChild(small);
+      const td424=document.createElement('td');
+      td424.className=cls;
+      td424.textContent=(p424*100).toFixed(1)+'%';
+      const td663=document.createElement('td');
+      td663.textContent=(p663*100).toFixed(1)+'%';
+      tr.appendChild(tdName);tr.appendChild(td424);tr.appendChild(td663);
+      tbody.appendChild(tr);
+    });
+    tbl.appendChild(tbody);
+    wrap.appendChild(tbl);
 
-  // grid + x-axis labels
-  [0.5,0.75,1.0,1.1].forEach(v=>{
-    const x=xp(v);
-    svg.appendChild(el('line',{x1:x,y1:PAD.top,x2:x,y2:PAD.top+cH,
-      stroke:v===1.0?'var(--green)':'var(--border)',
-      'stroke-width':v===1.0?1.5:1,
-      'stroke-dasharray':v===1.0?'4 3':'none',opacity:'0.9'}));
-    svg.appendChild(el('text',{x,y:PAD.top+cH+14,'text-anchor':'middle','font-size':9,
-      fill:v===1.0?'var(--green)':'var(--faint)'},v.toFixed(2)+'×'));
-  });
+    const ft=fc.meta&&fc.meta.falsification_threshold;
+    document.getElementById('falsify-note').textContent=ft
+      ?'Falsification threshold: '+ft.condition+'. '+ft.action+'.'
+      :'';
 
-  UNITS.forEach((u,i)=>{
-    const y=PAD.top+i*rowH+(rowH-barH)/2;
-    const bw=xp(u.ratio)-xp(0);
-    const color=u.treatment?'var(--accent)':'var(--dim)';
-    svg.appendChild(el('rect',{x:PAD.left,y,width:Math.max(bw,2),height:barH,
-      fill:color,opacity:u.treatment?'0.85':'0.5',rx:'2'}));
-    svg.appendChild(el('text',{x:PAD.left-6,y:y+barH/2+4,'text-anchor':'end','font-size':10,
-      fill:u.treatment?'var(--hi)':'var(--faint)','font-weight':u.treatment?'600':'400'},u.label));
-    svg.appendChild(el('text',{x:xp(u.ratio)+5,y:y+barH/2+4,'font-size':10,fill:color},
-      u.ratio.toFixed(3)+'×'));
-  });
+    const ul=document.getElementById('forecast-caveats');
+    ul.innerHTML='';
+    ((fc.meta&&fc.meta.caveats)||[]).forEach(c=>{
+      const li=document.createElement('li');
+      li.textContent=c;
+      ul.appendChild(li);
+    });
+  }
 
-  // x-axis subtitle
-  svg.appendChild(el('text',{x:PAD.left+cW/2,y:H-4,'text-anchor':'middle','font-size':8,
-    fill:'var(--faint)'},'post/pre 90d volume ratio · green = no change (1.00×)'));
+  window.renderForecast=renderForecast;
+  renderForecast(FC_FALLBACK);
+})();
 
-  const ul=document.getElementById('did-caveats');
-  CAVEATS.forEach(c=>{
-    const li=document.createElement('li');
-    li.textContent=c;
-    ul.appendChild(li);
-  });
+// --- DiD horizontal bar chart (renders from JSON; fallback embedded) ---
+(function(){
+  const DID_FALLBACK={
+    units:{
+      near_intents:{growth_ratio:0.809},
+      '1inch':{growth_ratio:0.653},
+      paraswap:{growth_ratio:0.963},
+      jupiter:{growth_ratio:0.634}
+    },
+    did_estimate:{
+      att_ratio:1.0991,
+      bootstrap_ci_95:{att_ratio_lo:0.9668,att_ratio_hi:1.2455}
+    },
+    permutation_test:{rank:3,percentile:0.75},
+    meta:{caveats:[
+      '4 units total; permutation distribution has only 4 points; interpret with caution',
+      'Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols',
+      '90-day window coincided with broader DeFi volume contraction; not isolated',
+      'DiD estimates relative impact vs controls, not absolute causal effect',
+      'Bootstrap CI does not preserve within-period temporal autocorrelation'
+    ]}
+  };
+
+  const ORDER=[
+    ['near_intents','NEAR Intents',true],
+    ['1inch','1inch',false],
+    ['paraswap','Paraswap',false],
+    ['jupiter','Jupiter',false]
+  ];
+
+  function renderDiD(d){
+    const SVG_NS='http://www.w3.org/2000/svg';
+    const svg=document.getElementById('did-svg');
+    svg.innerHTML='';
+    const W=340,H=200;
+    const PAD={top:20,right:70,bottom:32,left:86};
+    const cW=W-PAD.left-PAD.right, cH=H-PAD.top-PAD.bottom;
+
+    function el(tag,a,t){
+      const e=document.createElementNS(SVG_NS,tag);
+      Object.entries(a||{}).forEach(([k,v])=>e.setAttribute(k,v));
+      if(t!==undefined)e.textContent=t;
+      return e;
+    }
+
+    const rows=ORDER.filter(([key])=>d.units[key]&&typeof d.units[key].growth_ratio==='number')
+      .map(([key,label,treatment])=>({label,treatment,ratio:d.units[key].growth_ratio}));
+    if(!rows.length) return;
+
+    const maxRatio=Math.max(...rows.map(r=>r.ratio));
+    const xMin=0.5, xMax=Math.max(1.15,Math.ceil(maxRatio*1.08*20)/20);
+    function xp(v){return PAD.left+(v-xMin)/(xMax-xMin)*cW;}
+
+    const ticks=[0.5,0.75,1.0];
+    if(xMax>1.05) ticks.push(Math.round((xMax-0.05)*100)/100);
+    ticks.forEach(v=>{
+      const x=xp(v);
+      svg.appendChild(el('line',{x1:x,y1:PAD.top,x2:x,y2:PAD.top+cH,
+        stroke:v===1.0?'var(--green)':'var(--border)',
+        'stroke-width':v===1.0?1.5:1,
+        'stroke-dasharray':v===1.0?'4 3':'none',opacity:'0.9'}));
+      svg.appendChild(el('text',{x,y:PAD.top+cH+14,'text-anchor':'middle','font-size':9,
+        fill:v===1.0?'var(--green)':'var(--faint)'},v.toFixed(2)+'x'));
+    });
+
+    const barH=Math.floor(cH/rows.length*0.55);
+    const rowH=cH/rows.length;
+    rows.forEach((u,i)=>{
+      const y=PAD.top+i*rowH+(rowH-barH)/2;
+      const bw=xp(u.ratio)-PAD.left;
+      const color=u.treatment?'var(--accent)':'var(--dim)';
+      svg.appendChild(el('rect',{x:PAD.left,y,width:Math.max(bw,2),height:barH,
+        fill:color,opacity:u.treatment?'0.85':'0.5',rx:'2'}));
+      svg.appendChild(el('text',{x:PAD.left-6,y:y+barH/2+4,'text-anchor':'end','font-size':10,
+        fill:u.treatment?'var(--hi)':'var(--faint)','font-weight':u.treatment?'600':'400'},u.label));
+      svg.appendChild(el('text',{x:xp(u.ratio)+5,y:y+barH/2+4,'font-size':10,fill:color},
+        u.ratio.toFixed(3)+'x'));
+    });
+
+    svg.appendChild(el('text',{x:PAD.left+cW/2,y:H-4,'text-anchor':'middle','font-size':8,
+      fill:'var(--faint)'},'post/pre 90d volume ratio · green = no change (1.00x)'));
+
+    const est=d.did_estimate, ci=est.bootstrap_ci_95, perm=d.permutation_test;
+    document.getElementById('att-val').textContent=est.att_ratio.toFixed(2)+'x';
+    document.getElementById('att-ci').textContent=ci.att_ratio_lo.toFixed(2)+' - '+ci.att_ratio_hi.toFixed(2)+'x';
+    document.getElementById('att-rank').textContent=perm.rank+' / 4 ('+Math.round(perm.percentile*100)+'th pct)';
+    document.getElementById('att-verdict').textContent=
+      (ci.att_ratio_lo<=1&&ci.att_ratio_hi>=1)
+        ?'No significant impact detected'
+        :(est.att_ratio>1?'Positive impact at 95% confidence':'Negative impact at 95% confidence');
+
+    const ul=document.getElementById('did-caveats');
+    ul.innerHTML='';
+    ((d.meta&&d.meta.caveats)||[]).forEach(c=>{
+      const li=document.createElement('li');
+      li.textContent=c;
+      ul.appendChild(li);
+    });
+  }
+
+  window.renderDiD=renderDiD;
+  renderDiD(DID_FALLBACK);
+})();
+
+// --- live data orchestrator ---
+(function(){
+  const badge=document.getElementById('data-badge');
+  function setBadge(txt,live){
+    badge.textContent=txt;
+    badge.style.color=live?'var(--green)':'var(--faint)';
+  }
+  async function getJSON(url){
+    const r=await fetch(url);
+    if(!r.ok) throw new Error(url+' '+r.status);
+    return r.json();
+  }
+
+  (async()=>{
+    try{
+      const [vol,rev,px]=await Promise.all([
+        getJSON('https://api.llama.fi/summary/dexs/near-intents?excludeTotalDataChart=false&dataType=dailyVolume'),
+        getJSON('https://api.llama.fi/summary/fees/near-intents?excludeTotalDataChart=false&dataType=dailyRevenue'),
+        getJSON('https://coins.llama.fi/prices/current/coingecko:near')
+      ]);
+      const today=new Date().toISOString().slice(0,10);
+      const iso=ts=>new Date(ts*1000).toISOString().slice(0,10);
+      const volRows=vol.totalDataChart
+        .map(([t,v])=>({date:iso(t),vol:v/1e6}))
+        .filter(r=>r.date<today&&r.vol>0);
+      if(volRows.length<30) throw new Error('insufficient volume history');
+      const revMap=Object.fromEntries(rev.totalDataChart.map(([t,v])=>[iso(t),v]));
+      const last30=volRows.slice(-30);
+      const volM=last30.reduce((a,r)=>a+r.vol,0)/last30.length;
+      const bps=last30
+        .map(r=>(revMap[r.date]||0)/(r.vol*1e6)*1e4)
+        .reduce((a,b)=>a+b,0)/last30.length;
+      const price=px.coins['coingecko:near'].price;
+      const lastDate=volRows[volRows.length-1].date;
+      window.setModelInputs({
+        price:Math.round(price*100)/100,
+        volM:Math.round(volM*10)/10,
+        bps:Math.round(bps*100)/100,
+        nowDate:new Date(lastDate+'T00:00:00')
+      });
+      window.buildHistChart(volRows.slice(-180));
+      setBadge('live data: DefiLlama, through '+lastDate,true);
+    }catch(e){
+      setBadge('snapshot data: Nov 1, 2026 (live fetch unavailable)',false);
+    }
+  })();
+
+  (async()=>{
+    try{ window.renderForecast(await getJSON('data/forecast.json')); }catch(e){}
+  })();
+  (async()=>{
+    try{ window.renderDiD(await getJSON('data/fee_switch.json')); }catch(e){}
+  })();
 })();
 </script>
 </body>

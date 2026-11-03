@@ -10,8 +10,8 @@
     ],
     "methodology": "Difference-in-differences on log daily volume; 90-day symmetric window",
     "caveats": [
-      "4 units total (NEAR + 3 controls) \u2014 permutation distribution has only 4 points; interpret with caution",
-      "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols \u2014 different growth dynamics from a young NEAR Intents",
+      "4 units total (NEAR + 3 controls); permutation distribution has only 4 points; interpret with caution",
+      "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols; different growth dynamics from a young NEAR Intents",
       "90-day window coincided with broader DeFi volume contraction; market cycle not isolated",
       "DiD identifies relative performance vs controls, not absolute causal effect of the fee switch",
       "Bootstrap CI resamples within pre/post periods independently; temporal autocorrelation within periods not preserved"
@@ -65,7 +65,7 @@
       "att_log_hi": 0.2195202000501003,
       "n_bootstrap": 1000
     },
-    "interpretation": "NEAR volume changed by 1.10x (95% CI: 0.97\u20131.25x) relative to aggregator controls in the 90 days after the fee switch. CI includes 1.0 \u2014 no statistically significant volume impact detected."
+    "interpretation": "NEAR volume changed by 1.10x (95% CI: 0.97-1.25x) relative to aggregator controls in the 90 days after the fee switch. CI includes 1.0; no statistically significant volume impact detected."
   },
   "permutation_test": {
     "placebo_atts": {
@@ -77,7 +77,7 @@
     "real_att": 0.09449370114423933,
     "rank": 3,
     "percentile": 0.75,
-    "note": "NEAR ATT ranks 3/4 among permutations (percentile=75%). NEAR is not an outlier \u2014 consistent with no treatment effect."
+    "note": "NEAR ATT ranks 3/4 among permutations (percentile=75%). NEAR is not an outlier; consistent with no treatment effect."
   },
   "parallel_trends": {
     "near_slope": 0.002965070284936194,
@@ -88,7 +88,7 @@
     },
     "mean_control_slope": -0.002205619261495467,
     "slope_diff_near_vs_controls": 0.005170689546431661,
-    "assessment": "Pre-period slopes differ \u2014 DiD estimate may conflate trends with treatment effect"
+    "assessment": "Pre-period slopes differ; DiD estimate may conflate trends with treatment effect"
   },
   "full_history_context": {
     "pre_avg_usd": 30592183.202272728,

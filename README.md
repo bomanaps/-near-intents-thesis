@@ -2,6 +2,8 @@
 
 A quantitative model that answers one question: at what daily volume do NEAR Intents protocol buybacks cover NEAR token issuance? Built for the NEAR Hackathon 2026, Investment Thesis track.
 
+The claim, the evidence for it, the evidence against it, and what would change my mind: [THESIS.md](THESIS.md). For AI reviewers: [CLAUDE.md](CLAUDE.md) has the verified commands and the repo map.
+
 ## Live Site
 
 | Page | Link |

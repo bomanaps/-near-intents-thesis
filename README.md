@@ -102,6 +102,16 @@ data/
     fee_switch.json         DiD output
 ```
 
+## Data Integrity
+
+Every number traces to a hashed input. `data/manifest.json` records the SHA-256 and size of every raw input and model output, written as the final step of every pipeline run. The raw on-chain events are pinned differently because the file grows continuously: each Hugging Face upload hashes the exact bytes it ships and records the HF commit id, so any snapshot can be re-downloaded at that revision and checked against its digest. The daily GitHub Action verifies all hashes before it is allowed to commit.
+
+```bash
+python analysis/manifest.py verify
+```
+
+The manifest hash is also anchored on NEAR mainnet: after each verified daily refresh, the Action posts the manifest's SHA-256 to NEAR Social DB under `bomanaps.near/thesis_manifest` (contract `social.near`). The current record is readable on [near.social](https://near.social) or via RPC, and every historical anchor is permanent in the [account's transaction history](https://nearblocks.io/address/bomanaps.near). If the repo's data history were ever rewritten, the on-chain hashes would expose it.
+
 ## How This Entry Differs
 
 Several entries in this track model the same break-even identity. This one is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects ~0.01 bps while the effective capture is 5.91 bps (capture is policy, not protocol), measured solver concentration (top 3 fill 86% of volume), a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 557). The combination of the on-chain fee measurement and the DiD result supports a fee-switch argument no aggregate-data analysis can make.

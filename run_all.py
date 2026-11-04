@@ -14,6 +14,8 @@ Steps:
      FastNEAR events file is absent, e.g. on the GitHub Actions runner)
   6. Copy the model JSONs into docs/data/ so the GitHub Pages dashboard
      serves them (Pages only publishes the docs/ folder)
+  7. Write data/manifest.json with the SHA-256 of every input and output;
+     verify any time with: python analysis/manifest.py verify
 
 On-chain FastNEAR ingestion runs separately (ingest/fastnear_ingest.py) and is
 not required for the models; DefiLlama is the primary data source.
@@ -78,9 +80,9 @@ def fetch_daily_metrics() -> None:
     print(f"      range: {merged['date'].iloc[0]} to {merged['date'].iloc[-1]}")
 
 
-def run_step(label: str, script: str) -> None:
-    print(f"\n{label} Running {script}")
-    result = subprocess.run([sys.executable, str(ROOT / script)], cwd=ROOT)
+def run_step(label: str, script: str, *args: str) -> None:
+    print(f"\n{label} Running {script} {' '.join(args)}".rstrip())
+    result = subprocess.run([sys.executable, str(ROOT / script), *args], cwd=ROOT)
     if result.returncode != 0:
         sys.exit(f"FAILED: {script} exited with code {result.returncode}")
 
@@ -134,19 +136,21 @@ def main() -> None:
     run_step("[2/6]", "model/forecast.py")
     run_step("[3/6]", "model/fee_switch.py")
 
-    run_step("[4/6]", "analysis/frequency.py")
+    run_step("[4/7]", "analysis/frequency.py")
 
     events = ROOT / "data" / "raw" / "fastnear" / "events.jsonl"
     if events.exists():
-        run_step("[5/6]", "analysis/onchain.py")
+        run_step("[5/7]", "analysis/onchain.py")
     else:
-        print("\n[5/6] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
+        print("\n[5/7] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
 
     docs_data = ROOT / "docs" / "data"
     docs_data.mkdir(parents=True, exist_ok=True)
     for name in ("forecast.json", "fee_switch.json"):
         shutil.copy2(ROOT / "data" / "model" / name, docs_data / name)
-    print(f"\n[6/6] Published both JSONs to {docs_data.relative_to(ROOT)}/")
+    print(f"\n[6/7] Published both JSONs to {docs_data.relative_to(ROOT)}/")
+
+    run_step("[7/7]", "analysis/manifest.py", "write")
 
     print_headline_metrics()
 

@@ -12,8 +12,10 @@ Usage: python ingest/hf_upload.py
 
 from __future__ import annotations
 
+import hashlib
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -23,6 +25,7 @@ ROOT = Path(__file__).parent.parent
 EVENTS = ROOT / "data" / "raw" / "fastnear" / "events.jsonl"
 PARQUET = ROOT / "data" / "raw" / "fastnear" / "events.parquet"
 REPO_ID = "bomankari/near-intents-onchain-events"
+UPLOAD_RECORD = ROOT / "data" / "raw" / "fastnear" / "last_upload.json"
 
 
 def main() -> None:
@@ -38,15 +41,28 @@ def main() -> None:
             rows.append(e)
     pd.DataFrame(rows).to_parquet(PARQUET, index=False)
 
+    events_bytes = EVENTS.read_bytes()
+    digest = hashlib.sha256(events_bytes).hexdigest()
+
     api = HfApi()
-    for path in (EVENTS, PARQUET):
-        api.upload_file(
-            path_or_fileobj=str(path),
+    commit = None
+    for path, payload in ((EVENTS, events_bytes), (PARQUET, PARQUET.read_bytes())):
+        commit = api.upload_file(
+            path_or_fileobj=payload,
             path_in_repo=path.name,
             repo_id=REPO_ID,
             repo_type="dataset",
         )
-    print(f"uploaded {len(rows)} events to {REPO_ID}")
+
+    UPLOAD_RECORD.write_text(json.dumps({
+        "uploaded_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "lines": len(rows),
+        "sha256": digest,
+        "bytes": len(events_bytes),
+        "repo": REPO_ID,
+        "hf_commit": getattr(commit, "oid", None),
+    }, indent=1))
+    print(f"uploaded {len(rows)} events to {REPO_ID}, commit {getattr(commit, 'oid', 'unknown')}")
 
 
 if __name__ == "__main__":

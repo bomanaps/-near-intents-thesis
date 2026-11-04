@@ -1,0 +1,56 @@
+{
+ "generated_at": "2026-11-04T07:17:52Z",
+ "note": "SHA-256 of every raw input and model output; the manifest excludes itself",
+ "sources": {
+  "volume_fees_revenue": "https://api.llama.fi/summary/{dexs,fees}/near-intents",
+  "near_price": "https://coins.llama.fi/prices/current/coingecko:near",
+  "onchain_events": "https://huggingface.co/datasets/bomankari/near-intents-onchain-events",
+  "controls": "https://api.llama.fi/summary/{aggregators,dexs}/{1inch,paraswap,jupiter}"
+ },
+ "files": {
+  "data/raw/daily_metrics.parquet": {
+   "sha256": "34bb36d3a4bb72c39674aeaa88b7ebbef6ae670037d1bb15dd0e5abec4d2b167",
+   "bytes": 26185
+  },
+  "data/model/forecast.json": {
+   "sha256": "5441a5c78bda8da424f59c602ba2b41e974d7ea38d7ab664757b3aad4848a6eb",
+   "bytes": 4030
+  },
+  "data/model/fee_switch.json": {
+   "sha256": "fa08bc1218b34ac9639dbe701a1eb82689c2f1a34e4f25467993c93446fd1aef",
+   "bytes": 3653
+  },
+  "data/model/onchain.json": {
+   "sha256": "288506321efecfae7831e654b3daba715571168df60fc61ed20f75b342922ead",
+   "bytes": 4337
+  },
+  "data/model/frequency.json": {
+   "sha256": "dd7392ec81ae29578edaf13926670a1bb710a1184a14f7b8a13246f37c6cf3bb",
+   "bytes": 1093
+  },
+  "docs/data/forecast.json": {
+   "sha256": "5441a5c78bda8da424f59c602ba2b41e974d7ea38d7ab664757b3aad4848a6eb",
+   "bytes": 4030
+  },
+  "docs/data/fee_switch.json": {
+   "sha256": "fa08bc1218b34ac9639dbe701a1eb82689c2f1a34e4f25467993c93446fd1aef",
+   "bytes": 3653
+  },
+  "docs/data/onchain.json": {
+   "sha256": "288506321efecfae7831e654b3daba715571168df60fc61ed20f75b342922ead",
+   "bytes": 4337
+  },
+  "docs/data/frequency.json": {
+   "sha256": "dd7392ec81ae29578edaf13926670a1bb710a1184a14f7b8a13246f37c6cf3bb",
+   "bytes": 1093
+  }
+ },
+ "events_snapshot": {
+  "uploaded_at": "2026-11-04T07:17:51Z",
+  "lines": 62361,
+  "sha256": "792f75e4023865ffac098b8ba545b09a2d7981479a7d6fd9c99d44481e84b777",
+  "bytes": 38534200,
+  "repo": "bomankari/near-intents-onchain-events",
+  "hf_commit": "fc7c8b6eeac264b9e077f8cb14f0a0113c1fb6eb"
+ }
+}

@@ -45,6 +45,8 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 
 **On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot: the explicit contract fee is ~0.01 bps per side vs the 5.91 bps revenue rate implied by DefiLlama (so the capture rate is policy, not protocol), the top 3 solvers fill 86% of volume (HHI 0.33), and the volume screens clean (zero self-fills). Reruns automatically as ingestion grows.
 
+**Buyback price-effect regression** (`analysis/price_link.py`): weekly NEAR returns on lagged buyback intensity with BTC/ETH market controls, Newey-West errors, and a 1,000-permutation null. Result, pre-registered as likely and published as found: no detectable price effect (t = 0.61, permutation p = 0.62, 37 weeks). The strong contemporaneous correlation (t = 4.1) vanishes under the lag, the signature of reverse causality. The thesis rests on the issuance-offset mechanism, not a price effect.
+
 **Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. Average treatment effect: 1.10x (95% bootstrap CI: 0.97-1.25x). Permutation rank: 3/4. No statistically significant negative volume impact detected.
 
 ## Data Sources
@@ -104,6 +106,7 @@ model/
 analysis/
   onchain.py          on-chain evidence from decoded dip4 events
   frequency.py        days revenue covered issuance, from price-joined history
+  price_link.py       buyback price-effect regression with market controls
   manifest.py         data integrity manifest: write and verify
   anchor.py           posts the manifest hash to NEAR mainnet (social.near)
 
@@ -141,7 +144,7 @@ The manifest hash is also anchored on NEAR mainnet: after each verified daily re
 
 ## How This Entry Differs
 
-Several entries in this track model the same break-even identity. This one is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects ~0.01 bps while the effective capture is 5.91 bps (capture is policy, not protocol), measured solver concentration (top 3 fill 86% of volume), a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 557). The combination of the on-chain fee measurement and the DiD result supports a fee-switch argument no aggregate-data analysis can make.
+Several entries in this track model the same break-even identity. This is the only entry whose dashboard fetches live data in the browser on every page load; the rest of the field serves static snapshots refreshed at most daily. Beyond that, it is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects ~0.01 bps while the effective capture is 5.91 bps (capture is policy, not protocol), measured solver concentration (top 3 fill 86% of volume), a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 557). The combination of the on-chain fee measurement and the DiD result supports a fee-switch argument no aggregate-data analysis can make.
 
 ## Track
 

@@ -150,6 +150,10 @@ td:first-child{text-align:left;color:var(--faint)}
 .ramp-wrap{background:var(--surf);border:1px solid var(--border);border-radius:8px;padding:20px;margin-top:24px;overflow-x:auto}
 .ramp-wrap svg text{font-family:'IBM Plex Mono',monospace;fill:var(--faint)}
 
+/* tooltip */
+#tt{position:fixed;pointer-events:none;background:var(--surf);border:1px solid var(--accent);border-radius:5px;padding:7px 10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--hi);z-index:50;white-space:pre;box-shadow:0 4px 14px rgba(0,0,0,.45);line-height:1.5}
+#tt[hidden]{display:none}
+
 /* model panels */
 .model-panels{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
 @media(max-width:800px){.model-panels{grid-template-columns:1fr}}
@@ -289,7 +293,7 @@ td:first-child{text-align:left;color:var(--faint)}
   </div>
 
   <!-- On-chain evidence -->
-  <div class="panel" style="margin-bottom:24px">
+  <div class="panel" style="margin-bottom:24px" id="onchain">
     <div class="panel-title">On-Chain Evidence: Decoded dip4 Settlements</div>
     <div class="panel-desc" id="oc-coverage">Raw token_diff events decoded from intents.near via FastNEAR · ingestion ongoing</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:14px">
@@ -373,9 +377,72 @@ td:first-child{text-align:left;color:var(--faint)}
     </div>
 
   </div>
+
+  <!-- Price question -->
+  <div class="panel" style="margin-top:24px" id="price">
+    <div class="panel-title">The Price Question: Do Buybacks Move NEAR?</div>
+    <div class="panel-desc" id="pq-desc">Weekly NEAR returns on lagged buyback intensity, BTC and ETH controls, Newey-West errors, 1,000-permutation null</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+      <div>
+        <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px;margin-bottom:12px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Verdict</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:600;color:var(--hi)" id="pq-verdict">No detectable price effect</div>
+          <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5" id="pq-verdict-sub">lagged intensity t = 0.61, permutation p = 0.62, 37 weeks since the fee switch</div>
+        </div>
+        <svg id="pq-svg" viewBox="0 0 340 170" width="100%" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <div style="min-width:0">
+        <div id="pq-explorer" hidden style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:12px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:10px">Spec explorer: rerun the regression in your browser</div>
+          <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:10px;font-size:11px">
+            <label style="display:flex;align-items:center;gap:6px;color:var(--text)">
+              <select id="pqx-reg" style="background:var(--surf);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 6px">
+                <option value="intensity_lag" selected>lagged revenue intensity</option>
+                <option value="intensity">contemporaneous intensity</option>
+                <option value="vol_intensity_lag">volume placebo (lagged)</option>
+              </select>
+            </label>
+            <label style="display:flex;align-items:center;gap:6px;color:var(--text)"><input type="checkbox" id="pqx-rally" checked> include Sep-Oct rally</label>
+            <label style="display:flex;align-items:center;gap:6px;color:var(--text)"><input type="checkbox" id="pqx-controls" checked> BTC/ETH controls</label>
+          </div>
+          <div style="display:flex;gap:22px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px">
+            <span style="color:var(--faint)">coef <b id="pqx-coef" style="color:var(--hi)"></b></span>
+            <span style="color:var(--faint)">t <b id="pqx-t" style="color:var(--hi)"></b></span>
+            <span style="color:var(--faint)">n <b id="pqx-n" style="color:var(--hi)"></b></span>
+            <span style="color:var(--faint)">perm p <b id="pqx-p" style="color:var(--hi)"></b></span>
+          </div>
+          <div id="pqx-note" style="font-size:10px;color:var(--dim);margin-top:8px;line-height:1.5"></div>
+        </div>
+        <div class="tbl-wrap"><table class="prob-table" id="pq-table"></table></div>
+        <div class="caveat-box">
+          <div class="caveat-title">Limitations</div>
+          <ul class="caveat-list" id="pq-caveats"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:20px;font-size:11px;color:var(--dim);text-align:center">Every claim maps to code, a test, and an independent check: <a href="https://github.com/bomanaps/-near-intents-thesis/blob/main/docs/claims.md" style="color:var(--accent)">claims and proofs</a></div>
 </div>
 
+<div id="tt" hidden></div>
+
 <script>
+const TT=(function(){
+  const el=document.getElementById('tt');
+  function show(ev,text){
+    el.textContent=text;
+    el.hidden=false;
+    const pad=14;
+    let x=ev.clientX+pad, y=ev.clientY+pad;
+    const r=el.getBoundingClientRect();
+    if(x+r.width>window.innerWidth-8) x=ev.clientX-r.width-pad;
+    if(y+r.height>window.innerHeight-8) y=ev.clientY-r.height-pad;
+    el.style.left=x+'px'; el.style.top=y+'px';
+  }
+  function hide(){ el.hidden=true; }
+  return {show,hide};
+})();
+
 (function(){
   const SUPPLY = 1_309_640_573;
   let NOW_DATE = new Date('2026-11-02');
@@ -473,6 +540,25 @@ td:first-child{text-align:left;color:var(--faint)}
     // axis title
     hmSvg.appendChild(elSvg('text',{x:PAD_HM.left+cW/2,y:PAD_HM.top+cH+30,'text-anchor':'middle','font-size':9,fill:'var(--faint)'},'NEAR Price'));
   }
+
+  function svgPoint(svg,ev,W,H){
+    const r=svg.getBoundingClientRect();
+    return {x:(ev.clientX-r.left)/r.width*W, y:(ev.clientY-r.top)/r.height*H};
+  }
+
+  hmSvg.addEventListener('mousemove',ev=>{
+    const pt=svgPoint(hmSvg,ev,HM_W,HM_H);
+    const xi=Math.floor((pt.x-PAD_HM.left)/cellW);
+    const yiTop=Math.floor((pt.y-PAD_HM.top)/cellH);
+    if(xi<0||xi>=HM_PRICES.length||yiTop<0||yiTop>=HM_VOLS.length){TT.hide();return;}
+    const yi=HM_VOLS.length-1-yiTop;
+    const c=compute(HM_PRICES[xi],HM_VOLS[yi],cap,bps);
+    TT.show(ev,
+      'price  $'+HM_PRICES[xi].toFixed(2)+'\n'+
+      'volume '+(HM_VOLS[yi]>=1000?'$'+(HM_VOLS[yi]/1000).toFixed(1)+'B':'$'+Math.round(HM_VOLS[yi])+'M')+'/day\n'+
+      'offset '+(c.offset*100).toFixed(1)+'%'+(c.offset>=1?' (break-even)':''));
+  });
+  hmSvg.addEventListener('mouseleave',()=>TT.hide());
 
   function updateHeatmap(){
     const currentBps = bps;
@@ -580,12 +666,32 @@ td:first-child{text-align:left;color:var(--faint)}
 
   function monthsBetween(a,b){ return (b.getFullYear()-a.getFullYear())*12+(b.getMonth()-a.getMonth()); }
 
+  let rampHover={xMin:0,xMax:1,rampStart:null};
+
+  RAMP_SVG.addEventListener('mousemove',ev=>{
+    if(!rampHover.rampStart){TT.hide();return;}
+    const r=RAMP_SVG.getBoundingClientRect();
+    const x=(ev.clientX-r.left)/r.width*RW;
+    if(x<RP.left||x>RP.left+rcW){TT.hide();return;}
+    const t=rampHover.xMin+(x-RP.left)/rcW*(rampHover.xMax-rampHover.xMin);
+    const d=new Date(t);
+    const m=monthsBetween(rampHover.rampStart,d);
+    const capNow=d<rampHover.rampStart?0.025:hspCap(m);
+    const c=compute(price,volM,capNow,bps);
+    TT.show(ev,
+      d.toISOString().slice(0,10)+'\n'+
+      'cap    '+(capNow*100).toFixed(2)+'%\n'+
+      'offset '+(c.offset*100).toFixed(1)+'%');
+  });
+  RAMP_SVG.addEventListener('mouseleave',()=>TT.hide());
+
   function updateRamp(){
     RAMP_SVG.innerHTML='';
     const rampStart=RAMP_STARTS[rampStartKey].date;
     const xMin=NOW_DATE.getTime();
     const xMax=rampStart.getTime()+30*30.44*86400000;
     const totalDays=Math.round((xMax-xMin)/86400000);
+    rampHover={xMin,xMax,rampStart};
     function rXpos(d){ return RP.left+((d-xMin)/(xMax-xMin))*rcW; }
 
     const pts=[];
@@ -783,6 +889,15 @@ td:first-child{text-align:left;color:var(--faint)}
 
     // source note
     svg.appendChild(el('text',{x:PAD.left+cW,y:H-4,'text-anchor':'end','font-size':8,fill:'var(--muted)',opacity:'0.7'},'Source: DefiLlama · 180 days'));
+
+    svg.addEventListener('mousemove',ev=>{
+      const r=svg.getBoundingClientRect();
+      const x=(ev.clientX-r.left)/r.width*W;
+      const i=Math.floor((x-PAD.left)/barW);
+      if(i<0||i>=ROWS.length){TT.hide();return;}
+      TT.show(ev,ROWS[i].date+'\nvolume $'+ROWS[i].vol.toFixed(1)+'M');
+    });
+    svg.addEventListener('mouseleave',()=>TT.hide());
 
     wrap.appendChild(svg);
   }
@@ -1063,6 +1178,225 @@ td:first-child{text-align:left;color:var(--faint)}
   renderOnchain(OC_FALLBACK);
 })();
 
+// --- Price question panel (renders from JSON; fallback embedded) ---
+(function(){
+  const PQ_FALLBACK={
+    meta:{
+      sample:'weekly since 2026-02-23 (fee switch, start of buyback revenue)',
+      caveats:[
+        'Roughly 36 weekly observations; power to detect modest effects is low',
+        'Market cap uses current total supply as a constant; error under one percent over the window',
+        'The contemporaneous specification is reported only for comparison; it is exposed to reverse causality',
+        'Association, not causation: no instrument exists for buyback timing'
+      ]
+    },
+    results:{
+      headline_lagged:{n_weeks:37,coef_intensity:357.4,t_intensity:0.606,permutation_p:0.615},
+      contemporaneous_secondary:{n_weeks:37,coef_intensity:1661.0,t_intensity:4.109},
+      excluding_rally:{n_weeks:29,coef_intensity:-741.3,t_intensity:-1.514},
+      placebo_volume:{n_weeks:37,coef_intensity:0.23,t_intensity:0.749}
+    }
+  };
+
+  const SPECS=[
+    ['headline_lagged','Lagged intensity (headline)','clean of reverse causality'],
+    ['contemporaneous_secondary','Contemporaneous (secondary)','reverse causality suspect'],
+    ['excluding_rally','Lagged, excluding Sep-Oct rally','robustness'],
+    ['placebo_volume','Volume placebo (lagged)','should be null and is']
+  ];
+
+  function renderPriceLink(d){
+    const r=d.results;
+    const h=r.headline_lagged;
+    const detected=h.permutation_p<0.05;
+    document.getElementById('pq-verdict').textContent=detected?'Detectable price effect':'No detectable price effect';
+    document.getElementById('pq-verdict-sub').textContent=
+      'lagged intensity t = '+h.t_intensity.toFixed(2)+', permutation p = '+h.permutation_p.toFixed(2)+', '+h.n_weeks+' weeks since the fee switch';
+
+    const tbl=document.getElementById('pq-table');
+    tbl.innerHTML='';
+    const thead=document.createElement('thead');
+    const hr=document.createElement('tr');
+    ['Specification','coef','t'].forEach((txt,i)=>{
+      const th=document.createElement('th');
+      if(i===0) th.style.textAlign='left';
+      th.textContent=txt;
+      hr.appendChild(th);
+    });
+    thead.appendChild(hr); tbl.appendChild(thead);
+    const tbody=document.createElement('tbody');
+    SPECS.forEach(([key,label,note])=>{
+      const sp=r[key];
+      if(!sp) return;
+      const tr=document.createElement('tr');
+      const td0=document.createElement('td');
+      td0.appendChild(document.createTextNode(label));
+      td0.appendChild(document.createElement('br'));
+      const small=document.createElement('small');
+      small.style.cssText='font-size:9px;color:var(--dim)';
+      small.textContent=note;
+      td0.appendChild(small);
+      const td1=document.createElement('td');
+      td1.textContent=sp.coef_intensity.toFixed(1);
+      const td2=document.createElement('td');
+      td2.textContent=sp.t_intensity.toFixed(2);
+      tr.appendChild(td0);tr.appendChild(td1);tr.appendChild(td2);
+      tbody.appendChild(tr);
+    });
+    tbl.appendChild(tbody);
+
+    const SVG_NS='http://www.w3.org/2000/svg';
+    const svg=document.getElementById('pq-svg');
+    svg.innerHTML='';
+    const W=340,H=170;
+    const PAD={top:16,right:56,bottom:30,left:118};
+    const cW=W-PAD.left-PAD.right,cH=H-PAD.top-PAD.bottom;
+    function el(tag,a,t){
+      const e=document.createElementNS(SVG_NS,tag);
+      Object.entries(a||{}).forEach(([k,v])=>e.setAttribute(k,v));
+      if(t!==undefined)e.textContent=t;
+      return e;
+    }
+    const rows=SPECS.filter(([key])=>r[key]).map(([key,label])=>({label,absT:Math.abs(r[key].t_intensity),key}));
+    const xMax=Math.max(2.5,Math.ceil(Math.max(...rows.map(x=>x.absT))*1.15*10)/10);
+    function xp(v){return PAD.left+v/xMax*cW;}
+    [0,1,2].concat(xMax>3?[Math.floor(xMax)]:[]).forEach(v=>{
+      const x=xp(v);
+      svg.appendChild(el('line',{x1:x,y1:PAD.top,x2:x,y2:PAD.top+cH,stroke:'var(--border)','stroke-width':1,opacity:.6}));
+      svg.appendChild(el('text',{x,y:PAD.top+cH+13,'text-anchor':'middle','font-size':9,fill:'var(--faint)'},String(v)));
+    });
+    const xc=xp(1.96);
+    svg.appendChild(el('line',{x1:xc,y1:PAD.top,x2:xc,y2:PAD.top+cH,stroke:'var(--amber)','stroke-width':1.5,'stroke-dasharray':'4 3'}));
+    svg.appendChild(el('text',{x:xc,y:PAD.top-4,'text-anchor':'middle','font-size':8,fill:'var(--amber)'},'|t| = 1.96 (reference)'));
+    const rowH=cH/rows.length;
+    const barH=Math.floor(rowH*0.5);
+    rows.forEach((u,i)=>{
+      const y=PAD.top+i*rowH+(rowH-barH)/2;
+      const isHeadline=u.key==='headline_lagged';
+      const isSuspect=u.key==='contemporaneous_secondary';
+      const color=isHeadline?'var(--accent)':isSuspect?'var(--amber)':'var(--dim)';
+      svg.appendChild(el('rect',{x:xp(0),y,width:Math.max(xp(u.absT)-xp(0),1.5),height:barH,fill:color,opacity:isHeadline?'0.9':'0.55',rx:'2'}));
+      svg.appendChild(el('text',{x:PAD.left-6,y:y+barH/2+3,'text-anchor':'end','font-size':8.5,fill:isHeadline?'var(--hi)':'var(--faint)'},u.label.replace(' (headline)','').replace(' (secondary)','')));
+      const lbl=isHeadline?u.absT.toFixed(2)+' · perm p = '+r.headline_lagged.permutation_p.toFixed(2):u.absT.toFixed(2);
+      svg.appendChild(el('text',{x:xp(u.absT)+4,y:y+barH/2+3,'font-size':8.5,fill:color},lbl));
+    });
+    svg.appendChild(el('text',{x:PAD.left+cW/2,y:H-3,'text-anchor':'middle','font-size':8,fill:'var(--faint)'},'|t| by specification · only the reverse-causality suspect crosses the line'));
+
+    const ul=document.getElementById('pq-caveats');
+    ul.innerHTML='';
+    ((d.meta&&d.meta.caveats)||[]).forEach(c=>{
+      const li=document.createElement('li');
+      li.textContent=c;
+      ul.appendChild(li);
+    });
+  }
+
+  window.renderPriceLink=renderPriceLink;
+  renderPriceLink(PQ_FALLBACK);
+
+  function olsNW(y,X,lags){
+    const n=y.length,k=X[0].length;
+    const XtX=Array.from({length:k},()=>new Array(k).fill(0));
+    const Xty=new Array(k).fill(0);
+    for(let t=0;t<n;t++)for(let i=0;i<k;i++){
+      Xty[i]+=X[t][i]*y[t];
+      for(let j=0;j<k;j++)XtX[i][j]+=X[t][i]*X[t][j];
+    }
+    const inv=matInv(XtX);
+    const beta=inv.map(row=>row.reduce((a,v,j)=>a+v*Xty[j],0));
+    const resid=y.map((yt,t)=>yt-X[t].reduce((a,v,i)=>a+v*beta[i],0));
+    const S=Array.from({length:k},()=>new Array(k).fill(0));
+    for(let lag=0;lag<=lags;lag++){
+      const w=lag===0?1:1-lag/(lags+1);
+      for(let t=lag;t<n;t++){
+        for(let i=0;i<k;i++)for(let j=0;j<k;j++){
+          const u=X[t][i]*resid[t]*X[t-lag][j]*resid[t-lag];
+          S[i][j]+=w*(lag===0?u:u);
+          if(lag>0)S[i][j]+=w*X[t][j]*resid[t]*X[t-lag][i]*resid[t-lag];
+        }
+      }
+    }
+    const cov=matMul(matMul(inv,S),inv);
+    const se=beta.map((_,i)=>Math.sqrt(cov[i][i]));
+    return {beta,se,t:beta.map((b,i)=>b/se[i]),n};
+  }
+  function matMul(A,B){
+    const k=A.length;
+    return A.map((row,i)=>B[0].map((_,j)=>row.reduce((a,v,m)=>a+v*B[m][j],0)));
+  }
+  function matInv(M){
+    const k=M.length;
+    const A=M.map((row,i)=>row.concat(Array.from({length:k},(_,j)=>i===j?1:0)));
+    for(let col=0;col<k;col++){
+      let piv=col;
+      for(let r=col+1;r<k;r++)if(Math.abs(A[r][col])>Math.abs(A[piv][col]))piv=r;
+      [A[col],A[piv]]=[A[piv],A[col]];
+      const d=A[col][col];
+      for(let j=0;j<2*k;j++)A[col][j]/=d;
+      for(let r=0;r<k;r++){
+        if(r===col)continue;
+        const f=A[r][col];
+        for(let j=0;j<2*k;j++)A[r][j]-=f*A[col][j];
+      }
+    }
+    return A.map(row=>row.slice(k));
+  }
+
+  function setupExplorer(d){
+    const weekly=d.weekly;
+    if(!weekly||weekly.length<10)return;
+    const lags=d.nw_lags||4;
+
+    function runSpec(reg,includeRally,controls){
+      const rows=weekly.filter(w=>includeRally||!w.in_rally);
+      const y=rows.map(w=>w.near_ret);
+      const X=rows.map(w=>controls?[1,w.btc_ret,w.eth_ret,w[reg]]:[1,w[reg]]);
+      const fit=olsNW(y,X,lags);
+      const idx=controls?3:1;
+      return {coef:fit.beta[idx],t:fit.t[idx],n:fit.n};
+    }
+
+    const committed=d.results.headline_lagged;
+    const check=runSpec('intensity_lag',true,true);
+    if(Math.abs(check.t-committed.t_intensity)>0.02){
+      return;
+    }
+
+    const PERM={
+      'intensity_lag|rally|controls':committed.permutation_p
+    };
+
+    const regSel=document.getElementById('pqx-reg');
+    const rallyCb=document.getElementById('pqx-rally');
+    const ctrlCb=document.getElementById('pqx-controls');
+
+    function refresh(){
+      const reg=regSel.value, rally=rallyCb.checked, ctrl=ctrlCb.checked;
+      const r=runSpec(reg,rally,ctrl);
+      document.getElementById('pqx-coef').textContent=r.coef.toFixed(1);
+      const tEl=document.getElementById('pqx-t');
+      tEl.textContent=r.t.toFixed(2);
+      tEl.style.color=Math.abs(r.t)>=1.96?'var(--amber)':'var(--green)';
+      document.getElementById('pqx-n').textContent=r.n;
+      const key=reg+'|'+(rally?'rally':'norally')+'|'+(ctrl?'controls':'nocontrols');
+      const p=PERM[key];
+      document.getElementById('pqx-p').textContent=p!==undefined?p.toFixed(2):'n/a';
+      document.getElementById('pqx-note').textContent=
+        (p!==undefined
+          ?'Permutation p is precomputed in Python for the committed headline spec. '
+          :'Permutation p is reported only for committed specs; this combination recomputes coef and t live. ')
+        +'The browser reruns the identical Newey-West regression on the 37 committed weekly rows; it matched the Python output on load.';
+    }
+
+    regSel.addEventListener('change',refresh);
+    rallyCb.addEventListener('change',refresh);
+    ctrlCb.addEventListener('change',refresh);
+    document.getElementById('pq-explorer').hidden=false;
+    refresh();
+  }
+  window.setupPriceExplorer=setupExplorer;
+})();
+
 // --- live data orchestrator ---
 (function(){
   const badge=document.getElementById('data-badge');
@@ -1118,6 +1452,13 @@ td:first-child{text-align:left;color:var(--faint)}
   })();
   (async()=>{
     try{ window.renderOnchain(await getJSON('data/onchain.json')); }catch(e){}
+  })();
+  (async()=>{
+    try{
+      const pl=await getJSON('data/price_link.json');
+      window.renderPriceLink(pl);
+      window.setupPriceExplorer(pl);
+    }catch(e){}
   })();
 })();
 </script>

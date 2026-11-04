@@ -51,7 +51,7 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 
 | Source | Coverage | Status |
 |---|---|---|
-| DefiLlama API (volume, fees, revenue) | 692 days, Nov 2024 to Nov 2026 | Complete |
+| DefiLlama API (volume, fees, revenue) | daily since Dec 2024, refreshed daily by the Action | Complete |
 | FastNEAR neardata (on-chain events) | intents.near, shard 7, dip4 standard. [Download dataset](https://huggingface.co/datasets/bomankari/near-intents-onchain-events) | Ingesting |
 | NEAR RPC (supply, block metadata) | rpc.mainnet.near.org | Complete |
 
@@ -60,10 +60,12 @@ On-chain ingestion is ongoing. DefiLlama data is the primary source for all mode
 ## How to Run
 
 ```bash
-pip install pandas pyarrow scipy numpy aiohttp
-python run_all.py               # fetch fresh DefiLlama data, run both models, publish JSONs to docs/data/
+pip install pandas pyarrow numpy scipy
+python run_all.py               # fetch fresh data, run models and analyses, publish JSONs, write the manifest
 python run_all.py --no-fetch    # same, but use the committed data instead of fetching
 ```
+
+`py-near` is needed only for the optional on-chain anchoring step (`analysis/anchor.py`), which the GitHub Action runs with repository secrets.
 
 Each model can also run standalone: `python model/forecast.py` or `python model/fee_switch.py`.
 
@@ -71,35 +73,58 @@ The dashboard fetches live DefiLlama data in the browser on every page load (vol
 
 Open `docs/index.html` locally or visit the live site linked above.
 
+## Run the Tests
+
+```bash
+pip install pytest
+pytest tests/                   # 161 tests: models, analyses, decoder, manifest
+RUN_SLOW=1 pytest tests/test_run_all_smoke.py   # full pipeline smoke test
+```
+
 ## Files
 
 ```
-run_all.py            one-command pipeline: fetch data, run models, publish JSONs
+run_all.py            one-command pipeline: fetch, model, analyze, publish, manifest
+
+.github/workflows/
+  refresh-data.yml    daily refresh: pipeline, integrity verify, on-chain anchor, commit
 
 docs/
   index.html          landing page
   dashboard.html      interactive break-even explorer
   thesis-memo.html    written investment thesis
-  data/               model JSONs served to the dashboard by GitHub Pages
+  data/               model and analysis JSONs served by GitHub Pages
 
 model/
   forecast.py         sustained-crossing volume forecast
   fee_switch.py       difference-in-differences analysis
+  issuance.py         break-even math, Decimal precision
+  scenarios.py        scenario matrix
 
 analysis/
   onchain.py          on-chain evidence from decoded dip4 events
   frequency.py        days revenue covered issuance, from price-joined history
+  manifest.py         data integrity manifest: write and verify
+  anchor.py           posts the manifest hash to NEAR mainnet (social.near)
 
 ingest/
   fastnear_ingest.py  FastNEAR on-chain event ingestion
-  watchdog.sh         process monitor with macOS notification
+  watchdog.sh         process monitor, uploads snapshots to Hugging Face
+  hf_upload.py        hashed, revision-pinned dataset upload
+
+decoder/              typed dip4 and NEP-297 event decoder
+
+tests/                161 tests across models, analyses, decoder, manifest
 
 data/
+  manifest.json       SHA-256 of every input and output
   raw/
-    daily_metrics.parquet   692-day DefiLlama history
+    daily_metrics.parquet   full DefiLlama daily history
   model/
     forecast.json           forecast output
     fee_switch.json         DiD output
+    onchain.json            on-chain evidence output
+    frequency.json          revenue-coverage output
 ```
 
 ## Data Integrity

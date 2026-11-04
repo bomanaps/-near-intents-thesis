@@ -43,9 +43,9 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 
 ## Quantitative Models
 
-**Volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon. Break-even is defined as a sustained crossing (the 30-day average volume reaching the threshold, not a one-day spike), and thresholds are recomputed at every run from the live NEAR price and current capture rate. Methods: random walk with drift on the log 30-day average (365d and 180d calibration windows, residual bootstrap) plus a 30-day block bootstrap of daily returns as a non-parametric check. An earlier GBM version was tested and rejected (double-counted Ito correction, absurd one-year dispersion), as was an unconstrained AR(1) (fitted phi near 1 makes its stationary level an unstable extrapolation); the rejection rationale ships inside the model output. As of Nov 3, 2026 the 12-month sustained-crossing probability for the 1.6%-cap threshold spans roughly 33% (conservative 365d trend) to 96% (full-history bootstrap, upper bound). The range is the answer, not any single number, and it regenerates daily.
+**Volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon. Break-even is defined as a sustained crossing (the 30-day average volume reaching the threshold, not a one-day spike), and thresholds are recomputed at every run from the live NEAR price and current capture rate. Methods: random walk with drift on the log 30-day average (365d and 180d calibration windows, residual bootstrap) plus a 30-day block bootstrap of daily returns as a non-parametric check. An earlier GBM version was tested and rejected (double-counted Ito correction, absurd one-year dispersion), as was an unconstrained AR(1) (fitted phi near 1 makes its stationary level an unstable extrapolation); the rejection rationale ships inside the model output. The 12-month sustained-crossing probability for the 1.6%-cap threshold spans a wide range across methods, from the conservative 365-day trend at the low end to the full-history bootstrap (an upper bound) at the high end, because the windows disagree about whether the recent growth regime holds. The range is the answer, not any single number; it regenerates daily, and the dashboard always shows the current values.
 
-**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot: the explicit contract fee is ~0.01 bps per side vs the 5.91 bps revenue rate implied by DefiLlama (so the capture rate is policy, not protocol), the top 3 solvers fill 86% of volume (HHI 0.33), and the volume screens clean (zero self-fills). Reruns automatically as ingestion grows.
+**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot: the explicit contract fee is ~0.01 bps per side vs the 5.91 bps revenue rate implied by DefiLlama (so the capture rate is policy, not protocol), the top three solvers fill roughly two thirds of settled volume (highly concentrated; the share is recomputed as ingestion grows), and the volume screens clean (zero self-fills). Reruns automatically as ingestion grows.
 
 **Buyback price-effect regression** (`analysis/price_link.py`): weekly NEAR returns on lagged buyback intensity with BTC/ETH market controls, Newey-West errors, and a 1,000-permutation null. Result, pre-registered as likely and published as found: no detectable price effect (t = 0.61, permutation p = 0.62, 37 weeks). The strong contemporaneous correlation (t = 4.1) vanishes under the lag, the signature of reverse causality. The thesis rests on the issuance-offset mechanism, not a price effect.
 
@@ -60,6 +60,26 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 | NEAR RPC (supply, block metadata) | rpc.mainnet.near.org | Complete |
 
 On-chain ingestion is ongoing. DefiLlama data is the primary source for all models. FastNEAR data will provide solver concentration (HHI) and token-pair breakdown once ingestion completes.
+
+## How It Fits Together
+
+```mermaid
+flowchart LR
+  DL[DefiLlama API<br>volume, fees, revenue] --> RA[run_all.py<br>8-step pipeline]
+  CP[coins.llama.fi<br>price history] --> RA
+  FN[FastNEAR neardata<br>raw blocks] --> IN[ingest + decoder<br>dip4 events]
+  IN --> OC[analysis/onchain.py]
+  IN --> HF[Hugging Face dataset<br>hash-pinned revisions]
+  RA --> J[model and analysis JSONs<br>docs/data/]
+  OC --> J
+  RA --> MF[data/manifest.json<br>SHA-256 of every input and output]
+  J --> DB[Live dashboard<br>GitHub Pages]
+  DL -. live fetch in browser .-> DB
+  MF --> AN[Daily GitHub Action<br>verify, then commit]
+  AN --> SN[NEAR mainnet anchor<br>social.near]
+```
+
+Each run rebuilds every number from raw data, hashes the results, and the daily Action refuses to commit unless the hashes verify; the manifest hash is then anchored on NEAR mainnet.
 
 ## How to Run
 
@@ -146,7 +166,7 @@ The manifest hash is also anchored on NEAR mainnet: after each verified daily re
 
 ## How This Entry Differs
 
-Several entries in this track model the same break-even identity. This is the only entry whose dashboard fetches live data in the browser on every page load; the rest of the field serves static snapshots refreshed at most daily. Beyond that, it is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects ~0.01 bps while the effective capture is 5.91 bps (capture is policy, not protocol), measured solver concentration (top 3 fill 86% of volume), a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 557). The combination of the on-chain fee measurement and the DiD result supports a fee-switch argument no aggregate-data analysis can make.
+The dashboard fetches live DefiLlama data in the browser on every load: current price, volume, and capture rate, with every panel recomputing instantly and an honest snapshot fallback when offline. Beyond that, this entry is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects ~0.01 bps while the effective capture is 5.91 bps (capture is policy, not protocol), measured solver concentration (top three solvers fill roughly two thirds of settled volume in the decoded window), a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 557). The fee-switch argument requires both the on-chain fee measurement and the causal counterfactual; this entry has both.
 
 ## Track
 

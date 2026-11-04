@@ -10,11 +10,12 @@ Steps:
   2. Run model/forecast.py   (Monte Carlo volume forecast)
   3. Run model/fee_switch.py (fee switch difference-in-differences)
   4. Run analysis/frequency.py (days revenue covered issuance)
-  5. Run analysis/onchain.py (on-chain evidence; skipped when the local
+  5. Run analysis/price_link.py (buyback intensity vs price, market controlled)
+  6. Run analysis/onchain.py (on-chain evidence; skipped when the local
      FastNEAR events file is absent, e.g. on the GitHub Actions runner)
-  6. Copy the model JSONs into docs/data/ so the GitHub Pages dashboard
+  7. Copy the model JSONs into docs/data/ so the GitHub Pages dashboard
      serves them (Pages only publishes the docs/ folder)
-  7. Write data/manifest.json with the SHA-256 of every input and output;
+  8. Write data/manifest.json with the SHA-256 of every input and output;
      verify any time with: python analysis/manifest.py verify
 
 On-chain FastNEAR ingestion runs separately (ingest/fastnear_ingest.py) and is
@@ -52,7 +53,7 @@ def fetch_series(url: str, col: str) -> pd.DataFrame:
 
 
 def fetch_daily_metrics() -> None:
-    print("[1/6] Fetching DefiLlama data for near-intents")
+    print("[1/8] Fetching DefiLlama data for near-intents")
     frames = []
     for col, url in ENDPOINTS.items():
         df = fetch_series(url, col)
@@ -123,7 +124,7 @@ def print_headline_metrics() -> None:
 
 def main() -> None:
     if "--no-fetch" in sys.argv:
-        print("[1/6] Skipping fetch (--no-fetch); using committed parquet")
+        print("[1/8] Skipping fetch (--no-fetch); using committed parquet")
     else:
         try:
             fetch_daily_metrics()
@@ -133,24 +134,25 @@ def main() -> None:
             else:
                 sys.exit(f"FAILED: fetch failed and no cached parquet exists: {e}")
 
-    run_step("[2/6]", "model/forecast.py")
-    run_step("[3/6]", "model/fee_switch.py")
+    run_step("[2/8]", "model/forecast.py")
+    run_step("[3/8]", "model/fee_switch.py")
 
-    run_step("[4/7]", "analysis/frequency.py")
+    run_step("[4/8]", "analysis/frequency.py")
+    run_step("[5/8]", "analysis/price_link.py")
 
     events = ROOT / "data" / "raw" / "fastnear" / "events.jsonl"
     if events.exists():
-        run_step("[5/7]", "analysis/onchain.py")
+        run_step("[6/8]", "analysis/onchain.py")
     else:
-        print("\n[5/7] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
+        print("\n[6/8] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
 
     docs_data = ROOT / "docs" / "data"
     docs_data.mkdir(parents=True, exist_ok=True)
     for name in ("forecast.json", "fee_switch.json"):
         shutil.copy2(ROOT / "data" / "model" / name, docs_data / name)
-    print(f"\n[6/7] Published both JSONs to {docs_data.relative_to(ROOT)}/")
+    print(f"\n[7/8] Published both JSONs to {docs_data.relative_to(ROOT)}/")
 
-    run_step("[7/7]", "analysis/manifest.py", "write")
+    run_step("[8/8]", "analysis/manifest.py", "write")
 
     print_headline_metrics()
 

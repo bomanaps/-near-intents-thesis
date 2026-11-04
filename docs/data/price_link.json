@@ -1,0 +1,421 @@
+{
+ "meta": {
+  "generated_at": "2026-11-04T18:07:14Z",
+  "question": "is NEAR's weekly return related to buyback activity, controlling for BTC and ETH",
+  "sample": "weekly since 2026-02-23 (fee switch, start of buyback revenue)",
+  "method": "OLS with Newey-West standard errors (4 lags); 1,000-permutation null for the headline t-stat",
+  "headline_regressor": "prior-week revenue / prior-week market cap (both lagged to avoid mechanical and reverse-causality bias)",
+  "expectation_preregistered": "null likely at this sample size; published regardless",
+  "caveats": [
+   "Roughly 36 weekly observations; power to detect modest effects is low",
+   "Market cap uses current total supply as a constant; error under one percent over the window",
+   "The contemporaneous specification is reported only for comparison; it is exposed to reverse causality",
+   "Association, not causation: no instrument exists for buyback timing"
+  ]
+ },
+ "results": {
+  "headline_lagged": {
+   "n_weeks": 37,
+   "coef_intensity": 357.3965,
+   "t_intensity": 0.606,
+   "coef_btc": 2.711,
+   "coef_eth": -1.326,
+   "permutation_p": 0.615
+  },
+  "contemporaneous_secondary": {
+   "n_weeks": 37,
+   "coef_intensity": 1661.0183,
+   "t_intensity": 4.109,
+   "coef_btc": 1.937,
+   "coef_eth": -0.924
+  },
+  "excluding_rally": {
+   "n_weeks": 29,
+   "coef_intensity": -741.3203,
+   "t_intensity": -1.514,
+   "coef_btc": 2.591,
+   "coef_eth": -1.392
+  },
+  "placebo_volume": {
+   "n_weeks": 37,
+   "coef_intensity": 0.2287,
+   "t_intensity": 0.749,
+   "coef_btc": 2.628,
+   "coef_eth": -1.34
+  }
+ },
+ "weekly": [
+  {
+   "date": "2026-03-01",
+   "near_ret": 0.097943,
+   "btc_ret": -0.014873,
+   "eth_ret": -0.001906,
+   "intensity": 0.0001277848,
+   "intensity_lag": 2.5345e-06,
+   "vol_intensity_lag": 0.1074463406,
+   "in_rally": false
+  },
+  {
+   "date": "2026-03-08",
+   "near_ret": 0.038449,
+   "btc_ret": 0.004042,
+   "eth_ret": 0.002396,
+   "intensity": 2.96272e-05,
+   "intensity_lag": 0.0001277848,
+   "vol_intensity_lag": 0.1929300546,
+   "in_rally": false
+  },
+  {
+   "date": "2026-03-15",
+   "near_ret": 0.104635,
+   "btc_ret": 0.057078,
+   "eth_ret": 0.06252,
+   "intensity": 4.73727e-05,
+   "intensity_lag": 2.96272e-05,
+   "vol_intensity_lag": 0.2103366073,
+   "in_rally": false
+  },
+  {
+   "date": "2026-03-22",
+   "near_ret": -0.023796,
+   "btc_ret": -0.009964,
+   "eth_ret": -0.008862,
+   "intensity": 2.5458e-05,
+   "intensity_lag": 4.73727e-05,
+   "vol_intensity_lag": 0.1656369189,
+   "in_rally": false
+  },
+  {
+   "date": "2026-03-29",
+   "near_ret": -0.125472,
+   "btc_ret": -0.061261,
+   "eth_ret": -0.041905,
+   "intensity": 1.63984e-05,
+   "intensity_lag": 2.5458e-05,
+   "vol_intensity_lag": 0.1653921797,
+   "in_rally": false
+  },
+  {
+   "date": "2026-04-05",
+   "near_ret": 0.078619,
+   "btc_ret": 0.014735,
+   "eth_ret": 0.035859,
+   "intensity": 3.63439e-05,
+   "intensity_lag": 1.63984e-05,
+   "vol_intensity_lag": 0.1058316477,
+   "in_rally": false
+  },
+  {
+   "date": "2026-04-12",
+   "near_ret": 0.110581,
+   "btc_ret": 0.050006,
+   "eth_ret": 0.059504,
+   "intensity": 3.54117e-05,
+   "intensity_lag": 3.63439e-05,
+   "vol_intensity_lag": 0.3286814056,
+   "in_rally": false
+  },
+  {
+   "date": "2026-04-19",
+   "near_ret": -0.042435,
+   "btc_ret": 0.04287,
+   "eth_ret": 0.032605,
+   "intensity": 2.79592e-05,
+   "intensity_lag": 3.54117e-05,
+   "vol_intensity_lag": 0.2897974105,
+   "in_rally": false
+  },
+  {
+   "date": "2026-04-26",
+   "near_ret": 0.041981,
+   "btc_ret": 0.062828,
+   "eth_ret": 0.045289,
+   "intensity": 2.7148e-05,
+   "intensity_lag": 2.79592e-05,
+   "vol_intensity_lag": 0.1661095244,
+   "in_rally": false
+  },
+  {
+   "date": "2026-05-03",
+   "near_ret": -0.078392,
+   "btc_ret": 0.000266,
+   "eth_ret": -0.022742,
+   "intensity": 1.40831e-05,
+   "intensity_lag": 2.7148e-05,
+   "vol_intensity_lag": 0.1610338215,
+   "in_rally": false
+  },
+  {
+   "date": "2026-05-10",
+   "near_ret": 0.188897,
+   "btc_ret": 0.043283,
+   "eth_ret": 0.02236,
+   "intensity": 3.41094e-05,
+   "intensity_lag": 1.40831e-05,
+   "vol_intensity_lag": 0.0852062345,
+   "in_rally": false
+  },
+  {
+   "date": "2026-05-17",
+   "near_ret": -0.044582,
+   "btc_ret": -0.050056,
+   "eth_ret": -0.083131,
+   "intensity": 2.04469e-05,
+   "intensity_lag": 3.41094e-05,
+   "vol_intensity_lag": 0.1648697257,
+   "in_rally": false
+  },
+  {
+   "date": "2026-05-24",
+   "near_ret": 0.493866,
+   "btc_ret": -0.014787,
+   "eth_ret": -0.038218,
+   "intensity": 6.57547e-05,
+   "intensity_lag": 2.04469e-05,
+   "vol_intensity_lag": 0.0759304737,
+   "in_rally": false
+  },
+  {
+   "date": "2026-05-31",
+   "near_ret": -0.091066,
+   "btc_ret": -0.042956,
+   "eth_ret": -0.038361,
+   "intensity": 4.48934e-05,
+   "intensity_lag": 6.57547e-05,
+   "vol_intensity_lag": 0.168644788,
+   "in_rally": false
+  },
+  {
+   "date": "2026-06-07",
+   "near_ret": -0.133298,
+   "btc_ret": -0.192088,
+   "eth_ret": -0.2524,
+   "intensity": 5.04112e-05,
+   "intensity_lag": 4.48934e-05,
+   "vol_intensity_lag": 0.0971646546,
+   "in_rally": false
+  },
+  {
+   "date": "2026-06-14",
+   "near_ret": 0.122348,
+   "btc_ret": 0.076699,
+   "eth_ret": 0.094724,
+   "intensity": 1.16573e-05,
+   "intensity_lag": 5.04112e-05,
+   "vol_intensity_lag": 0.158335851,
+   "in_rally": false
+  },
+  {
+   "date": "2026-06-21",
+   "near_ret": -0.05474,
+   "btc_ret": -0.038498,
+   "eth_ret": -0.011682,
+   "intensity": 2.16575e-05,
+   "intensity_lag": 1.16573e-05,
+   "vol_intensity_lag": 0.0641648527,
+   "in_rally": false
+  },
+  {
+   "date": "2026-06-28",
+   "near_ret": -0.114866,
+   "btc_ret": -0.053412,
+   "eth_ret": -0.078129,
+   "intensity": 1.02015e-05,
+   "intensity_lag": 2.16575e-05,
+   "vol_intensity_lag": 0.0985542965,
+   "in_rally": false
+  },
+  {
+   "date": "2026-07-05",
+   "near_ret": 0.07381,
+   "btc_ret": 0.058375,
+   "eth_ret": 0.123349,
+   "intensity": 2.26284e-05,
+   "intensity_lag": 1.02015e-05,
+   "vol_intensity_lag": 0.068430748,
+   "in_rally": false
+  },
+  {
+   "date": "2026-07-12",
+   "near_ret": -0.063612,
+   "btc_ret": 0.003143,
+   "eth_ret": 0.012307,
+   "intensity": 1.95576e-05,
+   "intensity_lag": 2.26284e-05,
+   "vol_intensity_lag": 0.1475239733,
+   "in_rally": false
+  },
+  {
+   "date": "2026-07-19",
+   "near_ret": 0.022477,
+   "btc_ret": 0.016288,
+   "eth_ret": 0.019399,
+   "intensity": 2.904e-05,
+   "intensity_lag": 1.95576e-05,
+   "vol_intensity_lag": 0.0835476483,
+   "in_rally": false
+  },
+  {
+   "date": "2026-07-26",
+   "near_ret": -0.075917,
+   "btc_ret": 0.008243,
+   "eth_ret": 0.059036,
+   "intensity": 3.68133e-05,
+   "intensity_lag": 2.904e-05,
+   "vol_intensity_lag": 0.1281275755,
+   "in_rally": false
+  },
+  {
+   "date": "2026-08-02",
+   "near_ret": -0.068629,
+   "btc_ret": -0.0401,
+   "eth_ret": -0.057758,
+   "intensity": 2.1455e-05,
+   "intensity_lag": 3.68133e-05,
+   "vol_intensity_lag": 0.1253911107,
+   "in_rally": false
+  },
+  {
+   "date": "2026-08-09",
+   "near_ret": -0.03739,
+   "btc_ret": 0.033769,
+   "eth_ret": 0.038417,
+   "intensity": 4.1227e-05,
+   "intensity_lag": 2.1455e-05,
+   "vol_intensity_lag": 0.1075302226,
+   "in_rally": false
+  },
+  {
+   "date": "2026-08-16",
+   "near_ret": 0.003525,
+   "btc_ret": -0.029486,
+   "eth_ret": -0.01817,
+   "intensity": 4.177e-05,
+   "intensity_lag": 4.1227e-05,
+   "vol_intensity_lag": 0.1828420701,
+   "in_rally": false
+  },
+  {
+   "date": "2026-08-23",
+   "near_ret": 0.150134,
+   "btc_ret": 0.20123,
+   "eth_ret": 0.253395,
+   "intensity": 0.0001340327,
+   "intensity_lag": 4.177e-05,
+   "vol_intensity_lag": 0.2167500462,
+   "in_rally": false
+  },
+  {
+   "date": "2026-08-30",
+   "near_ret": -0.005521,
+   "btc_ret": 0.014734,
+   "eth_ret": 0.013801,
+   "intensity": 8.38855e-05,
+   "intensity_lag": 0.0001340327,
+   "vol_intensity_lag": 0.4064641589,
+   "in_rally": false
+  },
+  {
+   "date": "2026-09-06",
+   "near_ret": 0.159732,
+   "btc_ret": 0.020204,
+   "eth_ret": 0.009282,
+   "intensity": 0.0001425986,
+   "intensity_lag": 8.38855e-05,
+   "vol_intensity_lag": 0.3193200294,
+   "in_rally": true
+  },
+  {
+   "date": "2026-09-13",
+   "near_ret": 0.078343,
+   "btc_ret": -0.032598,
+   "eth_ret": 0.018087,
+   "intensity": 7.59184e-05,
+   "intensity_lag": 0.0001425986,
+   "vol_intensity_lag": 0.4166465922,
+   "in_rally": true
+  },
+  {
+   "date": "2026-09-20",
+   "near_ret": 0.414181,
+   "btc_ret": 0.050166,
+   "eth_ret": 0.041401,
+   "intensity": 0.0001437686,
+   "intensity_lag": 7.59184e-05,
+   "vol_intensity_lag": 0.3169984654,
+   "in_rally": true
+  },
+  {
+   "date": "2026-09-27",
+   "near_ret": 0.339388,
+   "btc_ret": 0.038402,
+   "eth_ret": 0.023875,
+   "intensity": 0.0001291662,
+   "intensity_lag": 0.0001437686,
+   "vol_intensity_lag": 0.3747229001,
+   "in_rally": true
+  },
+  {
+   "date": "2026-10-04",
+   "near_ret": -0.041764,
+   "btc_ret": 0.003855,
+   "eth_ret": -0.003238,
+   "intensity": 8.20872e-05,
+   "intensity_lag": 0.0001291662,
+   "vol_intensity_lag": 0.2724210265,
+   "in_rally": true
+  },
+  {
+   "date": "2026-10-11",
+   "near_ret": 0.091198,
+   "btc_ret": -0.02177,
+   "eth_ret": -0.07037,
+   "intensity": 9.01501e-05,
+   "intensity_lag": 8.20872e-05,
+   "vol_intensity_lag": 0.1432715298,
+   "in_rally": true
+  },
+  {
+   "date": "2026-10-18",
+   "near_ret": -0.085687,
+   "btc_ret": -0.018373,
+   "eth_ret": -0.042418,
+   "intensity": 7.06597e-05,
+   "intensity_lag": 9.01501e-05,
+   "vol_intensity_lag": 0.1819425743,
+   "in_rally": true
+  },
+  {
+   "date": "2026-10-25",
+   "near_ret": -0.077095,
+   "btc_ret": -0.00737,
+   "eth_ret": -0.01839,
+   "intensity": 6.31264e-05,
+   "intensity_lag": 7.06597e-05,
+   "vol_intensity_lag": 0.1264093292,
+   "in_rally": true
+  },
+  {
+   "date": "2026-11-01",
+   "near_ret": -0.014549,
+   "btc_ret": -0.042164,
+   "eth_ret": -0.044444,
+   "intensity": 7.80052e-05,
+   "intensity_lag": 6.31264e-05,
+   "vol_intensity_lag": 0.1216406371,
+   "in_rally": false
+  },
+  {
+   "date": "2026-11-08",
+   "near_ret": -0.137132,
+   "btc_ret": -0.009919,
+   "eth_ret": -0.001735,
+   "intensity": 1.29948e-05,
+   "intensity_lag": 7.80052e-05,
+   "vol_intensity_lag": 0.1489314036,
+   "in_rally": false
+  }
+ ],
+ "nw_lags": 4,
+ "interpretation": "Lagged buyback intensity shows t = 0.606 with permutation p = 0.615: no detectable price effect of buyback intensity after market controls. With this sample size that is the expected result, and it is published as found. The thesis's break-even mechanism does not depend on a short-run price effect."
+}

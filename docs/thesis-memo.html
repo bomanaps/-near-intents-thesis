@@ -417,7 +417,7 @@ em { color: var(--text-dim); }
   </p>
   <p>
     <strong>Second, demand did not flinch when fees switched on.</strong> The
-    difference-in-differences analysis of the February 23, 2026 fee activation (Section 9) finds
+    difference-in-differences analysis of the February 23, 2026 fee activation (Section 10) finds
     no statistically significant volume impact relative to three aggregator controls (ATT 1.10x,
     CI 0.97 to 1.25). Within the power of this test, Intents demand tolerated the introduction of
     fees.
@@ -430,6 +430,28 @@ em { color: var(--text-dim); }
     (1.6x current volume, versus 2.9x without it) and $317M/day at the current cap. The offset
     ratio at today's volume rises to roughly 64% at the floor. No competing analysis can make
     this argument, because it requires both the on-chain fee measurement and the counterfactual.
+  </p>
+
+  <h2>9. The Price Question</h2>
+
+  <p>
+    Does buyback activity move NEAR's price? This memo's break-even mechanism does not require
+    that it does, but it is the investor's last question and deserves a direct answer. A weekly
+    regression of NEAR returns on buyback intensity (prior-week revenue scaled by prior-week
+    market cap, lagged to avoid reverse causality and mechanical price contamination), controlling
+    for BTC and ETH returns with Newey-West errors, finds <strong>no detectable effect</strong>:
+    t = 0.61, permutation p = 0.62 across 1,000 reshuffles, 37 weeks since the fee switch. The
+    expectation of a null at this sample size was stated before running, and the result is
+    published as found.
+  </p>
+  <p>
+    The diagnostic pattern is itself informative. The contemporaneous specification shows a
+    strong association (t = 4.1) that vanishes under the lag and flips sign when the September
+    to October rally is excluded: the signature of price driving volume and revenue within the
+    week, not buybacks driving price. Public analyses reporting a weak positive link are
+    consistent with this reading. At current scale, buybacks are a supply-side accounting flow,
+    not a price catalyst; the thesis stands on the issuance-offset mechanism, not on a
+    short-run price effect.
   </p>
 
   <div class="verdict-box">
@@ -448,7 +470,7 @@ em { color: var(--text-dim); }
   </div>
 
   <section class="model-limits">
-    <h2>9. Quantitative Model Limitations</h2>
+    <h2>10. Quantitative Model Limitations</h2>
 
     <h3>Volume Forecast</h3>
     <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">

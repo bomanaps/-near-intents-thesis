@@ -36,10 +36,12 @@ TRACKED = [
     "data/model/fee_switch.json",
     "data/model/onchain.json",
     "data/model/frequency.json",
+    "data/model/price_link.json",
     "docs/data/forecast.json",
     "docs/data/fee_switch.json",
     "docs/data/onchain.json",
     "docs/data/frequency.json",
+    "docs/data/price_link.json",
 ]
 
 SOURCES = {

@@ -240,6 +240,14 @@ em { color: var(--text-dim); }
     calculations. A model built on the gross revenue.near.org figure would overstate the effective
     capture rate by nearly 2x and produce a falsely optimistic break-even threshold.
   </p>
+  <p>
+    The murkiness is not unique to this analysis: independent public analyses of the same wallets
+    disagree with each other about how much of DefiLlama's reported revenue actually reaches the
+    buyback addresses, with published estimates ranging from roughly 69% to 97%. That such a basic
+    quantity is contested reinforces this memo's central finding that the capture mechanism is
+    off-contract policy rather than enforced protocol, and it is the strongest argument for
+    moving the take on-chain.
+  </p>
 
   <h3>On-Chain Evidence: What the Settlement Contract Shows</h3>
 
@@ -256,9 +264,10 @@ em { color: var(--text-dim); }
     arrangement into an enforced one.
   </p>
   <p>
-    The same events quantify the concentration risk flagged in Section 7. The top three solver
-    accounts fill <strong>86% of settled volume</strong> (Herfindahl index 0.33, 17 active solver
-    accounts in the window). Concentration this high cuts both ways: it means a solver exit is a
+    The same events quantify the concentration risk flagged in Section 7. In the initial window
+    the top three solver accounts filled <strong>86% of settled volume</strong> (Herfindahl index
+    0.33, 17 active solver accounts); as ingestion coverage grows the live figure on the dashboard
+    has eased toward three quarters, still highly concentrated. Concentration this high cuts both ways: it means a solver exit is a
     material volume event, and it means solvers hold real bargaining power against any attempt to
     raise the protocol take. Volume quality, however, screens clean: zero bilateral self-fills in
     the window, and non-solver round-trip activity of about 8%, consistent with organic flow
@@ -292,9 +301,9 @@ em { color: var(--text-dim); }
     possible ramp start is <strong>mid February 2027</strong> (one quarter of grace, instant
     validator adoption). This memo's base case assumes <strong>April 2027</strong>, allowing a realistic
     adoption lag, with a late case of July 2027. Under the base case the 1.6% floor arrives around
-    <strong>April 2029</strong>, not late 2028. Most public commentary, and several competing
-    analyses, model the ramp from the vote date; that reading has no basis in the proposal text
-    and overstates the near-term offset trajectory. The dashboard exposes the ramp start as an
+    <strong>April 2029</strong>, not late 2028. Much public commentary models the ramp from the
+    vote date; that reading has no basis in the proposal text and overstates the near-term offset
+    trajectory. The dashboard exposes the ramp start as an
     explicit assumption, including the as-voted date as a labeled counterfactual. The vote passed
     3,287,729 veNEAR for, 0 against, across 36 votes.
   </p>

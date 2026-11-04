@@ -135,6 +135,8 @@ Every number traces to a hashed input. `data/manifest.json` records the SHA-256 
 python analysis/manifest.py verify
 ```
 
+Every headline claim is mapped to the code that computes it, the test that guards it, and an independent check in [docs/claims.md](docs/claims.md).
+
 The manifest hash is also anchored on NEAR mainnet: after each verified daily refresh, the Action posts the manifest's SHA-256 to NEAR Social DB under `bomanaps.near/thesis_manifest` (contract `social.near`). The current record is readable on [near.social](https://near.social) or via RPC, and every historical anchor is permanent in the [account's transaction history](https://nearblocks.io/address/bomanaps.near). If the repo's data history were ever rewritten, the on-chain hashes would expose it.
 
 ## How This Entry Differs

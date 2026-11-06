@@ -1,9 +1,9 @@
 {
  "meta": {
-  "generated_at": "2026-11-05T12:58:12Z",
+  "generated_at": "2026-11-06T12:45:41Z",
   "question": "days on which daily protocol revenue covered full daily issuance",
-  "matched_days": 559,
-  "parquet_days": 695,
+  "matched_days": 560,
+  "parquet_days": 696,
   "supply_assumption": 1309640573,
   "price_source": "coins.llama.fi chart, coingecko:near, daily closes",
   "caveats": [

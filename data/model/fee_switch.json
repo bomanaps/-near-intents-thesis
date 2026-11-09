@@ -25,7 +25,7 @@
       "post_days": 91,
       "log_growth": -0.21207375179756854,
       "growth_ratio": 0.8089050371659428,
-      "pre_slope": 0.0029650702849362545
+      "pre_slope": 0.0029650702849362835
     },
     "1inch": {
       "pre_avg": 183788997.02222222,
@@ -59,7 +59,7 @@
     "att_log": 0.10151843771899266,
     "att_ratio": 1.106850325999078,
     "bootstrap_ci_95": {
-      "att_ratio_lo": 0.973303341317096,
+      "att_ratio_lo": 0.9733033413170958,
       "att_ratio_hi": 1.2548171274262456,
       "att_log_lo": -0.027059486577984015,
       "att_log_hi": 0.2269898467680456,
@@ -80,22 +80,22 @@
     "note": "NEAR ATT ranks 3/4 among permutations (percentile=75%). NEAR is not an outlier; consistent with no treatment effect."
   },
   "parallel_trends": {
-    "near_slope": 0.0029650702849362545,
+    "near_slope": 0.0029650702849362835,
     "control_slopes": {
       "1inch": -0.0019634405792796875,
       "paraswap": 0.0001631495825188723,
       "jupiter": -0.00415622633118451
     },
     "mean_control_slope": -0.001985505775981775,
-    "slope_diff_near_vs_controls": 0.004950576060918029,
+    "slope_diff_near_vs_controls": 0.004950576060918059,
     "assessment": "Pre-period slopes similar; parallel trends assumption plausible"
   },
   "full_history_context": {
     "pre_avg_usd": 30592183.202272728,
-    "post_avg_usd": 90919766.39534883,
+    "post_avg_usd": 90907232.85714285,
     "pre_days": 440,
-    "post_days": 258,
-    "growth_ratio": 2.971993394331997,
+    "post_days": 259,
+    "growth_ratio": 2.9715836969225933,
     "note": "Full pre/post split includes NEAR Intents early growth phase (Dec 2024 onward); inflates apparent post-switch growth"
   }
 }

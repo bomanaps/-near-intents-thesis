@@ -8,3 +8,4 @@ data/raw/fastnear/
 
 # cached control data fetched at runtime
 data/raw/controls/
+.DS_Store

@@ -14,7 +14,13 @@ Credentials come from the environment and never appear in the repository:
   NEAR_ACCOUNT_ID    the signing account (e.g. bomanaps.near)
   NEAR_PRIVATE_KEY   its ed25519 private key
 
-Usage: python analysis/anchor.py
+Usage:
+  python3 analysis/anchor.py
+  python3 analysis/anchor.py <file> <social_key>
+
+With no arguments it anchors data/manifest.json under the key thesis_manifest.
+With a file and key it anchors that file's SHA-256 under that key instead,
+used once to freeze PREDICTIONS.md under thesis_predictions.
 """
 
 from __future__ import annotations
@@ -43,25 +49,29 @@ async def anchor() -> None:
     private_key = os.environ.get("NEAR_PRIVATE_KEY")
     if not account_id or not private_key:
         sys.exit("NEAR_ACCOUNT_ID and NEAR_PRIVATE_KEY must be set in the environment")
-    if not MANIFEST.exists():
-        sys.exit("data/manifest.json not found; run the pipeline first")
 
-    manifest_bytes = MANIFEST.read_bytes()
-    digest = hashlib.sha256(manifest_bytes).hexdigest()
-    generated_at = json.loads(manifest_bytes)["generated_at"]
+    if len(sys.argv) >= 3:
+        target = ROOT / sys.argv[1]
+        social_key = sys.argv[2]
+    else:
+        target = MANIFEST
+        social_key = "thesis_manifest"
+    if not target.exists():
+        sys.exit(f"{target} not found")
 
-    record = {
-        "data": {
-            account_id: {
-                "thesis_manifest": {
-                    "sha256": digest,
-                    "manifest_generated_at": generated_at,
-                    "anchored_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                    "repo": REPO,
-                }
-            }
-        }
+    target_bytes = target.read_bytes()
+    digest = hashlib.sha256(target_bytes).hexdigest()
+    payload = {
+        "sha256": digest,
+        "file": target.name,
+        "bytes": str(len(target_bytes)),
+        "anchored_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "repo": REPO,
     }
+    if target == MANIFEST:
+        payload["manifest_generated_at"] = json.loads(target_bytes)["generated_at"]
+
+    record = {"data": {account_id: {social_key: payload}}}
 
     acc = Account(account_id, private_key, rpc_addr=RPC)
     await acc.startup()
@@ -81,7 +91,7 @@ async def anchor() -> None:
         sys.exit(f"anchor transaction failed on chain: {err}")
 
     tx_hash = getattr(result.transaction, "hash", None)
-    print(f"anchored manifest sha256 {digest}")
+    print(f"anchored {target.name} sha256 {digest} under {social_key}")
     print(f"account: {account_id}, contract: {SOCIAL_CONTRACT}")
     print(f"transaction: https://nearblocks.io/txns/{tx_hash}")
 

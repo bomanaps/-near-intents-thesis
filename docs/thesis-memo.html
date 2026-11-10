@@ -241,12 +241,9 @@ em { color: var(--text-dim); }
     capture rate by nearly 2x and produce a falsely optimistic break-even threshold.
   </p>
   <p>
-    The murkiness is not unique to this analysis: independent public analyses of the same wallets
-    disagree with each other about how much of DefiLlama's reported revenue actually reaches the
-    buyback addresses, with published estimates ranging from roughly 69% to 97%. That such a basic
-    quantity is contested reinforces this memo's central finding that the capture mechanism is
-    off-contract policy rather than enforced protocol, and it is the strongest argument for
-    moving the take on-chain.
+    That such a basic quantity depends on which definition of revenue one adopts reinforces this
+    memo's central finding: the capture mechanism is off-contract policy rather than enforced
+    protocol, and that is the strongest argument for moving the take on-chain.
   </p>
 
   <h3>On-Chain Evidence: What the Settlement Contract Shows</h3>
@@ -274,8 +271,10 @@ em { color: var(--text-dim); }
     rather than wash trading.
   </p>
   <p>
-    These figures come from a short window of one trading day and carry time-of-day bias; they are
-    structure measurements, not averages. The ingestion pipeline continues to run, and every
+    These figures come from a window that has grown to roughly two chain days and are recomputed
+    as ingestion extends; they are structure measurements, not long-run averages. They describe
+    the public side of the protocol only: a confidential settlement path, quantified under Key
+    Risks, already carries the majority of stablecoin value. The ingestion pipeline continues to run, and every
     figure in this subsection regenerates from the raw events with one command as coverage grows.
   </p>
 
@@ -394,6 +393,18 @@ em { color: var(--text-dim); }
     Conversely, a price rally to $8+ cuts the required volume in half.
   </p>
   <p>
+    <strong>Visibility risk: the flow is going private.</strong>
+    Decoded transfer events show a confidential settlement path, routed through a treasury
+    account inside <em>intents.near</em>, already carrying roughly 62% of stablecoin value on
+    October 28 and 71% on October 29, measured against public bilateral fills. Value on that
+    path settles outside the public event stream. Two consequences follow. First, chain-visible
+    evidence, including this memo's own on-chain measurements, describes a shrinking slice of
+    total protocol activity, and that boundary is stated wherever those numbers appear. Second,
+    fee and revenue reporting for the private path cannot be independently verified from public
+    data, which deepens the capture-is-policy finding: an investor cannot audit what they cannot
+    see.
+  </p>
+  <p>
     <strong>HSP-029 reversal or non-adoption.</strong>
     The ramp has not activated: ratification steps and validator adoption are still ahead, and a
     proposal that is never adopted by validators never binds. Even after activation, a future
@@ -448,8 +459,7 @@ em { color: var(--text-dim); }
     The diagnostic pattern is itself informative. The contemporaneous specification shows a
     strong association (t = 4.1) that vanishes under the lag and flips sign when the September
     to October rally is excluded: the signature of price driving volume and revenue within the
-    week, not buybacks driving price. Public analyses reporting a weak positive link are
-    consistent with this reading. At current scale, buybacks are a supply-side accounting flow,
+    week, not buybacks driving price. At current scale, buybacks are a supply-side accounting flow,
     not a price catalyst; the thesis stands on the issuance-offset mechanism, not on a
     short-run price effect.
   </p>

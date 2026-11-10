@@ -31,6 +31,7 @@ MANIFEST = ROOT / "data" / "manifest.json"
 UPLOAD_RECORD = ROOT / "data" / "raw" / "fastnear" / "last_upload.json"
 
 TRACKED = [
+    "PREDICTIONS.md",
     "data/raw/daily_metrics.parquet",
     "data/model/forecast.json",
     "data/model/fee_switch.json",

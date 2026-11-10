@@ -21,7 +21,7 @@ NEAR Intents is a real and fast growing revenue engine, but at current scale its
 3. Buybacks do not detectably move the price. A pre-registered regression of weekly NEAR returns on lagged buyback intensity with BTC and ETH controls finds nothing (t = 0.61, permutation p = 0.62, 37 weeks). The strong naive correlation (t = 4.11) is reverse causality and disappears when lagged.
 4. Solver concentration is high. The top three solvers fill roughly two thirds of settled volume in the decoded window, which gives them bargaining power against any attempt to raise the protocol take, and makes volume sensitive to a single exit.
 5. HSP-029 is not active. The vote passed November 2, but per the proposal text the ramp starts one full quarter after ratification and validators must adopt the upgrade; the realistic floor arrives around 2029, not 2028, and a Security Council veto window runs to November 16.
-6. Revenue accounting is contested. Independent public analyses of the same buyback wallets disagree with each other (published estimates from 69% to 97% of reported revenue reaching the wallets), which confirms how soft the current arrangement is.
+6. Revenue accounting is definition-dependent. How much of the reported revenue reaches the buyback wallets changes materially with the definition of revenue applied, which confirms how soft the current arrangement is.
 
 ## What Would Change My Mind
 

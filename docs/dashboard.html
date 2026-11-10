@@ -314,6 +314,7 @@ td:first-child{text-align:left;color:var(--faint)}
       </div>
     </div>
     <div style="margin-bottom:14px" id="oc-corridors"></div>
+    <div style="margin-bottom:14px" id="oc-confidential"></div>
     <div style="background:var(--surf2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6" id="oc-finding">
       The settlement contract collects roughly 0.01 bps per side, hundreds of times below the 5.91 bps revenue rate the break-even model uses. Protocol revenue is therefore generated off the settlement contract, through application-layer fees or solver arrangements. The capture rate is policy, not protocol: it can be changed without governance, in either direction. This strengthens the case that a contract-enforced fee switch is the decisive catalyst.
     </div>
@@ -1116,7 +1117,11 @@ const TT=(function(){
     },
     explicit_fee:{n_samples:2806,median_bps:0.01,volume_weighted_mean_bps:0.0102,defillama_implied_revenue_bps_30d:5.91},
     solvers:{hhi:0.3256,top3_share:0.8636,distinct_solver_accounts:17},
-    wash_screen:{bilateral_self_fills:0,user_round_trip_share:0.0833},
+    wash_screen:{bilateral_self_fills:0,user_round_trip_share:0.1619},
+    confidential_flow:{by_chain_day:[
+      {est_date_utc:'2026-10-28',treasury_share:0.621},
+      {est_date_utc:'2026-10-29',treasury_share:0.714}
+    ]},
     corridors:[
       {pair:'USDC.eth / USDT.tron',share:0.1992},
       {pair:'USDT.eth / USDT.tron',share:0.1154},
@@ -1164,6 +1169,38 @@ const TT=(function(){
       row.appendChild(lbl);row.appendChild(track);row.appendChild(pct);
       cw.appendChild(row);
     });
+
+    const cf=d.confidential_flow;
+    const cfw=document.getElementById('oc-confidential');
+    cfw.innerHTML='';
+    if(cf&&cf.by_chain_day&&cf.by_chain_day.length){
+      const title=document.createElement('div');
+      title.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:8px";
+      title.textContent='Confidential flow: value settling outside the public event stream';
+      cfw.appendChild(title);
+      cf.by_chain_day.forEach(row=>{
+        const line=document.createElement('div');
+        line.style.cssText='display:flex;align-items:center;gap:10px;margin-bottom:5px';
+        const lbl=document.createElement('span');
+        lbl.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--text);width:120px;flex-shrink:0";
+        lbl.textContent=row.est_date_utc+' (est)';
+        const track=document.createElement('div');
+        track.style.cssText='flex:1;height:8px;background:var(--surf2);border-radius:4px;overflow:hidden';
+        const bar=document.createElement('div');
+        bar.style.cssText='height:100%;background:var(--amber);opacity:.7;border-radius:4px';
+        bar.style.width=(row.treasury_share*100)+'%';
+        track.appendChild(bar);
+        const pct=document.createElement('span');
+        pct.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--amber);width:150px;text-align:right";
+        pct.textContent=(row.treasury_share*100).toFixed(1)+'% of stable USD';
+        line.appendChild(lbl);line.appendChild(track);line.appendChild(pct);
+        cfw.appendChild(line);
+      });
+      const note=document.createElement('div');
+      note.style.cssText='font-size:10px;color:var(--dim);margin-top:6px;line-height:1.5';
+      note.textContent='Stablecoin USD entering the confidential treasury vs public bilateral fills, per approximate chain day. The public fills measured elsewhere on this panel are a shrinking slice of total protocol activity.';
+      cfw.appendChild(note);
+    }
 
     const ul=document.getElementById('oc-caveats');
     ul.innerHTML='';

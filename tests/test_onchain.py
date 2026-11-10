@@ -7,10 +7,12 @@ import pytest
 
 from analysis.onchain import (
     STABLES,
+    confidential_share,
     entry_fee_bps,
     entry_usd,
     leg_usd,
     pick_solver,
+    stable_usd,
     token_symbol,
 )
 
@@ -55,6 +57,19 @@ class TestFeeBps:
     def test_fee_token_absent_from_diff_is_skipped(self):
         entry = {"diff": {USDT_ETH: "-100"}, "fees_collected": {BTC: "5"}}
         assert entry_fee_bps(entry) == []
+
+
+class TestConfidentialFlow:
+    def test_stable_usd_picks_largest_stable_leg(self):
+        tokens = {USDT_ETH: "4927000", BTC: "99999999"}
+        assert stable_usd(tokens) == pytest.approx(4.927)
+        assert stable_usd({BTC: "5"}) == 0.0
+        assert stable_usd(None) == 0.0
+
+    def test_share_arithmetic(self):
+        assert confidential_share(62.0, 38.0) == pytest.approx(0.62)
+        assert confidential_share(0.0, 0.0) is None
+        assert confidential_share(5.0, 0.0) == pytest.approx(1.0)
 
 
 class TestSolverPick:

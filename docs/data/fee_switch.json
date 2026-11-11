@@ -92,10 +92,10 @@
   },
   "full_history_context": {
     "pre_avg_usd": 30592183.202272728,
-    "post_avg_usd": 91196948.49615385,
+    "post_avg_usd": 91432802.73180076,
     "pre_days": 440,
-    "post_days": 260,
-    "growth_ratio": 2.9810539474468993,
+    "post_days": 261,
+    "growth_ratio": 2.988763571637088,
     "note": "Full pre/post split includes NEAR Intents early growth phase (Dec 2024 onward); inflates apparent post-switch growth"
   }
 }

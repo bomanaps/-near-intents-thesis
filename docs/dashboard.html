@@ -316,7 +316,7 @@ td:first-child{text-align:left;color:var(--faint)}
     <div style="margin-bottom:14px" id="oc-corridors"></div>
     <div style="margin-bottom:14px" id="oc-confidential"></div>
     <div style="background:var(--surf2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6" id="oc-finding">
-      The settlement contract collects roughly 0.01 bps per side, hundreds of times below the 5.91 bps revenue rate the break-even model uses. Protocol revenue is therefore generated off the settlement contract, through application-layer fees or solver arrangements. The capture rate is policy, not protocol: it can be changed without governance, in either direction. This strengthens the case that a contract-enforced fee switch is the decisive catalyst.
+      The settlement contract collects roughly 0.01 bps per fill side, hundreds of times below the revenue rate the break-even model uses. Protocol revenue is therefore generated off the settlement contract, through application-layer fees or solver arrangements. The capture rate is policy, not protocol: it can change without governance, in either direction, and it does.
     </div>
     <div class="caveat-box">
       <div class="caveat-title">Coverage and limitations</div>
@@ -1183,6 +1183,9 @@ const TT=(function(){
       cw.appendChild(row);
     });
 
+    if(d.explicit_fee&&d.explicit_fee.finding){
+      document.getElementById('oc-finding').textContent=d.explicit_fee.finding;
+    }
     const cf=d.confidential_flow;
     const cfw=document.getElementById('oc-confidential');
     cfw.innerHTML='';
@@ -1211,7 +1214,7 @@ const TT=(function(){
       });
       const note=document.createElement('div');
       note.style.cssText='font-size:10px;color:var(--dim);margin-top:6px;line-height:1.5';
-      note.textContent='Stablecoin USD entering the confidential treasury vs public bilateral fills, per approximate chain day. The public fills measured elsewhere on this panel are a shrinking slice of total protocol activity.';
+      note.textContent='Stablecoin USD entering the confidential treasury vs public settlement, counted once per receipt on both sides, per approximate chain day. The treasury pays out almost exactly what it receives, so this measures where activity is routed rather than value captured.';
       cfw.appendChild(note);
     }
 

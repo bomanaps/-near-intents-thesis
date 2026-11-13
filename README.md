@@ -11,7 +11,9 @@
 | Measured contract fee | **0.01 bps** per fill side, from over 51,000 measured fill sides |
 | Days revenue ever covered issuance | **6 of 567** priced days |
 
-[Demo video](docs/demo.mp4) · [Live dashboard](https://bomanaps.github.io/-near-intents-thesis/dashboard.html) · [Thesis memo](https://bomanaps.github.io/-near-intents-thesis/thesis-memo.html) · [THESIS.md](THESIS.md) · [Frozen predictions](PREDICTIONS.md) · [Claims and proofs](docs/claims.md) · [For AI reviewers](CLAUDE.md)
+[![Watch the 3 minute demo](docs/thumbnail.png)](https://youtu.be/8LpegeyFnlA)
+
+[Demo video](https://youtu.be/8LpegeyFnlA) · [Live dashboard](https://bomanaps.github.io/-near-intents-thesis/dashboard.html) · [Thesis memo](https://bomanaps.github.io/-near-intents-thesis/thesis-memo.html) · [THESIS.md](THESIS.md) · [Frozen predictions](PREDICTIONS.md) · [Claims and proofs](docs/claims.md) · [For AI reviewers](CLAUDE.md)
 
 Built for the NEAR Hackathon 2026, Investment Thesis track. Figures below are as of November 13, 2026 with data through November 12; the dashboard fetches current data on every page load.
 

@@ -1,4 +1,6 @@
-# NEAR Intents Investment Thesis
+# Basanos
+
+**A touchstone for the NEAR Intents investment case.**
 
 **At today's volume, NEAR Intents buybacks cover 19.7% of NEAR's token issuance. Reaching break-even needs 3.3x volume growth, or a fee switch enforced by the contract. The settlement contract charges 0.01 bps per fill; the roughly 5 bps that actually funds buybacks is set off-chain, and its 30-day average has swung between 1.9 and 6.0 bps over the last four months.**
 
@@ -12,6 +14,13 @@
 [Demo video](docs/demo.mp4) · [Live dashboard](https://bomanaps.github.io/-near-intents-thesis/dashboard.html) · [Thesis memo](https://bomanaps.github.io/-near-intents-thesis/thesis-memo.html) · [THESIS.md](THESIS.md) · [Frozen predictions](PREDICTIONS.md) · [Claims and proofs](docs/claims.md) · [For AI reviewers](CLAUDE.md)
 
 Built for the NEAR Hackathon 2026, Investment Thesis track. Figures below are as of November 13, 2026 with data through November 12; the dashboard fetches current data on every page load.
+
+## The name
+
+> **βάσανος** &#183; *bá·sa·nos* &#183; Greek
+> The touchstone. Rub gold against it and the streak it leaves tells you what the gold really is.
+
+Basanos rubs NEAR's reported numbers against the contract that produced them. The streak is 0.01 basis points.
 
 ## Key Findings
 
@@ -44,7 +53,9 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 
 **Volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon. Break-even is defined as a sustained crossing (the 30-day average volume reaching the threshold, not a one-day spike), and thresholds are recomputed at every run from the live NEAR price and current capture rate. Methods: random walk with drift on the log 30-day average (365d and 180d calibration windows, residual bootstrap) plus a 30-day block bootstrap of daily returns as a non-parametric check. An earlier GBM version was tested and rejected (double-counted Ito correction, absurd one-year dispersion), as was an unconstrained AR(1) (fitted phi near 1 makes its stationary level an unstable extrapolation); the rejection rationale ships inside the model output. The 12-month sustained-crossing probability for the 1.6%-cap threshold spans a wide range across methods, from the conservative 365-day trend at the low end to the full-history bootstrap (an upper bound) at the high end, because the windows disagree about whether the recent growth regime holds. The range is the answer, not any single number; it regenerates daily, and the dashboard always shows the current values.
 
-**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot. Across more than 20,000 decoded settlements the explicit contract fee is 0.01 bps per fill side, measured over 51,000 fill sides, against the 5.03 bps revenue rate implied by DefiLlama; the capture rate is therefore policy rather than protocol. The top three solver accounts fill roughly two thirds of settled volume. It also measures a confidential settlement path, which received 57%, 63% and 71% of stablecoin value across the three chain days fully covered so far, counted once per settlement on both sides; that account pays out almost exactly what it takes in, so this measures where activity is routed rather than value captured, but either way a large share of settlement is leaving the public event stream. Every figure is recomputed as ingestion extends.
+**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot. Across more than 20,000 decoded settlements the explicit contract fee is 0.01 bps per fill side, measured over 51,000 fill sides, against the 5.03 bps revenue rate implied by DefiLlama; the capture rate is therefore policy rather than protocol. The top three solver accounts fill roughly two thirds of settled volume. It also measures a confidential settlement path, which received 57%, 63% and 71% of stablecoin value across the three chain days fully covered so far, counted once per settlement on both sides; that account pays out almost exactly what it takes in, so this measures where activity is routed rather than value captured, but either way a large share of settlement is leaving the public event stream. Ingestion was stopped on November 13, 2026 so these figures and the published dataset describe the same bytes.
+
+**Confidential treasury float** (`analysis/treasury.py`): the event path above can only describe the days it has ingested, so the same account is measured a second way, from contract state. Balances are exact integer token units, and state is addressable at any past block, so one `mt_batch_balance_of` view call per UTC day against an archival RPC reconstructs the whole history at once: 268 consecutive days, February 18 to November 12, 2026, each row carrying the block height and block timestamp it was read at. The float grew from zero to $34.9M in stablecoins, with a median of $6.2M across the period, while the mean absolute day-over-day change is $0.45M. At the gross routing measured on the decoded days, the current float is 1.21 days of flow, which is the quantitative form of the routing claim: a pool that turns over about once a day is working capital, not a sink. Day-over-day change is only a lower bound on flow, since value routed in and out within one day leaves the balance unchanged. No price series is used and no event is replayed; stablecoin units are summed at face value, which the output states rather than assumes silently.
 
 **Buyback price-effect regression** (`analysis/price_link.py`): weekly NEAR returns on lagged buyback intensity with BTC/ETH market controls, Newey-West errors, and a 1,000-permutation null. Result, pre-registered as likely and published as found: no detectable price effect (t = 0.59, permutation p = 0.67, 38 weeks). The strong contemporaneous correlation (t = 3.5) vanishes under the lag, the signature of reverse causality. The thesis rests on the issuance-offset mechanism, not a price effect.
 
@@ -55,10 +66,12 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 | Source | Coverage | Status |
 |---|---|---|
 | DefiLlama API (volume, fees, revenue) | daily since Dec 2024, refreshed daily by the Action | Complete |
-| FastNEAR neardata (on-chain events) | intents.near, shard 7, dip4 standard. [Download dataset](https://huggingface.co/datasets/bomankari/near-intents-onchain-events) | Ingesting |
+| FastNEAR neardata (on-chain events) | intents.near, shard 7, dip4 standard. [Download dataset](https://huggingface.co/datasets/bomankari/near-intents-onchain-events) | Frozen Nov 13, 2026 |
 | NEAR RPC (supply, block metadata) | rpc.mainnet.near.org | Complete |
 
-On-chain ingestion is ongoing. DefiLlama data is the primary source for all models. FastNEAR data will provide solver concentration (HHI) and token-pair breakdown once ingestion completes.
+**Why the event ingestion is stopped.** Ingestion ran continuously until 20:40 UTC on November 13, 2026, and was then stopped on purpose. A dataset that keeps growing cannot be pinned: within minutes of any upload the local file is ahead of the published one, so a reader who downloads the pinned revision recomputes slightly different numbers than the ones committed here. Stopping it fixes the raw input at 363,213 events, 20,716 decoded settlements and 69.84 hours of chain time, ending at block 222,482,170, published as Hugging Face commit `232e4c843def51f31236445495d313db959a375a` and hashed in `data/manifest.json`. The published file and the file that produced every on-chain number in this repository are now byte-identical, which is what makes the reproduction instructions true rather than approximate. The cost is small: a few more hours of events on an already multi-day window, moving solver and corridor shares by fractions of a percent and leaving the 0.01 bps contract-fee finding untouched. Nothing else freezes with it, because the dashboard still fetches DefiLlama live on every page load and the treasury float is read from contract state, not from this file.
+
+DefiLlama data is the primary source for all models.
 
 ## How It Fits Together
 
@@ -100,7 +113,7 @@ Open `docs/index.html` locally or visit the live site linked above.
 
 ```bash
 pip install pytest
-pytest tests/                   # 167 tests: models, analyses, decoder, manifest
+pytest tests/                   # 189 tests: models, analyses, decoder, manifest
 RUN_SLOW=1 pytest tests/test_run_all_smoke.py   # full pipeline smoke test
 ```
 
@@ -138,7 +151,7 @@ ingest/
 
 decoder/              typed dip4 and NEP-297 event decoder
 
-tests/                167 tests across models, analyses, decoder, manifest
+tests/                189 tests across models, analyses, decoder, manifest
 
 data/
   manifest.json       SHA-256 of every input and output
@@ -153,7 +166,7 @@ data/
 
 ## Data Integrity
 
-Every number traces to a hashed input. `data/manifest.json` records the SHA-256 and size of every raw input and model output, written as the final step of every pipeline run. The raw on-chain events are pinned differently because the file grows continuously: each Hugging Face upload hashes the exact bytes it ships and records the HF commit id, so any snapshot can be re-downloaded at that revision and checked against its digest. The daily GitHub Action verifies all hashes before it is allowed to commit.
+Every number traces to a hashed input. `data/manifest.json` records the SHA-256 and size of every raw input and model output, written as the final step of every pipeline run. The raw on-chain events are pinned differently because the file is too large to commit: the Hugging Face upload hashes the exact bytes it ships and records the HF commit id, so the dataset can be re-downloaded at that revision and checked against its digest. The daily GitHub Action verifies all hashes before it is allowed to commit.
 
 ```bash
 python3 analysis/manifest.py verify
@@ -167,7 +180,7 @@ The manifest hash is also anchored on NEAR mainnet: after each verified daily re
 
 ## How This Entry Differs
 
-The dashboard fetches live DefiLlama data in the browser on every load: current price, volume, and capture rate, with every panel recomputing instantly and an honest snapshot fallback when offline. Beyond that, this entry is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects 0.01 bps while the effective capture is 5.02 bps and drifting (capture is policy, not protocol), measured solver concentration (top three solvers fill roughly two thirds of settled volume in the decoded window), the confidential settlement path measured at 62% to 78% of stablecoin value and rising, a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 567). The fee-switch argument requires both the on-chain fee measurement and the causal counterfactual; this entry has both.
+The dashboard fetches live DefiLlama data in the browser on every load: current price, volume, and capture rate, with every panel recomputing instantly and an honest snapshot fallback when offline. Beyond that, this entry is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects 0.01 bps while the effective capture rate has ranged from 1.9 to 6.0 bps over the past four months (capture is policy, not protocol), measured solver concentration (top three solvers fill roughly two thirds of settled volume in the decoded window), a confidential settlement path measured twice over, from decoded events on the days ingested and from 268 consecutive days of contract state, a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 567). The fee-switch argument requires both the on-chain fee measurement and the causal counterfactual; this entry has both.
 
 ## Track
 

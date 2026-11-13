@@ -1,0 +1,4027 @@
+{
+  "2026-02-18": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "0",
+      "USDC.eth": "0",
+      "USDT.arb": "0",
+      "USDT.eth": "0",
+      "USDT.tron": "0"
+    },
+    "block_epoch": 1771372800.1660924,
+    "block_height": 186012268,
+    "block_time_utc": "2026-02-18T00:00:00.166092+00:00",
+    "stable_float_usd": 0.0
+  },
+  "2026-02-19": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "1",
+      "USDC.eth": "0",
+      "USDT.arb": "0",
+      "USDT.eth": "0",
+      "USDT.tron": "0"
+    },
+    "block_epoch": 1771459200.1861415,
+    "block_height": 186155669,
+    "block_time_utc": "2026-02-19T00:00:00.186141+00:00",
+    "stable_float_usd": 0.0
+  },
+  "2026-02-20": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "3",
+      "USDC.eth": "0",
+      "USDT.arb": "0",
+      "USDT.eth": "0",
+      "USDT.tron": "0"
+    },
+    "block_epoch": 1771545600.4001877,
+    "block_height": 186297513,
+    "block_time_utc": "2026-02-20T00:00:00.400188+00:00",
+    "stable_float_usd": 0.0
+  },
+  "2026-02-21": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "3",
+      "USDC.eth": "1000000",
+      "USDT.arb": "0",
+      "USDT.eth": "1000000",
+      "USDT.tron": "0"
+    },
+    "block_epoch": 1771632000.4778447,
+    "block_height": 186439704,
+    "block_time_utc": "2026-02-21T00:00:00.477845+00:00",
+    "stable_float_usd": 2.0
+  },
+  "2026-02-22": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "600001",
+      "USDC.eth": "29448893",
+      "USDT.arb": "0",
+      "USDT.eth": "1000000",
+      "USDT.tron": "0"
+    },
+    "block_epoch": 1771718400.568518,
+    "block_height": 186581467,
+    "block_time_utc": "2026-02-22T00:00:00.568518+00:00",
+    "stable_float_usd": 31.05
+  },
+  "2026-02-23": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "400001",
+      "USDC.eth": "29485767",
+      "USDT.arb": "0",
+      "USDT.eth": "1000000",
+      "USDT.tron": "2531489465"
+    },
+    "block_epoch": 1771804800.2223637,
+    "block_height": 186724357,
+    "block_time_utc": "2026-02-23T00:00:00.222364+00:00",
+    "stable_float_usd": 2562.38
+  },
+  "2026-02-24": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "0",
+      "USDC.base": "300003",
+      "USDC.eth": "50025936874",
+      "USDT.arb": "0",
+      "USDT.eth": "57077053",
+      "USDT.tron": "2531489465"
+    },
+    "block_epoch": 1771891200.462263,
+    "block_height": 186866972,
+    "block_time_utc": "2026-02-24T00:00:00.462263+00:00",
+    "stable_float_usd": 52614.8
+  },
+  "2026-02-25": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "25000000",
+      "USDC.base": "5500003",
+      "USDC.eth": "31024096874",
+      "USDT.arb": "0",
+      "USDT.eth": "57077053",
+      "USDT.tron": "1186489465"
+    },
+    "block_epoch": 1771977600.5667117,
+    "block_height": 187009809,
+    "block_time_utc": "2026-02-25T00:00:00.566712+00:00",
+    "stable_float_usd": 32298.16
+  },
+  "2026-02-26": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "25000000",
+      "USDC.base": "6600003",
+      "USDC.eth": "32838502003",
+      "USDT.arb": "0",
+      "USDT.eth": "57077053",
+      "USDT.tron": "489465"
+    },
+    "block_epoch": 1772064000.2948618,
+    "block_height": 187151197,
+    "block_time_utc": "2026-02-26T00:00:00.294862+00:00",
+    "stable_float_usd": 32927.67
+  },
+  "2026-02-27": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "25100000",
+      "USDC.base": "25610003",
+      "USDC.eth": "61670176140",
+      "USDT.arb": "0",
+      "USDT.eth": "704618340",
+      "USDT.tron": "11489465"
+    },
+    "block_epoch": 1772150400.4859335,
+    "block_height": 187289970,
+    "block_time_utc": "2026-02-27T00:00:00.485934+00:00",
+    "stable_float_usd": 62436.99
+  },
+  "2026-02-28": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "25100000",
+      "USDC.base": "25610003",
+      "USDC.eth": "175572564339",
+      "USDT.arb": "0",
+      "USDT.eth": "41653296",
+      "USDT.tron": "11489465"
+    },
+    "block_epoch": 1772236800.3836408,
+    "block_height": 187432215,
+    "block_time_utc": "2026-02-28T00:00:00.383641+00:00",
+    "stable_float_usd": 175676.42
+  },
+  "2026-03-01": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "25100000",
+      "USDC.base": "40610003",
+      "USDC.eth": "196806836861",
+      "USDT.arb": "0",
+      "USDT.eth": "2477447",
+      "USDT.tron": "11489465"
+    },
+    "block_epoch": 1772323200.044232,
+    "block_height": 187573901,
+    "block_time_utc": "2026-03-01T00:00:00.044232+00:00",
+    "stable_float_usd": 196886.51
+  },
+  "2026-03-02": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "26100000",
+      "USDC.base": "91606029",
+      "USDC.eth": "179726325320",
+      "USDT.arb": "0",
+      "USDT.eth": "4436164904",
+      "USDT.tron": "14348461"
+    },
+    "block_epoch": 1772409600.2922127,
+    "block_height": 187715854,
+    "block_time_utc": "2026-03-02T00:00:00.292213+00:00",
+    "stable_float_usd": 184294.54
+  },
+  "2026-03-03": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "26100000",
+      "USDC.base": "135610003",
+      "USDC.eth": "180414829487",
+      "USDT.arb": "0",
+      "USDT.eth": "20625876233",
+      "USDT.tron": "14348461"
+    },
+    "block_epoch": 1772496000.3114576,
+    "block_height": 187855850,
+    "block_time_utc": "2026-03-03T00:00:00.311458+00:00",
+    "stable_float_usd": 201216.76
+  },
+  "2026-03-04": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "28100000",
+      "USDC.base": "135610003",
+      "USDC.eth": "170698696088",
+      "USDT.arb": "0",
+      "USDT.eth": "408377515889",
+      "USDT.tron": "74348461"
+    },
+    "block_epoch": 1772582400.1748395,
+    "block_height": 187997252,
+    "block_time_utc": "2026-03-04T00:00:00.174839+00:00",
+    "stable_float_usd": 579314.27
+  },
+  "2026-03-05": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "28100600",
+      "USDC.base": "478610394",
+      "USDC.eth": "170698696088",
+      "USDT.arb": "0",
+      "USDT.eth": "444537612326",
+      "USDT.tron": "14348461"
+    },
+    "block_epoch": 1772668800.1580663,
+    "block_height": 188140102,
+    "block_time_utc": "2026-03-05T00:00:00.158066+00:00",
+    "stable_float_usd": 615757.37
+  },
+  "2026-03-06": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "28100600",
+      "USDC.base": "478610394",
+      "USDC.eth": "352332116930",
+      "USDT.arb": "0",
+      "USDT.eth": "414088144572",
+      "USDT.tron": "14348461"
+    },
+    "block_epoch": 1772755200.2165656,
+    "block_height": 188282451,
+    "block_time_utc": "2026-03-06T00:00:00.216566+00:00",
+    "stable_float_usd": 766941.32
+  },
+  "2026-03-07": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "28110600",
+      "USDC.base": "13978610394",
+      "USDC.eth": "352332151364",
+      "USDT.arb": "0",
+      "USDT.eth": "414088144572",
+      "USDT.tron": "18329661"
+    },
+    "block_epoch": 1772841600.0438435,
+    "block_height": 188423782,
+    "block_time_utc": "2026-03-07T00:00:00.043844+00:00",
+    "stable_float_usd": 780445.35
+  },
+  "2026-03-08": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "27110600",
+      "USDC.base": "13978610394",
+      "USDC.eth": "678451115366",
+      "USDT.arb": "0",
+      "USDT.eth": "414086419572",
+      "USDT.tron": "16479661"
+    },
+    "block_epoch": 1772928000.5298653,
+    "block_height": 188567399,
+    "block_time_utc": "2026-03-08T00:00:00.529865+00:00",
+    "stable_float_usd": 1106559.74
+  },
+  "2026-03-09": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "1417194628",
+      "USDC.base": "13978610394",
+      "USDC.eth": "1313381329595",
+      "USDT.arb": "0",
+      "USDT.eth": "414163963299",
+      "USDT.tron": "16479661"
+    },
+    "block_epoch": 1773014400.367698,
+    "block_height": 188711780,
+    "block_time_utc": "2026-03-09T00:00:00.367698+00:00",
+    "stable_float_usd": 1742957.58
+  },
+  "2026-03-10": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "655110600",
+      "USDC.base": "13978610394",
+      "USDC.eth": "1154121502217",
+      "USDT.arb": "0",
+      "USDT.eth": "413232702856",
+      "USDT.tron": "16479661"
+    },
+    "block_epoch": 1773100800.000271,
+    "block_height": 188855996,
+    "block_time_utc": "2026-03-10T00:00:00.000271+00:00",
+    "stable_float_usd": 1582004.41
+  },
+  "2026-03-11": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "35110600",
+      "USDC.base": "14026610394",
+      "USDC.eth": "1156466554912",
+      "USDT.arb": "0",
+      "USDT.eth": "410835702856",
+      "USDT.tron": "15479661"
+    },
+    "block_epoch": 1773187200.1051705,
+    "block_height": 188999568,
+    "block_time_utc": "2026-03-11T00:00:00.105170+00:00",
+    "stable_float_usd": 1581379.46
+  },
+  "2026-03-12": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "47612509",
+      "USDC.base": "15409851419",
+      "USDC.eth": "2034712546237",
+      "USDT.arb": "0",
+      "USDT.eth": "395478856325",
+      "USDT.tron": "20479661"
+    },
+    "block_epoch": 1773273600.377794,
+    "block_height": 189143654,
+    "block_time_utc": "2026-03-12T00:00:00.377794+00:00",
+    "stable_float_usd": 2445669.35
+  },
+  "2026-03-13": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "98100447",
+      "USDC.base": "17971851419",
+      "USDC.eth": "2030915722481",
+      "USDT.arb": "0",
+      "USDT.eth": "393256548027",
+      "USDT.tron": "695479661"
+    },
+    "block_epoch": 1773360000.026338,
+    "block_height": 189288052,
+    "block_time_utc": "2026-03-13T00:00:00.026338+00:00",
+    "stable_float_usd": 2442937.7
+  },
+  "2026-03-14": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "26957255446",
+      "USDC.base": "17171957004",
+      "USDC.eth": "2030521182514",
+      "USDT.arb": "0",
+      "USDT.eth": "393257216260",
+      "USDT.tron": "420479661"
+    },
+    "block_epoch": 1773446400.3205779,
+    "block_height": 189428932,
+    "block_time_utc": "2026-03-14T00:00:00.320578+00:00",
+    "stable_float_usd": 2468328.09
+  },
+  "2026-03-15": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "26957255446",
+      "USDC.base": "17171957004",
+      "USDC.eth": "2030441182514",
+      "USDT.arb": "0",
+      "USDT.eth": "393262282785",
+      "USDT.tron": "2491152449"
+    },
+    "block_epoch": 1773532800.0562398,
+    "block_height": 189572755,
+    "block_time_utc": "2026-03-15T00:00:00.056240+00:00",
+    "stable_float_usd": 2470323.83
+  },
+  "2026-03-16": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "102100348",
+      "USDC.base": "17171957004",
+      "USDC.eth": "2051131634257",
+      "USDT.arb": "0",
+      "USDT.eth": "393282282785",
+      "USDT.tron": "2491152449"
+    },
+    "block_epoch": 1773619200.0243309,
+    "block_height": 189714846,
+    "block_time_utc": "2026-03-16T00:00:00.024331+00:00",
+    "stable_float_usd": 2464179.13
+  },
+  "2026-03-17": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4421100348",
+      "USDC.base": "15436141270",
+      "USDC.eth": "2087294133719",
+      "USDT.arb": "0",
+      "USDT.eth": "660012421205",
+      "USDT.tron": "2491152449"
+    },
+    "block_epoch": 1773705600.169494,
+    "block_height": 189858744,
+    "block_time_utc": "2026-03-17T00:00:00.169494+00:00",
+    "stable_float_usd": 2769654.95
+  },
+  "2026-03-18": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4419100348",
+      "USDC.base": "15436141270",
+      "USDC.eth": "2051590358649",
+      "USDT.arb": "0",
+      "USDT.eth": "660015252322",
+      "USDT.tron": "2426152449"
+    },
+    "block_epoch": 1773792000.3273544,
+    "block_height": 190001625,
+    "block_time_utc": "2026-03-18T00:00:00.327354+00:00",
+    "stable_float_usd": 2733887.01
+  },
+  "2026-03-19": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4419100348",
+      "USDC.base": "15436142270",
+      "USDC.eth": "1604123462533",
+      "USDT.arb": "0",
+      "USDT.eth": "104159420750",
+      "USDT.tron": "2426152449"
+    },
+    "block_epoch": 1773878400.336451,
+    "block_height": 190144671,
+    "block_time_utc": "2026-03-19T00:00:00.336451+00:00",
+    "stable_float_usd": 1730564.28
+  },
+  "2026-03-20": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4419100348",
+      "USDC.base": "23149914171",
+      "USDC.eth": "1104015880251",
+      "USDT.arb": "0",
+      "USDT.eth": "96869633244",
+      "USDT.tron": "2426152449"
+    },
+    "block_epoch": 1773964800.0792782,
+    "block_height": 190288577,
+    "block_time_utc": "2026-03-20T00:00:00.079278+00:00",
+    "stable_float_usd": 1230880.68
+  },
+  "2026-03-21": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4510923584",
+      "USDC.base": "23149915171",
+      "USDC.eth": "1104220053386",
+      "USDT.arb": "10000000",
+      "USDT.eth": "96870643244",
+      "USDT.tron": "2426152449"
+    },
+    "block_epoch": 1774051200.2746708,
+    "block_height": 190431271,
+    "block_time_utc": "2026-03-21T00:00:00.274671+00:00",
+    "stable_float_usd": 1231187.69
+  },
+  "2026-03-22": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4540575897",
+      "USDC.base": "23149915171",
+      "USDC.eth": "1114240336018",
+      "USDT.arb": "10000000",
+      "USDT.eth": "76871504824",
+      "USDT.tron": "6919614192"
+    },
+    "block_epoch": 1774137600.2500842,
+    "block_height": 190574631,
+    "block_time_utc": "2026-03-22T00:00:00.250084+00:00",
+    "stable_float_usd": 1225731.95
+  },
+  "2026-03-23": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4540575897",
+      "USDC.base": "18273393551",
+      "USDC.eth": "1105573775205",
+      "USDT.arb": "10000000",
+      "USDT.eth": "76872518470",
+      "USDT.tron": "6919614192"
+    },
+    "block_epoch": 1774224000.5166771,
+    "block_height": 190718439,
+    "block_time_utc": "2026-03-23T00:00:00.516677+00:00",
+    "stable_float_usd": 1212189.88
+  },
+  "2026-03-24": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "4575453968",
+      "USDC.base": "10966345387",
+      "USDC.eth": "1105574802909",
+      "USDT.arb": "10000000",
+      "USDT.eth": "14162005930",
+      "USDT.tron": "6919614192"
+    },
+    "block_epoch": 1774310400.3457189,
+    "block_height": 190862915,
+    "block_time_utc": "2026-03-24T00:00:00.345719+00:00",
+    "stable_float_usd": 1142208.22
+  },
+  "2026-03-25": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "2558893351",
+      "USDC.base": "9583104362",
+      "USDC.eth": "1101804299919",
+      "USDT.arb": "10000000",
+      "USDT.eth": "44158703168",
+      "USDT.tron": "6920614192"
+    },
+    "block_epoch": 1774396800.4963093,
+    "block_height": 191007460,
+    "block_time_utc": "2026-03-25T00:00:00.496309+00:00",
+    "stable_float_usd": 1165035.61
+  },
+  "2026-03-26": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "2558893351",
+      "USDC.base": "9583104362",
+      "USDC.eth": "1121208159392",
+      "USDT.arb": "55108045122",
+      "USDT.eth": "47477005615",
+      "USDT.tron": "6921614192"
+    },
+    "block_epoch": 1774483200.1936622,
+    "block_height": 191151773,
+    "block_time_utc": "2026-03-26T00:00:00.193662+00:00",
+    "stable_float_usd": 1242856.82
+  },
+  "2026-03-27": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "2549427351",
+      "USDC.base": "9058109751",
+      "USDC.eth": "1511055472315",
+      "USDT.arb": "55108045122",
+      "USDT.eth": "40389849851",
+      "USDT.tron": "9221968310"
+    },
+    "block_epoch": 1774569600.0396395,
+    "block_height": 191293618,
+    "block_time_utc": "2026-03-27T00:00:00.039639+00:00",
+    "stable_float_usd": 1627382.87
+  },
+  "2026-03-28": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "499578110",
+      "USDC.base": "9063127657",
+      "USDC.eth": "1510953515834",
+      "USDT.arb": "55108045122",
+      "USDT.eth": "39411861688",
+      "USDT.tron": "9221968310"
+    },
+    "block_epoch": 1774656000.499935,
+    "block_height": 191436924,
+    "block_time_utc": "2026-03-28T00:00:00.499935+00:00",
+    "stable_float_usd": 1624258.1
+  },
+  "2026-03-29": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "338276501",
+      "USDC.base": "9101256700",
+      "USDC.eth": "1510954516190",
+      "USDT.arb": "55108045122",
+      "USDT.eth": "32728325878",
+      "USDT.tron": "9221968310"
+    },
+    "block_epoch": 1774742400.4673314,
+    "block_height": 191581299,
+    "block_time_utc": "2026-03-29T00:00:00.467331+00:00",
+    "stable_float_usd": 1617452.39
+  },
+  "2026-03-30": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "11755668658",
+      "USDC.base": "9061382742",
+      "USDC.eth": "1517962388753",
+      "USDT.arb": "55108045122",
+      "USDT.eth": "29724319696",
+      "USDT.tron": "9221968310"
+    },
+    "block_epoch": 1774828800.4500856,
+    "block_height": 191725864,
+    "block_time_utc": "2026-03-30T00:00:00.450086+00:00",
+    "stable_float_usd": 1632833.77
+  },
+  "2026-03-31": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "11488059189",
+      "USDC.base": "16561382817",
+      "USDC.eth": "1528510271498",
+      "USDT.arb": "55108047312",
+      "USDT.eth": "50543148513",
+      "USDT.tron": "9221028330"
+    },
+    "block_epoch": 1774915200.3248188,
+    "block_height": 191869451,
+    "block_time_utc": "2026-03-31T00:00:00.324819+00:00",
+    "stable_float_usd": 1671431.94
+  },
+  "2026-04-01": {
+    "balances": {
+      "DAI.eth": "0",
+      "USDC.arb": "11573736048",
+      "USDC.base": "20714852328",
+      "USDC.eth": "1529418618062",
+      "USDT.arb": "32200",
+      "USDT.eth": "50946756859",
+      "USDT.tron": "15927878447"
+    },
+    "block_epoch": 1775001600.3294935,
+    "block_height": 192013995,
+    "block_time_utc": "2026-04-01T00:00:00.329494+00:00",
+    "stable_float_usd": 1628581.87
+  },
+  "2026-04-02": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "11513457994",
+      "USDC.base": "10103601410",
+      "USDC.eth": "1530679764664",
+      "USDT.arb": "120613",
+      "USDT.eth": "50298772127",
+      "USDT.tron": "15932862252"
+    },
+    "block_epoch": 1775088000.0701408,
+    "block_height": 192156845,
+    "block_time_utc": "2026-04-02T00:00:00.070141+00:00",
+    "stable_float_usd": 1618528.6
+  },
+  "2026-04-03": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "11528462093",
+      "USDC.base": "9115972366",
+      "USDC.eth": "1525348332153",
+      "USDT.arb": "120613",
+      "USDT.eth": "66199248144",
+      "USDT.tron": "21640578473"
+    },
+    "block_epoch": 1775174400.5492306,
+    "block_height": 192298915,
+    "block_time_utc": "2026-04-03T00:00:00.549231+00:00",
+    "stable_float_usd": 1633832.74
+  },
+  "2026-04-04": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "11575396769",
+      "USDC.base": "10494761539",
+      "USDC.eth": "1525351844154",
+      "USDT.arb": "1120613",
+      "USDT.eth": "122036783267",
+      "USDT.tron": "29010154505"
+    },
+    "block_epoch": 1775260800.0625844,
+    "block_height": 192443194,
+    "block_time_utc": "2026-04-04T00:00:00.062584+00:00",
+    "stable_float_usd": 1698470.08
+  },
+  "2026-04-05": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "11580399774",
+      "USDC.base": "10172538780",
+      "USDC.eth": "1540214506907",
+      "USDT.arb": "1120613",
+      "USDT.eth": "428806776924",
+      "USDT.tron": "31897126915"
+    },
+    "block_epoch": 1775347200.1615152,
+    "block_height": 192589112,
+    "block_time_utc": "2026-04-05T00:00:00.161515+00:00",
+    "stable_float_usd": 2022672.49
+  },
+  "2026-04-06": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "11603399774",
+      "USDC.base": "10172638780",
+      "USDC.eth": "1684433966250",
+      "USDT.arb": "1120613",
+      "USDT.eth": "428806979115",
+      "USDT.tron": "33966895275"
+    },
+    "block_epoch": 1775433600.1424153,
+    "block_height": 192734866,
+    "block_time_utc": "2026-04-06T00:00:00.142415+00:00",
+    "stable_float_usd": 2168985.02
+  },
+  "2026-04-07": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "21534417451",
+      "USDC.base": "10181755171",
+      "USDC.eth": "1689567659559",
+      "USDT.arb": "1120613",
+      "USDT.eth": "428807101182",
+      "USDT.tron": "33072877175"
+    },
+    "block_epoch": 1775520000.628899,
+    "block_height": 192880109,
+    "block_time_utc": "2026-04-07T00:00:00.628899+00:00",
+    "stable_float_usd": 2183164.96
+  },
+  "2026-04-08": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "27421550266",
+      "USDC.base": "11427592385",
+      "USDC.eth": "1670357816009",
+      "USDT.arb": "5208057968",
+      "USDT.eth": "429788368094",
+      "USDT.tron": "34060135815"
+    },
+    "block_epoch": 1775606400.096418,
+    "block_height": 193025266,
+    "block_time_utc": "2026-04-08T00:00:00.096418+00:00",
+    "stable_float_usd": 2178263.54
+  },
+  "2026-04-09": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "33532224109",
+      "USDC.base": "11427742435",
+      "USDC.eth": "1652863640622",
+      "USDT.arb": "5673907968",
+      "USDT.eth": "414527799242",
+      "USDT.tron": "31009135866"
+    },
+    "block_epoch": 1775692800.6636426,
+    "block_height": 193170161,
+    "block_time_utc": "2026-04-09T00:00:00.663643+00:00",
+    "stable_float_usd": 2149034.47
+  },
+  "2026-04-10": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "31115353856",
+      "USDC.base": "11427940141",
+      "USDC.eth": "1718571754989",
+      "USDT.arb": "1125820",
+      "USDT.eth": "413192299934",
+      "USDT.tron": "41009996071"
+    },
+    "block_epoch": 1775779200.4531024,
+    "block_height": 193314678,
+    "block_time_utc": "2026-04-10T00:00:00.453102+00:00",
+    "stable_float_usd": 2215318.49
+  },
+  "2026-04-11": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "28985466949",
+      "USDC.base": "11428512987",
+      "USDC.eth": "1742139824205",
+      "USDT.arb": "1125820",
+      "USDT.eth": "403137126275",
+      "USDT.tron": "41028002053"
+    },
+    "block_epoch": 1775865600.3939621,
+    "block_height": 193459670,
+    "block_time_utc": "2026-04-11T00:00:00.393962+00:00",
+    "stable_float_usd": 2226720.08
+  },
+  "2026-04-12": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "26544785694",
+      "USDC.base": "3729717366",
+      "USDC.eth": "1828350676909",
+      "USDT.arb": "1125820",
+      "USDT.eth": "387654074489",
+      "USDT.tron": "42005583823"
+    },
+    "block_epoch": 1775952003.04063,
+    "block_height": 193604019,
+    "block_time_utc": "2026-04-12T00:00:03.040630+00:00",
+    "stable_float_usd": 2288285.99
+  },
+  "2026-04-13": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "29603374247",
+      "USDC.base": "3751090579",
+      "USDC.eth": "1751045059355",
+      "USDT.arb": "1125820",
+      "USDT.eth": "567838051800",
+      "USDT.tron": "42005590426"
+    },
+    "block_epoch": 1776038408.0007207,
+    "block_height": 193749302,
+    "block_time_utc": "2026-04-13T00:00:08.000721+00:00",
+    "stable_float_usd": 2394244.32
+  },
+  "2026-04-14": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "29423550802",
+      "USDC.base": "1438146041",
+      "USDC.eth": "1744801466688",
+      "USDT.arb": "1125854",
+      "USDT.eth": "582197530953",
+      "USDT.tron": "32005600426"
+    },
+    "block_epoch": 1776124802.33743,
+    "block_height": 193891335,
+    "block_time_utc": "2026-04-14T00:00:02.337430+00:00",
+    "stable_float_usd": 2389867.44
+  },
+  "2026-04-15": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "57785759768",
+      "USDC.base": "1516263176",
+      "USDC.eth": "1747980826040",
+      "USDT.arb": "1125924",
+      "USDT.eth": "580523797373",
+      "USDT.tron": "38508967048"
+    },
+    "block_epoch": 1776211200.234261,
+    "block_height": 194033294,
+    "block_time_utc": "2026-04-15T00:00:00.234261+00:00",
+    "stable_float_usd": 2426316.76
+  },
+  "2026-04-16": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "31868967626",
+      "USDC.base": "1542494611",
+      "USDC.eth": "1741072703588",
+      "USDT.arb": "1125924",
+      "USDT.eth": "574239426312",
+      "USDT.tron": "38508967940"
+    },
+    "block_epoch": 1776297600.1234486,
+    "block_height": 194175707,
+    "block_time_utc": "2026-04-16T00:00:00.123449+00:00",
+    "stable_float_usd": 2387233.71
+  },
+  "2026-04-17": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "55644956015",
+      "USDC.base": "1557071917",
+      "USDC.eth": "1701973606936",
+      "USDT.arb": "1125924",
+      "USDT.eth": "605186054528",
+      "USDT.tron": "38508967940"
+    },
+    "block_epoch": 1776384000.5085824,
+    "block_height": 194317407,
+    "block_time_utc": "2026-04-17T00:00:00.508582+00:00",
+    "stable_float_usd": 2402871.81
+  },
+  "2026-04-18": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "50034446455",
+      "USDC.base": "1663691880",
+      "USDC.eth": "1723930453657",
+      "USDT.arb": "1156613",
+      "USDT.eth": "583976582076",
+      "USDT.tron": "38652246712"
+    },
+    "block_epoch": 1776470428.6804724,
+    "block_height": 194461725,
+    "block_time_utc": "2026-04-18T00:00:28.680472+00:00",
+    "stable_float_usd": 2398258.6
+  },
+  "2026-04-19": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "50034446708",
+      "USDC.base": "1760216846",
+      "USDC.eth": "1724315167563",
+      "USDT.arb": "1156613",
+      "USDT.eth": "406266816611",
+      "USDT.tron": "39447246712"
+    },
+    "block_epoch": 1776556800.44953,
+    "block_height": 194605991,
+    "block_time_utc": "2026-04-19T00:00:00.449530+00:00",
+    "stable_float_usd": 2221825.08
+  },
+  "2026-04-20": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "50035365014",
+      "USDC.base": "2003520252",
+      "USDC.eth": "1767105498181",
+      "USDT.arb": "1156613",
+      "USDT.eth": "407383385875",
+      "USDT.tron": "60825228240"
+    },
+    "block_epoch": 1776643214.044606,
+    "block_height": 194749359,
+    "block_time_utc": "2026-04-20T00:00:14.044606+00:00",
+    "stable_float_usd": 2287354.18
+  },
+  "2026-04-21": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "23579241368",
+      "USDC.base": "1679134375",
+      "USDC.eth": "1754975719304",
+      "USDT.arb": "1156613",
+      "USDT.eth": "406410646589",
+      "USDT.tron": "59669417279"
+    },
+    "block_epoch": 1776729605.8945293,
+    "block_height": 194892217,
+    "block_time_utc": "2026-04-21T00:00:05.894529+00:00",
+    "stable_float_usd": 2246315.34
+  },
+  "2026-04-22": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "19965913449",
+      "USDC.base": "3580911633",
+      "USDC.eth": "1754878507882",
+      "USDT.arb": "1156613",
+      "USDT.eth": "406518830289",
+      "USDT.tron": "52627425887"
+    },
+    "block_epoch": 1776816000.0067565,
+    "block_height": 195033794,
+    "block_time_utc": "2026-04-22T00:00:00.006757+00:00",
+    "stable_float_usd": 2237572.77
+  },
+  "2026-04-23": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "19941496026",
+      "USDC.base": "3580911633",
+      "USDC.eth": "1759181256668",
+      "USDT.arb": "1156613",
+      "USDT.eth": "494670996334",
+      "USDT.tron": "62140618933"
+    },
+    "block_epoch": 1776902400.0100963,
+    "block_height": 195177374,
+    "block_time_utc": "2026-04-23T00:00:00.010096+00:00",
+    "stable_float_usd": 2339516.46
+  },
+  "2026-04-24": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "25044526761",
+      "USDC.base": "2213926233",
+      "USDC.eth": "1821590563697",
+      "USDT.arb": "448237704",
+      "USDT.eth": "498925910473",
+      "USDT.tron": "71650225388"
+    },
+    "block_epoch": 1776988800.915283,
+    "block_height": 195318478,
+    "block_time_utc": "2026-04-24T00:00:00.915283+00:00",
+    "stable_float_usd": 2419873.41
+  },
+  "2026-04-25": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "25604791741",
+      "USDC.base": "2974551584",
+      "USDC.eth": "1811941415060",
+      "USDT.arb": "493274161",
+      "USDT.eth": "511216407895",
+      "USDT.tron": "71669327478"
+    },
+    "block_epoch": 1777075200.350646,
+    "block_height": 195462530,
+    "block_time_utc": "2026-04-25T00:00:00.350646+00:00",
+    "stable_float_usd": 2423899.79
+  },
+  "2026-04-26": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "25724491942",
+      "USDC.base": "3159296689",
+      "USDC.eth": "1810941429265",
+      "USDT.arb": "448237751",
+      "USDT.eth": "511221861654",
+      "USDT.tron": "71941342056"
+    },
+    "block_epoch": 1777161600.370956,
+    "block_height": 195608288,
+    "block_time_utc": "2026-04-26T00:00:00.370956+00:00",
+    "stable_float_usd": 2423436.68
+  },
+  "2026-04-27": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "25723104617",
+      "USDC.base": "1153211574",
+      "USDC.eth": "1796500190136",
+      "USDT.arb": "448237841",
+      "USDT.eth": "513422145760",
+      "USDT.tron": "89231748971"
+    },
+    "block_epoch": 1777248000.3653266,
+    "block_height": 195754355,
+    "block_time_utc": "2026-04-27T00:00:00.365327+00:00",
+    "stable_float_usd": 2426478.66
+  },
+  "2026-04-28": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "17077548657",
+      "USDC.base": "1117256139",
+      "USDC.eth": "1805692687659",
+      "USDT.arb": "448237841",
+      "USDT.eth": "493502989657",
+      "USDT.tron": "89611748971"
+    },
+    "block_epoch": 1777334400.391124,
+    "block_height": 195899945,
+    "block_time_utc": "2026-04-28T00:00:00.391124+00:00",
+    "stable_float_usd": 2407450.49
+  },
+  "2026-04-29": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "17077548657",
+      "USDC.base": "1142663986",
+      "USDC.eth": "1807176745663",
+      "USDT.arb": "986381868",
+      "USDT.eth": "498128282798",
+      "USDT.tron": "67379583052"
+    },
+    "block_epoch": 1777420802.4028296,
+    "block_height": 196045267,
+    "block_time_utc": "2026-04-29T00:00:02.402830+00:00",
+    "stable_float_usd": 2391891.23
+  },
+  "2026-04-30": {
+    "balances": {
+      "DAI.eth": "1800024031983976000000",
+      "USDC.arb": "17030150572",
+      "USDC.base": "1093835536",
+      "USDC.eth": "1883562907746",
+      "USDT.arb": "986381868",
+      "USDT.eth": "506136138850",
+      "USDT.tron": "69379583052"
+    },
+    "block_epoch": 1777507200.3477232,
+    "block_height": 196191105,
+    "block_time_utc": "2026-04-30T00:00:00.347723+00:00",
+    "stable_float_usd": 2479989.02
+  },
+  "2026-05-01": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "16534510146",
+      "USDC.base": "1118929476",
+      "USDC.eth": "1695517538824",
+      "USDT.arb": "986382064",
+      "USDT.eth": "441989069223",
+      "USDT.tron": "67385607523"
+    },
+    "block_epoch": 1777593600.2511096,
+    "block_height": 196336954,
+    "block_time_utc": "2026-05-01T00:00:00.251110+00:00",
+    "stable_float_usd": 2223532.06
+  },
+  "2026-05-02": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "16521543623",
+      "USDC.base": "1118937226",
+      "USDC.eth": "1720665002406",
+      "USDT.arb": "546382068",
+      "USDT.eth": "459005945080",
+      "USDT.tron": "67388189938"
+    },
+    "block_epoch": 1777680009.4953754,
+    "block_height": 196482802,
+    "block_time_utc": "2026-05-02T00:00:09.495375+00:00",
+    "stable_float_usd": 2265246.02
+  },
+  "2026-05-03": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "16387664565",
+      "USDC.base": "1089042256",
+      "USDC.eth": "1718176582291",
+      "USDT.arb": "546382068",
+      "USDT.eth": "457820324707",
+      "USDT.tron": "63888259958"
+    },
+    "block_epoch": 1777766400.1505508,
+    "block_height": 196628379,
+    "block_time_utc": "2026-05-03T00:00:00.150551+00:00",
+    "stable_float_usd": 2257908.28
+  },
+  "2026-05-04": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "16268667684",
+      "USDC.base": "1079035056",
+      "USDC.eth": "1731476799961",
+      "USDT.arb": "546382068",
+      "USDT.eth": "531542168368",
+      "USDT.tron": "63888259958"
+    },
+    "block_epoch": 1777852800.1669185,
+    "block_height": 196774008,
+    "block_time_utc": "2026-05-04T00:00:00.166919+00:00",
+    "stable_float_usd": 2344801.34
+  },
+  "2026-05-05": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "16268852637",
+      "USDC.base": "1129526296",
+      "USDC.eth": "1735133307437",
+      "USDT.arb": "546382068",
+      "USDT.eth": "563434582652",
+      "USDT.tron": "66126943762"
+    },
+    "block_epoch": 1777939200.4856296,
+    "block_height": 196919494,
+    "block_time_utc": "2026-05-05T00:00:00.485630+00:00",
+    "stable_float_usd": 2382639.62
+  },
+  "2026-05-06": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "15165858318",
+      "USDC.base": "1220416567",
+      "USDC.eth": "2209882482752",
+      "USDT.arb": "546384230",
+      "USDT.eth": "633824157049",
+      "USDT.tron": "65108000136"
+    },
+    "block_epoch": 1778025605.27285,
+    "block_height": 197064168,
+    "block_time_utc": "2026-05-06T00:00:05.272850+00:00",
+    "stable_float_usd": 2925747.32
+  },
+  "2026-05-07": {
+    "balances": {
+      "DAI.eth": "24031983976000000",
+      "USDC.arb": "44197938197",
+      "USDC.base": "1776336448",
+      "USDC.eth": "2207545668455",
+      "USDT.arb": "546384330",
+      "USDT.eth": "600131632501",
+      "USDT.tron": "67852147582"
+    },
+    "block_epoch": 1778112000.410539,
+    "block_height": 197209194,
+    "block_time_utc": "2026-05-07T00:00:00.410539+00:00",
+    "stable_float_usd": 2922050.13
+  },
+  "2026-05-08": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "44308578238",
+      "USDC.base": "101835598957",
+      "USDC.eth": "2208157707982",
+      "USDT.arb": "546384438",
+      "USDT.eth": "620147608987",
+      "USDT.tron": "65474201151"
+    },
+    "block_epoch": 1778198411.6804788,
+    "block_height": 197354584,
+    "block_time_utc": "2026-05-08T00:00:11.680479+00:00",
+    "stable_float_usd": 3040470.1
+  },
+  "2026-05-09": {
+    "balances": {
+      "DAI.eth": "1742064060343293230000",
+      "USDC.arb": "33584745100",
+      "USDC.base": "56705667194",
+      "USDC.eth": "2215766181411",
+      "USDT.arb": "546407930",
+      "USDT.eth": "537166254949",
+      "USDT.tron": "69539846725"
+    },
+    "block_epoch": 1778284800.7817702,
+    "block_height": 197499788,
+    "block_time_utc": "2026-05-09T00:00:00.781770+00:00",
+    "stable_float_usd": 2915051.17
+  },
+  "2026-05-10": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "32926664404",
+      "USDC.base": "57929423073",
+      "USDC.eth": "2230348052804",
+      "USDT.arb": "546407930",
+      "USDT.eth": "537399314013",
+      "USDT.tron": "64119480404"
+    },
+    "block_epoch": 1778371201.4633167,
+    "block_height": 197645906,
+    "block_time_utc": "2026-05-10T00:00:01.463317+00:00",
+    "stable_float_usd": 2923269.37
+  },
+  "2026-05-11": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "32926664409",
+      "USDC.base": "56911882168",
+      "USDC.eth": "2212553306661",
+      "USDT.arb": "546409031",
+      "USDT.eth": "545654026216",
+      "USDT.tron": "64119588895"
+    },
+    "block_epoch": 1778457603.7029924,
+    "block_height": 197790927,
+    "block_time_utc": "2026-05-11T00:00:03.702992+00:00",
+    "stable_float_usd": 2912711.9
+  },
+  "2026-05-12": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "83541039806",
+      "USDC.base": "55234775934",
+      "USDC.eth": "2313864014139",
+      "USDT.arb": "546409031",
+      "USDT.eth": "546722678971",
+      "USDT.tron": "73444064509"
+    },
+    "block_epoch": 1778544001.9775403,
+    "block_height": 197936955,
+    "block_time_utc": "2026-05-12T00:00:01.977540+00:00",
+    "stable_float_usd": 3073353.01
+  },
+  "2026-05-13": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "84220324268",
+      "USDC.base": "295247160749",
+      "USDC.eth": "2357946019383",
+      "USDT.arb": "546411032",
+      "USDT.eth": "535208968838",
+      "USDT.tron": "73531898325"
+    },
+    "block_epoch": 1778630400.250727,
+    "block_height": 198072771,
+    "block_time_utc": "2026-05-13T00:00:00.250727+00:00",
+    "stable_float_usd": 3346700.81
+  },
+  "2026-05-14": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "83215207593",
+      "USDC.base": "105267623548",
+      "USDC.eth": "2115369584362",
+      "USDT.arb": "546411032",
+      "USDT.eth": "531054552722",
+      "USDT.tron": "65626556051"
+    },
+    "block_epoch": 1778716800.3299875,
+    "block_height": 198211476,
+    "block_time_utc": "2026-05-14T00:00:00.329988+00:00",
+    "stable_float_usd": 2901079.96
+  },
+  "2026-05-15": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "89159089172",
+      "USDC.base": "55468232207",
+      "USDC.eth": "2289657828054",
+      "USDT.arb": "546412233",
+      "USDT.eth": "482735581286",
+      "USDT.tron": "65627633541"
+    },
+    "block_epoch": 1778803219.2551303,
+    "block_height": 198354562,
+    "block_time_utc": "2026-05-15T00:00:19.255130+00:00",
+    "stable_float_usd": 2983194.8
+  },
+  "2026-05-16": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "95280695778",
+      "USDC.base": "55598998079",
+      "USDC.eth": "2274081005220",
+      "USDT.arb": "546412233",
+      "USDT.eth": "586403619606",
+      "USDT.tron": "67627410462"
+    },
+    "block_epoch": 1778889600.4480858,
+    "block_height": 198496428,
+    "block_time_utc": "2026-05-16T00:00:00.448086+00:00",
+    "stable_float_usd": 3079538.17
+  },
+  "2026-05-17": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "95270894498",
+      "USDC.base": "56032001199",
+      "USDC.eth": "2251502396524",
+      "USDT.arb": "546415748",
+      "USDT.eth": "587866266419",
+      "USDT.tron": "62626904533"
+    },
+    "block_epoch": 1778976000.0615962,
+    "block_height": 198638374,
+    "block_time_utc": "2026-05-17T00:00:00.061596+00:00",
+    "stable_float_usd": 3053844.9
+  },
+  "2026-05-18": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "91060128233",
+      "USDC.base": "55445106136",
+      "USDC.eth": "2267113544998",
+      "USDT.arb": "546415748",
+      "USDT.eth": "587695044295",
+      "USDT.tron": "67024648666"
+    },
+    "block_epoch": 1779062401.6502051,
+    "block_height": 198780035,
+    "block_time_utc": "2026-05-18T00:00:01.650205+00:00",
+    "stable_float_usd": 3068884.91
+  },
+  "2026-05-19": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "92631961322",
+      "USDC.base": "55445118421",
+      "USDC.eth": "2267396781681",
+      "USDT.arb": "546421797",
+      "USDT.eth": "587875429750",
+      "USDT.tron": "62870014588"
+    },
+    "block_epoch": 1779148800.3375814,
+    "block_height": 198921428,
+    "block_time_utc": "2026-05-19T00:00:00.337581+00:00",
+    "stable_float_usd": 3066765.75
+  },
+  "2026-05-20": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "87010832642",
+      "USDC.base": "55540884595",
+      "USDC.eth": "2271694294461",
+      "USDT.arb": "546401948",
+      "USDT.eth": "587434289397",
+      "USDT.tron": "70449445188"
+    },
+    "block_epoch": 1779235200.2572713,
+    "block_height": 199062493,
+    "block_time_utc": "2026-05-20T00:00:00.257271+00:00",
+    "stable_float_usd": 3072676.17
+  },
+  "2026-05-21": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "42075655973",
+      "USDC.base": "57833137916",
+      "USDC.eth": "2286548121815",
+      "USDT.arb": "546402449",
+      "USDT.eth": "487641954745",
+      "USDT.tron": "72453655547"
+    },
+    "block_epoch": 1779321600.3969119,
+    "block_height": 199203580,
+    "block_time_utc": "2026-05-21T00:00:00.396912+00:00",
+    "stable_float_usd": 2947098.95
+  },
+  "2026-05-22": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "40130705490",
+      "USDC.base": "57352612454",
+      "USDC.eth": "3409009149422",
+      "USDT.arb": "2554548084",
+      "USDT.eth": "496815500500",
+      "USDT.tron": "97746559169"
+    },
+    "block_epoch": 1779408008.8190851,
+    "block_height": 199346263,
+    "block_time_utc": "2026-05-22T00:00:08.819085+00:00",
+    "stable_float_usd": 4103609.1
+  },
+  "2026-05-23": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "50631149035",
+      "USDC.base": "67268060289",
+      "USDC.eth": "3626909375642",
+      "USDT.arb": "2054011628",
+      "USDT.eth": "528395761683",
+      "USDT.tron": "72670641428"
+    },
+    "block_epoch": 1779494400.4428868,
+    "block_height": 199488185,
+    "block_time_utc": "2026-05-23T00:00:00.442887+00:00",
+    "stable_float_usd": 4347929.02
+  },
+  "2026-05-24": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "48862677536",
+      "USDC.base": "113665676693",
+      "USDC.eth": "2991552555094",
+      "USDT.arb": "2054012087",
+      "USDT.eth": "528939670457",
+      "USDT.tron": "81982665454"
+    },
+    "block_epoch": 1779580800.3432045,
+    "block_height": 199630782,
+    "block_time_utc": "2026-05-24T00:00:00.343204+00:00",
+    "stable_float_usd": 3767057.28
+  },
+  "2026-05-25": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "48363755101",
+      "USDC.base": "112794765149",
+      "USDC.eth": "2678661630048",
+      "USDT.arb": "2054012213",
+      "USDT.eth": "572913174984",
+      "USDT.tron": "81979821988"
+    },
+    "block_epoch": 1779667201.4236882,
+    "block_height": 199773289,
+    "block_time_utc": "2026-05-25T00:00:01.423688+00:00",
+    "stable_float_usd": 3496767.18
+  },
+  "2026-05-26": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "48706484814",
+      "USDC.base": "91828042793",
+      "USDC.eth": "2876254308780",
+      "USDT.arb": "2054014193",
+      "USDT.eth": "598836563987",
+      "USDT.tron": "80695251111"
+    },
+    "block_epoch": 1779753606.8069723,
+    "block_height": 199916005,
+    "block_time_utc": "2026-05-26T00:00:06.806972+00:00",
+    "stable_float_usd": 3698374.69
+  },
+  "2026-05-27": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "47107547308",
+      "USDC.base": "152717739582",
+      "USDC.eth": "3241272028199",
+      "USDT.arb": "2054015993",
+      "USDT.eth": "606540309124",
+      "USDT.tron": "80506607851"
+    },
+    "block_epoch": 1779840001.397404,
+    "block_height": 200058855,
+    "block_time_utc": "2026-05-27T00:00:01.397404+00:00",
+    "stable_float_usd": 4130198.27
+  },
+  "2026-05-28": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "160133775201",
+      "USDC.base": "167371759448",
+      "USDC.eth": "3445437209709",
+      "USDT.arb": "2054016105",
+      "USDT.eth": "598451982980",
+      "USDT.tron": "81838351311"
+    },
+    "block_epoch": 1779926400.354455,
+    "block_height": 200201895,
+    "block_time_utc": "2026-05-28T00:00:00.354455+00:00",
+    "stable_float_usd": 4455287.12
+  },
+  "2026-05-29": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "145450780591",
+      "USDC.base": "147817971610",
+      "USDC.eth": "3402461766063",
+      "USDT.arb": "2111689512",
+      "USDT.eth": "557278106744",
+      "USDT.tron": "98771392229"
+    },
+    "block_epoch": 1780012806.37216,
+    "block_height": 200344282,
+    "block_time_utc": "2026-05-29T00:00:06.372160+00:00",
+    "stable_float_usd": 4353891.73
+  },
+  "2026-05-30": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "146446289908",
+      "USDC.base": "157234724043",
+      "USDC.eth": "3412038474457",
+      "USDT.arb": "21087551953",
+      "USDT.eth": "559087947761",
+      "USDT.tron": "99194195392"
+    },
+    "block_epoch": 1780099200.4265838,
+    "block_height": 200487188,
+    "block_time_utc": "2026-05-30T00:00:00.426584+00:00",
+    "stable_float_usd": 4395089.21
+  },
+  "2026-05-31": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "168004385136",
+      "USDC.base": "125915785834",
+      "USDC.eth": "3405252706245",
+      "USDT.arb": "2116937419",
+      "USDT.eth": "1090498992725",
+      "USDT.tron": "100859491303"
+    },
+    "block_epoch": 1780185600.3466368,
+    "block_height": 200630584,
+    "block_time_utc": "2026-05-31T00:00:00.346637+00:00",
+    "stable_float_usd": 4892648.32
+  },
+  "2026-06-01": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "182373854454",
+      "USDC.base": "155984177936",
+      "USDC.eth": "3258791371355",
+      "USDT.arb": "2125328014",
+      "USDT.eth": "545490594610",
+      "USDT.tron": "99118242671"
+    },
+    "block_epoch": 1780272000.0336466,
+    "block_height": 200773914,
+    "block_time_utc": "2026-06-01T00:00:00.033647+00:00",
+    "stable_float_usd": 4243883.59
+  },
+  "2026-06-02": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "102090726994",
+      "USDC.base": "130932891552",
+      "USDC.eth": "3195974526209",
+      "USDT.arb": "2125328134",
+      "USDT.eth": "916360529672",
+      "USDT.tron": "99418228255"
+    },
+    "block_epoch": 1780358405.9974592,
+    "block_height": 200916398,
+    "block_time_utc": "2026-06-02T00:00:05.997459+00:00",
+    "stable_float_usd": 4446902.25
+  },
+  "2026-06-03": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "263724570573",
+      "USDC.base": "106533051495",
+      "USDC.eth": "3239700348214",
+      "USDT.arb": "2106252230",
+      "USDT.eth": "959525419707",
+      "USDT.tron": "99380659984"
+    },
+    "block_epoch": 1780444800.232549,
+    "block_height": 201059241,
+    "block_time_utc": "2026-06-03T00:00:00.232549+00:00",
+    "stable_float_usd": 4670970.33
+  },
+  "2026-06-04": {
+    "balances": {
+      "DAI.eth": "24060343293230000",
+      "USDC.arb": "129138566892",
+      "USDC.base": "126411214599",
+      "USDC.eth": "2130488703422",
+      "USDT.arb": "2425524027",
+      "USDT.eth": "1500061786832",
+      "USDT.tron": "99521058783"
+    },
+    "block_epoch": 1780531212.8452666,
+    "block_height": 201203043,
+    "block_time_utc": "2026-06-04T00:00:12.845267+00:00",
+    "stable_float_usd": 3988046.88
+  },
+  "2026-06-05": {
+    "balances": {
+      "DAI.eth": "5024060343293230000",
+      "USDC.arb": "72887505131",
+      "USDC.base": "130877012485",
+      "USDC.eth": "2765796006982",
+      "USDT.arb": "2378068105",
+      "USDT.eth": "1131835820546",
+      "USDT.tron": "112550049675"
+    },
+    "block_epoch": 1780617600.2116082,
+    "block_height": 201346115,
+    "block_time_utc": "2026-06-05T00:00:00.211608+00:00",
+    "stable_float_usd": 4216329.49
+  },
+  "2026-06-06": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "114236941723",
+      "USDC.base": "100533727291",
+      "USDC.eth": "2716406097225",
+      "USDT.arb": "3272013323",
+      "USDT.eth": "1126582277012",
+      "USDT.tron": "108948922812"
+    },
+    "block_epoch": 1780704000.038458,
+    "block_height": 201486994,
+    "block_time_utc": "2026-06-06T00:00:00.038458+00:00",
+    "stable_float_usd": 4179990.0
+  },
+  "2026-06-07": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "1760445510257",
+      "USDC.base": "56478495688",
+      "USDC.eth": "2603439140317",
+      "USDT.arb": "3273513199",
+      "USDT.eth": "742152500087",
+      "USDT.tron": "370605370490"
+    },
+    "block_epoch": 1780790403.9289167,
+    "block_height": 201627481,
+    "block_time_utc": "2026-06-07T00:00:03.928917+00:00",
+    "stable_float_usd": 5546404.55
+  },
+  "2026-06-08": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "1776562761438",
+      "USDC.base": "54015055497",
+      "USDC.eth": "2586404240538",
+      "USDT.arb": "3373513322",
+      "USDT.eth": "786255747172",
+      "USDT.tron": "211222134589"
+    },
+    "block_epoch": 1780876812.9931865,
+    "block_height": 201766954,
+    "block_time_utc": "2026-06-08T00:00:12.993186+00:00",
+    "stable_float_usd": 5427843.48
+  },
+  "2026-06-09": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "1800185258965",
+      "USDC.base": "53220128647",
+      "USDC.eth": "2444876893648",
+      "USDT.arb": "2934705714",
+      "USDT.eth": "785590015076",
+      "USDT.tron": "237132705458"
+    },
+    "block_epoch": 1780963207.2967312,
+    "block_height": 201902190,
+    "block_time_utc": "2026-06-09T00:00:07.296731+00:00",
+    "stable_float_usd": 5333949.73
+  },
+  "2026-06-10": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2075212721424",
+      "USDC.base": "114550409291",
+      "USDC.eth": "2342625882799",
+      "USDT.arb": "2905169962",
+      "USDT.eth": "779955340969",
+      "USDT.tron": "218950118239"
+    },
+    "block_epoch": 1781049600.5534792,
+    "block_height": 202039999,
+    "block_time_utc": "2026-06-10T00:00:00.553479+00:00",
+    "stable_float_usd": 5544209.67
+  },
+  "2026-06-11": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2065202901705",
+      "USDC.base": "119506649977",
+      "USDC.eth": "2080259589463",
+      "USDT.arb": "2908309529",
+      "USDT.eth": "906809049965",
+      "USDT.tron": "180808910902"
+    },
+    "block_epoch": 1781136001.9523633,
+    "block_height": 202175605,
+    "block_time_utc": "2026-06-11T00:00:01.952363+00:00",
+    "stable_float_usd": 5365505.44
+  },
+  "2026-06-12": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2065281154232",
+      "USDC.base": "123563365369",
+      "USDC.eth": "2105370218494",
+      "USDT.arb": "4642431369",
+      "USDT.eth": "877193953837",
+      "USDT.tron": "169996405225"
+    },
+    "block_epoch": 1781222400.5257323,
+    "block_height": 202315617,
+    "block_time_utc": "2026-06-12T00:00:00.525732+00:00",
+    "stable_float_usd": 5356057.55
+  },
+  "2026-06-13": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2069347089199",
+      "USDC.base": "120088204126",
+      "USDC.eth": "2086218187136",
+      "USDT.arb": "4642433236",
+      "USDT.eth": "952577767350",
+      "USDT.tron": "245581439230"
+    },
+    "block_epoch": 1781308803.8155992,
+    "block_height": 202455298,
+    "block_time_utc": "2026-06-13T00:00:03.815599+00:00",
+    "stable_float_usd": 5488465.14
+  },
+  "2026-06-14": {
+    "balances": {
+      "DAI.eth": "11687329774580462027989",
+      "USDC.arb": "2186303241235",
+      "USDC.base": "126180754441",
+      "USDC.eth": "2095379379376",
+      "USDT.arb": "4907700272",
+      "USDT.eth": "1194251525910",
+      "USDT.tron": "199653695325"
+    },
+    "block_epoch": 1781395202.8708925,
+    "block_height": 202595230,
+    "block_time_utc": "2026-06-14T00:00:02.870893+00:00",
+    "stable_float_usd": 5818363.63
+  },
+  "2026-06-15": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2217506567587",
+      "USDC.base": "124739496263",
+      "USDC.eth": "2282588934189",
+      "USDT.arb": "5310458678",
+      "USDT.eth": "1283752918701",
+      "USDT.tron": "204719113545"
+    },
+    "block_epoch": 1781481600.4655757,
+    "block_height": 202736181,
+    "block_time_utc": "2026-06-15T00:00:00.465576+00:00",
+    "stable_float_usd": 6128627.51
+  },
+  "2026-06-16": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2217891533654",
+      "USDC.base": "127911502624",
+      "USDC.eth": "2176126119369",
+      "USDT.arb": "5358797501",
+      "USDT.eth": "1618383048007",
+      "USDT.tron": "227802707987"
+    },
+    "block_epoch": 1781568024.0898712,
+    "block_height": 202875892,
+    "block_time_utc": "2026-06-16T00:00:24.089871+00:00",
+    "stable_float_usd": 6383483.73
+  },
+  "2026-06-17": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2231892065286",
+      "USDC.base": "293346650349",
+      "USDC.eth": "2188734093116",
+      "USDT.arb": "5453029855",
+      "USDT.eth": "1855314158286",
+      "USDT.tron": "209744660229"
+    },
+    "block_epoch": 1781654417.3659658,
+    "block_height": 203018912,
+    "block_time_utc": "2026-06-17T00:00:17.365966+00:00",
+    "stable_float_usd": 6794494.68
+  },
+  "2026-06-18": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2208864100224",
+      "USDC.base": "277267332353",
+      "USDC.eth": "2961389199623",
+      "USDT.arb": "6867138194",
+      "USDT.eth": "1876327971684",
+      "USDT.tron": "212550235615"
+    },
+    "block_epoch": 1781740802.364108,
+    "block_height": 203161596,
+    "block_time_utc": "2026-06-18T00:00:02.364108+00:00",
+    "stable_float_usd": 7553276.0
+  },
+  "2026-06-19": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2234001866736",
+      "USDC.base": "279526237322",
+      "USDC.eth": "3378929589757",
+      "USDT.arb": "7508941046",
+      "USDT.eth": "2109323974929",
+      "USDT.tron": "198926068664"
+    },
+    "block_epoch": 1781827201.3916805,
+    "block_height": 203304356,
+    "block_time_utc": "2026-06-19T00:00:01.391680+00:00",
+    "stable_float_usd": 8218226.7
+  },
+  "2026-06-20": {
+    "balances": {
+      "DAI.eth": "10010024060343293230000",
+      "USDC.arb": "2275268618872",
+      "USDC.base": "284326186079",
+      "USDC.eth": "3437337254817",
+      "USDT.arb": "9414430530",
+      "USDT.eth": "2389588954068",
+      "USDT.tron": "191931232312"
+    },
+    "block_epoch": 1781913600.45536,
+    "block_height": 203447295,
+    "block_time_utc": "2026-06-20T00:00:00.455360+00:00",
+    "stable_float_usd": 8597876.7
+  },
+  "2026-06-21": {
+    "balances": {
+      "DAI.eth": "10110033861323491249800",
+      "USDC.arb": "2273400921132",
+      "USDC.base": "283234370751",
+      "USDC.eth": "3139873570849",
+      "USDT.arb": "10978657577",
+      "USDT.eth": "2530497140186",
+      "USDT.tron": "159924389034"
+    },
+    "block_epoch": 1782000008.560328,
+    "block_height": 203590234,
+    "block_time_utc": "2026-06-21T00:00:08.560328+00:00",
+    "stable_float_usd": 8408019.08
+  },
+  "2026-06-22": {
+    "balances": {
+      "DAI.eth": "32972851120613043195868",
+      "USDC.arb": "2344067289130",
+      "USDC.base": "295014425860",
+      "USDC.eth": "3241880119003",
+      "USDT.arb": "10939826628",
+      "USDT.eth": "2672894560109",
+      "USDT.tron": "153048150018"
+    },
+    "block_epoch": 1782086400.1867716,
+    "block_height": 203732515,
+    "block_time_utc": "2026-06-22T00:00:00.186772+00:00",
+    "stable_float_usd": 8750817.22
+  },
+  "2026-06-23": {
+    "balances": {
+      "DAI.eth": "32972865110613043195867",
+      "USDC.arb": "2344752716245",
+      "USDC.base": "293921172319",
+      "USDC.eth": "3225179692889",
+      "USDT.arb": "9304952159",
+      "USDT.eth": "2644672385600",
+      "USDT.tron": "651818588511"
+    },
+    "block_epoch": 1782172800.639988,
+    "block_height": 203874575,
+    "block_time_utc": "2026-06-23T00:00:00.639988+00:00",
+    "stable_float_usd": 9202622.37
+  },
+  "2026-06-24": {
+    "balances": {
+      "DAI.eth": "10010038050343293229999",
+      "USDC.arb": "2303930226933",
+      "USDC.base": "293775862592",
+      "USDC.eth": "3215152946629",
+      "USDT.arb": "9440524301",
+      "USDT.eth": "2791964930685",
+      "USDT.tron": "329943433687"
+    },
+    "block_epoch": 1782259201.4505682,
+    "block_height": 204016867,
+    "block_time_utc": "2026-06-24T00:00:01.450568+00:00",
+    "stable_float_usd": 8954217.96
+  },
+  "2026-06-25": {
+    "balances": {
+      "DAI.eth": "10010038050343293229999",
+      "USDC.arb": "2301086614388",
+      "USDC.base": "290894234565",
+      "USDC.eth": "2996880250318",
+      "USDT.arb": "15416552326",
+      "USDT.eth": "2368860924118",
+      "USDT.tron": "333766948423"
+    },
+    "block_epoch": 1782345600.484543,
+    "block_height": 204159330,
+    "block_time_utc": "2026-06-25T00:00:00.484543+00:00",
+    "stable_float_usd": 8316915.56
+  },
+  "2026-06-26": {
+    "balances": {
+      "DAI.eth": "10032734687007712218461",
+      "USDC.arb": "2343168036709",
+      "USDC.base": "296405975099",
+      "USDC.eth": "3076939056844",
+      "USDT.arb": "15164915950",
+      "USDT.eth": "1781395073126",
+      "USDT.tron": "336210371352"
+    },
+    "block_epoch": 1782432003.5801954,
+    "block_height": 204301419,
+    "block_time_utc": "2026-06-26T00:00:03.580195+00:00",
+    "stable_float_usd": 7859316.16
+  },
+  "2026-06-27": {
+    "balances": {
+      "DAI.eth": "10033734687007712218461",
+      "USDC.arb": "2359624932120",
+      "USDC.base": "293684446415",
+      "USDC.eth": "2915547578452",
+      "USDT.arb": "10300474798",
+      "USDT.eth": "1778632243129",
+      "USDT.tron": "341445410257"
+    },
+    "block_epoch": 1782518400.048276,
+    "block_height": 204444515,
+    "block_time_utc": "2026-06-27T00:00:00.048276+00:00",
+    "stable_float_usd": 7709268.82
+  },
+  "2026-06-28": {
+    "balances": {
+      "DAI.eth": "10011044687007712218461",
+      "USDC.arb": "2373866750243",
+      "USDC.base": "292394332692",
+      "USDC.eth": "2917614715102",
+      "USDT.arb": "10372242764",
+      "USDT.eth": "1708442371672",
+      "USDT.tron": "393992373516"
+    },
+    "block_epoch": 1782604800.5277379,
+    "block_height": 204589294,
+    "block_time_utc": "2026-06-28T00:00:00.527738+00:00",
+    "stable_float_usd": 7706693.83
+  },
+  "2026-06-29": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2353604856531",
+      "USDC.base": "294315033103",
+      "USDC.eth": "2857438745031",
+      "USDT.arb": "15373396998",
+      "USDT.eth": "1725953768487",
+      "USDT.tron": "392928847874"
+    },
+    "block_epoch": 1782691200.3219447,
+    "block_height": 204734085,
+    "block_time_utc": "2026-06-29T00:00:00.321945+00:00",
+    "stable_float_usd": 7650281.09
+  },
+  "2026-06-30": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2304146288834",
+      "USDC.base": "304821665381",
+      "USDC.eth": "2793288439917",
+      "USDT.arb": "10245006338",
+      "USDT.eth": "1738111343719",
+      "USDT.tron": "268227197985"
+    },
+    "block_epoch": 1782777604.0050368,
+    "block_height": 204878368,
+    "block_time_utc": "2026-06-30T00:00:04.005037+00:00",
+    "stable_float_usd": 7429506.39
+  },
+  "2026-07-01": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2323819905300",
+      "USDC.base": "296856983929",
+      "USDC.eth": "2402887503649",
+      "USDT.arb": "11893981686",
+      "USDT.eth": "1244414519449",
+      "USDT.tron": "263849646877"
+    },
+    "block_epoch": 1782864011.702592,
+    "block_height": 205022638,
+    "block_time_utc": "2026-07-01T00:00:11.702592+00:00",
+    "stable_float_usd": 6554388.99
+  },
+  "2026-07-02": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2296581652150",
+      "USDC.base": "295779367584",
+      "USDC.eth": "2130938858689",
+      "USDT.arb": "13140301894",
+      "USDT.eth": "1279158175698",
+      "USDT.tron": "262734551127"
+    },
+    "block_epoch": 1782950400.0334287,
+    "block_height": 205166788,
+    "block_time_utc": "2026-07-02T00:00:00.033429+00:00",
+    "stable_float_usd": 6288999.35
+  },
+  "2026-07-03": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2380247725348",
+      "USDC.base": "287117696874",
+      "USDC.eth": "2149603626793",
+      "USDT.arb": "11148147135",
+      "USDT.eth": "1183294558513",
+      "USDT.tron": "650370985194"
+    },
+    "block_epoch": 1783036818.7994545,
+    "block_height": 205301022,
+    "block_time_utc": "2026-07-03T00:00:18.799454+00:00",
+    "stable_float_usd": 6672449.18
+  },
+  "2026-07-04": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2408520161085",
+      "USDC.base": "122627651266",
+      "USDC.eth": "2129432245478",
+      "USDT.arb": "10064735836",
+      "USDT.eth": "1229230638558",
+      "USDT.tron": "312867881980"
+    },
+    "block_epoch": 1783123200.030738,
+    "block_height": 205442622,
+    "block_time_utc": "2026-07-04T00:00:00.030738+00:00",
+    "stable_float_usd": 6223409.76
+  },
+  "2026-07-05": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2423832435000",
+      "USDC.base": "122438666968",
+      "USDC.eth": "2114486120328",
+      "USDT.arb": "9500171354",
+      "USDT.eth": "1229694885170",
+      "USDT.tron": "499459063189"
+    },
+    "block_epoch": 1783209606.939191,
+    "block_height": 205586110,
+    "block_time_utc": "2026-07-05T00:00:06.939191+00:00",
+    "stable_float_usd": 6410077.79
+  },
+  "2026-07-06": {
+    "balances": {
+      "DAI.eth": "10666444687007712218461",
+      "USDC.arb": "2454326927968",
+      "USDC.base": "128422666248",
+      "USDC.eth": "2170544860910",
+      "USDT.arb": "9929437521",
+      "USDT.eth": "1223479154208",
+      "USDT.tron": "191268326706"
+    },
+    "block_epoch": 1783296000.0519972,
+    "block_height": 205728129,
+    "block_time_utc": "2026-07-06T00:00:00.051997+00:00",
+    "stable_float_usd": 6188637.82
+  },
+  "2026-07-07": {
+    "balances": {
+      "DAI.eth": "21508661831111793886709",
+      "USDC.arb": "2402655538064",
+      "USDC.base": "162403939262",
+      "USDC.eth": "2131561206357",
+      "USDT.arb": "11865146710",
+      "USDT.eth": "1207164359423",
+      "USDT.tron": "204269753624"
+    },
+    "block_epoch": 1783382400.1712816,
+    "block_height": 205869622,
+    "block_time_utc": "2026-07-07T00:00:00.171282+00:00",
+    "stable_float_usd": 6141428.61
+  },
+  "2026-07-08": {
+    "balances": {
+      "DAI.eth": "21508661831111793886709",
+      "USDC.arb": "2354079455936",
+      "USDC.base": "137643369780",
+      "USDC.eth": "2619665171653",
+      "USDT.arb": "15262446769",
+      "USDT.eth": "1548107126297",
+      "USDT.tron": "224608829815"
+    },
+    "block_epoch": 1783468800.2701876,
+    "block_height": 206011346,
+    "block_time_utc": "2026-07-08T00:00:00.270188+00:00",
+    "stable_float_usd": 6920875.06
+  },
+  "2026-07-09": {
+    "balances": {
+      "DAI.eth": "21508661831111793886709",
+      "USDC.arb": "2319992109738",
+      "USDC.base": "143169913458",
+      "USDC.eth": "2353786756154",
+      "USDT.arb": "20408836030",
+      "USDT.eth": "1218181328121",
+      "USDT.tron": "229775640384"
+    },
+    "block_epoch": 1783555200.508965,
+    "block_height": 206152784,
+    "block_time_utc": "2026-07-09T00:00:00.508965+00:00",
+    "stable_float_usd": 6306823.25
+  },
+  "2026-07-10": {
+    "balances": {
+      "DAI.eth": "21508661831111793886709",
+      "USDC.arb": "2348878969747",
+      "USDC.base": "137470546290",
+      "USDC.eth": "2320977190645",
+      "USDT.arb": "23035461799",
+      "USDT.eth": "1194024866080",
+      "USDT.tron": "183955785119"
+    },
+    "block_epoch": 1783641600.4947762,
+    "block_height": 206294601,
+    "block_time_utc": "2026-07-10T00:00:00.494776+00:00",
+    "stable_float_usd": 6229851.48
+  },
+  "2026-07-11": {
+    "balances": {
+      "DAI.eth": "21508662710029890240524",
+      "USDC.arb": "2469235169922",
+      "USDC.base": "133243527338",
+      "USDC.eth": "2311711654417",
+      "USDT.arb": "20024361965",
+      "USDT.eth": "1237674904475",
+      "USDT.tron": "193707280318"
+    },
+    "block_epoch": 1783728003.6040595,
+    "block_height": 206434643,
+    "block_time_utc": "2026-07-11T00:00:03.604059+00:00",
+    "stable_float_usd": 6387105.56
+  },
+  "2026-07-12": {
+    "balances": {
+      "DAI.eth": "21633054858866139950943",
+      "USDC.arb": "2912488808051",
+      "USDC.base": "144434090736",
+      "USDC.eth": "2343764080112",
+      "USDT.arb": "18735649129",
+      "USDT.eth": "1240474763068",
+      "USDT.tron": "193519080495"
+    },
+    "block_epoch": 1783814400.3988998,
+    "block_height": 206577653,
+    "block_time_utc": "2026-07-12T00:00:00.398900+00:00",
+    "stable_float_usd": 6875049.53
+  },
+  "2026-07-13": {
+    "balances": {
+      "DAI.eth": "21633054858866139950943",
+      "USDC.arb": "2757656773189",
+      "USDC.base": "133183896715",
+      "USDC.eth": "2147278287673",
+      "USDT.arb": "18492669544",
+      "USDT.eth": "1257600899236",
+      "USDT.tron": "170362064862"
+    },
+    "block_epoch": 1783900800.398141,
+    "block_height": 206720143,
+    "block_time_utc": "2026-07-13T00:00:00.398141+00:00",
+    "stable_float_usd": 6506207.65
+  },
+  "2026-07-14": {
+    "balances": {
+      "DAI.eth": "21813054858866139950943",
+      "USDC.arb": "2689850720965",
+      "USDC.base": "131945216808",
+      "USDC.eth": "1961770407918",
+      "USDT.arb": "21074156619",
+      "USDT.eth": "1280167978635",
+      "USDT.tron": "211434515908"
+    },
+    "block_epoch": 1783987200.3689096,
+    "block_height": 206859688,
+    "block_time_utc": "2026-07-14T00:00:00.368910+00:00",
+    "stable_float_usd": 6318056.05
+  },
+  "2026-07-15": {
+    "balances": {
+      "DAI.eth": "16810054858866139950943",
+      "USDC.arb": "2963899613689",
+      "USDC.base": "124358585873",
+      "USDC.eth": "2054890352750",
+      "USDT.arb": "22345219746",
+      "USDT.eth": "1017809399236",
+      "USDT.tron": "215739070943"
+    },
+    "block_epoch": 1784073600.5524597,
+    "block_height": 206998577,
+    "block_time_utc": "2026-07-15T00:00:00.552460+00:00",
+    "stable_float_usd": 6415852.3
+  },
+  "2026-07-16": {
+    "balances": {
+      "DAI.eth": "16630054858866139950943",
+      "USDC.arb": "3493307873187",
+      "USDC.base": "141862765821",
+      "USDC.eth": "3530266845247",
+      "USDT.arb": "20942769864",
+      "USDT.eth": "983191368647",
+      "USDT.tron": "237235671736"
+    },
+    "block_epoch": 1784160017.0556452,
+    "block_height": 207136825,
+    "block_time_utc": "2026-07-16T00:00:17.055645+00:00",
+    "stable_float_usd": 8423437.35
+  },
+  "2026-07-17": {
+    "balances": {
+      "DAI.eth": "16630054858866139950943",
+      "USDC.arb": "2960456972695",
+      "USDC.base": "125090036012",
+      "USDC.eth": "3308847268326",
+      "USDT.arb": "27945201391",
+      "USDT.eth": "967964448764",
+      "USDT.tron": "239849221920"
+    },
+    "block_epoch": 1784246400.4928107,
+    "block_height": 207277105,
+    "block_time_utc": "2026-07-17T00:00:00.492811+00:00",
+    "stable_float_usd": 7646783.2
+  },
+  "2026-07-18": {
+    "balances": {
+      "DAI.eth": "16630054858866139950943",
+      "USDC.arb": "2821735385780",
+      "USDC.base": "124451812850",
+      "USDC.eth": "2779204894847",
+      "USDT.arb": "30062579176",
+      "USDT.eth": "1023210327392",
+      "USDT.tron": "392464202711"
+    },
+    "block_epoch": 1784332800.0691483,
+    "block_height": 207418546,
+    "block_time_utc": "2026-07-18T00:00:00.069148+00:00",
+    "stable_float_usd": 7187759.26
+  },
+  "2026-07-19": {
+    "balances": {
+      "DAI.eth": "16630054858866139950943",
+      "USDC.arb": "2588362047916",
+      "USDC.base": "118260637714",
+      "USDC.eth": "2988337921030",
+      "USDT.arb": "30062788994",
+      "USDT.eth": "956502463510",
+      "USDT.tron": "367222272686"
+    },
+    "block_epoch": 1784419224.4789371,
+    "block_height": 207562967,
+    "block_time_utc": "2026-07-19T00:00:24.478937+00:00",
+    "stable_float_usd": 7065378.19
+  },
+  "2026-07-20": {
+    "balances": {
+      "DAI.eth": "16630054858866139950943",
+      "USDC.arb": "2462853911443",
+      "USDC.base": "138185220346",
+      "USDC.eth": "2537201401965",
+      "USDT.arb": "32123699614",
+      "USDT.eth": "1036602803505",
+      "USDT.tron": "361533443610"
+    },
+    "block_epoch": 1784505606.4728074,
+    "block_height": 207706100,
+    "block_time_utc": "2026-07-20T00:00:06.472807+00:00",
+    "stable_float_usd": 6585130.54
+  },
+  "2026-07-21": {
+    "balances": {
+      "DAI.eth": "16630054858866139950943",
+      "USDC.arb": "2453398842953",
+      "USDC.base": "141098644829",
+      "USDC.eth": "2358599552371",
+      "USDT.arb": "29123816812",
+      "USDT.eth": "921591513010",
+      "USDT.tron": "369504273876"
+    },
+    "block_epoch": 1784592022.1218996,
+    "block_height": 207841522,
+    "block_time_utc": "2026-07-21T00:00:22.121900+00:00",
+    "stable_float_usd": 6289946.7
+  },
+  "2026-07-22": {
+    "balances": {
+      "DAI.eth": "11629454858866139950943",
+      "USDC.arb": "2465117657328",
+      "USDC.base": "198063554782",
+      "USDC.eth": "2309520363809",
+      "USDT.arb": "30232277456",
+      "USDT.eth": "952514495101",
+      "USDT.tron": "373118011742"
+    },
+    "block_epoch": 1784678400.3819983,
+    "block_height": 207976892,
+    "block_time_utc": "2026-07-22T00:00:00.381998+00:00",
+    "stable_float_usd": 6340195.82
+  },
+  "2026-07-23": {
+    "balances": {
+      "DAI.eth": "11827654858866139950943",
+      "USDC.arb": "2470994056069",
+      "USDC.base": "155102769236",
+      "USDC.eth": "2327533574127",
+      "USDT.arb": "21354692169",
+      "USDT.eth": "973568252112",
+      "USDT.tron": "362975382248"
+    },
+    "block_epoch": 1784764800.3039467,
+    "block_height": 208116850,
+    "block_time_utc": "2026-07-23T00:00:00.303947+00:00",
+    "stable_float_usd": 6323356.38
+  },
+  "2026-07-24": {
+    "balances": {
+      "DAI.eth": "11827654858866139950943",
+      "USDC.arb": "2499380211854",
+      "USDC.base": "155149761991",
+      "USDC.eth": "2315673305216",
+      "USDT.arb": "13971321649",
+      "USDT.eth": "1017596577835",
+      "USDT.tron": "324931657041"
+    },
+    "block_epoch": 1784851200.050154,
+    "block_height": 208259117,
+    "block_time_utc": "2026-07-24T00:00:00.050154+00:00",
+    "stable_float_usd": 6338530.49
+  },
+  "2026-07-25": {
+    "balances": {
+      "DAI.eth": "11677054858866139950943",
+      "USDC.arb": "2511520018837",
+      "USDC.base": "157415488541",
+      "USDC.eth": "2404354848616",
+      "USDT.arb": "11293125898",
+      "USDT.eth": "1510109216509",
+      "USDT.tron": "367823515130"
+    },
+    "block_epoch": 1784937605.2741039,
+    "block_height": 208402439,
+    "block_time_utc": "2026-07-25T00:00:05.274104+00:00",
+    "stable_float_usd": 6974193.27
+  },
+  "2026-07-26": {
+    "balances": {
+      "DAI.eth": "11677054858866139950943",
+      "USDC.arb": "2506560855371",
+      "USDC.base": "197066775645",
+      "USDC.eth": "2449561851475",
+      "USDT.arb": "11604360496",
+      "USDT.eth": "1550722843386",
+      "USDT.tron": "355724506199"
+    },
+    "block_epoch": 1785024000.4473505,
+    "block_height": 208545897,
+    "block_time_utc": "2026-07-26T00:00:00.447351+00:00",
+    "stable_float_usd": 7082918.25
+  },
+  "2026-07-27": {
+    "balances": {
+      "DAI.eth": "11629854858866139950943",
+      "USDC.arb": "2370844095799",
+      "USDC.base": "192968816827",
+      "USDC.eth": "2430688814124",
+      "USDT.arb": "11329483235",
+      "USDT.eth": "1617819174798",
+      "USDT.tron": "351611241503"
+    },
+    "block_epoch": 1785110400.070314,
+    "block_height": 208688261,
+    "block_time_utc": "2026-07-27T00:00:00.070314+00:00",
+    "stable_float_usd": 6986891.48
+  },
+  "2026-07-28": {
+    "balances": {
+      "DAI.eth": "11103024858866139950943",
+      "USDC.arb": "2385473411612",
+      "USDC.base": "275600189365",
+      "USDC.eth": "2366119509369",
+      "USDT.arb": "16201519694",
+      "USDT.eth": "1054173813663",
+      "USDT.tron": "368623415735"
+    },
+    "block_epoch": 1785196800.3094034,
+    "block_height": 208828362,
+    "block_time_utc": "2026-07-28T00:00:00.309403+00:00",
+    "stable_float_usd": 6477294.88
+  },
+  "2026-07-29": {
+    "balances": {
+      "DAI.eth": "11103024858866139950943",
+      "USDC.arb": "2377073972912",
+      "USDC.base": "273610720148",
+      "USDC.eth": "1972408688222",
+      "USDT.arb": "10751880254",
+      "USDT.eth": "1073935571138",
+      "USDT.tron": "338957207098"
+    },
+    "block_epoch": 1785283200.5140827,
+    "block_height": 208968977,
+    "block_time_utc": "2026-07-29T00:00:00.514083+00:00",
+    "stable_float_usd": 6057841.06
+  },
+  "2026-07-30": {
+    "balances": {
+      "DAI.eth": "11103024858866139950943",
+      "USDC.arb": "2411186816601",
+      "USDC.base": "272566545182",
+      "USDC.eth": "1984713683240",
+      "USDT.arb": "10595373452",
+      "USDT.eth": "1013202481774",
+      "USDT.tron": "369867894302"
+    },
+    "block_epoch": 1785369600.336856,
+    "block_height": 209110719,
+    "block_time_utc": "2026-07-30T00:00:00.336856+00:00",
+    "stable_float_usd": 6073235.82
+  },
+  "2026-07-31": {
+    "balances": {
+      "DAI.eth": "11103024858866139950943",
+      "USDC.arb": "2419754339984",
+      "USDC.base": "349681370966",
+      "USDC.eth": "1984665770055",
+      "USDT.arb": "11196947972",
+      "USDT.eth": "946860921916",
+      "USDT.tron": "351554833477"
+    },
+    "block_epoch": 1785456000.231829,
+    "block_height": 209253334,
+    "block_time_utc": "2026-07-31T00:00:00.231829+00:00",
+    "stable_float_usd": 6074817.21
+  },
+  "2026-08-01": {
+    "balances": {
+      "DAI.eth": "11103024858866139950943",
+      "USDC.arb": "2423379585038",
+      "USDC.base": "274446218932",
+      "USDC.eth": "2033955474716",
+      "USDT.arb": "10997343531",
+      "USDT.eth": "1175753017518",
+      "USDT.tron": "365268885604"
+    },
+    "block_epoch": 1785542400.0525274,
+    "block_height": 209393356,
+    "block_time_utc": "2026-08-01T00:00:00.052527+00:00",
+    "stable_float_usd": 6294903.55
+  },
+  "2026-08-02": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "2389871430482",
+      "USDC.base": "275780708841",
+      "USDC.eth": "2063039639179",
+      "USDT.arb": "11205660823",
+      "USDT.eth": "1198412329162",
+      "USDT.tron": "343807414829"
+    },
+    "block_epoch": 1785628800.0900414,
+    "block_height": 209533098,
+    "block_time_utc": "2026-08-02T00:00:00.090041+00:00",
+    "stable_float_usd": 6293808.01
+  },
+  "2026-08-03": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "2396958539574",
+      "USDC.base": "280084788669",
+      "USDC.eth": "2074434066193",
+      "USDT.arb": "11295431846",
+      "USDT.eth": "1188219343516",
+      "USDT.tron": "353957905043"
+    },
+    "block_epoch": 1785715200.4654033,
+    "block_height": 209673843,
+    "block_time_utc": "2026-08-03T00:00:00.465403+00:00",
+    "stable_float_usd": 6316640.9
+  },
+  "2026-08-04": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "2402857807043",
+      "USDC.base": "217436404441",
+      "USDC.eth": "1981439465299",
+      "USDT.arb": "13197324216",
+      "USDT.eth": "1104604805539",
+      "USDT.tron": "342974827774"
+    },
+    "block_epoch": 1785801600.4149184,
+    "block_height": 209815418,
+    "block_time_utc": "2026-08-04T00:00:00.414918+00:00",
+    "stable_float_usd": 6074201.46
+  },
+  "2026-08-05": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "2435153736466",
+      "USDC.base": "243033028919",
+      "USDC.eth": "1973331842464",
+      "USDT.arb": "11425426509",
+      "USDT.eth": "1007799291336",
+      "USDT.tron": "337861773044"
+    },
+    "block_epoch": 1785888000.2387564,
+    "block_height": 209956175,
+    "block_time_utc": "2026-08-05T00:00:00.238756+00:00",
+    "stable_float_usd": 6020295.92
+  },
+  "2026-08-06": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "2441838508620",
+      "USDC.base": "415268073779",
+      "USDC.eth": "1994553934888",
+      "USDT.arb": "12875537735",
+      "USDT.eth": "1067317073944",
+      "USDT.tron": "348565507269"
+    },
+    "block_epoch": 1785974403.5185716,
+    "block_height": 210097719,
+    "block_time_utc": "2026-08-06T00:00:03.518572+00:00",
+    "stable_float_usd": 6292109.46
+  },
+  "2026-08-07": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "3221662144449",
+      "USDC.base": "403192913608",
+      "USDC.eth": "1802975923292",
+      "USDT.arb": "13162608060",
+      "USDT.eth": "1024438248318",
+      "USDT.tron": "417107913223"
+    },
+    "block_epoch": 1786060820.7879553,
+    "block_height": 210238067,
+    "block_time_utc": "2026-08-07T00:00:20.787955+00:00",
+    "stable_float_usd": 6894230.58
+  },
+  "2026-08-08": {
+    "balances": {
+      "DAI.eth": "11690824859453139950943",
+      "USDC.arb": "3067391180422",
+      "USDC.base": "390714303895",
+      "USDC.eth": "1743324240269",
+      "USDT.arb": "13600278449",
+      "USDT.eth": "1124498501894",
+      "USDT.tron": "342676372493"
+    },
+    "block_epoch": 1786147200.6521404,
+    "block_height": 210378565,
+    "block_time_utc": "2026-08-08T00:00:00.652140+00:00",
+    "stable_float_usd": 6693895.7
+  },
+  "2026-08-09": {
+    "balances": {
+      "DAI.eth": "11228155355103933556696",
+      "USDC.arb": "2560759515688",
+      "USDC.base": "473475780685",
+      "USDC.eth": "1735543399990",
+      "USDT.arb": "13561432134",
+      "USDT.eth": "1110925564899",
+      "USDT.tron": "346545906146"
+    },
+    "block_epoch": 1786233600.4884443,
+    "block_height": 210520392,
+    "block_time_utc": "2026-08-09T00:00:00.488444+00:00",
+    "stable_float_usd": 6252039.75
+  },
+  "2026-08-10": {
+    "balances": {
+      "DAI.eth": "10823538210412851888448",
+      "USDC.arb": "2388664635858",
+      "USDC.base": "505780733354",
+      "USDC.eth": "1921317335140",
+      "USDT.arb": "13309724874",
+      "USDT.eth": "1118890607199",
+      "USDT.tron": "357119792078"
+    },
+    "block_epoch": 1786320003.6629112,
+    "block_height": 210662659,
+    "block_time_utc": "2026-08-10T00:00:03.662911+00:00",
+    "stable_float_usd": 6315906.37
+  },
+  "2026-08-11": {
+    "balances": {
+      "DAI.eth": "10823538210412851888448",
+      "USDC.arb": "2781842022935",
+      "USDC.base": "477761905159",
+      "USDC.eth": "1862295439335",
+      "USDT.arb": "11511225285",
+      "USDT.eth": "1035303097280",
+      "USDT.tron": "350387127821"
+    },
+    "block_epoch": 1786406400.2859268,
+    "block_height": 210804062,
+    "block_time_utc": "2026-08-11T00:00:00.285927+00:00",
+    "stable_float_usd": 6529924.36
+  },
+  "2026-08-12": {
+    "balances": {
+      "DAI.eth": "10823538210412851888448",
+      "USDC.arb": "2574273771175",
+      "USDC.base": "522806017262",
+      "USDC.eth": "1862681177747",
+      "USDT.arb": "12515342767",
+      "USDT.eth": "986389901072",
+      "USDT.tron": "349878509033"
+    },
+    "block_epoch": 1786492804.6876082,
+    "block_height": 210944790,
+    "block_time_utc": "2026-08-12T00:00:04.687608+00:00",
+    "stable_float_usd": 6319368.26
+  },
+  "2026-08-13": {
+    "balances": {
+      "DAI.eth": "10823538210412851888448",
+      "USDC.arb": "3153886717583",
+      "USDC.base": "511302046840",
+      "USDC.eth": "1819526984186",
+      "USDT.arb": "12771569842",
+      "USDT.eth": "1114969778669",
+      "USDT.tron": "362882137862"
+    },
+    "block_epoch": 1786579211.5644996,
+    "block_height": 211084674,
+    "block_time_utc": "2026-08-13T00:00:11.564500+00:00",
+    "stable_float_usd": 6986162.77
+  },
+  "2026-08-14": {
+    "balances": {
+      "DAI.eth": "10822538210412851888448",
+      "USDC.arb": "2439539319487",
+      "USDC.base": "459599438176",
+      "USDC.eth": "1683802757293",
+      "USDT.arb": "13841745247",
+      "USDT.eth": "1236810841768",
+      "USDT.tron": "412954665922"
+    },
+    "block_epoch": 1786665600.399322,
+    "block_height": 211226000,
+    "block_time_utc": "2026-08-14T00:00:00.399322+00:00",
+    "stable_float_usd": 6257371.31
+  },
+  "2026-08-15": {
+    "balances": {
+      "DAI.eth": "10907302550289943802373",
+      "USDC.arb": "2489696903960",
+      "USDC.base": "410550125763",
+      "USDC.eth": "1698604581081",
+      "USDT.arb": "14071582991",
+      "USDT.eth": "1124812154797",
+      "USDT.tron": "375973778263"
+    },
+    "block_epoch": 1786752008.4156373,
+    "block_height": 211368467,
+    "block_time_utc": "2026-08-15T00:00:08.415637+00:00",
+    "stable_float_usd": 6124616.43
+  },
+  "2026-08-16": {
+    "balances": {
+      "DAI.eth": "10907302550289943802373",
+      "USDC.arb": "2426154146976",
+      "USDC.base": "413232255045",
+      "USDC.eth": "1660696820629",
+      "USDT.arb": "17195952358",
+      "USDT.eth": "1084746744542",
+      "USDT.tron": "380930774958"
+    },
+    "block_epoch": 1786838401.652587,
+    "block_height": 211507164,
+    "block_time_utc": "2026-08-16T00:00:01.652587+00:00",
+    "stable_float_usd": 5993864.0
+  },
+  "2026-08-17": {
+    "balances": {
+      "DAI.eth": "10907302550289943802373",
+      "USDC.arb": "2423898944200",
+      "USDC.base": "388060634373",
+      "USDC.eth": "1707758604007",
+      "USDT.arb": "16384802001",
+      "USDT.eth": "1024085804101",
+      "USDT.tron": "371484828528"
+    },
+    "block_epoch": 1786924800.3390121,
+    "block_height": 211649834,
+    "block_time_utc": "2026-08-17T00:00:00.339012+00:00",
+    "stable_float_usd": 5942580.92
+  },
+  "2026-08-18": {
+    "balances": {
+      "DAI.eth": "10907302550289943802373",
+      "USDC.arb": "2404536227890",
+      "USDC.base": "223008928335",
+      "USDC.eth": "1790864515805",
+      "USDT.arb": "21951620132",
+      "USDT.eth": "1043932081314",
+      "USDT.tron": "389488135366"
+    },
+    "block_epoch": 1787011201.380524,
+    "block_height": 211791380,
+    "block_time_utc": "2026-08-18T00:00:01.380524+00:00",
+    "stable_float_usd": 5884688.81
+  },
+  "2026-08-19": {
+    "balances": {
+      "DAI.eth": "10907302550289943802373",
+      "USDC.arb": "2382015774186",
+      "USDC.base": "220875645069",
+      "USDC.eth": "1692966680318",
+      "USDT.arb": "20017896395",
+      "USDT.eth": "1064904677570",
+      "USDT.tron": "356231814761"
+    },
+    "block_epoch": 1787097600.9747136,
+    "block_height": 211932556,
+    "block_time_utc": "2026-08-19T00:00:00.974714+00:00",
+    "stable_float_usd": 5747919.79
+  },
+  "2026-08-20": {
+    "balances": {
+      "DAI.eth": "12343713992592797612848",
+      "USDC.arb": "2365551713811",
+      "USDC.base": "213675991242",
+      "USDC.eth": "1610856194372",
+      "USDT.arb": "20015528495",
+      "USDT.eth": "1088608041551",
+      "USDT.tron": "347293657542"
+    },
+    "block_epoch": 1787184004.2218173,
+    "block_height": 212074324,
+    "block_time_utc": "2026-08-20T00:00:04.221817+00:00",
+    "stable_float_usd": 5658344.84
+  },
+  "2026-08-21": {
+    "balances": {
+      "DAI.eth": "25151324165355731376807",
+      "USDC.arb": "2270979880826",
+      "USDC.base": "217360308611",
+      "USDC.eth": "1660463707870",
+      "USDT.arb": "21280422482",
+      "USDT.eth": "1763239920146",
+      "USDT.tron": "336083631317"
+    },
+    "block_epoch": 1787270400.262051,
+    "block_height": 212216590,
+    "block_time_utc": "2026-08-21T00:00:00.262051+00:00",
+    "stable_float_usd": 6294559.2
+  },
+  "2026-08-22": {
+    "balances": {
+      "DAI.eth": "25151324165355731376807",
+      "USDC.arb": "2194440203911",
+      "USDC.base": "146387330299",
+      "USDC.eth": "1874017902141",
+      "USDT.arb": "18934055312",
+      "USDT.eth": "1906967508158",
+      "USDT.tron": "371393106252"
+    },
+    "block_epoch": 1787356802.1004653,
+    "block_height": 212355125,
+    "block_time_utc": "2026-08-22T00:00:02.100465+00:00",
+    "stable_float_usd": 6537291.43
+  },
+  "2026-08-23": {
+    "balances": {
+      "DAI.eth": "25151324165355731376807",
+      "USDC.arb": "2199584391593",
+      "USDC.base": "151492989880",
+      "USDC.eth": "1657127860321",
+      "USDT.arb": "18058821322",
+      "USDT.eth": "1913318655638",
+      "USDT.tron": "381412519575"
+    },
+    "block_epoch": 1787443200.4073575,
+    "block_height": 212494412,
+    "block_time_utc": "2026-08-23T00:00:00.407357+00:00",
+    "stable_float_usd": 6346146.56
+  },
+  "2026-08-24": {
+    "balances": {
+      "DAI.eth": "25151324165355731376807",
+      "USDC.arb": "2190575698681",
+      "USDC.base": "149603692028",
+      "USDC.eth": "1562651825289",
+      "USDT.arb": "17876502696",
+      "USDT.eth": "1889178084069",
+      "USDT.tron": "380122888200"
+    },
+    "block_epoch": 1787529600.1482966,
+    "block_height": 212636217,
+    "block_time_utc": "2026-08-24T00:00:00.148297+00:00",
+    "stable_float_usd": 6215160.02
+  },
+  "2026-08-25": {
+    "balances": {
+      "DAI.eth": "29251318670978786379531",
+      "USDC.arb": "1939037099307",
+      "USDC.base": "165299195935",
+      "USDC.eth": "1759863742556",
+      "USDT.arb": "11858170363",
+      "USDT.eth": "1923010092906",
+      "USDT.tron": "374018645623"
+    },
+    "block_epoch": 1787616000.468999,
+    "block_height": 212778180,
+    "block_time_utc": "2026-08-25T00:00:00.468999+00:00",
+    "stable_float_usd": 6202338.27
+  },
+  "2026-08-26": {
+    "balances": {
+      "DAI.eth": "50823164583618861632318",
+      "USDC.arb": "1928287885735",
+      "USDC.base": "163989261055",
+      "USDC.eth": "2173077005414",
+      "USDT.arb": "13697747844",
+      "USDT.eth": "1719227752678",
+      "USDT.tron": "279591067237"
+    },
+    "block_epoch": 1787702400.1986268,
+    "block_height": 212919840,
+    "block_time_utc": "2026-08-26T00:00:00.198627+00:00",
+    "stable_float_usd": 6328693.88
+  },
+  "2026-08-27": {
+    "balances": {
+      "DAI.eth": "30671027727262654448329",
+      "USDC.arb": "1921960410759",
+      "USDC.base": "164225324244",
+      "USDC.eth": "2343263019821",
+      "USDT.arb": "15441272010",
+      "USDT.eth": "1750509182159",
+      "USDT.tron": "1054561368850"
+    },
+    "block_epoch": 1787788802.2725906,
+    "block_height": 213061780,
+    "block_time_utc": "2026-08-27T00:00:02.272591+00:00",
+    "stable_float_usd": 7280631.61
+  },
+  "2026-08-28": {
+    "balances": {
+      "DAI.eth": "25152318960770168686947",
+      "USDC.arb": "1867580657196",
+      "USDC.base": "153660047848",
+      "USDC.eth": "2336376411955",
+      "USDT.arb": "12344781229",
+      "USDT.eth": "1652041474188",
+      "USDT.tron": "260857590915"
+    },
+    "block_epoch": 1787875201.208754,
+    "block_height": 213201771,
+    "block_time_utc": "2026-08-28T00:00:01.208754+00:00",
+    "stable_float_usd": 6308013.28
+  },
+  "2026-08-29": {
+    "balances": {
+      "DAI.eth": "28996848370292884232803",
+      "USDC.arb": "1862370571179",
+      "USDC.base": "153488423370",
+      "USDC.eth": "2722108944378",
+      "USDT.arb": "20918291168",
+      "USDT.eth": "2395226897196",
+      "USDT.tron": "270677027711"
+    },
+    "block_epoch": 1787961600.44319,
+    "block_height": 213342097,
+    "block_time_utc": "2026-08-29T00:00:00.443190+00:00",
+    "stable_float_usd": 7453787.0
+  },
+  "2026-08-30": {
+    "balances": {
+      "DAI.eth": "32784776913723386970927",
+      "USDC.arb": "1865812536411",
+      "USDC.base": "142439387534",
+      "USDC.eth": "2765986998202",
+      "USDT.arb": "45361291317",
+      "USDT.eth": "1729755205418",
+      "USDT.tron": "266265297234"
+    },
+    "block_epoch": 1788048001.3971405,
+    "block_height": 213482578,
+    "block_time_utc": "2026-08-30T00:00:01.397141+00:00",
+    "stable_float_usd": 6848405.49
+  },
+  "2026-08-31": {
+    "balances": {
+      "DAI.eth": "32288272656599308533594",
+      "USDC.arb": "1863959233230",
+      "USDC.base": "133423877161",
+      "USDC.eth": "3497523391437",
+      "USDT.arb": "24432123387",
+      "USDT.eth": "2485833417619",
+      "USDT.tron": "828860431559"
+    },
+    "block_epoch": 1788134403.6475947,
+    "block_height": 213622043,
+    "block_time_utc": "2026-08-31T00:00:03.647595+00:00",
+    "stable_float_usd": 8866320.75
+  },
+  "2026-09-01": {
+    "balances": {
+      "DAI.eth": "30983864477567934516359",
+      "USDC.arb": "1059936950856",
+      "USDC.base": "133009293000",
+      "USDC.eth": "3290652490842",
+      "USDT.arb": "13430844587",
+      "USDT.eth": "2692645114041",
+      "USDT.tron": "2937510734332"
+    },
+    "block_epoch": 1788220803.6135657,
+    "block_height": 213761247,
+    "block_time_utc": "2026-09-01T00:00:03.613566+00:00",
+    "stable_float_usd": 10158169.29
+  },
+  "2026-09-02": {
+    "balances": {
+      "DAI.eth": "29800266214874895673733",
+      "USDC.arb": "1062806849410",
+      "USDC.base": "130049808007",
+      "USDC.eth": "3948204476362",
+      "USDT.arb": "13423907622",
+      "USDT.eth": "2479018161281",
+      "USDT.tron": "906679481813"
+    },
+    "block_epoch": 1788307205.9740674,
+    "block_height": 213900445,
+    "block_time_utc": "2026-09-02T00:00:05.974067+00:00",
+    "stable_float_usd": 8569982.95
+  },
+  "2026-09-03": {
+    "balances": {
+      "DAI.eth": "29798243421409494507559",
+      "USDC.arb": "1070279712106",
+      "USDC.base": "131502341697",
+      "USDC.eth": "4157042474188",
+      "USDT.arb": "13821258735",
+      "USDT.eth": "2429850238198",
+      "USDT.tron": "604920806627"
+    },
+    "block_epoch": 1788393613.2811866,
+    "block_height": 214037275,
+    "block_time_utc": "2026-09-03T00:00:13.281187+00:00",
+    "stable_float_usd": 8437215.07
+  },
+  "2026-09-04": {
+    "balances": {
+      "DAI.eth": "29326339919531811819058",
+      "USDC.arb": "1074432455338",
+      "USDC.base": "130550516878",
+      "USDC.eth": "4956344850692",
+      "USDT.arb": "12539660852",
+      "USDT.eth": "1867923876580",
+      "USDT.tron": "261746366243"
+    },
+    "block_epoch": 1788480004.6578593,
+    "block_height": 214171239,
+    "block_time_utc": "2026-09-04T00:00:04.657859+00:00",
+    "stable_float_usd": 8332864.07
+  },
+  "2026-09-05": {
+    "balances": {
+      "DAI.eth": "49554930253451672487028",
+      "USDC.arb": "1083052728735",
+      "USDC.base": "130237189132",
+      "USDC.eth": "5879844827355",
+      "USDT.arb": "12339760611",
+      "USDT.eth": "2117279281257",
+      "USDT.tron": "262013885493"
+    },
+    "block_epoch": 1788566400.1482382,
+    "block_height": 214310226,
+    "block_time_utc": "2026-09-05T00:00:00.148238+00:00",
+    "stable_float_usd": 9534322.6
+  },
+  "2026-09-06": {
+    "balances": {
+      "DAI.eth": "52182219151536198654454",
+      "USDC.arb": "1067037377942",
+      "USDC.base": "120235440523",
+      "USDC.eth": "6266418954651",
+      "USDT.arb": "18355403631",
+      "USDT.eth": "2629458243529",
+      "USDT.tron": "260908784674"
+    },
+    "block_epoch": 1788652800.5491273,
+    "block_height": 214450006,
+    "block_time_utc": "2026-09-06T00:00:00.549127+00:00",
+    "stable_float_usd": 10414596.42
+  },
+  "2026-09-07": {
+    "balances": {
+      "DAI.eth": "52003387226882144959034",
+      "USDC.arb": "1050095391600",
+      "USDC.base": "119468576700",
+      "USDC.eth": "6127089394512",
+      "USDT.arb": "16352978222",
+      "USDT.eth": "2832960066757",
+      "USDT.tron": "258933908157"
+    },
+    "block_epoch": 1788739200.8161066,
+    "block_height": 214589588,
+    "block_time_utc": "2026-09-07T00:00:00.816107+00:00",
+    "stable_float_usd": 10456903.7
+  },
+  "2026-09-08": {
+    "balances": {
+      "DAI.eth": "35287902164645809264489",
+      "USDC.arb": "1069207388643",
+      "USDC.base": "165985837644",
+      "USDC.eth": "6187133442663",
+      "USDT.arb": "15168235437",
+      "USDT.eth": "2324658031251",
+      "USDT.tron": "375853596724"
+    },
+    "block_epoch": 1788825601.630096,
+    "block_height": 214728862,
+    "block_time_utc": "2026-09-08T00:00:01.630096+00:00",
+    "stable_float_usd": 10173294.43
+  },
+  "2026-09-09": {
+    "balances": {
+      "DAI.eth": "34093764342462006365510",
+      "USDC.arb": "1110282156836",
+      "USDC.base": "181238700208",
+      "USDC.eth": "4551373695399",
+      "USDT.arb": "16434765418",
+      "USDT.eth": "2426701789081",
+      "USDT.tron": "423409103903"
+    },
+    "block_epoch": 1788912000.6189876,
+    "block_height": 214868773,
+    "block_time_utc": "2026-09-09T00:00:00.618988+00:00",
+    "stable_float_usd": 8743533.98
+  },
+  "2026-09-10": {
+    "balances": {
+      "DAI.eth": "30719705571290465350368",
+      "USDC.arb": "1241456352016",
+      "USDC.base": "233986542917",
+      "USDC.eth": "4916223707842",
+      "USDT.arb": "19277616316",
+      "USDT.eth": "2104339181249",
+      "USDT.tron": "504293649528"
+    },
+    "block_epoch": 1788998402.700077,
+    "block_height": 215008373,
+    "block_time_utc": "2026-09-10T00:00:02.700077+00:00",
+    "stable_float_usd": 9050296.76
+  },
+  "2026-09-11": {
+    "balances": {
+      "DAI.eth": "33828938756710473805858",
+      "USDC.arb": "1355799943088",
+      "USDC.base": "339400001051",
+      "USDC.eth": "4090964376996",
+      "USDT.arb": "20504782425",
+      "USDT.eth": "2108664844503",
+      "USDT.tron": "541176845559"
+    },
+    "block_epoch": 1789084800.3750901,
+    "block_height": 215149150,
+    "block_time_utc": "2026-09-11T00:00:00.375090+00:00",
+    "stable_float_usd": 8490339.73
+  },
+  "2026-09-12": {
+    "balances": {
+      "DAI.eth": "28303795530997799262254",
+      "USDC.arb": "2003554294825",
+      "USDC.base": "347134837250",
+      "USDC.eth": "4086937929567",
+      "USDT.arb": "318730762209",
+      "USDT.eth": "2098028872401",
+      "USDT.tron": "436983726303"
+    },
+    "block_epoch": 1789171201.4047194,
+    "block_height": 215286785,
+    "block_time_utc": "2026-09-12T00:00:01.404719+00:00",
+    "stable_float_usd": 9319674.22
+  },
+  "2026-09-13": {
+    "balances": {
+      "DAI.eth": "73632402797536039775596",
+      "USDC.arb": "1778328785566",
+      "USDC.base": "276148602940",
+      "USDC.eth": "3818336414168",
+      "USDT.arb": "316455966051",
+      "USDT.eth": "2200594928880",
+      "USDT.tron": "423168256786"
+    },
+    "block_epoch": 1789257600.1523888,
+    "block_height": 215426597,
+    "block_time_utc": "2026-09-13T00:00:00.152389+00:00",
+    "stable_float_usd": 8886665.36
+  },
+  "2026-09-14": {
+    "balances": {
+      "DAI.eth": "38571168136245381278247",
+      "USDC.arb": "2637375801382",
+      "USDC.base": "1082190532318",
+      "USDC.eth": "6302899553962",
+      "USDT.arb": "316896299383",
+      "USDT.eth": "2201877177032",
+      "USDT.tron": "425130460354"
+    },
+    "block_epoch": 1789344001.3855672,
+    "block_height": 215566612,
+    "block_time_utc": "2026-09-14T00:00:01.385567+00:00",
+    "stable_float_usd": 13004940.99
+  },
+  "2026-09-15": {
+    "balances": {
+      "DAI.eth": "19294859706454777572631",
+      "USDC.arb": "2689445738758",
+      "USDC.base": "1153340340536",
+      "USDC.eth": "6071771257460",
+      "USDT.arb": "318066732305",
+      "USDT.eth": "2140829625138",
+      "USDT.tron": "491887114847"
+    },
+    "block_epoch": 1789430400.5289948,
+    "block_height": 215706980,
+    "block_time_utc": "2026-09-15T00:00:00.528995+00:00",
+    "stable_float_usd": 12884635.67
+  },
+  "2026-09-16": {
+    "balances": {
+      "DAI.eth": "24760638601976694437222",
+      "USDC.arb": "2545101743563",
+      "USDC.base": "1162156751329",
+      "USDC.eth": "6174306452916",
+      "USDT.arb": "319279086530",
+      "USDT.eth": "1955528400847",
+      "USDT.tron": "640017905827"
+    },
+    "block_epoch": 1789516805.3007512,
+    "block_height": 215846591,
+    "block_time_utc": "2026-09-16T00:00:05.300751+00:00",
+    "stable_float_usd": 12821150.98
+  },
+  "2026-09-17": {
+    "balances": {
+      "DAI.eth": "23519093191354495138632",
+      "USDC.arb": "2532115566320",
+      "USDC.base": "978210409900",
+      "USDC.eth": "5964957427516",
+      "USDT.arb": "317017986777",
+      "USDT.eth": "1909653176895",
+      "USDT.tron": "702098711920"
+    },
+    "block_epoch": 1789603201.7203612,
+    "block_height": 215986811,
+    "block_time_utc": "2026-09-17T00:00:01.720361+00:00",
+    "stable_float_usd": 12427572.37
+  },
+  "2026-09-18": {
+    "balances": {
+      "DAI.eth": "60419879383466581668247",
+      "USDC.arb": "2297574373800",
+      "USDC.base": "964023252122",
+      "USDC.eth": "6665920513697",
+      "USDT.arb": "325560523684",
+      "USDT.eth": "2334170459525",
+      "USDT.tron": "687882577870"
+    },
+    "block_epoch": 1789689600.202649,
+    "block_height": 216127116,
+    "block_time_utc": "2026-09-18T00:00:00.202649+00:00",
+    "stable_float_usd": 13335551.58
+  },
+  "2026-09-19": {
+    "balances": {
+      "DAI.eth": "84198320963394336460427",
+      "USDC.arb": "2444153393540",
+      "USDC.base": "962627303813",
+      "USDC.eth": "7389094733265",
+      "USDT.arb": "319978382661",
+      "USDT.eth": "2707907096317",
+      "USDT.tron": "876529991336"
+    },
+    "block_epoch": 1789776000.6158433,
+    "block_height": 216269256,
+    "block_time_utc": "2026-09-19T00:00:00.615843+00:00",
+    "stable_float_usd": 14784489.22
+  },
+  "2026-09-20": {
+    "balances": {
+      "DAI.eth": "101992411525171233767975",
+      "USDC.arb": "2554260850732",
+      "USDC.base": "948887280219",
+      "USDC.eth": "7032381942001",
+      "USDT.arb": "319986781822",
+      "USDT.eth": "2955887207302",
+      "USDT.tron": "932466778485"
+    },
+    "block_epoch": 1789862400.4804957,
+    "block_height": 216412272,
+    "block_time_utc": "2026-09-20T00:00:00.480496+00:00",
+    "stable_float_usd": 14845863.25
+  },
+  "2026-09-21": {
+    "balances": {
+      "DAI.eth": "41842559030574991062122",
+      "USDC.arb": "2504942355251",
+      "USDC.base": "873054693356",
+      "USDC.eth": "8215205278948",
+      "USDT.arb": "319589257174",
+      "USDT.eth": "2925079927421",
+      "USDT.tron": "1079787452143"
+    },
+    "block_epoch": 1789948800.0854867,
+    "block_height": 216553376,
+    "block_time_utc": "2026-09-21T00:00:00.085487+00:00",
+    "stable_float_usd": 15959501.52
+  },
+  "2026-09-22": {
+    "balances": {
+      "DAI.eth": "45616087409823453176765",
+      "USDC.arb": "2530093948492",
+      "USDC.base": "846179056439",
+      "USDC.eth": "7691471931949",
+      "USDT.arb": "317340103144",
+      "USDT.eth": "3068367973929",
+      "USDT.tron": "720661180459"
+    },
+    "block_epoch": 1790035200.1697276,
+    "block_height": 216696053,
+    "block_time_utc": "2026-09-22T00:00:00.169728+00:00",
+    "stable_float_usd": 15219730.28
+  },
+  "2026-09-23": {
+    "balances": {
+      "DAI.eth": "51945379733917331151874",
+      "USDC.arb": "2570907051848",
+      "USDC.base": "950436419586",
+      "USDC.eth": "8973283816476",
+      "USDT.arb": "371932792524",
+      "USDT.eth": "2969495606254",
+      "USDT.tron": "947849105842"
+    },
+    "block_epoch": 1790121600.3811417,
+    "block_height": 216835292,
+    "block_time_utc": "2026-09-23T00:00:00.381142+00:00",
+    "stable_float_usd": 16835850.17
+  },
+  "2026-09-24": {
+    "balances": {
+      "DAI.eth": "86986927585728444987949",
+      "USDC.arb": "2580329578611",
+      "USDC.base": "923670131352",
+      "USDC.eth": "9992261206830",
+      "USDT.arb": "312581009381",
+      "USDT.eth": "2978889726906",
+      "USDT.tron": "1321020594583"
+    },
+    "block_epoch": 1790208000.380935,
+    "block_height": 216976125,
+    "block_time_utc": "2026-09-24T00:00:00.380935+00:00",
+    "stable_float_usd": 18195739.18
+  },
+  "2026-09-25": {
+    "balances": {
+      "DAI.eth": "84979250464858937568921",
+      "USDC.arb": "2581581060022",
+      "USDC.base": "861632003694",
+      "USDC.eth": "10037790685450",
+      "USDT.arb": "319413996211",
+      "USDT.eth": "2995796146739",
+      "USDT.tron": "801365761250"
+    },
+    "block_epoch": 1790294400.0788934,
+    "block_height": 217118982,
+    "block_time_utc": "2026-09-25T00:00:00.078893+00:00",
+    "stable_float_usd": 17682558.9
+  },
+  "2026-09-26": {
+    "balances": {
+      "DAI.eth": "88692328580545371148508",
+      "USDC.arb": "2567681766617",
+      "USDC.base": "892144784053",
+      "USDC.eth": "11410475587897",
+      "USDT.arb": "318993029671",
+      "USDT.eth": "2995703346119",
+      "USDT.tron": "858675720828"
+    },
+    "block_epoch": 1790380800.3281279,
+    "block_height": 217263877,
+    "block_time_utc": "2026-09-26T00:00:00.328128+00:00",
+    "stable_float_usd": 19132366.56
+  },
+  "2026-09-27": {
+    "balances": {
+      "DAI.eth": "104708979764891754823346",
+      "USDC.arb": "2636257513215",
+      "USDC.base": "900163408272",
+      "USDC.eth": "11484661514671",
+      "USDT.arb": "329326029638",
+      "USDT.eth": "2996871295756",
+      "USDT.tron": "881315732774"
+    },
+    "block_epoch": 1790467200.4978132,
+    "block_height": 217410112,
+    "block_time_utc": "2026-09-27T00:00:00.497813+00:00",
+    "stable_float_usd": 19333304.47
+  },
+  "2026-09-28": {
+    "balances": {
+      "DAI.eth": "114446650391715028277381",
+      "USDC.arb": "2847243292573",
+      "USDC.base": "990700745431",
+      "USDC.eth": "12015171329632",
+      "USDT.arb": "389501869434",
+      "USDT.eth": "3189732168740",
+      "USDT.tron": "886871433823"
+    },
+    "block_epoch": 1790553600.1034765,
+    "block_height": 217555962,
+    "block_time_utc": "2026-09-28T00:00:00.103477+00:00",
+    "stable_float_usd": 20433667.49
+  },
+  "2026-09-29": {
+    "balances": {
+      "DAI.eth": "42434686424192153600851",
+      "USDC.arb": "2679832987490",
+      "USDC.base": "958131802819",
+      "USDC.eth": "13454051783153",
+      "USDT.arb": "391993066806",
+      "USDT.eth": "2936752659625",
+      "USDT.tron": "809062984210"
+    },
+    "block_epoch": 1790640000.9603844,
+    "block_height": 217701690,
+    "block_time_utc": "2026-09-29T00:00:00.960384+00:00",
+    "stable_float_usd": 21272259.97
+  },
+  "2026-09-30": {
+    "balances": {
+      "DAI.eth": "39976515571570300797230",
+      "USDC.arb": "2391464094534",
+      "USDC.base": "1116085945906",
+      "USDC.eth": "12405607334598",
+      "USDT.arb": "397222926044",
+      "USDT.eth": "2977537443658",
+      "USDT.tron": "633950824383"
+    },
+    "block_epoch": 1790726427.0444632,
+    "block_height": 217845450,
+    "block_time_utc": "2026-09-30T00:00:27.044463+00:00",
+    "stable_float_usd": 19961845.08
+  },
+  "2026-10-01": {
+    "balances": {
+      "DAI.eth": "39263498831917076037948",
+      "USDC.arb": "2316789235203",
+      "USDC.base": "1069188030512",
+      "USDC.eth": "12793313981977",
+      "USDT.arb": "397662999845",
+      "USDT.eth": "3334395553620",
+      "USDT.tron": "1392421418793"
+    },
+    "block_epoch": 1790812808.1066914,
+    "block_height": 217984988,
+    "block_time_utc": "2026-10-01T00:00:08.106691+00:00",
+    "stable_float_usd": 21343034.72
+  },
+  "2026-10-02": {
+    "balances": {
+      "DAI.eth": "39135479098130846471034",
+      "USDC.arb": "2240811206143",
+      "USDC.base": "938354462669",
+      "USDC.eth": "11713377830161",
+      "USDT.arb": "369491150164",
+      "USDT.eth": "3144057274304",
+      "USDT.tron": "946524702317"
+    },
+    "block_epoch": 1790899200.3708475,
+    "block_height": 218126921,
+    "block_time_utc": "2026-10-02T00:00:00.370847+00:00",
+    "stable_float_usd": 19391752.1
+  },
+  "2026-10-03": {
+    "balances": {
+      "DAI.eth": "34876777229635470345191",
+      "USDC.arb": "2581668221711",
+      "USDC.base": "932899851537",
+      "USDC.eth": "12251355615178",
+      "USDT.arb": "500246796724",
+      "USDT.eth": "3249550873651",
+      "USDT.tron": "1548881055493"
+    },
+    "block_epoch": 1790985600.607343,
+    "block_height": 218273403,
+    "block_time_utc": "2026-10-03T00:00:00.607343+00:00",
+    "stable_float_usd": 21099479.19
+  },
+  "2026-10-04": {
+    "balances": {
+      "DAI.eth": "36369248045805769371512",
+      "USDC.arb": "2329802363152",
+      "USDC.base": "1108116292685",
+      "USDC.eth": "11207801862813",
+      "USDT.arb": "376575087185",
+      "USDT.eth": "3283687097276",
+      "USDT.tron": "763193647514"
+    },
+    "block_epoch": 1791072000.0131216,
+    "block_height": 218420665,
+    "block_time_utc": "2026-10-04T00:00:00.013122+00:00",
+    "stable_float_usd": 19105545.6
+  },
+  "2026-10-05": {
+    "balances": {
+      "DAI.eth": "36386508582876584313939",
+      "USDC.arb": "2433319969959",
+      "USDC.base": "1102367192010",
+      "USDC.eth": "10837752522073",
+      "USDT.arb": "387090049008",
+      "USDT.eth": "2975754019306",
+      "USDT.tron": "751236842036"
+    },
+    "block_epoch": 1791158400.4967172,
+    "block_height": 218567717,
+    "block_time_utc": "2026-10-05T00:00:00.496717+00:00",
+    "stable_float_usd": 18523907.1
+  },
+  "2026-10-06": {
+    "balances": {
+      "DAI.eth": "65434547165873945353009",
+      "USDC.arb": "2404748393340",
+      "USDC.base": "1664388988469",
+      "USDC.eth": "10480006402067",
+      "USDT.arb": "399712008230",
+      "USDT.eth": "3042684027205",
+      "USDT.tron": "807810345668"
+    },
+    "block_epoch": 1791244802.125495,
+    "block_height": 218714586,
+    "block_time_utc": "2026-10-06T00:00:02.125495+00:00",
+    "stable_float_usd": 18864784.71
+  },
+  "2026-10-07": {
+    "balances": {
+      "DAI.eth": "38392039962461944263689",
+      "USDC.arb": "2616475145305",
+      "USDC.base": "1573245505323",
+      "USDC.eth": "10630451423336",
+      "USDT.arb": "352773968902",
+      "USDT.eth": "3082771519047",
+      "USDT.tron": "902306376769"
+    },
+    "block_epoch": 1791331218.4977653,
+    "block_height": 218861448,
+    "block_time_utc": "2026-10-07T00:00:18.497765+00:00",
+    "stable_float_usd": 19196415.98
+  },
+  "2026-10-08": {
+    "balances": {
+      "DAI.eth": "39197815084432309116315",
+      "USDC.arb": "2534022893711",
+      "USDC.base": "1530998253547",
+      "USDC.eth": "10528245537704",
+      "USDT.arb": "348262355392",
+      "USDT.eth": "3164785273590",
+      "USDT.tron": "756847171014"
+    },
+    "block_epoch": 1791417600.345639,
+    "block_height": 219007407,
+    "block_time_utc": "2026-10-08T00:00:00.345639+00:00",
+    "stable_float_usd": 18902359.3
+  },
+  "2026-10-09": {
+    "balances": {
+      "DAI.eth": "37262352095750705260576",
+      "USDC.arb": "2761552611121",
+      "USDC.base": "1351890761398",
+      "USDC.eth": "12569580518493",
+      "USDT.arb": "335545229809",
+      "USDT.eth": "4415989581064",
+      "USDT.tron": "660087507840"
+    },
+    "block_epoch": 1791504000.3844302,
+    "block_height": 219154120,
+    "block_time_utc": "2026-10-09T00:00:00.384430+00:00",
+    "stable_float_usd": 22131908.56
+  },
+  "2026-10-10": {
+    "balances": {
+      "DAI.eth": "40089588129155162846472",
+      "USDC.arb": "2607679893120",
+      "USDC.base": "1499887394500",
+      "USDC.eth": "13954114248933",
+      "USDT.arb": "343529649119",
+      "USDT.eth": "5816163039285",
+      "USDT.tron": "663527454127"
+    },
+    "block_epoch": 1791590428.974578,
+    "block_height": 219300832,
+    "block_time_utc": "2026-10-10T00:00:28.974578+00:00",
+    "stable_float_usd": 24924991.27
+  },
+  "2026-10-11": {
+    "balances": {
+      "DAI.eth": "41165842695592616887278",
+      "USDC.arb": "2580203473757",
+      "USDC.base": "1768642299566",
+      "USDC.eth": "13427526794272",
+      "USDT.arb": "344624467636",
+      "USDT.eth": "3569907349093",
+      "USDT.tron": "593645387587"
+    },
+    "block_epoch": 1791676800.441414,
+    "block_height": 219447523,
+    "block_time_utc": "2026-10-11T00:00:00.441414+00:00",
+    "stable_float_usd": 22325715.61
+  },
+  "2026-10-12": {
+    "balances": {
+      "DAI.eth": "43163712678237904812761",
+      "USDC.arb": "2527834031161",
+      "USDC.base": "1667043713125",
+      "USDC.eth": "15214910226831",
+      "USDT.arb": "348610370158",
+      "USDT.eth": "3513035596444",
+      "USDT.tron": "638513718157"
+    },
+    "block_epoch": 1791763203.462519,
+    "block_height": 219594862,
+    "block_time_utc": "2026-10-12T00:00:03.462519+00:00",
+    "stable_float_usd": 23953111.37
+  },
+  "2026-10-13": {
+    "balances": {
+      "DAI.eth": "45420487330059081767014",
+      "USDC.arb": "2534938146397",
+      "USDC.base": "1714690578671",
+      "USDC.eth": "16360009638027",
+      "USDT.arb": "231840389057",
+      "USDT.eth": "3809086981964",
+      "USDT.tron": "666535094009"
+    },
+    "block_epoch": 1791849611.999433,
+    "block_height": 219740478,
+    "block_time_utc": "2026-10-13T00:00:11.999433+00:00",
+    "stable_float_usd": 25362521.32
+  },
+  "2026-10-14": {
+    "balances": {
+      "DAI.eth": "57976074356289328866759",
+      "USDC.arb": "2143019305579",
+      "USDC.base": "1442240339350",
+      "USDC.eth": "17174951678131",
+      "USDT.arb": "48605664228",
+      "USDT.eth": "4698191633102",
+      "USDT.tron": "717226286590"
+    },
+    "block_epoch": 1791936002.0914304,
+    "block_height": 219879157,
+    "block_time_utc": "2026-10-14T00:00:02.091430+00:00",
+    "stable_float_usd": 26282210.98
+  },
+  "2026-10-15": {
+    "balances": {
+      "DAI.eth": "52622217387851926539733",
+      "USDC.arb": "2172913432464",
+      "USDC.base": "1473614776420",
+      "USDC.eth": "18271067655656",
+      "USDT.arb": "53732650860",
+      "USDT.eth": "4658659601043",
+      "USDT.tron": "761581831645"
+    },
+    "block_epoch": 1792022429.9223156,
+    "block_height": 220001344,
+    "block_time_utc": "2026-10-15T00:00:29.922316+00:00",
+    "stable_float_usd": 27444192.17
+  },
+  "2026-10-16": {
+    "balances": {
+      "DAI.eth": "50543291941781673700606",
+      "USDC.arb": "2123007729901",
+      "USDC.base": "1629348229364",
+      "USDC.eth": "18100259958377",
+      "USDT.arb": "62936944047",
+      "USDT.eth": "5200514883801",
+      "USDT.tron": "704205808931"
+    },
+    "block_epoch": 1792108800.5449195,
+    "block_height": 220147922,
+    "block_time_utc": "2026-10-16T00:00:00.544919+00:00",
+    "stable_float_usd": 27870816.85
+  },
+  "2026-10-17": {
+    "balances": {
+      "DAI.eth": "54169987155559135151967",
+      "USDC.arb": "2169848258361",
+      "USDC.base": "1646898018402",
+      "USDC.eth": "18525192068926",
+      "USDT.arb": "65633681559",
+      "USDT.eth": "4760432070770",
+      "USDT.tron": "826896286920"
+    },
+    "block_epoch": 1792195208.3911748,
+    "block_height": 220291996,
+    "block_time_utc": "2026-10-17T00:00:08.391175+00:00",
+    "stable_float_usd": 28049070.37
+  },
+  "2026-10-18": {
+    "balances": {
+      "DAI.eth": "60455695210366091037816",
+      "USDC.arb": "2146506140130",
+      "USDC.base": "1641579023735",
+      "USDC.eth": "18488021377175",
+      "USDT.arb": "69725257858",
+      "USDT.eth": "3891283432835",
+      "USDT.tron": "793564816250"
+    },
+    "block_epoch": 1792281600.3040605,
+    "block_height": 220436710,
+    "block_time_utc": "2026-10-18T00:00:00.304060+00:00",
+    "stable_float_usd": 27091135.74
+  },
+  "2026-10-19": {
+    "balances": {
+      "DAI.eth": "65849409519653354410958",
+      "USDC.arb": "2273232642543",
+      "USDC.base": "1383349250276",
+      "USDC.eth": "18890367891831",
+      "USDT.arb": "51335112054",
+      "USDT.eth": "3814187437482",
+      "USDT.tron": "798187017520"
+    },
+    "block_epoch": 1792368002.532137,
+    "block_height": 220581916,
+    "block_time_utc": "2026-10-19T00:00:02.532137+00:00",
+    "stable_float_usd": 27276508.76
+  },
+  "2026-10-20": {
+    "balances": {
+      "DAI.eth": "64113012912411704619192",
+      "USDC.arb": "2200620687101",
+      "USDC.base": "1364925649035",
+      "USDC.eth": "19296345965733",
+      "USDT.arb": "51194822894",
+      "USDT.eth": "3673959170663",
+      "USDT.tron": "938798111253"
+    },
+    "block_epoch": 1792454404.0800571,
+    "block_height": 220726936,
+    "block_time_utc": "2026-10-20T00:00:04.080057+00:00",
+    "stable_float_usd": 27589957.42
+  },
+  "2026-10-21": {
+    "balances": {
+      "DAI.eth": "65394285643035877456498",
+      "USDC.arb": "2259046873841",
+      "USDC.base": "1638796887527",
+      "USDC.eth": "18132604916278",
+      "USDT.arb": "53764172317",
+      "USDT.eth": "3565859575657",
+      "USDT.tron": "960875386896"
+    },
+    "block_epoch": 1792540800.5336761,
+    "block_height": 220871336,
+    "block_time_utc": "2026-10-21T00:00:00.533676+00:00",
+    "stable_float_usd": 26676342.1
+  },
+  "2026-10-22": {
+    "balances": {
+      "DAI.eth": "50915058223392099508433",
+      "USDC.arb": "2174483035820",
+      "USDC.base": "1759656340004",
+      "USDC.eth": "17352257384035",
+      "USDT.arb": "97265625320",
+      "USDT.eth": "3630495496288",
+      "USDT.tron": "845476230736"
+    },
+    "block_epoch": 1792627203.9256716,
+    "block_height": 221015572,
+    "block_time_utc": "2026-10-22T00:00:03.925672+00:00",
+    "stable_float_usd": 25910549.17
+  },
+  "2026-10-23": {
+    "balances": {
+      "DAI.eth": "60230167424592051422498",
+      "USDC.arb": "2153205981175",
+      "USDC.base": "1691196066221",
+      "USDC.eth": "18062553719944",
+      "USDT.arb": "60462556321",
+      "USDT.eth": "3886535255207",
+      "USDT.tron": "1528944728013"
+    },
+    "block_epoch": 1792713600.4468598,
+    "block_height": 221162121,
+    "block_time_utc": "2026-10-23T00:00:00.446860+00:00",
+    "stable_float_usd": 27443128.47
+  },
+  "2026-10-24": {
+    "balances": {
+      "DAI.eth": "61706199541189083931120",
+      "USDC.arb": "2310656414357",
+      "USDC.base": "1659971719312",
+      "USDC.eth": "17907971585051",
+      "USDT.arb": "54997618325",
+      "USDT.eth": "3848959683467",
+      "USDT.tron": "909683060599"
+    },
+    "block_epoch": 1792800000.0028799,
+    "block_height": 221310107,
+    "block_time_utc": "2026-10-24T00:00:00.002880+00:00",
+    "stable_float_usd": 26753946.28
+  },
+  "2026-10-25": {
+    "balances": {
+      "DAI.eth": "46591825693533158784024",
+      "USDC.arb": "2144717379893",
+      "USDC.base": "1612608507588",
+      "USDC.eth": "18597168037166",
+      "USDT.arb": "54610478521",
+      "USDT.eth": "3910871681602",
+      "USDT.tron": "853685308130"
+    },
+    "block_epoch": 1792886400.086953,
+    "block_height": 221460754,
+    "block_time_utc": "2026-10-25T00:00:00.086953+00:00",
+    "stable_float_usd": 27220253.22
+  },
+  "2026-10-26": {
+    "balances": {
+      "DAI.eth": "49872258732679510171765",
+      "USDC.arb": "2158160840697",
+      "USDC.base": "1611987199492",
+      "USDC.eth": "18441871265958",
+      "USDT.arb": "51416494864",
+      "USDT.eth": "3916037494577",
+      "USDT.tron": "945952877145"
+    },
+    "block_epoch": 1792972813.4751678,
+    "block_height": 221609965,
+    "block_time_utc": "2026-10-26T00:00:13.475168+00:00",
+    "stable_float_usd": 27175298.43
+  },
+  "2026-10-27": {
+    "balances": {
+      "DAI.eth": "45393536060377804005227",
+      "USDC.arb": "2124992116631",
+      "USDC.base": "1576681110570",
+      "USDC.eth": "18149754034359",
+      "USDT.arb": "50871070520",
+      "USDT.eth": "4606237182924",
+      "USDT.tron": "789238638560"
+    },
+    "block_epoch": 1793059216.2625248,
+    "block_height": 221760266,
+    "block_time_utc": "2026-10-27T00:00:16.262525+00:00",
+    "stable_float_usd": 27343167.69
+  },
+  "2026-10-28": {
+    "balances": {
+      "DAI.eth": "56037512636720822678338",
+      "USDC.arb": "2110671477673",
+      "USDC.base": "1576963200408",
+      "USDC.eth": "18121647481828",
+      "USDT.arb": "251999500146",
+      "USDT.eth": "4250883113996",
+      "USDT.tron": "913949135639"
+    },
+    "block_epoch": 1793145605.1390424,
+    "block_height": 221897850,
+    "block_time_utc": "2026-10-28T00:00:05.139042+00:00",
+    "stable_float_usd": 27282151.42
+  },
+  "2026-10-29": {
+    "balances": {
+      "DAI.eth": "51315782649314602157996",
+      "USDC.arb": "2200204184562",
+      "USDC.base": "1588437679442",
+      "USDC.eth": "17679860598695",
+      "USDT.arb": "257092321689",
+      "USDT.eth": "4142726300208",
+      "USDT.tron": "2427361011446"
+    },
+    "block_epoch": 1793232000.5767486,
+    "block_height": 222047184,
+    "block_time_utc": "2026-10-29T00:00:00.576749+00:00",
+    "stable_float_usd": 28346997.88
+  },
+  "2026-10-30": {
+    "balances": {
+      "DAI.eth": "45688426591484724074149",
+      "USDC.arb": "1951941736711",
+      "USDC.base": "1482737739674",
+      "USDC.eth": "19212465032195",
+      "USDT.arb": "222583463294",
+      "USDT.eth": "5246118554837",
+      "USDT.tron": "1014483604953"
+    },
+    "block_epoch": 1793318408.1216683,
+    "block_height": 222194986,
+    "block_time_utc": "2026-10-30T00:00:08.121668+00:00",
+    "stable_float_usd": 29176018.56
+  },
+  "2026-10-31": {
+    "balances": {
+      "DAI.eth": "42657888440865205934133",
+      "USDC.arb": "1775018573837",
+      "USDC.base": "1426534322549",
+      "USDC.eth": "18557820564071",
+      "USDT.arb": "119652863542",
+      "USDT.eth": "4440752935421",
+      "USDT.tron": "715109525494"
+    },
+    "block_epoch": 1793404800.4646766,
+    "block_height": 222343159,
+    "block_time_utc": "2026-10-31T00:00:00.464677+00:00",
+    "stable_float_usd": 27077546.67
+  },
+  "2026-11-01": {
+    "balances": {
+      "DAI.eth": "44950245154040261054667",
+      "USDC.arb": "1871607189050",
+      "USDC.base": "1447801983809",
+      "USDC.eth": "17803148505555",
+      "USDT.arb": "133249360846",
+      "USDT.eth": "4361765116956",
+      "USDT.tron": "887617010387"
+    },
+    "block_epoch": 1793491200.1756473,
+    "block_height": 222491356,
+    "block_time_utc": "2026-11-01T00:00:00.175647+00:00",
+    "stable_float_usd": 26550139.41
+  },
+  "2026-11-02": {
+    "balances": {
+      "DAI.eth": "47143780116513223933483",
+      "USDC.arb": "2052239628809",
+      "USDC.base": "1425364802885",
+      "USDC.eth": "17722141717788",
+      "USDT.arb": "118759671987",
+      "USDT.eth": "4712580829235",
+      "USDT.tron": "956330753596"
+    },
+    "block_epoch": 1793577600.2606156,
+    "block_height": 222641210,
+    "block_time_utc": "2026-11-02T00:00:00.260616+00:00",
+    "stable_float_usd": 27034561.18
+  },
+  "2026-11-03": {
+    "balances": {
+      "DAI.eth": "46849721840336514069523",
+      "USDC.arb": "2102065508658",
+      "USDC.base": "1410892168372",
+      "USDC.eth": "18446727105459",
+      "USDT.arb": "132142709299",
+      "USDT.eth": "4557941000526",
+      "USDT.tron": "2024634617038"
+    },
+    "block_epoch": 1793664000.1379144,
+    "block_height": 222791208,
+    "block_time_utc": "2026-11-03T00:00:00.137914+00:00",
+    "stable_float_usd": 28721252.83
+  },
+  "2026-11-04": {
+    "balances": {
+      "DAI.eth": "45892790383079149490912",
+      "USDC.arb": "1798669315974",
+      "USDC.base": "1438661019298",
+      "USDC.eth": "18158637195335",
+      "USDT.arb": "116335364031",
+      "USDT.eth": "5128456059061",
+      "USDT.tron": "1295747166852"
+    },
+    "block_epoch": 1793750400.2794855,
+    "block_height": 222942364,
+    "block_time_utc": "2026-11-04T00:00:00.279485+00:00",
+    "stable_float_usd": 27982398.91
+  },
+  "2026-11-05": {
+    "balances": {
+      "DAI.eth": "44774873117254106678315",
+      "USDC.arb": "1817677113034",
+      "USDC.base": "1448043361898",
+      "USDC.eth": "18459667894526",
+      "USDT.arb": "74311321827",
+      "USDT.eth": "6317545785302",
+      "USDT.tron": "1130898031314"
+    },
+    "block_epoch": 1793836802.3957984,
+    "block_height": 223088019,
+    "block_time_utc": "2026-11-05T00:00:02.395798+00:00",
+    "stable_float_usd": 29292918.38
+  },
+  "2026-11-06": {
+    "balances": {
+      "DAI.eth": "37263464832982229718978",
+      "USDC.arb": "2615372034811",
+      "USDC.base": "1479754792009",
+      "USDC.eth": "17775170285809",
+      "USDT.arb": "85141148255",
+      "USDT.eth": "6231617503352",
+      "USDT.tron": "3846488943497"
+    },
+    "block_epoch": 1793923200.5072238,
+    "block_height": 223237989,
+    "block_time_utc": "2026-11-06T00:00:00.507224+00:00",
+    "stable_float_usd": 32070808.17
+  },
+  "2026-11-07": {
+    "balances": {
+      "DAI.eth": "40647573474561184274255",
+      "USDC.arb": "2632405371194",
+      "USDC.base": "1434800072257",
+      "USDC.eth": "17916379379651",
+      "USDT.arb": "87996512188",
+      "USDT.eth": "6346386133907",
+      "USDT.tron": "2709668758808"
+    },
+    "block_epoch": 1794009600.2149148,
+    "block_height": 223387847,
+    "block_time_utc": "2026-11-07T00:00:00.214915+00:00",
+    "stable_float_usd": 31168283.8
+  },
+  "2026-11-08": {
+    "balances": {
+      "DAI.eth": "41788080651917125364600",
+      "USDC.arb": "2821717121259",
+      "USDC.base": "1126513674237",
+      "USDC.eth": "19019315469212",
+      "USDT.arb": "121521183241",
+      "USDT.eth": "6587370296249",
+      "USDT.tron": "2797643398732"
+    },
+    "block_epoch": 1794096006.4982247,
+    "block_height": 223537277,
+    "block_time_utc": "2026-11-08T00:00:06.498225+00:00",
+    "stable_float_usd": 32515869.22
+  },
+  "2026-11-09": {
+    "balances": {
+      "DAI.eth": "39562550722174594698387",
+      "USDC.arb": "2839262513304",
+      "USDC.base": "1084541186894",
+      "USDC.eth": "18278874601505",
+      "USDT.arb": "115544411232",
+      "USDT.eth": "8024273413150",
+      "USDT.tron": "3661217385800"
+    },
+    "block_epoch": 1794182400.3599021,
+    "block_height": 223688383,
+    "block_time_utc": "2026-11-09T00:00:00.359902+00:00",
+    "stable_float_usd": 34043276.06
+  },
+  "2026-11-10": {
+    "balances": {
+      "DAI.eth": "39626089113293351352598",
+      "USDC.arb": "2323637148297",
+      "USDC.base": "1138657595481",
+      "USDC.eth": "18381574003517",
+      "USDT.arb": "141947582991",
+      "USDT.eth": "7529484221156",
+      "USDT.tron": "2753671118044"
+    },
+    "block_epoch": 1794268800.3144522,
+    "block_height": 223838228,
+    "block_time_utc": "2026-11-10T00:00:00.314452+00:00",
+    "stable_float_usd": 32308597.76
+  },
+  "2026-11-11": {
+    "balances": {
+      "DAI.eth": "39579400471147913268231",
+      "USDC.arb": "2440480456337",
+      "USDC.base": "1240783525285",
+      "USDC.eth": "20362451625383",
+      "USDT.arb": "273547889297",
+      "USDT.eth": "7885433024678",
+      "USDT.tron": "2687439995867"
+    },
+    "block_epoch": 1794355200.0145276,
+    "block_height": 223988378,
+    "block_time_utc": "2026-11-11T00:00:00.014528+00:00",
+    "stable_float_usd": 34929715.92
+  },
+  "2026-11-12": {
+    "balances": {
+      "DAI.eth": "36672851009400482729955",
+      "USDC.arb": "2326880615066",
+      "USDC.base": "1131536814079",
+      "USDC.eth": "19669796170521",
+      "USDT.arb": "338561043707",
+      "USDT.eth": "8190666805428",
+      "USDT.tron": "3217592348891"
+    },
+    "block_epoch": 1794441600.889432,
+    "block_height": 224135611,
+    "block_time_utc": "2026-11-12T00:00:00.889432+00:00",
+    "stable_float_usd": 34911706.65
+  },
+  "_first_funded": {
+    "block_height": 186126873,
+    "block_time_utc": "2026-02-18T19:12:58.200072+00:00",
+    "date_utc": "2026-02-18"
+  }
+}

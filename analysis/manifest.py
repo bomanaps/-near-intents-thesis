@@ -38,11 +38,14 @@ TRACKED = [
     "data/model/onchain.json",
     "data/model/frequency.json",
     "data/model/price_link.json",
+    "data/raw/treasury_balances.json",
+    "data/model/treasury.json",
     "docs/data/forecast.json",
     "docs/data/fee_switch.json",
     "docs/data/onchain.json",
     "docs/data/frequency.json",
     "docs/data/price_link.json",
+    "docs/data/treasury.json",
 ]
 
 SOURCES = {
@@ -50,6 +53,7 @@ SOURCES = {
     "near_price": "https://coins.llama.fi/prices/current/coingecko:near",
     "onchain_events": "https://huggingface.co/datasets/bomankari/near-intents-onchain-events",
     "controls": "https://api.llama.fi/summary/{aggregators,dexs}/{1inch,paraswap,jupiter}",
+    "treasury_state": "NEAR archival RPC, intents.near mt_batch_balance_of at historical block heights",
 }
 
 

@@ -180,7 +180,7 @@ td:first-child{text-align:left;color:var(--faint)}
   <div class="hdr">
     <div class="hdr-eye">Investment Thesis · NEAR Protocol · Live Model</div>
     <div class="hdr-title">NEAR Intents: Break-Even Explorer</div>
-    <div class="hdr-sub">Adjust any parameter, all outputs update instantly · HSP-029 vote passed Nov 2, 2026, ramp pending ratification · <span id="data-badge">snapshot data: Nov 1, 2026</span></div>
+    <div class="hdr-sub">Adjust any parameter, all outputs update instantly · HSP-029 vote passed Nov 2, 2026, ramp pending ratification · <span id="data-badge">snapshot data: Nov 12, 2026</span></div>
   </div>
 
   <!-- sliders -->
@@ -188,20 +188,20 @@ td:first-child{text-align:left;color:var(--faint)}
     <div class="controls-title">Model Parameters</div>
     <div class="slider-grid">
       <div class="slider-item">
-        <label><span>NEAR Price</span><span class="slider-val" id="v-price">$4.37</span></label>
-        <input type="range" id="s-price" min="0.5" max="20" step="0.01" value="4.37">
+        <label><span>NEAR Price</span><span class="slider-val" id="v-price">$3.58</span></label>
+        <input type="range" id="s-price" min="0.5" max="20" step="0.01" value="3.58">
       </div>
       <div class="slider-item">
-        <label><span>Daily Volume</span><span class="slider-val" id="v-vol">$127M</span></label>
-        <input type="range" id="s-vol" min="10" max="2000" step="1" value="127">
+        <label><span>Daily Volume</span><span class="slider-val" id="v-vol">$126M</span></label>
+        <input type="range" id="s-vol" min="10" max="2000" step="1" value="126">
       </div>
       <div class="slider-item">
         <label><span>Issuance Cap</span><span class="slider-val" id="v-cap">2.50%</span></label>
         <input type="range" id="s-cap" min="1.0" max="2.5" step="0.01" value="2.5">
       </div>
       <div class="slider-item">
-        <label><span>Capture Rate</span><span class="slider-val" id="v-bps">5.91 bps</span></label>
-        <input type="range" id="s-bps" min="1" max="15" step="0.01" value="5.91">
+        <label><span>Capture Rate</span><span class="slider-val" id="v-bps">5.03 bps</span></label>
+        <input type="range" id="s-bps" min="1" max="15" step="0.01" value="5.03">
       </div>
     </div>
   </div>
@@ -300,7 +300,7 @@ td:first-child{text-align:left;color:var(--faint)}
       <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Explicit Fee at Contract</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:var(--hi)" id="oc-fee">0.01 bps</div>
-        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5" id="oc-fee-sub">per side, median of 2,806 fills, vs 5.91 bps implied by DefiLlama revenue</div>
+        <div style="font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5" id="oc-fee-sub">per side, median of 51,779 fill sides, vs 5.03 bps implied by DefiLlama revenue</div>
       </div>
       <div style="background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:14px 16px">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px">Solver Concentration</div>
@@ -366,10 +366,12 @@ td:first-child{text-align:left;color:var(--faint)}
       <div class="panel-desc">Difference-in-differences · Feb 23, 2026 · 90-day symmetric window · 3 controls</div>
       <svg id="did-svg" viewBox="0 0 340 200" width="100%" preserveAspectRatio="xMidYMid meet" style="margin-top:8px"></svg>
       <div class="att-box">
-        <div class="att-row"><span>Avg treatment effect (ATT)</span><span id="att-val">1.10x</span></div>
+        <div class="att-row"><span>Raw treatment effect (ATT)</span><span id="att-val">1.11x</span></div>
         <div class="att-row"><span>95% bootstrap CI</span><span id="att-ci">0.97 - 1.25x</span></div>
+        <div class="att-row"><span>Trend-adjusted ATT</span><span id="att-trend" style="color:var(--amber)">0.71x</span></div>
+        <div class="att-row"><span>Cross-control CI</span><span id="att-cross">0.86 - 1.42x</span></div>
         <div class="att-row"><span>Permutation rank</span><span id="att-rank">3 / 4 (75th pct)</span></div>
-        <div class="att-row"><span>Verdict</span><span id="att-verdict" style="color:var(--text);font-weight:400">No significant impact detected</span></div>
+        <div class="att-row"><span>Verdict</span><span id="att-verdict" style="color:var(--text);font-weight:400">Not identified: parallel trends fails</span></div>
       </div>
       <div class="caveat-box">
         <div class="caveat-title">Model limitations</div>
@@ -446,7 +448,7 @@ const TT=(function(){
 
 (function(){
   const SUPPLY = 1_309_640_573;
-  let NOW_DATE = new Date('2026-11-02');
+  let NOW_DATE = new Date('2026-11-12');
   const RAMP_STARTS={
     earliest:{date:new Date('2027-02-16'),label:'Feb 2027 (earliest: veto close + one quarter grace)'},
     base:{date:new Date('2027-04-01'),label:'Apr 2027 (base: grace + validator adoption lag)'},
@@ -464,8 +466,11 @@ const TT=(function(){
     return '$'+fmt(n,0);
   }
 
-  // live state
-  let price=4.37, volM=127.3, cap=0.025, bps=5.91;
+  // live state, read from the slider inputs so the two can never diverge
+  const S_PRICE=document.getElementById('s-price'), S_VOL=document.getElementById('s-vol'),
+        S_CAP=document.getElementById('s-cap'), S_BPS=document.getElementById('s-bps');
+  let price=parseFloat(S_PRICE.value), volM=parseFloat(S_VOL.value),
+      cap=parseFloat(S_CAP.value)/100, bps=parseFloat(S_BPS.value);
 
   function compute(pr, vM, cp, b){
     const vol = vM * 1e6;
@@ -623,8 +628,8 @@ const TT=(function(){
 
   // --- scenario table ---
   const SCENARIOS=[
-    {iso:'2.5% cap (today)',cap:0.025,bpsList:[5.91,4.11]},
-    {iso:'1.6% (HSP-029 floor)',cap:0.016,bpsList:[5.91,4.11]},
+    {iso:'2.5% cap (today)',cap:0.025,bpsList:[5.03,4.33]},
+    {iso:'1.6% (HSP-029 floor)',cap:0.016,bpsList:[5.03,4.33]},
   ];
   function addScenarioRow(tbody,label,capVal,b){
     const c=compute(price,volM,capVal,b);
@@ -797,13 +802,13 @@ const TT=(function(){
   document.getElementById('c-date').addEventListener('input',()=>updateGrowthCalc());
   document.getElementById('ramp-start-sel').addEventListener('change',e=>{rampStartKey=e.target.value;updateRamp();});
 
-  // init slider display values
-  document.getElementById('v-price').textContent='$4.37';
-  document.getElementById('v-vol').textContent='$127M';
-  document.getElementById('s-vol').value=127.3;
-  document.getElementById('v-cap').textContent='2.50%';
-  document.getElementById('v-bps').textContent='5.91 bps';
-  document.getElementById('s-bps').value=5.91;
+  function syncSliderLabels(){
+    document.getElementById('v-price').textContent='$'+price.toFixed(2);
+    document.getElementById('v-vol').textContent=volM>=1000?'$'+fmt(volM/1000,1)+'B':'$'+Math.round(volM)+'M';
+    document.getElementById('v-cap').textContent=(cap*100).toFixed(2)+'%';
+    document.getElementById('v-bps').textContent=bps.toFixed(2)+' bps';
+  }
+  syncSliderLabels();
 
   buildHeatmap();
   updateAll();
@@ -909,14 +914,14 @@ const TT=(function(){
 (function(){
   const FC_FALLBACK={
     meta:{
-      near_price:3.85,capture_bps_30d:5.87,data_through:'2026-11-02',
+      near_price:3.5846,capture_bps_30d:5.03,data_through:'2026-11-12',
       break_even_thresholds:{
-        cap16:{usd:377000000,label:'$377M (1.6% cap)'},
-        cap25:{usd:588000000,label:'$588M (2.5% cap)'}
+        cap16:{usd:409000000,label:'$409M (1.6% cap)'},
+        cap25:{usd:639000000,label:'$639M (2.5% cap)'}
       },
       crossing_definition:'sustained: 30-day average volume reaches the threshold, not a one-day touch',
       caveats:[
-        'Drift estimated from a trending window extrapolates that trend; +122%/yr (365d) and +396%/yr (180d) are not sustainable indefinitely, so long-horizon probabilities are upper bounds',
+        'Drift estimated from a trending window extrapolates that trend; +43%/yr (365d) and +462%/yr (180d) are not sustainable indefinitely, so long-horizon probabilities are upper bounds',
         'A random walk cannot anticipate structural breaks, new integrations, or saturation of the current growth driver',
         'Thresholds move with NEAR price and capture rate; they are recomputed at every run and shown in the header',
         'Residual bootstrap preserves the empirical error distribution but assumes errors are exchangeable over time',
@@ -924,10 +929,10 @@ const TT=(function(){
       ]
     },
     scenarios:{
-      rw_drift_365d:{label:'Trend 365d',note:'positive drift (+122%/yr) · unit root imposed',crossing_probs:{cap16:{'12':0.326},cap25:{'12':0.063}}},
-      rw_drift_recent_180d:{label:'Trend 180d',note:'positive drift (+396%/yr) · unit root imposed',crossing_probs:{cap16:{'12':0.943},cap25:{'12':0.635}}},
-      block_bootstrap_recent_180d:{label:'Bootstrap 180d',note:'30d blocks of daily log returns · positive drift',crossing_probs:{cap16:{'12':0.77},cap25:{'12':0.695}}},
-      block_bootstrap_full:{label:'Bootstrap 663d',note:'30d blocks · includes early growth phase · upper bound',crossing_probs:{cap16:{'12':0.965},cap25:{'12':0.938}}}
+      rw_drift_365d:{label:'Trend 365d',note:'positive drift (+43%/yr) · unit root imposed',crossing_probs:{cap16:{'12':0.034},cap25:{'12':0.0011}}},
+      rw_drift_recent_180d:{label:'Trend 180d',note:'positive drift (+462%/yr) · unit root imposed',crossing_probs:{cap16:{'12':0.9428},cap25:{'12':0.6361}}},
+      block_bootstrap_recent_180d:{label:'Bootstrap 180d',note:'30d blocks of daily log returns · positive drift',crossing_probs:{cap16:{'12':0.9661},cap25:{'12':0.9194}}},
+      block_bootstrap_full:{label:'Bootstrap 702d',note:'30d blocks · includes early growth phase · upper bound',crossing_probs:{cap16:{'12':0.9667},cap25:{'12':0.9409}}}
     }
   };
 
@@ -1004,12 +1009,14 @@ const TT=(function(){
     units:{
       near_intents:{growth_ratio:0.809},
       '1inch':{growth_ratio:0.653},
-      paraswap:{growth_ratio:0.963},
+      paraswap:{growth_ratio:0.943},
       jupiter:{growth_ratio:0.634}
     },
     did_estimate:{
-      att_ratio:1.0991,
-      bootstrap_ci_95:{att_ratio_lo:0.9668,att_ratio_hi:1.2455}
+      att_ratio:1.107,
+      trend_adjusted:{att_ratio:0.709},
+      cross_control_ci_95:{att_ratio_lo:0.86,att_ratio_hi:1.42},
+      bootstrap_ci_95:{att_ratio_lo:0.9733,att_ratio_hi:1.2548}
     },
     permutation_test:{rank:3,percentile:0.75},
     meta:{caveats:[
@@ -1084,8 +1091,13 @@ const TT=(function(){
     document.getElementById('att-val').textContent=est.att_ratio.toFixed(2)+'x';
     document.getElementById('att-ci').textContent=ci.att_ratio_lo.toFixed(2)+' - '+ci.att_ratio_hi.toFixed(2)+'x';
     document.getElementById('att-rank').textContent=perm.rank+' / 4 ('+Math.round(perm.percentile*100)+'th pct)';
+    const ta=est.trend_adjusted, cc=est.cross_control_ci_95;
+    document.getElementById('att-trend').textContent=ta?ta.att_ratio.toFixed(2)+'x':'n/a';
+    document.getElementById('att-cross').textContent=cc?cc.att_ratio_lo.toFixed(2)+' - '+cc.att_ratio_hi.toFixed(2)+'x':'n/a';
+    const flips=ta&&((ta.att_ratio-1)*(est.att_ratio-1)<0);
     document.getElementById('att-verdict').textContent=
-      (ci.att_ratio_lo<=1&&ci.att_ratio_hi>=1)
+      flips?'Not identified: parallel trends fails'
+      :(ci.att_ratio_lo<=1&&ci.att_ratio_hi>=1)
         ?'No significant impact detected'
         :(est.att_ratio>1?'Positive impact at 95% confidence':'Negative impact at 95% confidence');
 
@@ -1106,28 +1118,29 @@ const TT=(function(){
 (function(){
   const OC_FALLBACK={
     meta:{
-      n_receipts:1151,n_entries:2852,chain_hours_covered_est:2.71,
+      n_receipts:20308,n_entries:53065,chain_hours_covered_est:68.1,
       coverage_note:'contiguous window starting Oct 28, 2026; ingestion ongoing',
       caveats:[
-        'Window covers a few chain hours of one day; time-of-day bias applies to solver and corridor shares',
+        'Window spans a few chain days and keeps growing; some time-of-day bias remains in solver and corridor shares',
         'USD values derived from stablecoin legs where present, else live major-asset prices; unvalued entries excluded from volume shares',
         'Solver side of a bilateral receipt identified as the account with higher global fill count',
         'Explicit fee rate measures fees_collected at the settlement contract only; it does not capture app-layer or off-contract revenue'
       ]
     },
-    explicit_fee:{n_samples:2806,median_bps:0.01,volume_weighted_mean_bps:0.0102,defillama_implied_revenue_bps_30d:5.91},
-    solvers:{hhi:0.3256,top3_share:0.8636,distinct_solver_accounts:17},
-    wash_screen:{bilateral_self_fills:0,user_round_trip_share:0.1619},
+    explicit_fee:{n_samples:51779,median_bps:0.01,volume_weighted_mean_bps:0.0102,defillama_implied_revenue_bps_30d:5.03},
+    solvers:{hhi:0.2053,top3_share:0.6637,distinct_solver_accounts:38},
+    wash_screen:{bilateral_self_fills:0,user_round_trip_share:0.1708},
     confidential_flow:{by_chain_day:[
-      {est_date_utc:'2026-10-28',treasury_share:0.621},
-      {est_date_utc:'2026-10-29',treasury_share:0.714}
+      {est_date_utc:'2026-10-28',treasury_share:0.567},
+      {est_date_utc:'2026-10-29',treasury_share:0.627},
+      {est_date_utc:'2026-10-30',treasury_share:0.710}
     ]},
     corridors:[
-      {pair:'USDC.eth / USDT.tron',share:0.1992},
-      {pair:'USDT.eth / USDT.tron',share:0.1154},
-      {pair:'BTC / USDT.tron',share:0.1145},
-      {pair:'USDT.tron / other',share:0.0847},
-      {pair:'USDC.eth / USDT.eth',share:0.0648}
+      {pair:'USDT.eth / USDT.tron',share:0.116},
+      {pair:'BTC / USDT.eth',share:0.1033},
+      {pair:'USDC.eth / USDT.tron',share:0.0812},
+      {pair:'USDT.eth / other',share:0.0795},
+      {pair:'BTC / other',share:0.0784}
     ]
   };
 
@@ -1221,17 +1234,17 @@ const TT=(function(){
     meta:{
       sample:'weekly since 2026-02-23 (fee switch, start of buyback revenue)',
       caveats:[
-        'Roughly 36 weekly observations; power to detect modest effects is low',
+        'Fewer than forty weekly observations; power to detect modest effects is low',
         'Market cap uses current total supply as a constant; error under one percent over the window',
         'The contemporaneous specification is reported only for comparison; it is exposed to reverse causality',
         'Association, not causation: no instrument exists for buyback timing'
       ]
     },
     results:{
-      headline_lagged:{n_weeks:37,coef_intensity:357.4,t_intensity:0.606,permutation_p:0.615},
-      contemporaneous_secondary:{n_weeks:37,coef_intensity:1661.0,t_intensity:4.109},
-      excluding_rally:{n_weeks:29,coef_intensity:-741.3,t_intensity:-1.514},
-      placebo_volume:{n_weeks:37,coef_intensity:0.23,t_intensity:0.749}
+      headline_lagged:{n_weeks:38,coef_intensity:354.2,t_intensity:0.591,permutation_p:0.669},
+      contemporaneous_secondary:{n_weeks:38,coef_intensity:1568.4,t_intensity:3.509},
+      excluding_rally:{n_weeks:30,coef_intensity:-800.5,t_intensity:-1.502},
+      placebo_volume:{n_weeks:38,coef_intensity:0.2342,t_intensity:0.76}
     }
   };
 
@@ -1422,7 +1435,7 @@ const TT=(function(){
         (p!==undefined
           ?'Permutation p is precomputed in Python for the committed headline spec. '
           :'Permutation p is reported only for committed specs; this combination recomputes coef and t live. ')
-        +'The browser reruns the identical Newey-West regression on the 37 committed weekly rows; it matched the Python output on load.';
+        +'The browser reruns the identical Newey-West regression on the committed weekly rows; it matched the Python output on load.';
     }
 
     regSel.addEventListener('change',refresh);
@@ -1477,7 +1490,7 @@ const TT=(function(){
       window.buildHistChart(volRows.slice(-180));
       setBadge('live data: DefiLlama, through '+lastDate,true);
     }catch(e){
-      setBadge('snapshot data: Nov 1, 2026 (live fetch unavailable)',false);
+      setBadge('snapshot data: Nov 12, 2026 (live fetch unavailable)',false);
     }
   })();
 

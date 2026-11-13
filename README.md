@@ -1,32 +1,31 @@
 # NEAR Intents Investment Thesis
 
-A quantitative model that answers one question: at what daily volume do NEAR Intents protocol buybacks cover NEAR token issuance? Built for the NEAR Hackathon 2026, Investment Thesis track.
+**At today's volume, NEAR Intents buybacks cover 19.7% of NEAR's token issuance. Reaching break-even needs 3.3x volume growth, or a fee switch enforced by the contract. The settlement contract charges 0.01 bps per fill; the roughly 5 bps that actually funds buybacks is set off-chain, and its 30-day average has swung between 1.9 and 6.0 bps over the last four months.**
 
-The claim, the evidence for it, the evidence against it, and what would change my mind: [THESIS.md](THESIS.md). For AI reviewers: [CLAUDE.md](CLAUDE.md) has the verified commands and the repo map.
-
-## Live Site
-
-| Page | Link |
+| | |
 |---|---|
-| Landing page | https://bomanaps.github.io/-near-intents-thesis/ |
-| Break-Even Explorer (interactive) | https://bomanaps.github.io/-near-intents-thesis/dashboard.html |
-| Investment Thesis Memo | https://bomanaps.github.io/-near-intents-thesis/thesis-memo.html |
+| Offset ratio today | **19.7%** of daily issuance |
+| Break-even volume | **$409M/day** at the HSP-029 floor, 3.3x current |
+| Measured contract fee | **0.01 bps** per fill side, from 51,779 measured fill sides |
+| Days revenue ever covered issuance | **6 of 567** priced days |
+
+[Live dashboard](https://bomanaps.github.io/-near-intents-thesis/dashboard.html) · [Thesis memo](https://bomanaps.github.io/-near-intents-thesis/thesis-memo.html) · [THESIS.md](THESIS.md) · [Frozen predictions](PREDICTIONS.md) · [Claims and proofs](docs/claims.md) · [For AI reviewers](CLAUDE.md)
+
+Built for the NEAR Hackathon 2026, Investment Thesis track. Figures below are as of November 13, 2026 with data through November 12; the dashboard fetches current data on every page load.
 
 ## Key Findings
 
-All figures as of November 2, 2026. The live dashboard fetches current data on every page load.
-
 | Metric | Value |
 |---|---|
-| Current daily volume (30d avg) | $127M |
-| Current offset ratio | 19.2% |
-| Break-even at 2.5% issuance cap | $663M / day |
-| Break-even at 1.6% cap (HSP-029 floor) | $424M / day |
-| Capture rate (30d trailing) | 5.91 bps |
+| Current daily volume (30d avg) | $125.8M |
+| Current offset ratio | 19.7% |
+| Break-even at 2.5% issuance cap | $639M / day |
+| Break-even at 1.6% cap (HSP-029 floor) | $409M / day |
+| Capture rate (30d trailing) | 5.03 bps (30d average has ranged 1.9 to 6.0 bps since July) |
 | HSP-029 vote passed | Nov 2, 2026 (ramp pending ratification) |
-| Days revenue covered full issuance | 6 of 557 priced days (1.1%) |
+| Days revenue covered full issuance | 6 of 567 priced days (1.1%) |
 
-HSP-029 cuts the issuance cap from 2.5% to 1.6% over 24 months. The Nov 2 vote is not activation: per the proposal, the ramp starts one full quarter after ratification and validator adoption makes it binding, so the base case assumed here is an April 2027 start, putting the 30.0% flat-volume offset ceiling around April 2029. Break-even still requires 3.3x volume growth at the 1.6% floor. The dashboard exposes the ramp start date as an explicit assumption.
+HSP-029 cuts the issuance cap from 2.5% to 1.6% over 24 months. The Nov 2 vote is not activation: per the proposal, the ramp starts one full quarter after ratification and validator adoption makes it binding, so the base case assumed here is an April 2027 start, putting the 30.8% flat-volume offset ceiling around April 2029. Break-even still requires 3.3x volume growth at the 1.6% floor. The dashboard exposes the ramp start date as an explicit assumption.
 
 ## What It Measures
 
@@ -45,11 +44,11 @@ Where `V` = daily volume (USD), `r` = capture rate, `P` = NEAR price, `S` = tota
 
 **Volume forecast** (`model/forecast.py`): 10,000 simulations over a 3-year horizon. Break-even is defined as a sustained crossing (the 30-day average volume reaching the threshold, not a one-day spike), and thresholds are recomputed at every run from the live NEAR price and current capture rate. Methods: random walk with drift on the log 30-day average (365d and 180d calibration windows, residual bootstrap) plus a 30-day block bootstrap of daily returns as a non-parametric check. An earlier GBM version was tested and rejected (double-counted Ito correction, absurd one-year dispersion), as was an unconstrained AR(1) (fitted phi near 1 makes its stationary level an unstable extrapolation); the rejection rationale ships inside the model output. The 12-month sustained-crossing probability for the 1.6%-cap threshold spans a wide range across methods, from the conservative 365-day trend at the low end to the full-history bootstrap (an upper bound) at the high end, because the windows disagree about whether the recent growth regime holds. The range is the answer, not any single number; it regenerates daily, and the dashboard always shows the current values.
 
-**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot: the explicit contract fee is ~0.01 bps per side vs the 5.91 bps revenue rate implied by DefiLlama (so the capture rate is policy, not protocol), the top three solvers fill roughly two thirds of settled volume (highly concentrated; the share is recomputed as ingestion grows), and the volume screens clean (zero self-fills). Reruns automatically as ingestion grows.
+**On-chain evidence** (`analysis/onchain.py`): decodes raw dip4 settlement events from intents.near and measures what aggregates cannot. Across 20,308 decoded settlements the explicit contract fee is 0.01 bps per fill side, measured over 51,779 fill sides, against the 5.03 bps revenue rate implied by DefiLlama; the capture rate is therefore policy rather than protocol. The top three solver accounts fill roughly two thirds of settled volume. It also measures a confidential settlement path, which received 57%, 63% and 71% of stablecoin value across the three chain days fully covered so far, counted once per settlement on both sides; that account pays out almost exactly what it takes in, so this measures where activity is routed rather than value captured, but either way a large share of settlement is leaving the public event stream. Every figure is recomputed as ingestion extends.
 
-**Buyback price-effect regression** (`analysis/price_link.py`): weekly NEAR returns on lagged buyback intensity with BTC/ETH market controls, Newey-West errors, and a 1,000-permutation null. Result, pre-registered as likely and published as found: no detectable price effect (t = 0.61, permutation p = 0.62, 37 weeks). The strong contemporaneous correlation (t = 4.1) vanishes under the lag, the signature of reverse causality. The thesis rests on the issuance-offset mechanism, not a price effect.
+**Buyback price-effect regression** (`analysis/price_link.py`): weekly NEAR returns on lagged buyback intensity with BTC/ETH market controls, Newey-West errors, and a 1,000-permutation null. Result, pre-registered as likely and published as found: no detectable price effect (t = 0.59, permutation p = 0.67, 38 weeks). The strong contemporaneous correlation (t = 3.5) vanishes under the lag, the signature of reverse causality. The thesis rests on the issuance-offset mechanism, not a price effect.
 
-**Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. Average treatment effect: 1.10x (95% bootstrap CI: 0.97-1.25x). Permutation rank: 3/4. No statistically significant negative volume impact detected.
+**Fee-switch difference-in-differences** (`model/fee_switch.py`): DiD analysis of the Feb 23, 2026 protocol fee switch using 1inch, Paraswap, and Jupiter as controls. The raw estimate is 1.11x (bootstrap CI 0.97 to 1.25), but this analysis does not treat that as evidence the fee was harmless, and the model output says so. NEAR's own volume fell 19% after the switch; the raw figure is positive only because the controls fell further. NEAR was also trending up beforehand (+195%/yr) while the controls trended down (-52%/yr), and carrying that differential across the window gap turns the estimate into 0.71x, a 29% relative decline. Measuring uncertainty across the three controls rather than across days widens the interval to 0.86 to 1.42, and with four units the permutation test cannot return a p-value below 0.25. The honest reading is that the fee switch's volume effect is not identified by this design.
 
 ## Data Sources
 
@@ -85,8 +84,8 @@ Each run rebuilds every number from raw data, hashes the results, and the daily 
 
 ```bash
 pip install pandas pyarrow numpy scipy
-python run_all.py               # fetch fresh data, run models and analyses, publish JSONs, write the manifest
-python run_all.py --no-fetch    # same, but use the committed data instead of fetching
+python3 run_all.py              # fetch fresh data, run models and analyses, publish JSONs, write the manifest
+python3 run_all.py --no-fetch   # same, but use the committed data instead of fetching
 ```
 
 `py-near` is needed only for the optional on-chain anchoring step (`analysis/anchor.py`), which the GitHub Action runs with repository secrets.
@@ -101,7 +100,7 @@ Open `docs/index.html` locally or visit the live site linked above.
 
 ```bash
 pip install pytest
-pytest tests/                   # 161 tests: models, analyses, decoder, manifest
+pytest tests/                   # 167 tests: models, analyses, decoder, manifest
 RUN_SLOW=1 pytest tests/test_run_all_smoke.py   # full pipeline smoke test
 ```
 
@@ -139,7 +138,7 @@ ingest/
 
 decoder/              typed dip4 and NEP-297 event decoder
 
-tests/                161 tests across models, analyses, decoder, manifest
+tests/                167 tests across models, analyses, decoder, manifest
 
 data/
   manifest.json       SHA-256 of every input and output
@@ -157,7 +156,7 @@ data/
 Every number traces to a hashed input. `data/manifest.json` records the SHA-256 and size of every raw input and model output, written as the final step of every pipeline run. The raw on-chain events are pinned differently because the file grows continuously: each Hugging Face upload hashes the exact bytes it ships and records the HF commit id, so any snapshot can be re-downloaded at that revision and checked against its digest. The daily GitHub Action verifies all hashes before it is allowed to commit.
 
 ```bash
-python analysis/manifest.py verify
+python3 analysis/manifest.py verify
 ```
 
 Every headline claim is mapped to the code that computes it, the test that guards it, and an independent check in [docs/claims.md](docs/claims.md).
@@ -168,7 +167,7 @@ The manifest hash is also anchored on NEAR mainnet: after each verified daily re
 
 ## How This Entry Differs
 
-The dashboard fetches live DefiLlama data in the browser on every load: current price, volume, and capture rate, with every panel recomputing instantly and an honest snapshot fallback when offline. Beyond that, this entry is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects ~0.01 bps while the effective capture is 5.91 bps (capture is policy, not protocol), measured solver concentration (top three solvers fill roughly two thirds of settled volume in the decoded window), a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 557). The fee-switch argument requires both the on-chain fee measurement and the causal counterfactual; this entry has both.
+The dashboard fetches live DefiLlama data in the browser on every load: current price, volume, and capture rate, with every panel recomputing instantly and an honest snapshot fallback when offline. Beyond that, this entry is distinguished by what it measured rather than assumed: an open dataset of raw decoded dip4 settlement events ([Hugging Face](https://huggingface.co/datasets/bomankari/near-intents-onchain-events)), the finding that the settlement contract collects 0.01 bps while the effective capture is 5.02 bps and drifting (capture is policy, not protocol), measured solver concentration (top three solvers fill roughly two thirds of settled volume in the decoded window), the confidential settlement path measured at 62% to 78% of stablecoin value and rising, a causal fee-switch counterfactual (DiD vs three controls), and the exact count of days revenue ever covered issuance (6 of 567). The fee-switch argument requires both the on-chain fee measurement and the causal counterfactual; this entry has both.
 
 ## Track
 

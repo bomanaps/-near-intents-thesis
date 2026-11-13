@@ -17,7 +17,7 @@ its t-statistic. Robustness: excluding the Sep-Oct 2026 rally weeks, and a
 placebo regressor using volume instead of revenue.
 
 Sample: weekly observations since the Feb 23, 2026 fee switch, when buyback
-revenue begins. Expectation stated before running: with roughly 36 weekly
+revenue begins. Expectation stated before running: with fewer than forty weekly
 observations, a null result is likely and is published regardless.
 
 Inputs:  data/raw/daily_metrics.parquet, coins.llama.fi price history
@@ -192,7 +192,7 @@ def main() -> None:
             "headline_regressor": "prior-week revenue / prior-week market cap (both lagged to avoid mechanical and reverse-causality bias)",
             "expectation_preregistered": "null likely at this sample size; published regardless",
             "caveats": [
-                "Roughly 36 weekly observations; power to detect modest effects is low",
+                f"Only {len(post)} weekly observations; power to detect modest effects is low",
                 "Market cap uses current total supply as a constant; error under one percent over the window",
                 "The contemporaneous specification is reported only for comparison; it is exposed to reverse causality",
                 "Association, not causation: no instrument exists for buyback timing",

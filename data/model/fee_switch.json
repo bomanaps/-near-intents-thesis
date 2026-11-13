@@ -10,11 +10,14 @@
     ],
     "methodology": "Difference-in-differences on log daily volume; 90-day symmetric window",
     "caveats": [
-      "4 units total (NEAR + 3 controls); permutation distribution has only 4 points; interpret with caution",
+      "NEAR's own volume fell 19% across the switch; the positive ATT exists only because the controls fell further",
+      "Parallel trends fails: NEAR trended +195%/yr pre-period against -52%/yr for the controls, and trend-adjusting reverses the sign of the result",
+      "The bootstrap CI resamples daily rows and captures only noise in the means; dispersion across the 3 controls gives a much wider interval",
+      "4 units total; the permutation test cannot return a p-value below 0.25, so it cannot reject anything",
       "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols; different growth dynamics from a young NEAR Intents",
       "90-day window coincided with broader DeFi volume contraction; market cycle not isolated",
       "DiD identifies relative performance vs controls, not absolute causal effect of the fee switch",
-      "Bootstrap CI resamples within pre/post periods independently; temporal autocorrelation within periods not preserved"
+      "The event tested a contract-level fee measured elsewhere at 0.01 bps, so it generalises poorly to a 5 bps enforced take"
     ]
   },
   "units": {
@@ -25,7 +28,7 @@
       "post_days": 91,
       "log_growth": -0.21207375179756854,
       "growth_ratio": 0.8089050371659428,
-      "pre_slope": 0.0029650702849362835
+      "pre_slope": 0.002965070284936194
     },
     "1inch": {
       "pre_avg": 183788997.02222222,
@@ -34,7 +37,7 @@
       "post_days": 91,
       "log_growth": -0.4267058029630163,
       "growth_ratio": 0.6526555333104539,
-      "pre_slope": -0.0019634405792796875
+      "pre_slope": -0.0019634405792795964
     },
     "paraswap": {
       "pre_avg": 78011610.01111111,
@@ -43,7 +46,7 @@
       "post_days": 91,
       "log_growth": -0.05834260669631652,
       "growth_ratio": 0.9433267020220116,
-      "pre_slope": 0.0001631495825188723
+      "pre_slope": 0.00016314958251902026
     },
     "jupiter": {
       "pre_avg": 57069072.1,
@@ -52,18 +55,31 @@
       "post_days": 91,
       "log_growth": -0.45572815889035084,
       "growth_ratio": 0.6339861571761163,
-      "pre_slope": -0.00415622633118451
+      "pre_slope": -0.004156226331184493
     }
   },
   "did_estimate": {
     "att_log": 0.10151843771899266,
     "att_ratio": 1.106850325999078,
     "bootstrap_ci_95": {
-      "att_ratio_lo": 0.9733033413170958,
+      "att_ratio_lo": 0.973303341317096,
       "att_ratio_hi": 1.2548171274262456,
       "att_log_lo": -0.027059486577984015,
       "att_log_hi": 0.2269898467680456,
       "n_bootstrap": 1000
+    },
+    "cross_control_ci_95": {
+      "att_ratio_lo": 0.8614273492668778,
+      "att_ratio_hi": 1.4221949711799933,
+      "se_log": 0.12789948714169388,
+      "basis": "dispersion across the control units, which the daily bootstrap does not capture"
+    },
+    "trend_adjusted": {
+      "slope_differential_per_day": 0.0049505760609178835,
+      "window_gap_days": 90,
+      "att_log": -0.34403340776361685,
+      "att_ratio": 0.7089052447150671,
+      "basis": "raw ATT less the pre-period slope differential carried across the window gap"
     },
     "interpretation": "NEAR volume changed by 1.11x (95% CI: 0.97-1.25x) relative to aggregator controls in the 90 days after the fee switch. CI includes 1.0; no statistically significant volume impact detected."
   },
@@ -80,15 +96,16 @@
     "note": "NEAR ATT ranks 3/4 among permutations (percentile=75%). NEAR is not an outlier; consistent with no treatment effect."
   },
   "parallel_trends": {
-    "near_slope": 0.0029650702849362835,
+    "near_slope": 0.002965070284936194,
     "control_slopes": {
-      "1inch": -0.0019634405792796875,
-      "paraswap": 0.0001631495825188723,
-      "jupiter": -0.00415622633118451
+      "1inch": -0.0019634405792795964,
+      "paraswap": 0.00016314958251902026,
+      "jupiter": -0.004156226331184493
     },
-    "mean_control_slope": -0.001985505775981775,
-    "slope_diff_near_vs_controls": 0.004950576060918059,
-    "assessment": "Pre-period slopes similar; parallel trends assumption plausible"
+    "mean_control_slope": -0.0019855057759816898,
+    "slope_diff_near_vs_controls": 0.0049505760609178835,
+    "assessment": "Pre-period slopes differ materially; the DiD estimate conflates trend with treatment",
+    "note": "NEAR was trending up before the switch while the controls trended down. Carrying that differential across the window gap gives the trend_adjusted estimate above, which points the opposite way from the raw ATT. The raw estimate should not be read as evidence that demand tolerated the fee"
   },
   "full_history_context": {
     "pre_avg_usd": 30592183.202272728,

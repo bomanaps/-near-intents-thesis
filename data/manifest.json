@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-13T12:54:13Z",
+ "generated_at": "2026-11-13T14:27:56Z",
  "note": "SHA-256 of every raw input and model output; the manifest excludes itself",
  "sources": {
   "volume_fees_revenue": "https://api.llama.fi/summary/{dexs,fees}/near-intents",
@@ -13,49 +13,56 @@
    "bytes": 3109
   },
   "data/raw/daily_metrics.parquet": {
-   "sha256": "5d378247de3d1305ed7a9fe092fbfae2afc46a02385e69bc44e5bd123fd75689",
-   "bytes": 26595
+   "sha256": "69ce05680936beb0b84db3e28a7f372ce7c83d8a08ca9d7dbcfb2c87078cbb51",
+   "bytes": 26548
   },
   "data/model/forecast.json": {
-   "sha256": "f5f7509da646f2ec2b0ec7a6234f5d21f53dd3e3918f6849cfe67a9f15b5feb6",
-   "bytes": 4018
+   "sha256": "0c8569ac4d4b5dd9d600fb22fe71129d70657da20bd1c7286f26b3df480254eb",
+   "bytes": 4022
   },
   "data/model/fee_switch.json": {
-   "sha256": "3206ff87b9dcd4928a5f099bd30287aedaaa11ec2a30d955ed8dcf49e7712950",
-   "bytes": 3639
+   "sha256": "ebbb2ff9d716575a633dc2dda9fc1e04ca78a19f3e0948ae33de34bad6179689",
+   "bytes": 4929
   },
   "data/model/onchain.json": {
-   "sha256": "b729f131e5eed80e00c2e1c71989134609e9f173fc665e3d28da82060b77ccf7",
-   "bytes": 5745
+   "sha256": "5f4ca25146f66f741661de30c3cac5151cb2d8ca4a47bc478a4990f4a8f7751c",
+   "bytes": 6619
   },
   "data/model/frequency.json": {
-   "sha256": "064a40564e611f713f09073d796e5e8c681641c256d5cada5499656a5501b7fe",
+   "sha256": "bcaa6b3352576e8e2ad8443251ead2a3d6ee3464f60b2382ce0dfb7e0a05b048",
    "bytes": 1093
   },
   "data/model/price_link.json": {
-   "sha256": "bdd4bec1b1cf9c1f9b19209ca7f0c1837c16d123f13f0a7398fb67c833029beb",
-   "bytes": 10611
+   "sha256": "c66a729d044612602a4c0a6dac2f63458837a91e7de2e190895e1a84fa96aab5",
+   "bytes": 10609
   },
   "docs/data/forecast.json": {
-   "sha256": "f5f7509da646f2ec2b0ec7a6234f5d21f53dd3e3918f6849cfe67a9f15b5feb6",
-   "bytes": 4018
+   "sha256": "0c8569ac4d4b5dd9d600fb22fe71129d70657da20bd1c7286f26b3df480254eb",
+   "bytes": 4022
   },
   "docs/data/fee_switch.json": {
-   "sha256": "3206ff87b9dcd4928a5f099bd30287aedaaa11ec2a30d955ed8dcf49e7712950",
-   "bytes": 3639
+   "sha256": "ebbb2ff9d716575a633dc2dda9fc1e04ca78a19f3e0948ae33de34bad6179689",
+   "bytes": 4929
   },
   "docs/data/onchain.json": {
-   "sha256": "b729f131e5eed80e00c2e1c71989134609e9f173fc665e3d28da82060b77ccf7",
-   "bytes": 5745
+   "sha256": "5f4ca25146f66f741661de30c3cac5151cb2d8ca4a47bc478a4990f4a8f7751c",
+   "bytes": 6619
   },
   "docs/data/frequency.json": {
-   "sha256": "064a40564e611f713f09073d796e5e8c681641c256d5cada5499656a5501b7fe",
+   "sha256": "bcaa6b3352576e8e2ad8443251ead2a3d6ee3464f60b2382ce0dfb7e0a05b048",
    "bytes": 1093
   },
   "docs/data/price_link.json": {
-   "sha256": "bdd4bec1b1cf9c1f9b19209ca7f0c1837c16d123f13f0a7398fb67c833029beb",
-   "bytes": 10611
+   "sha256": "c66a729d044612602a4c0a6dac2f63458837a91e7de2e190895e1a84fa96aab5",
+   "bytes": 10609
   }
  },
- "events_snapshot": null
+ "events_snapshot": {
+  "uploaded_at": "2026-11-13T14:03:38Z",
+  "lines": 355460,
+  "sha256": "ff7a916493e1ec4893faa3308699fdf77c0f2068931775c295463c9389a29945",
+  "bytes": 218530143,
+  "repo": "bomankari/near-intents-onchain-events",
+  "hf_commit": "3251141b67742b8469e9294c67fce46311195630"
+ }
 }

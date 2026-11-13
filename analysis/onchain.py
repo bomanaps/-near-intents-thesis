@@ -26,6 +26,8 @@ import json
 import shutil
 import sys
 import urllib.request
+
+import pandas as pd
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -38,6 +40,8 @@ DOCS_OUT = ROOT / "docs" / "data" / "onchain.json"
 NEAR_BLOCK_SECONDS = 1.1
 BLOCKS_PER_DAY = int(86400 / NEAR_BLOCK_SECONDS)
 INGEST_START_DATE = "2026-10-28"
+
+DAILY_METRICS = ROOT / "data" / "raw" / "daily_metrics.parquet"
 
 CONFIDENTIAL_TREASURY = (
     "51e8f94d77b5e90dc9852ca6113771e11e8382ce69473a75e313e41665de7cbe"
@@ -95,6 +99,13 @@ def leg_usd(tok: str, raw_amount: int, prices: dict) -> float | None:
     return None
 
 
+def implied_revenue_bps_30d() -> float | None:
+    if not DAILY_METRICS.exists():
+        return None
+    df = pd.read_parquet(DAILY_METRICS).sort_values("date")
+    return round(float(df["rev_capture_bps"].tail(30).mean()), 2)
+
+
 def stable_usd(tokens: dict | None) -> float:
     best = 0.0
     for tok, amt in (tokens or {}).items():
@@ -150,7 +161,10 @@ def main() -> None:
     receipts: dict[str, list[dict]] = defaultdict(list)
     blocks: set[int] = set()
     day_treasury_in: Counter = Counter()
+    day_treasury_out: Counter = Counter()
     day_public_fill: Counter = Counter()
+    receipt_stable: dict[str, float] = {}
+    receipt_day: dict[str, int] = {}
     first_block: int | None = None
     with open(events_path) as f:
         for line in f:
@@ -165,8 +179,11 @@ def main() -> None:
             data = json.loads(e["data"]) if isinstance(e["data"], str) else e["data"]
             if ev == "transfer":
                 for entry in data:
+                    value = stable_usd(entry.get("tokens"))
                     if entry.get("receiver_id") == CONFIDENTIAL_TREASURY:
-                        day_treasury_in[day] += stable_usd(entry.get("tokens"))
+                        day_treasury_in[day] += value
+                    if entry.get("account_id") == CONFIDENTIAL_TREASURY:
+                        day_treasury_out[day] += value
                 continue
             blocks.add(bh)
             for entry in data:
@@ -176,7 +193,9 @@ def main() -> None:
                     (v / 10 ** STABLES[t][1] for t, v in diff.items() if v > 0 and t in STABLES),
                     default=0.0,
                 )
-                day_public_fill[day] += pos / 2
+                rid = e["receipt_id"]
+                receipt_day[rid] = day
+                receipt_stable[rid] = max(receipt_stable.get(rid, 0.0), pos)
 
     if not receipts:
         sys.exit("no token_diff events found")
@@ -275,6 +294,10 @@ def main() -> None:
         for pair, vol in corridor_usd.most_common(10)
     ]
 
+    for rid, value in receipt_stable.items():
+        day_public_fill[receipt_day[rid]] += value
+
+    implied_bps = implied_revenue_bps_30d()
     block_span = max(blocks) - min(blocks) + 1
     result = {
         "meta": {
@@ -290,7 +313,7 @@ def main() -> None:
             "multiparty_receipts": multiparty,
             "usd_valued_entry_share": round(valued_entries / total_entries, 4),
             "caveats": [
-                "Window covers a few chain hours of one day; time-of-day bias applies to solver and corridor shares",
+                "Window spans a few chain days and keeps growing; some time-of-day bias remains in solver and corridor shares",
                 "USD values derived from stablecoin legs where present, else live major-asset prices; unvalued entries excluded from volume shares",
                 "Solver side of a bilateral receipt identified as the account with higher global fill count",
                 "Explicit fee rate measures fees_collected at the settlement contract only; it does not capture app-layer or off-contract revenue",
@@ -303,10 +326,10 @@ def main() -> None:
             "p75_bps": round(fee_only[3 * n // 4], 4) if n else None,
             "max_bps": round(fee_only[-1], 2) if n else None,
             "volume_weighted_mean_bps": round(vw_mean, 4) if vw_mean is not None else None,
-            "defillama_implied_revenue_bps_30d": 5.91,
+            "defillama_implied_revenue_bps_30d": implied_bps,
             "finding": (
                 "The explicit protocol fee at the settlement contract is roughly 0.01 bps per side, "
-                "hundreds of times below the 5.91 bps revenue rate implied by DefiLlama. "
+                f"hundreds of times below the {implied_bps} bps revenue rate implied by DefiLlama. "
                 "Protocol revenue is therefore generated off the settlement contract "
                 "(application-layer fees or solver arrangements), not by a contract-enforced take. "
                 "The capture rate behind the break-even model is policy, not protocol."
@@ -329,8 +352,12 @@ def main() -> None:
             "method": (
                 "Per approximate chain day (block height arithmetic from the ingestion start), "
                 "stablecoin USD entering the treasury via transfer events is compared against "
-                "stablecoin USD settled in public bilateral fills (one side counted). "
-                "Stablecoin legs only; major and unknown tokens are excluded from both sides"
+                "stablecoin USD settled in public fills, counted once per settlement receipt. "
+                "Both sides measure value entering a settlement route once, so the comparison is "
+                "like for like. Stablecoin legs only; major and unknown tokens are excluded from "
+                "both sides. The treasury is a routing hub rather than a sink: it pays out almost "
+                "exactly what it takes in, so these figures describe where activity is routed, "
+                "not value captured"
             ),
             "by_chain_day": [
                 {
@@ -340,6 +367,7 @@ def main() -> None:
                         + timedelta(days=d)
                     ).strftime("%Y-%m-%d"),
                     "treasury_in_stable_usd": round(day_treasury_in.get(d, 0.0), 0),
+                    "treasury_out_stable_usd": round(day_treasury_out.get(d, 0.0), 0),
                     "public_fill_stable_usd": round(day_public_fill.get(d, 0.0), 0),
                     "treasury_share": round(confidential_share(
                         day_treasury_in.get(d, 0.0), day_public_fill.get(d, 0.0)
@@ -347,11 +375,20 @@ def main() -> None:
                 }
                 for d in sorted(set(day_treasury_in) | set(day_public_fill))
             ],
+            "window_totals": {
+                "treasury_in_stable_usd": round(sum(day_treasury_in.values()), 0),
+                "treasury_out_stable_usd": round(sum(day_treasury_out.values()), 0),
+                "treasury_net_stable_usd": round(
+                    sum(day_treasury_in.values()) - sum(day_treasury_out.values()), 0
+                ),
+                "public_fill_stable_usd": round(sum(day_public_fill.values()), 0),
+            },
             "finding": (
-                "A large and growing share of value already settles through the confidential "
-                "path rather than as public swaps. Everything this analysis measures from "
-                "public fills therefore describes a shrinking slice of total protocol "
-                "activity, and that boundary is stated wherever those numbers appear"
+                "More stablecoin value is routed into the confidential path than settles as "
+                "public fills. The treasury pays out almost exactly what it receives, so this "
+                "measures routing rather than capture, but the consequence for this analysis is "
+                "the same: a large share of activity leaves the public event stream, so every "
+                "figure measured from public fills describes a diminishing slice of the protocol"
             ),
         },
         "wash_screen": {
@@ -377,7 +414,7 @@ def main() -> None:
     print(f"Solvers: HHI {s['hhi']}, top3 share {s['top3_share']}, {s['distinct_solver_accounts']} accounts")
     print(f"Wash screen: bilateral self-fills {w['bilateral_self_fills']}, user round-trip share {(w['user_round_trip_share'] or 0)*100:.2f}%")
     for row in result["confidential_flow"]["by_chain_day"]:
-        print(f"Confidential flow {row['est_date_utc']}: treasury ${row['treasury_in_stable_usd']/1e6:.1f}M vs public ${row['public_fill_stable_usd']/1e6:.1f}M, share {row['treasury_share']*100:.1f}%")
+        print(f"Confidential flow {row['est_date_utc']}: treasury in ${row['treasury_in_stable_usd']/1e6:.1f}M out ${row['treasury_out_stable_usd']/1e6:.1f}M vs public ${row['public_fill_stable_usd']/1e6:.1f}M, routed share {row['treasury_share']*100:.1f}%")
     print(f"Wrote {OUT.relative_to(ROOT)} and {DOCS_OUT.relative_to(ROOT)}")
 
 

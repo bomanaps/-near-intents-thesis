@@ -133,21 +133,21 @@ em { color: var(--text-dim); }
     <div class="cover-eyebrow">Investment Thesis Memo</div>
     <h1 class="cover-title">NEAR Intents: Can Protocol Buybacks Ever Cover Token Issuance?</h1>
     <div class="cover-meta">
-      <div class="meta-pair"><span class="meta-label">Date</span><span class="meta-value">November 2, 2026</span></div>
+      <div class="meta-pair"><span class="meta-label">Date</span><span class="meta-value">November 13, 2026</span></div>
       <div class="meta-pair"><span class="meta-label">Protocol</span><span class="meta-value">NEAR Protocol</span></div>
       <div class="meta-pair"><span class="meta-label">Mechanism</span><span class="meta-value">NEAR Intents (intents.near)</span></div>
       <div class="meta-pair"><span class="meta-label">Governance event</span><span class="meta-value">HSP-029 vote passed (ratification pending)</span></div>
-      <div class="meta-pair"><span class="meta-label">Model inputs</span><span class="meta-value">DefiLlama · 692d avg (Nov 2024-Nov 2026)</span></div>
-      <div class="meta-pair"><span class="meta-label">NEAR price used</span><span class="meta-value">$4.37</span></div>
+      <div class="meta-pair"><span class="meta-label">Model inputs</span><span class="meta-value">DefiLlama · 703 days (Dec 2024 to Nov 12, 2026)</span></div>
+      <div class="meta-pair"><span class="meta-label">NEAR price used</span><span class="meta-value">$3.58</span></div>
     </div>
   </div>
 
   <div class="abstract">
-    At today's NEAR Intents volume of $127M/day, protocol buybacks offset ~19 cents of every dollar of new token issuance.
+    At today's NEAR Intents volume of $125.8M/day, protocol buybacks offset ~20 cents of every dollar of new token issuance.
     HSP-029, approved by governance on November 2, 2026 with ratification steps still pending,
     sets a 24-month ramp from 2.5% to 1.6% annual issuance, which lifts that ceiling to ~30 cents
     roughly two years after the ramp starts (base case: mid 2029). Neither path reaches break-even at flat volume.
-    The critical condition: Intents volume must reach $424-663M/day, 3.3-5.2× its current level,
+    The critical condition: Intents volume must reach $409-639M/day, 3.3-5.1× its current level,
     depending on which issuance regime and capture rate scenario prevails.
   </div>
 
@@ -161,8 +161,8 @@ em { color: var(--text-dim); }
   </p>
   <p>
     NEAR's token model allows validators to mint new NEAR up to an annual <strong>issuance cap</strong>,
-    currently 2.5% of total supply. On a 1.310B-token total supply at $4.37, this produces roughly
-    <strong>89,700 NEAR ($392,000) of new supply every day</strong>. Buybacks must exceed this rate for
+    currently 2.5% of total supply. On a 1.310B-token total supply at $3.58, this produces roughly
+    <strong>89,700 NEAR ($322,000) of new supply every day</strong>. Buybacks must exceed this rate for
     the token to be net deflationary; anything below 100% offset means the treasury is still adding
     to supply on net.
   </p>
@@ -181,9 +181,9 @@ em { color: var(--text-dim); }
   </div>
 
   <p>
-    At 5.91 basis points capture rate and the current 2.5% cap:
-    break-even requires <strong>$663M/day</strong>, 5.2× today's Intents volume.
-    Cutting the cap to 1.6% (HSP-029 floor) reduces that threshold to <strong>$424M/day</strong> (3.3×).
+    At 5.03 basis points capture rate and the current 2.5% cap:
+    break-even requires <strong>$639M/day</strong>, 5.1× today's Intents volume.
+    Cutting the cap to 1.6% (HSP-029 floor) reduces that threshold to <strong>$409M/day</strong> (3.3×).
   </p>
 
   <h2>3. Current Metrics</h2>
@@ -198,13 +198,13 @@ em { color: var(--text-dim); }
     </thead>
     <tbody>
       <tr><td>NEAR supply</td><td>1,309,640,573</td><td>As of Nov 2026</td></tr>
-      <tr><td>NEAR price</td><td>$4.37</td><td>Model input (spot)</td></tr>
+      <tr><td>NEAR price</td><td>$3.58</td><td>Model input (spot)</td></tr>
       <tr><td>Annual issuance cap (current)</td><td>2.5%</td><td>Pre-HSP-029</td></tr>
-      <tr><td>NEAR issued per day</td><td>89,701</td><td>$391,995 at spot</td></tr>
-      <tr><td>Intents volume (30d avg)</td><td>$127M/day</td><td>DefiLlama 30d avg</td></tr>
-      <tr><td>Capture rate (DefiLlama 30d)</td><td>5.91 bps</td><td>Revenue ÷ volume</td></tr>
-      <tr><td>Daily buyback (best case)</td><td>17,215 NEAR</td><td>$75,222/day</td></tr>
-      <tr><td>Offset ratio</td><td>19.2%</td><td>Buyback ÷ issuance</td></tr>
+      <tr><td>NEAR issued per day</td><td>89,701</td><td>$321,544 at spot</td></tr>
+      <tr><td>Intents volume (30d avg)</td><td>$125.8M/day</td><td>DefiLlama 30d avg</td></tr>
+      <tr><td>Capture rate (DefiLlama 30d)</td><td>5.03 bps</td><td>Mean of daily ratios; 30d average has ranged 1.9 to 6.0 bps since July</td></tr>
+      <tr><td>Daily buyback (best case)</td><td>17,660 NEAR</td><td>$63,305/day</td></tr>
+      <tr><td>Offset ratio</td><td>19.7%</td><td>Buyback ÷ issuance</td></tr>
     </tbody>
   </table>
 
@@ -236,7 +236,7 @@ em { color: var(--text-dim); }
   </p>
   <p>
     This model uses the DefiLlama net figure throughout. It is the correct input for the
-    5.91 bps capture rate (revenue divided by volume) and for all offset and break-even
+    5.03 bps capture rate (revenue divided by volume) and for all offset and break-even
     calculations. A model built on the gross revenue.near.org figure would overstate the effective
     capture rate by nearly 2x and produce a falsely optimistic break-even threshold.
   </p>
@@ -249,10 +249,10 @@ em { color: var(--text-dim); }
   <h3>On-Chain Evidence: What the Settlement Contract Shows</h3>
 
   <p>
-    Decoding raw dip4 settlement events from <em>intents.near</em> (2,852 fills across 1,151
-    settlements, a contiguous window of Oct 28, 2026, ingestion ongoing) reveals something the
-    aggregate data cannot: the settlement contract itself collects an explicit fee of roughly
-    <strong>0.01 bps per side</strong>, several hundred times below the 5.91 bps revenue rate
+    Decoding raw dip4 settlement events from <em>intents.near</em> (52,995 fills across 20,281
+    settlements, a contiguous window beginning Oct 28, 2026, ingestion ongoing) reveals something
+    the aggregate data cannot: the settlement contract itself collects an explicit fee of roughly
+    <strong>0.01 bps per fill side</strong>, several hundred times below the 5.03 bps revenue rate
     implied by DefiLlama. Protocol revenue is therefore generated off the settlement contract,
     through application-layer fees or solver arrangements. The capture rate this model depends on
     is <strong>policy, not protocol</strong>: nothing at the contract level guarantees it, and it
@@ -261,21 +261,27 @@ em { color: var(--text-dim); }
     arrangement into an enforced one.
   </p>
   <p>
-    The same events quantify the concentration risk flagged in Section 7. In the initial window
-    the top three solver accounts filled <strong>86% of settled volume</strong> (Herfindahl index
-    0.33, 17 active solver accounts); as ingestion coverage grows the live figure on the dashboard
-    has eased toward three quarters, still highly concentrated. Concentration this high cuts both ways: it means a solver exit is a
-    material volume event, and it means solvers hold real bargaining power against any attempt to
-    raise the protocol take. Volume quality, however, screens clean: zero bilateral self-fills in
-    the window, and non-solver round-trip activity of about 8%, consistent with organic flow
-    rather than wash trading.
+    The same events quantify the concentration risk flagged in Section 7. The top three solver
+    accounts fill <strong>66% of settled volume</strong> (Herfindahl index 0.21, 38 active solver
+    accounts). Concentration this high cuts both ways: a solver exit is a material volume event,
+    and solvers hold real bargaining power against any attempt to raise the protocol take. One
+    caveat on the method: the solver side of a settlement is identified as whichever account has
+    the higher global fill count, so concentration is measured over accounts defined partly by
+    that same count, which biases the index upward.
   </p>
   <p>
-    These figures come from a window that has grown to roughly two chain days and are recomputed
-    as ingestion extends; they are structure measurements, not long-run averages. They describe
-    the public side of the protocol only: a confidential settlement path, quantified under Key
-    Risks, already carries the majority of stablecoin value. The ingestion pipeline continues to run, and every
-    figure in this subsection regenerates from the raw events with one command as coverage grows.
+    On volume quality the honest statement is narrow. No settlement in the window has one account
+    on both sides, which rules out the crudest form of wash trading and nothing more. Round trips
+    among non-solver accounts run at 17% of entries, up from 8% in the first window measured, and
+    that metric excludes solver accounts, which is precisely where inventory cycling would appear.
+    These are screens that failed to find a problem, not evidence that none exists.
+  </p>
+  <p>
+    These figures come from roughly 68 chain hours beginning October 28 and are recomputed as
+    ingestion extends; they are structure measurements, not long-run averages. They describe the
+    public side of the protocol only: a confidential settlement path, quantified under Key Risks,
+    receives more stablecoin value than public settlement does. The ingestion pipeline continues
+    to run, and every figure in this subsection regenerates from the raw events with one command.
   </p>
 
   <h2>4. HSP-029: The Governance Catalyst</h2>
@@ -311,10 +317,10 @@ em { color: var(--text-dim); }
 
   <p>
     At the floor, daily NEAR issuance drops from 89,701 to <strong>57,409 NEAR</strong>, a 36% reduction.
-    The offset ratio improves from 19.2% to <strong>30.0%</strong> at flat volume.
-    The break-even volume requirement falls from $663M to <strong>$424M/day</strong>.
-    Both figures assume the 5.91 bps capture rate holds; under the conservative 4.11 bps estimate
-    the floor-scenario break-even is $610M/day.
+    The offset ratio improves from 19.7% to <strong>30.8%</strong> at flat volume.
+    The break-even volume requirement falls from $639M to <strong>$409M/day</strong>.
+    Both figures assume the 5.03 bps capture rate holds; under the conservative 4.33 bps estimate
+    (90-day trailing) the floor-scenario break-even is $475M/day.
   </p>
 
   <h3>What HSP-029 Does Not Change</h3>
@@ -340,17 +346,17 @@ em { color: var(--text-dim); }
       </tr>
     </thead>
     <tbody>
-      <tr><td>2.5% (today)</td><td>5.91 bps</td><td>19.2%</td><td>$663M/day</td><td>5.2×</td></tr>
-      <tr><td>2.5% (today)</td><td>4.11 bps</td><td>13.3%</td><td>$954M/day</td><td>7.5×</td></tr>
-      <tr><td>1.6% (HSP-029 floor)</td><td>5.91 bps</td><td>30.0%</td><td>$424M/day</td><td>3.3×</td></tr>
-      <tr><td>1.6% (HSP-029 floor)</td><td>4.11 bps</td><td>21.0%</td><td>$610M/day</td><td>4.8×</td></tr>
+      <tr><td>2.5% (today)</td><td>5.03 bps</td><td>19.7%</td><td>$639M/day</td><td>5.1×</td></tr>
+      <tr><td>2.5% (today)</td><td>4.33 bps</td><td>16.9%</td><td>$743M/day</td><td>5.9×</td></tr>
+      <tr><td>1.6% (HSP-029 floor)</td><td>5.03 bps</td><td>30.8%</td><td>$409M/day</td><td>3.3×</td></tr>
+      <tr><td>1.6% (HSP-029 floor)</td><td>4.33 bps</td><td>26.5%</td><td>$475M/day</td><td>3.8×</td></tr>
     </tbody>
   </table>
 
   <p>
-    None of the four combinations reaches break-even at flat $127M/day volume.
+    None of the four combinations reaches break-even at flat $125.8M/day volume.
     The most optimistic path, full HSP-029 ramp plus best capture rate, reduces
-    the required volume growth from 5.2× to 3.3×.
+    the required volume growth from 5.1× to 3.3×.
   </p>
 
   <h2>6. What Must Be True for Break-Even</h2>
@@ -358,7 +364,7 @@ em { color: var(--text-dim); }
   <p>Three conditions must hold simultaneously:</p>
 
   <p>
-    <strong>Volume growth of 3.3-5.2×.</strong>
+    <strong>Volume growth of 3.3-5.1×.</strong>
     Intents volume needs to reach $424-663M/day. That is plausible if NEAR becomes the
     primary settlement layer for cross-chain DeFi volume from Ethereum, Solana, and Bitcoin,
     but it requires winning solver share in a competitive market where UniswapX, CoW Protocol,
@@ -372,10 +378,18 @@ em { color: var(--text-dim); }
   </p>
 
   <p>
-    <strong>Capture rate staying at or above 5.91 bps.</strong>
-    The 4.11 bps estimate (90d trailing revenue/volume) represents the conservative case.
-    If more of the fee revenue is absorbed by solvers through rebates or competitive pressure,
-    the effective capture rate compresses and the break-even volume rises.
+    <strong>Capture rate holding up.</strong>
+    This is the weakest link in the chain, because the rate is not a constant and carries no
+    error bar in the headline figures. Daily capture has a standard deviation of 2.5 bps on a
+    mean of 3.8, and the 30-day trailing average has ranged between <strong>1.9 and 6.0 bps</strong>
+    over the last four months. The estimator matters too: the same 30 days give 5.03 bps as a mean
+    of daily ratios, 4.88 bps as total revenue over total volume, and 4.53 bps as a median, while
+    the 90-day trailing figure is 4.33 bps. Every break-even number in this memo is linear in
+    whichever is chosen. Because the rate is set off the settlement contract rather than enforced
+    by it, nothing holds it in place: if more of the fee revenue is absorbed by solvers through
+    rebates or competitive pressure, capture compresses and break-even volume rises with it.
+    Variance of this size in a parameter the whole case rests on is exactly what a
+    contract-enforced floor would remove.
   </p>
 
   <h2>7. Key Risks</h2>
@@ -395,9 +409,11 @@ em { color: var(--text-dim); }
   <p>
     <strong>Visibility risk: the flow is going private.</strong>
     Decoded transfer events show a confidential settlement path, routed through a treasury
-    account inside <em>intents.near</em>, already carrying roughly 62% of stablecoin value on
-    October 28 and 71% on October 29, measured against public bilateral fills. Value on that
-    path settles outside the public event stream. Two consequences follow. First, chain-visible
+    account inside <em>intents.near</em>, receiving roughly <strong>57%, 63% and 71%</strong> of
+    stablecoin value across the three chain days fully covered, counted once per settlement on
+    both sides. That account is a routing hub rather than a sink: over the window it received
+    $42.0M and paid out $43.9M, so it moves value rather than capturing it. Settlement on that
+    path nonetheless happens outside the public event stream. Two consequences follow. First, chain-visible
     evidence, including this memo's own on-chain measurements, describes a shrinking slice of
     total protocol activity, and that boundary is stated wherever those numbers appear. Second,
     fee and revenue reporting for the private path cannot be independently verified from public
@@ -421,25 +437,28 @@ em { color: var(--text-dim); }
   </p>
   <p>
     <strong>First, the current capture is policy, not protocol.</strong> Decoded settlement
-    events show the contract itself collects roughly 0.01 bps per side (Section 3); the 5.91 bps
+    events show the contract itself collects roughly 0.01 bps per fill side (Section 3); the 5.03 bps
     the buyback actually receives is generated off-contract and can change in either direction
-    without governance. Revenue this soft deserves a discount; a contract-enforced take removes
+    without governance, as it did over the eleven days covered by this memo. Revenue this soft deserves a discount; a contract-enforced take removes
     that discount.
   </p>
   <p>
-    <strong>Second, demand did not flinch when fees switched on.</strong> The
-    difference-in-differences analysis of the February 23, 2026 fee activation (Section 10) finds
-    no statistically significant volume impact relative to three aggregator controls (ATT 1.10x,
-    CI 0.97 to 1.25). Within the power of this test, Intents demand tolerated the introduction of
-    fees.
+    <strong>Second, the demand response is unknown, and that is a cost of the argument rather
+    than support for it.</strong> The difference-in-differences analysis of the February 23, 2026
+    fee activation (Section 10) initially appeared to show no volume damage, but it does not
+    survive its own parallel-trends diagnostic: NEAR's volume fell 19% across the switch, the
+    positive estimate exists only because the controls fell further, and trend-adjusting turns it
+    into a 29% relative decline. The event also tested a contract-level fee of 0.01 bps, so it
+    says little about a 5 bps take. An enforced fee switch is therefore a decision under
+    uncertainty on the demand side, and this memo does not pretend otherwise.
   </p>
   <p>
     Together: a contract-enforced take of 5 bps on top of the current effective capture is
     the one lever that is simultaneously in governance's control, volume-independent, and
-    empirically consistent with no demand damage. At 10.91 bps total capture and a $3.85 NEAR
-    price, break-even volume falls to roughly <strong>$203M/day at the 1.6% floor</strong>
-    (1.6x current volume, versus 2.9x without it) and $317M/day at the current cap. The offset
-    ratio at today's volume rises to roughly 64% at the floor. This argument requires both the
+    in governance's control. At 10.03 bps total capture and a $3.58 NEAR
+    price, break-even volume falls to roughly <strong>$205M/day at the 1.6% floor</strong>
+    (1.6x current volume, versus 3.3x without it) and $321M/day at the current cap. The offset
+    ratio at today's volume rises to roughly 61% at the floor. This argument requires both the
     on-chain fee measurement and the counterfactual; this analysis has both.
   </p>
 
@@ -451,13 +470,22 @@ em { color: var(--text-dim); }
     regression of NEAR returns on buyback intensity (prior-week revenue scaled by prior-week
     market cap, lagged to avoid reverse causality and mechanical price contamination), controlling
     for BTC and ETH returns with Newey-West errors, finds <strong>no detectable effect</strong>:
-    t = 0.61, permutation p = 0.62 across 1,000 reshuffles, 37 weeks since the fee switch. The
+    t = 0.59, permutation p = 0.67 across 1,000 reshuffles, 38 weeks since the fee switch. The
     expectation of a null at this sample size was stated before running, and the result is
-    published as found.
+    published as found. The null is weak evidence rather than strong: with 38 weekly observations
+    the smallest effect this test could reliably detect is about a 6.6% move in weekly return per
+    one standard deviation of buyback intensity, against a fitted effect of 1.4% and a weekly
+    return standard deviation of 14.6%. Buybacks average 0.0053% of market cap per week, so no
+    realistic effect would clear that bar. The finding is better stated as a matter of scale: a
+    flow this small cannot be a price mechanism, whatever the regression says. Two further
+    disclosures: the robustness specification that drops the September to October rally returns
+    t = -1.50, the largest magnitude in the set and with the sign reversed, and the volume
+    placebo correlates 0.72 with the treatment regressor, so it is a weak placebo rather than a
+    clean one.
   </p>
   <p>
     The diagnostic pattern is itself informative. The contemporaneous specification shows a
-    strong association (t = 4.1) that vanishes under the lag and flips sign when the September
+    strong association (t = 3.5) that vanishes under the lag and flips sign when the September
     to October rally is excluded: the signature of price driving volume and revenue within the
     week, not buybacks driving price. At current scale, buybacks are a supply-side accounting flow,
     not a price catalyst; the thesis stands on the issuance-offset mechanism, not on a
@@ -465,10 +493,10 @@ em { color: var(--text-dim); }
   </p>
 
   <div class="verdict-box">
-    <div class="verdict-label">Verdict · November 2, 2026</div>
+    <div class="verdict-label">Verdict · November 13, 2026</div>
     <div class="verdict-body">
       NEAR Intents is a genuine economic engine for NEAR, but at current scale it offsets
-      19 cents of issuance per dollar created. HSP-029, once ratified and adopted, raises that ceiling to 30 cents over
+      20 cents of issuance per dollar created. HSP-029, once ratified and adopted, raises that ceiling to 30 cents over
       two years, meaningful progress but structurally insufficient without volume growth.
       The investment thesis becomes sound when two of the three following conditions are met:
       (1) Intents daily volume crosses $450M, (2) the fee switch activates at ≥5 bps, or
@@ -493,35 +521,38 @@ em { color: var(--text-dim); }
       <li>Two model classes were tested and rejected before this one, and the rejections are recorded in the model output. GBM on daily volume double-counted the Ito correction in calibration, and its one-year dispersion (daily sigma near 0.35 compounding to 6.8 annualized) makes any crossing probability an artifact. An unconstrained AR(1) on the smoothed series fits phi near 0.998, indistinguishable from a unit root, so its implied stationary level is an unstable extrapolation.</li>
       <li>The model used is a random walk with drift on the log 30-day average, residual bootstrap, no normality assumption, with a 30-day block bootstrap of daily returns as a non-parametric check.</li>
       <li>Trend extrapolation is the model's honest weakness: the fitted drifts (roughly +122%/yr on the 365d window, +396%/yr on 180d) reflect genuine recent growth but cannot continue indefinitely, so long-horizon probabilities are upper bounds.</li>
-      <li>The calibration windows disagree because the regime changed mid-2026; the disagreement is information about regime uncertainty, not a defect to average away.</li>
+      <li>The two calibration windows disagree, but that spread measures estimator instability more than regime uncertainty. The 365-day drift is 0.00098/day against a standard error of 0.00113, statistically indistinguishable from zero, and simulation treats it as known. Moving the window start by a few weeks swings the annualised drift several fold.</li>
+      <li>Residuals are resampled independently although they are differences of a 30-day moving average and therefore mechanically autocorrelated (lag-1 autocorrelation about 0.6). This understates path dispersion by roughly two to three times, which pushes the low-end probabilities down and the high-end ones up. The reported spread is wider than the evidence warrants in both directions.</li>
       <li>A random walk cannot anticipate structural breaks: an exploit, a lost integration, or saturation of the current growth driver.</li>
     </ul>
     <h3>Fee-Switch Difference-in-Differences</h3>
     <p style="font-size:13px;color:var(--text);line-height:1.7;margin-bottom:8px">
-      ATT = 1.10× (95% CI: 0.97-1.25×). The confidence interval includes 1.0: no statistically
-      significant volume impact is detected relative to the three controls.
+      Raw ATT = 1.11× (bootstrap CI 0.97 to 1.25). That number should not be read as evidence
+      the fee switch was harmless, and the limitations below are the reason. They are reported
+      because the design does not support the conclusion it initially appeared to support.
     </p>
     <ul>
-      <li>Four units total (NEAR + 3 controls): the permutation distribution has only four distinct points. The 75th-percentile rank is a weak signal, not a statistically powerful one.</li>
-      <li>Controls (1inch, Paraswap, Jupiter) are larger, more mature aggregators with different liquidity depth and routing characteristics.</li>
-      <li>The 90-day window coincided with a broader DeFi volume contraction; the market cycle is not isolated from the treatment effect.</li>
-      <li>Pre-period slopes differ: NEAR's pre-trend was +0.003/day while controls averaged -0.002/day. This suggests the parallel trends assumption is imperfect; the DiD estimate may conflate trend with treatment.</li>
-      <li>Bootstrap CIs are constructed by resampling within pre/post periods independently. Within-period autocorrelation is not preserved, which may narrow the stated intervals.</li>
+      <li>NEAR's own volume fell 19% across the switch (post/pre ratio 0.81). The estimate is positive only because the three controls fell further.</li>
+      <li>Parallel trends fails. NEAR's pre-period slope was +0.00297/day (+195% annualised) against a control mean of -0.00199/day (-52% annualised). Carrying that differential across the gap between window midpoints gives a trend-adjusted ATT of <strong>0.71×</strong>, a 29% relative decline, pointing the opposite way from the raw figure. The model output reports both.</li>
+      <li>The bootstrap CI resamples daily rows and therefore captures sampling noise in the means, not the real source of uncertainty. Dispersion across the three controls (log growth -0.43, -0.06, -0.46) gives a standard error of 0.13 and an interval of <strong>0.86 to 1.42</strong>.</li>
+      <li>With four units the permutation test cannot return a p-value below 0.25, so it is incapable of rejecting the null at conventional levels regardless of the data.</li>
+      <li>External validity is limited: the event measured is the activation of a fee whose contract-level component this memo measures at 0.01 bps. Using it to argue a 5 bps enforced take is safe is an extrapolation of several hundred times.</li>
+      <li>Controls are larger, more mature aggregators, and the window coincided with a broad DeFi contraction.</li>
     </ul>
     <div class="did-finding">
-      <strong>Interpretation:</strong> the fee switch did not detectably harm volume relative to peers. This is consistent with either (a) no harm or (b) insufficient statistical power to detect a modest effect at this sample size.
+      <strong>Interpretation:</strong> the volume effect of the fee switch is not identified by this design, in either direction. The honest conclusion is that this natural experiment cannot settle the question, and the fee-switch argument in Section 8 rests on the on-chain fee measurement rather than on this result.
     </div>
   </section>
 
   <div class="footnotes">
     <ol>
-      <li>Capture rates sourced from DefiLlama API for intents.near: 5.91 bps is the 30d trailing revenue/volume; 4.11 bps is the 90d trailing revenue/volume.</li>
+      <li>Capture rates sourced from DefiLlama API for intents.near: 5.03 bps is the 30d trailing mean of daily revenue/volume and 4.33 bps the 90d trailing, both as of Nov 12, 2026. Total revenue over total volume for the same 30 days gives 4.88 bps and the median daily ratio 4.53 bps; the choice of estimator moves every break-even figure proportionally.</li>
       <li>HSP-029 ramp computed as: cap(t) = 0.025 - 0.009 × min(t, 24)/24, where t is months since ramp activation. The vote passed Nov 2, 2026; per the proposal, activation occurs one full quarter after ratification and requires validator adoption. Base case assumed here: April 1, 2027.</li>
       <li>Break-even date calculations assume flat volume and flat NEAR price over the projection window. Neither assumption is likely to hold; the model is a structural baseline, not a forecast.</li>
-      <li>All NEAR amounts computed with Python <code>Decimal</code> arithmetic at full precision; USD conversions apply the $4.37 spot price.</li>
-      <li>Aggregate volume and fee data sourced from DefiLlama API (fees and dex volume endpoints for intents.near), covering 692 days of history from November 2024 to November 2026.</li>
+      <li>All NEAR amounts computed with Python <code>Decimal</code> arithmetic at full precision; USD conversions apply the $3.58 spot price.</li>
+      <li>Aggregate volume and fee data sourced from DefiLlama API (fees and dex volume endpoints for intents.near), covering 703 days of history from December 2024 to November 12, 2026.</li>
       <li>HSP-029 proposal text and vote record: https://houseofstake.org/proposals/cmuyez8j80000ru0sz6emyqpe</li>
-      <li>All figures in this memo are as of November 2, 2026. The interactive dashboard fetches live data on every page load; this memo is a dated analysis and is not auto-updated.</li>
+      <li>All figures in this memo are as of November 13, 2026, computed from data through November 12. The interactive dashboard fetches live data on every page load; this memo is a dated analysis and is not auto-updated.</li>
     </ol>
   </div>
 

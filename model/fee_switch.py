@@ -317,6 +317,30 @@ def run() -> dict:
     valid_slopes = [s for s in ctrl_slopes if s is not None]
     pt_diff = abs(near_slope - np.mean(valid_slopes)) if near_slope and valid_slopes else None
 
+    ctrl_lgs = [units[k].get("log_growth") for k in ctrl_data]
+    ctrl_lgs = [v for v in ctrl_lgs if v is not None]
+    cross_ci = None
+    if len(ctrl_lgs) > 1 and att_log is not None:
+        se = float(np.std(ctrl_lgs, ddof=1) / np.sqrt(len(ctrl_lgs)))
+        cross_ci = {
+            "att_ratio_lo": float(np.exp(att_log - 1.96 * se)),
+            "att_ratio_hi": float(np.exp(att_log + 1.96 * se)),
+            "se_log": se,
+            "basis": "dispersion across the control units, which the daily bootstrap does not capture",
+        }
+
+    trend_adj = None
+    if near_slope is not None and valid_slopes and att_log is not None:
+        slope_gap = float(near_slope - np.mean(valid_slopes))
+        adjustment = slope_gap * WINDOW_DAYS
+        trend_adj = {
+            "slope_differential_per_day": slope_gap,
+            "window_gap_days": WINDOW_DAYS,
+            "att_log": float(att_log - adjustment),
+            "att_ratio": float(np.exp(att_log - adjustment)),
+            "basis": "raw ATT less the pre-period slope differential carried across the window gap",
+        }
+
     # Full history for context
     all_pre  = near_df[near_df.date < FEE_SWITCH_DATE]
     all_post = near_df[near_df.date >= FEE_SWITCH_DATE]
@@ -329,11 +353,14 @@ def run() -> dict:
             "controls":        list(CONTROLS.keys()),
             "methodology":     "Difference-in-differences on log daily volume; 90-day symmetric window",
             "caveats": [
-                "4 units total (NEAR + 3 controls); permutation distribution has only 4 points; interpret with caution",
+                "NEAR's own volume fell 19% across the switch; the positive ATT exists only because the controls fell further",
+                "Parallel trends fails: NEAR trended +195%/yr pre-period against -52%/yr for the controls, and trend-adjusting reverses the sign of the result",
+                "The bootstrap CI resamples daily rows and captures only noise in the means; dispersion across the 3 controls gives a much wider interval",
+                "4 units total; the permutation test cannot return a p-value below 0.25, so it cannot reject anything",
                 "Controls (1inch, Paraswap, Jupiter) are larger/more mature protocols; different growth dynamics from a young NEAR Intents",
                 "90-day window coincided with broader DeFi volume contraction; market cycle not isolated",
                 "DiD identifies relative performance vs controls, not absolute causal effect of the fee switch",
-                "Bootstrap CI resamples within pre/post periods independently; temporal autocorrelation within periods not preserved",
+                "The event tested a contract-level fee measured elsewhere at 0.01 bps, so it generalises poorly to a 5 bps enforced take",
             ],
         },
         "units": units,
@@ -341,6 +368,8 @@ def run() -> dict:
             "att_log":   float(att_log) if att_log is not None else None,
             "att_ratio": att_ratio,
             "bootstrap_ci_95": bsci,
+            "cross_control_ci_95": cross_ci,
+            "trend_adjusted": trend_adj,
             "interpretation": _interpret_did(att_ratio, bsci),
         },
         "permutation_test": perm,
@@ -351,8 +380,14 @@ def run() -> dict:
             "slope_diff_near_vs_controls": float(pt_diff) if pt_diff else None,
             "assessment": (
                 "Pre-period slopes similar; parallel trends assumption plausible"
-                if pt_diff is not None and pt_diff < 0.005
-                else "Pre-period slopes differ; DiD estimate may conflate trends with treatment effect"
+                if pt_diff is not None and pt_diff < 0.0005
+                else "Pre-period slopes differ materially; the DiD estimate conflates trend with treatment"
+            ),
+            "note": (
+                "NEAR was trending up before the switch while the controls trended down. "
+                "Carrying that differential across the window gap gives the trend_adjusted "
+                "estimate above, which points the opposite way from the raw ATT. The raw "
+                "estimate should not be read as evidence that demand tolerated the fee"
             ),
         },
         "full_history_context": {

@@ -162,8 +162,8 @@ footer {
 
   <div class="chips">
     <span class="chip chip-hi">HSP-029 passed Nov 2, 2026 · ratification pending</span>
-    <span class="chip">Break-even: $424-663M/day</span>
-    <span class="chip">Current offset: 19.2%</span>
+    <span class="chip">Break-even: $409-639M/day</span>
+    <span class="chip">Current offset: 19.7%</span>
     <span class="chip">Full DefiLlama daily history since Dec 2024</span>
     <span class="chip">FastNEAR on-chain · ingestion live</span>
   </div>
@@ -172,26 +172,26 @@ footer {
 
   <!-- key findings -->
   <div class="findings">
-    <div class="findings-title">Key Findings · as of Nov 2, 2026 · dashboard fetches live data</div>
+    <div class="findings-title">Key Findings · as of Nov 13, 2026 · dashboard fetches live data</div>
     <div class="finding-grid">
       <div class="finding">
         <div class="f-label">Current Offset</div>
-        <div class="f-val c-amber">19.2%</div>
-        <div class="f-sub">buyback ÷ issuance at $127M/day vol</div>
+        <div class="f-val c-amber">19.7%</div>
+        <div class="f-sub">buyback ÷ issuance at $125.8M/day vol</div>
       </div>
       <div class="finding">
         <div class="f-label">Break-Even (2.5% cap)</div>
-        <div class="f-val">$663M</div>
-        <div class="f-sub">5.2× today's volume · 5.91 bps capture</div>
+        <div class="f-val">$639M</div>
+        <div class="f-sub">5.1× today's volume · 5.03 bps capture</div>
       </div>
       <div class="finding">
         <div class="f-label">Break-Even (HSP-029 floor)</div>
-        <div class="f-val c-green">$424M</div>
-        <div class="f-sub">3.3× · 1.6% cap · 5.91 bps capture</div>
+        <div class="f-val c-green">$409M</div>
+        <div class="f-sub">3.3× · 1.6% cap · 5.03 bps capture</div>
       </div>
       <div class="finding">
         <div class="f-label">HSP-029 Ceiling (flat vol)</div>
-        <div class="f-val">30.0%</div>
+        <div class="f-val">30.8%</div>
         <div class="f-sub">offset at 1.6% floor, no volume growth</div>
       </div>
     </div>
@@ -234,8 +234,8 @@ footer {
       <div class="card-title">Fee-Switch Impact (DiD)</div>
       <div class="card-desc">
         Difference-in-differences with 3 aggregator controls and permutation
-        test. ATT = 1.10× (95% CI: 0.97-1.25×); fee switch had no
-        statistically significant negative impact on volume.
+        test. Raw ATT 1.11×, but parallel trends fails and the
+        trend-adjusted estimate is 0.71×: not identified either way.
       </div>
       <div class="card-link">View DiD panel</div>
     </a>
@@ -244,7 +244,7 @@ footer {
       <div class="card-title">On-Chain Evidence</div>
       <div class="card-desc">
         Decoded dip4 settlements from intents.near: the contract collects
-        ~0.01 bps per side vs 5.91 bps implied revenue (capture is policy,
+        0.01 bps per side vs 5.03 bps implied revenue (capture is policy,
         not protocol), measured solver concentration, zero self-fills.
       </div>
       <div class="card-link">View evidence panel</div>

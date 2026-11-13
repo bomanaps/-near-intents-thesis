@@ -1,13 +1,13 @@
 {
  "meta": {
-  "generated_at": "2026-11-13T12:54:12Z",
+  "generated_at": "2026-11-13T14:27:53Z",
   "question": "is NEAR's weekly return related to buyback activity, controlling for BTC and ETH",
   "sample": "weekly since 2026-02-23 (fee switch, start of buyback revenue)",
   "method": "OLS with Newey-West standard errors (4 lags); 1,000-permutation null for the headline t-stat",
   "headline_regressor": "prior-week revenue / prior-week market cap (both lagged to avoid mechanical and reverse-causality bias)",
   "expectation_preregistered": "null likely at this sample size; published regardless",
   "caveats": [
-   "Roughly 36 weekly observations; power to detect modest effects is low",
+   "Only 38 weekly observations; power to detect modest effects is low",
    "Market cap uses current total supply as a constant; error under one percent over the window",
    "The contemporaneous specification is reported only for comparison; it is exposed to reverse causality",
    "Association, not causation: no instrument exists for buyback timing"
@@ -24,10 +24,10 @@
   },
   "contemporaneous_secondary": {
    "n_weeks": 38,
-   "coef_intensity": 1568.392,
-   "t_intensity": 3.509,
-   "coef_btc": 1.879,
-   "coef_eth": -0.826
+   "coef_intensity": 1566.4149,
+   "t_intensity": 3.499,
+   "coef_btc": 1.875,
+   "coef_eth": -0.821
   },
   "excluding_rally": {
    "n_weeks": 30,
@@ -420,7 +420,7 @@
    "near_ret": -0.040084,
    "btc_ret": -0.024068,
    "eth_ret": -0.084703,
-   "intensity": 5.26279e-05,
+   "intensity": 5.39144e-05,
    "intensity_lag": 5.99599e-05,
    "vol_intensity_lag": 0.1571830231,
    "in_rally": false

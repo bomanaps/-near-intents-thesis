@@ -1,19 +1,19 @@
 {
  "meta": {
-  "generated_at": "2026-11-13T14:27:56Z",
+  "generated_at": "2026-11-13T20:40:28Z",
   "source": "FastNEAR neardata, intents.near, dip4 token_diff events",
   "block_range": [
    222253603,
-   222476574
+   222482170
   ],
-  "blocks_with_fills": 18351,
-  "chain_hours_covered_est": 68.13,
+  "blocks_with_fills": 18718,
+  "chain_hours_covered_est": 69.84,
   "coverage_note": "contiguous window starting Oct 28, 2026; ingestion ongoing",
-  "n_receipts": 20314,
-  "n_entries": 53081,
-  "bilateral_receipts": 12450,
-  "multiparty_receipts": 7864,
-  "usd_valued_entry_share": 0.9196,
+  "n_receipts": 20716,
+  "n_entries": 54143,
+  "bilateral_receipts": 12685,
+  "multiparty_receipts": 8031,
+  "usd_valued_entry_share": 0.9192,
   "caveats": [
    "Window spans a few chain days and keeps growing; some time-of-day bias remains in solver and corridor shares",
    "USD values derived from stablecoin legs where present, else live major-asset prices; unvalued entries excluded from volume shares",
@@ -22,7 +22,7 @@
   ]
  },
  "explicit_fee": {
-  "n_samples": 51795,
+  "n_samples": 52852,
   "median_bps": 0.01,
   "p25_bps": 0.01,
   "p75_bps": 0.0102,
@@ -32,132 +32,132 @@
   "finding": "The explicit protocol fee at the settlement contract is roughly 0.01 bps per side, hundreds of times below the 5.03 bps revenue rate implied by DefiLlama. Protocol revenue is therefore generated off the settlement contract (application-layer fees or solver arrangements), not by a contract-enforced take. The capture rate behind the break-even model is policy, not protocol."
  },
  "solvers": {
-  "hhi": 0.2053,
-  "top3_share": 0.6637,
+  "hhi": 0.2055,
+  "top3_share": 0.6623,
   "distinct_solver_accounts": 38,
   "top": [
    {
     "account": "0x8c60fa34790d4661ae4b5302f2a654539352e81b",
-    "fills": 746,
-    "usd_volume": 7088774.3,
-    "share": 0.3756
+    "fills": 766,
+    "usd_volume": 7199236.88,
+    "share": 0.3766
    },
    {
     "account": "blockzen-1-main.near",
-    "fills": 4544,
-    "usd_volume": 3750220.11,
-    "share": 0.1987
+    "fills": 4634,
+    "usd_volume": 3767986.49,
+    "share": 0.1971
    },
    {
     "account": "kipseli.near",
-    "fills": 2849,
-    "usd_volume": 1686379.86,
-    "share": 0.0894
+    "fills": 2866,
+    "usd_volume": 1693684.21,
+    "share": 0.0886
    },
    {
     "account": "433d1f6e5452c9f6087af460d1c6b799587132caabeb2477a0ad37e3e0b88d0c",
     "fills": 29,
-    "usd_volume": 1440595.31,
-    "share": 0.0763
+    "usd_volume": 1440526.35,
+    "share": 0.0754
    },
    {
     "account": "crux-solver.near",
-    "fills": 858,
-    "usd_volume": 1301121.17,
-    "share": 0.0689
+    "fills": 882,
+    "usd_volume": 1312144.01,
+    "share": 0.0686
    },
    {
     "account": "27695d3e216982e4b32db97ca046ae31b1feb354710e65f0f420859bdbcd8e2c",
-    "fills": 42,
-    "usd_volume": 914352.64,
-    "share": 0.0484
+    "fills": 44,
+    "usd_volume": 987229.86,
+    "share": 0.0516
    },
    {
     "account": "solver-priv-liq.near",
-    "fills": 361,
-    "usd_volume": 888883.56,
-    "share": 0.0471
+    "fills": 369,
+    "usd_volume": 896509.85,
+    "share": 0.0469
    },
    {
     "account": "6247d9c671ca6a80cf2c75e26edb8cd75ebf00fcd3c56c39107d6ca20c9cfb29",
-    "fills": 220,
-    "usd_volume": 588387.78,
-    "share": 0.0312
+    "fills": 224,
+    "usd_volume": 588521.8,
+    "share": 0.0308
    },
    {
     "account": "solver-multichain-asset.near",
-    "fills": 561,
-    "usd_volume": 309976.87,
-    "share": 0.0164
+    "fills": 572,
+    "usd_volume": 321907.31,
+    "share": 0.0168
    },
    {
     "account": "0x94845333028b1204fbe14e1278fd4adde46b22ce.near",
-    "fills": 329,
-    "usd_volume": 283015.26,
-    "share": 0.015
+    "fills": 338,
+    "usd_volume": 283502.49,
+    "share": 0.0148
    }
   ]
  },
  "corridors": [
   {
    "pair": "USDT.eth / USDT.tron",
-   "usd_volume": 8080577.48,
-   "share": 0.1161,
-   "entries": 2658
+   "usd_volume": 8123922.01,
+   "share": 0.1157,
+   "entries": 2689
   },
   {
    "pair": "BTC / USDT.eth",
-   "usd_volume": 7195083.75,
-   "share": 0.1034,
-   "entries": 1030
+   "usd_volume": 7207337.63,
+   "share": 0.1027,
+   "entries": 1059
   },
   {
    "pair": "USDC.eth / USDT.tron",
-   "usd_volume": 5654455.22,
-   "share": 0.0813,
-   "entries": 1867
+   "usd_volume": 5657242.23,
+   "share": 0.0806,
+   "entries": 1874
   },
   {
    "pair": "USDT.eth / other",
-   "usd_volume": 5540514.86,
+   "usd_volume": 5584689.09,
    "share": 0.0796,
-   "entries": 7002
-  },
-  {
-   "pair": "USDC.eth / other",
-   "usd_volume": 5417621.89,
-   "share": 0.0779,
-   "entries": 3707
+   "entries": 7160
   },
   {
    "pair": "BTC / other",
-   "usd_volume": 5414159.82,
-   "share": 0.0778,
-   "entries": 909
+   "usd_volume": 5445474.71,
+   "share": 0.0776,
+   "entries": 930
+  },
+  {
+   "pair": "USDC.eth / other",
+   "usd_volume": 5441727.49,
+   "share": 0.0775,
+   "entries": 3812
   },
   {
    "pair": "BTC / USDC.eth",
-   "usd_volume": 5107057.27,
-   "share": 0.0734,
-   "entries": 810
+   "usd_volume": 5137008.53,
+   "share": 0.0732,
+   "entries": 825
   },
   {
    "pair": "USDC.eth / USDT.eth",
-   "usd_volume": 4702378.1,
-   "share": 0.0676,
-   "entries": 5846
+   "usd_volume": 4733661.25,
+   "share": 0.0674,
+   "entries": 5920
   },
   {
    "pair": "BTC / USDT.tron",
-   "usd_volume": 3537457.58,
-   "share": 0.0508,
-   "entries": 634
+   "usd_volume": 3538559.24,
+   "share": 0.0504,
+   "entries": 644
   },
   {
    "pair": "USDT.tron / other",
-   "usd_volume": 2994422.91,
-   "share": 0.043,
-   "entries": 902
+   "usd_volume": 3131901.61,
+   "share": 0.0446,
+   "entries": 912
   }
  ],
  "confidential_flow": {
@@ -184,25 +184,25 @@
    {
     "day_index": 2,
     "est_date_utc": "2026-10-30",
-    "treasury_in_stable_usd": 11436891.0,
-    "treasury_out_stable_usd": 12155043.0,
-    "public_fill_stable_usd": 4670565.0,
-    "treasury_share": 0.71
+    "treasury_in_stable_usd": 12290919.0,
+    "treasury_out_stable_usd": 13322359.0,
+    "public_fill_stable_usd": 4950586.0,
+    "treasury_share": 0.7129
    }
   ],
   "window_totals": {
-   "treasury_in_stable_usd": 42373730.0,
-   "treasury_out_stable_usd": 44316663.0,
-   "treasury_net_stable_usd": -1942933.0,
-   "public_fill_stable_usd": 26987434.0
+   "treasury_in_stable_usd": 43227758.0,
+   "treasury_out_stable_usd": 45483979.0,
+   "treasury_net_stable_usd": -2256221.0,
+   "public_fill_stable_usd": 27267455.0
   },
   "finding": "More stablecoin value is routed into the confidential path than settles as public fills. The treasury pays out almost exactly what it receives, so this measures routing rather than capture, but the consequence for this analysis is the same: a large share of activity leaves the public event stream, so every figure measured from public fills describes a diminishing slice of the protocol"
  },
  "wash_screen": {
   "bilateral_self_fills": 0,
   "bilateral_self_fill_share": 0.0,
-  "user_round_trip_entries": 2703,
-  "user_round_trip_share": 0.1709,
+  "user_round_trip_entries": 2776,
+  "user_round_trip_share": 0.1717,
   "note": "Solver accounts excluded from the round-trip metric since market makers legitimately trade both directions"
  }
 }

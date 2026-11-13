@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>NEAR Intents Thesis</title>
+<title>Basanos &#183; Break-Even Explorer</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 
@@ -178,7 +178,7 @@ td:first-child{text-align:left;color:var(--faint)}
 <body>
 <div class="page">
   <div class="hdr">
-    <div class="hdr-eye">Investment Thesis · NEAR Protocol · Live Model</div>
+    <div class="hdr-eye">Basanos · Investment Thesis · NEAR Protocol · Live Model</div>
     <div class="hdr-title">NEAR Intents: Break-Even Explorer</div>
     <div class="hdr-sub">Adjust any parameter, all outputs update instantly · HSP-029 vote passed Nov 2, 2026, ramp pending ratification · <span id="data-badge">snapshot data: Nov 12, 2026</span></div>
   </div>
@@ -315,8 +315,9 @@ td:first-child{text-align:left;color:var(--faint)}
     </div>
     <div style="margin-bottom:14px" id="oc-corridors"></div>
     <div style="margin-bottom:14px" id="oc-confidential"></div>
+    <div style="margin-bottom:14px" id="oc-treasury"></div>
     <div style="background:var(--surf2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:10px 14px;font-size:12px;color:var(--text);line-height:1.6" id="oc-finding">
-      The settlement contract collects roughly 0.01 bps per side, hundreds of times below the 5.91 bps revenue rate the break-even model uses. Protocol revenue is therefore generated off the settlement contract, through application-layer fees or solver arrangements. The capture rate is policy, not protocol: it can be changed without governance, in either direction. This strengthens the case that a contract-enforced fee switch is the decisive catalyst.
+      The settlement contract collects roughly 0.01 bps per fill side, hundreds of times below the revenue rate the break-even model uses. Protocol revenue is therefore generated off the settlement contract, through application-layer fees or solver arrangements. The capture rate is policy, not protocol: it can change without governance, in either direction, and it does.
     </div>
     <div class="caveat-box">
       <div class="caveat-title">Coverage and limitations</div>
@@ -1183,6 +1184,9 @@ const TT=(function(){
       cw.appendChild(row);
     });
 
+    if(d.explicit_fee&&d.explicit_fee.finding){
+      document.getElementById('oc-finding').textContent=d.explicit_fee.finding;
+    }
     const cf=d.confidential_flow;
     const cfw=document.getElementById('oc-confidential');
     cfw.innerHTML='';
@@ -1211,7 +1215,7 @@ const TT=(function(){
       });
       const note=document.createElement('div');
       note.style.cssText='font-size:10px;color:var(--dim);margin-top:6px;line-height:1.5';
-      note.textContent='Stablecoin USD entering the confidential treasury vs public bilateral fills, per approximate chain day. The public fills measured elsewhere on this panel are a shrinking slice of total protocol activity.';
+      note.textContent='Stablecoin USD entering the confidential treasury vs public settlement, counted once per receipt on both sides, per approximate chain day. The treasury pays out almost exactly what it receives, so this measures where activity is routed rather than value captured.';
       cfw.appendChild(note);
     }
 
@@ -1226,6 +1230,79 @@ const TT=(function(){
 
   window.renderOnchain=renderOnchain;
   renderOnchain(OC_FALLBACK);
+})();
+
+// --- Confidential treasury float, read from contract state (renders from JSON) ---
+(function(){
+  const TR_FALLBACK={"coverage":{"first_funded_block":186126873,"first_funded_date_utc":"2026-02-18","last_date_utc":"2026-11-12","days":268,"days_ingested_by_events":3,"note":"The first funded block is located by bisection, which assumes the account does not return to a zero balance once funded. The daily series is read independently of that search, so any zero day it contains is a measurement, not an artefact of the search."},"summary":{"latest_float_usd":34911706.65,"peak_float_usd":34929715.92,"peak_date_utc":"2026-11-11","mean_float_usd":8770536.99,"median_float_usd":6226630.62,"mean_abs_daily_change_usd":453913.86,"largest_daily_increase_usd":4118275.63,"largest_daily_decrease_usd":-2599275.66,"measured_mean_daily_gross_flow_usd":28896797.67,"float_in_days_of_measured_flow":1.21},"points":[{"d":"2026-02-18","v":0.0},{"d":"2026-02-22","v":0.0},{"d":"2026-02-26","v":0.033},{"d":"2026-03-02","v":0.184},{"d":"2026-03-06","v":0.767},{"d":"2026-03-10","v":1.582},{"d":"2026-03-14","v":2.468},{"d":"2026-03-18","v":2.734},{"d":"2026-03-22","v":1.226},{"d":"2026-03-26","v":1.243},{"d":"2026-03-30","v":1.633},{"d":"2026-04-03","v":1.634},{"d":"2026-04-07","v":2.183},{"d":"2026-04-11","v":2.227},{"d":"2026-04-15","v":2.426},{"d":"2026-04-19","v":2.222},{"d":"2026-04-23","v":2.34},{"d":"2026-04-27","v":2.426},{"d":"2026-05-01","v":2.224},{"d":"2026-05-05","v":2.383},{"d":"2026-05-09","v":2.915},{"d":"2026-05-13","v":3.347},{"d":"2026-05-17","v":3.054},{"d":"2026-05-21","v":2.947},{"d":"2026-05-25","v":3.497},{"d":"2026-05-29","v":4.354},{"d":"2026-06-02","v":4.447},{"d":"2026-06-06","v":4.18},{"d":"2026-06-10","v":5.544},{"d":"2026-06-14","v":5.818},{"d":"2026-06-18","v":7.553},{"d":"2026-06-22","v":8.751},{"d":"2026-06-26","v":7.859},{"d":"2026-06-30","v":7.43},{"d":"2026-07-04","v":6.223},{"d":"2026-07-08","v":6.921},{"d":"2026-07-12","v":6.875},{"d":"2026-07-16","v":8.423},{"d":"2026-07-20","v":6.585},{"d":"2026-07-24","v":6.339},{"d":"2026-07-28","v":6.477},{"d":"2026-08-01","v":6.295},{"d":"2026-08-05","v":6.02},{"d":"2026-08-09","v":6.252},{"d":"2026-08-13","v":6.986},{"d":"2026-08-17","v":5.943},{"d":"2026-08-21","v":6.295},{"d":"2026-08-25","v":6.202},{"d":"2026-08-29","v":7.454},{"d":"2026-09-02","v":8.57},{"d":"2026-09-06","v":10.415},{"d":"2026-09-10","v":9.05},{"d":"2026-09-14","v":13.005},{"d":"2026-09-18","v":13.336},{"d":"2026-09-22","v":15.22},{"d":"2026-09-26","v":19.132},{"d":"2026-09-30","v":19.962},{"d":"2026-10-04","v":19.106},{"d":"2026-10-08","v":18.902},{"d":"2026-10-12","v":23.953},{"d":"2026-10-16","v":27.871},{"d":"2026-10-20","v":27.59},{"d":"2026-10-24","v":26.754},{"d":"2026-10-28","v":27.282},{"d":"2026-11-01","v":26.55},{"d":"2026-11-05","v":29.293},{"d":"2026-11-09","v":34.043},{"d":"2026-11-12","v":34.912}]};
+
+  function tile(label,value,sub,colour){
+    const box=document.createElement('div');
+    box.style.cssText='background:var(--surf2);border:1px solid var(--border);border-radius:6px;padding:12px 14px';
+    const l=document.createElement('div');
+    l.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-bottom:6px";
+    l.textContent=label;
+    const v=document.createElement('div');
+    v.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;color:"+colour;
+    v.textContent=value;
+    const sb=document.createElement('div');
+    sb.style.cssText='font-size:11px;color:var(--faint);margin-top:4px;line-height:1.5';
+    sb.textContent=sub;
+    box.appendChild(l);box.appendChild(v);box.appendChild(sb);
+    return box;
+  }
+
+  function chart(points){
+    const W=920,H=180,PL=52,PR=12,PT=12,PB=26;
+    const max=Math.max.apply(null,points.map(p=>p.v))||1;
+    const x=i=>PL+(W-PL-PR)*(points.length<2?0:i/(points.length-1));
+    const y=v=>PT+(H-PT-PB)*(1-v/max);
+    const line=points.map((p,i)=>(i?'L':'M')+x(i).toFixed(1)+','+y(p.v).toFixed(1)).join(' ');
+    const area=line+' L'+x(points.length-1).toFixed(1)+','+y(0).toFixed(1)+' L'+x(0).toFixed(1)+','+y(0).toFixed(1)+' Z';
+    const ticks=[0,max/2,max].map(v=>
+      '<text x="'+(PL-8)+'" y="'+(y(v)+3).toFixed(1)+'" text-anchor="end" font-size="9" fill="var(--faint)" font-family="IBM Plex Mono, monospace">$'+v.toFixed(0)+'M</text>'+
+      '<line x1="'+PL+'" y1="'+y(v).toFixed(1)+'" x2="'+(W-PR)+'" y2="'+y(v).toFixed(1)+'" stroke="var(--border)" stroke-width="1"/>').join('');
+    const marks=[0,Math.floor(points.length/2),points.length-1].map(i=>
+      '<text x="'+x(i).toFixed(1)+'" y="'+(H-8)+'" text-anchor="'+(i===0?'start':(i===points.length-1?'end':'middle'))+'" font-size="9" fill="var(--faint)" font-family="IBM Plex Mono, monospace">'+points[i].d+'</text>').join('');
+    const wrap=document.createElement('div');
+    wrap.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="display:block">'+ticks+
+      '<path d="'+area+'" fill="var(--amber)" opacity="0.16"/>'+
+      '<path d="'+line+'" fill="none" stroke="var(--amber)" stroke-width="1.8"/>'+marks+'</svg>';
+    return wrap;
+  }
+
+  function renderTreasury(d){
+    const host=document.getElementById('oc-treasury');
+    if(!host) return;
+    const c=d.coverage,s=d.summary;
+    const points=d.points||(d.series||[]).map(r=>({d:r.date_utc,v:r.stable_float_usd/1e6}));
+    if(!points.length) return;
+    host.innerHTML='';
+    const title=document.createElement('div');
+    title.style.cssText="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:8px";
+    title.textContent='Confidential treasury float, read from contract state at '+c.days+' daily block heights';
+    host.appendChild(title);
+    const grid=document.createElement('div');
+    grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:12px';
+    grid.appendChild(tile('Float today','$'+(s.latest_float_usd/1e6).toFixed(1)+'M',
+      'stablecoins held by the treasury account, from zero on '+c.first_funded_date_utc,'var(--amber)'));
+    grid.appendChild(tile('Median across the period','$'+(s.median_float_usd/1e6).toFixed(1)+'M',
+      c.days+' UTC days, '+points[0].d+' to '+c.last_date_utc,'var(--hi)'));
+    grid.appendChild(tile('Turnover',
+      (s.float_in_days_of_measured_flow==null?'not measured':s.float_in_days_of_measured_flow.toFixed(2)+' days of flow'),
+      'float against the gross routing measured on the '+(c.days_ingested_by_events||0)+' decoded chain days','var(--green)'));
+    host.appendChild(grid);
+    host.appendChild(chart(points));
+    const note=document.createElement('div');
+    note.style.cssText='font-size:10px;color:var(--dim);margin-top:6px;line-height:1.5';
+    note.textContent='One mt_batch_balance_of view call per UTC day on intents.near against an archival RPC, each row carrying the block height it was read at. '+
+      'Stablecoin units are summed at face value. A pool that turns over in about a day is working capital, not a sink, and day-over-day change is only a lower bound on flow, '+
+      'because value routed in and out within one day leaves the balance unchanged.';
+    host.appendChild(note);
+  }
+
+  window.renderTreasury=renderTreasury;
+  renderTreasury(TR_FALLBACK);
 })();
 
 // --- Price question panel (renders from JSON; fallback embedded) ---
@@ -1502,6 +1579,9 @@ const TT=(function(){
   })();
   (async()=>{
     try{ window.renderOnchain(await getJSON('data/onchain.json')); }catch(e){}
+  })();
+  (async()=>{
+    try{ window.renderTreasury(await getJSON('data/treasury.json')); }catch(e){}
   })();
   (async()=>{
     try{

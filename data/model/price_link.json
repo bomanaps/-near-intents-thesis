@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-13T14:27:53Z",
+  "generated_at": "2026-11-13T20:11:48Z",
   "question": "is NEAR's weekly return related to buyback activity, controlling for BTC and ETH",
   "sample": "weekly since 2026-02-23 (fee switch, start of buyback revenue)",
   "method": "OLS with Newey-West standard errors (4 lags); 1,000-permutation null for the headline t-stat",

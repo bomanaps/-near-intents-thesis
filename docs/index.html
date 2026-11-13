@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>NEAR Intents Investment Thesis</title>
+<title>Basanos</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root {
@@ -153,19 +153,23 @@ footer {
 <div class="page">
 
   <div class="eyebrow">NEAR Hackathon 2026 · Investment Thesis Track</div>
-  <h1 class="title">NEAR Intents<br>Investment Thesis</h1>
+  <h1 class="title">Basanos</h1>
   <p class="subtitle">
     A quantitative model showing at what daily volume NEAR Intents' protocol buybacks
     cover token issuance, with live break-even explorer, HSP-029 ramp analysis,
     and on-chain event decoding direct from <code>intents.near</code>.
   </p>
 
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--faint);margin:-18px 0 30px">
+    βάσανος · bá·sa·nos · Greek · the touchstone: rub gold against it and the streak tells you what it really is
+  </div>
+
   <div class="chips">
     <span class="chip chip-hi">HSP-029 passed Nov 2, 2026 · ratification pending</span>
     <span class="chip">Break-even: $409-639M/day</span>
     <span class="chip">Current offset: 19.7%</span>
     <span class="chip">Full DefiLlama daily history since Dec 2024</span>
-    <span class="chip">FastNEAR on-chain · ingestion live</span>
+    <span class="chip">FastNEAR on-chain &#183; dataset frozen Nov 13</span>
   </div>
 
   <hr>
@@ -249,6 +253,16 @@ footer {
       </div>
       <div class="card-link">View evidence panel</div>
     </a>
+    <a class="card" href="dashboard.html#onchain">
+      <div class="card-tag">On-Chain &#183; Contract State</div>
+      <div class="card-title">Confidential Treasury Float</div>
+      <div class="card-desc">
+        The same account read a second way: one view call per UTC day at the
+        matching archival block height, 268 consecutive days. Zero to $34.9M
+        in stablecoins, turning over in about a day. Routing, not a sink.
+      </div>
+      <div class="card-link">View float history</div>
+    </a>
     <a class="card" href="dashboard.html#price">
       <div class="card-tag">Quantitative · Regression</div>
       <div class="card-title">The Price Question</div>
@@ -272,7 +286,7 @@ footer {
     <div class="src-row">
       <span class="src-name">FastNEAR neardata: on-chain events</span>
       <span class="src-detail">intents.near · shard 7 · dip4 standard</span>
-      <span class="src-status s-live">Ingesting</span>
+      <span class="src-status s-done">Frozen Nov 13</span>
     </div>
     <div class="src-row">
       <span class="src-name">NEAR RPC: supply, block metadata</span>
@@ -282,8 +296,8 @@ footer {
   </div>
 
   <footer>
-    <span>NEAR Intents Investment Thesis · NEAR Hackathon 2026 · <a href="https://github.com/bomanaps/-near-intents-thesis/blob/main/docs/claims.md" style="color:var(--accent)">claims and proofs</a></span>
-    <span>Deadline: Nov 14, 2026 · On-chain ingestion ongoing</span>
+    <span>Basanos · NEAR Intents Investment Thesis · NEAR Hackathon 2026 · <a href="https://github.com/bomanaps/-near-intents-thesis/blob/main/docs/claims.md" style="color:var(--accent)">claims and proofs</a></span>
+    <span>Deadline: Nov 14, 2026 &#183; raw event dataset frozen and pinned</span>
   </footer>
 
 </div>

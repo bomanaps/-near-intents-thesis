@@ -13,9 +13,12 @@ Steps:
   5. Run analysis/price_link.py (buyback intensity vs price, market controlled)
   6. Run analysis/onchain.py (on-chain evidence; skipped when the local
      FastNEAR events file is absent, e.g. on the GitHub Actions runner)
-  7. Copy the model JSONs into docs/data/ so the GitHub Pages dashboard
+  7. Run analysis/treasury.py (confidential treasury float read from contract
+     state at historical block heights; fetches only the days missing from
+     data/raw/treasury_balances.json, and is skipped when that cache is absent)
+  8. Copy the model JSONs into docs/data/ so the GitHub Pages dashboard
      serves them (Pages only publishes the docs/ folder)
-  8. Write data/manifest.json with the SHA-256 of every input and output;
+  9. Write data/manifest.json with the SHA-256 of every input and output;
      verify any time with: python analysis/manifest.py verify
 
 On-chain FastNEAR ingestion runs separately (ingest/fastnear_ingest.py) and is
@@ -36,6 +39,7 @@ import pandas as pd
 
 ROOT = Path(__file__).parent
 DATA_OUT = ROOT / "data" / "raw" / "daily_metrics.parquet"
+TREASURY_CACHE = ROOT / "data" / "raw" / "treasury_balances.json"
 
 ENDPOINTS = {
     "volume_usd": "https://api.llama.fi/summary/dexs/near-intents?excludeTotalDataChart=false&dataType=dailyVolume",
@@ -53,7 +57,7 @@ def fetch_series(url: str, col: str) -> pd.DataFrame:
 
 
 def fetch_daily_metrics() -> None:
-    print("[1/8] Fetching DefiLlama data for near-intents")
+    print("[1/9] Fetching DefiLlama data for near-intents")
     frames = []
     for col, url in ENDPOINTS.items():
         df = fetch_series(url, col)
@@ -124,7 +128,7 @@ def print_headline_metrics() -> None:
 
 def main() -> None:
     if "--no-fetch" in sys.argv:
-        print("[1/8] Skipping fetch (--no-fetch); using committed parquet")
+        print("[1/9] Skipping fetch (--no-fetch); using committed parquet")
     else:
         try:
             fetch_daily_metrics()
@@ -134,25 +138,33 @@ def main() -> None:
             else:
                 sys.exit(f"FAILED: fetch failed and no cached parquet exists: {e}")
 
-    run_step("[2/8]", "model/forecast.py")
-    run_step("[3/8]", "model/fee_switch.py")
+    run_step("[2/9]", "model/forecast.py")
+    run_step("[3/9]", "model/fee_switch.py")
 
-    run_step("[4/8]", "analysis/frequency.py")
-    run_step("[5/8]", "analysis/price_link.py")
+    run_step("[4/9]", "analysis/frequency.py")
+    run_step("[5/9]", "analysis/price_link.py")
 
     events = ROOT / "data" / "raw" / "fastnear" / "events.jsonl"
     if events.exists():
-        run_step("[6/8]", "analysis/onchain.py")
+        run_step("[6/9]", "analysis/onchain.py")
     else:
-        print("\n[6/8] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
+        print("\n[6/9] Skipping on-chain analysis (no local events.jsonl); committed onchain.json kept")
+
+    if "--no-fetch" in sys.argv:
+        print("\n[7/9] Skipping treasury state reads (--no-fetch); committed treasury.json kept")
+    elif TREASURY_CACHE.exists():
+        run_step("[7/9]", "analysis/treasury.py")
+    else:
+        print("\n[7/9] Skipping treasury state reads (no cached balances); "
+              "build it once with: python3 analysis/treasury.py")
 
     docs_data = ROOT / "docs" / "data"
     docs_data.mkdir(parents=True, exist_ok=True)
     for name in ("forecast.json", "fee_switch.json"):
         shutil.copy2(ROOT / "data" / "model" / name, docs_data / name)
-    print(f"\n[7/8] Published both JSONs to {docs_data.relative_to(ROOT)}/")
+    print(f"\n[8/9] Published both JSONs to {docs_data.relative_to(ROOT)}/")
 
-    run_step("[8/8]", "analysis/manifest.py", "write")
+    run_step("[9/9]", "analysis/manifest.py", "write")
 
     print_headline_metrics()
 

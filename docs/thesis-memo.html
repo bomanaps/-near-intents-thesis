@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>NEAR Intents Investment Thesis</title>
+<title>Basanos &#183; Investment Thesis Memo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap">
 
@@ -130,7 +130,7 @@ em { color: var(--text-dim); }
 <article class="page">
 
   <div class="cover">
-    <div class="cover-eyebrow">Investment Thesis Memo</div>
+    <div class="cover-eyebrow">Basanos &#183; Investment Thesis Memo</div>
     <h1 class="cover-title">NEAR Intents: Can Protocol Buybacks Ever Cover Token Issuance?</h1>
     <div class="cover-meta">
       <div class="meta-pair"><span class="meta-label">Date</span><span class="meta-value">November 13, 2026</span></div>
@@ -249,8 +249,8 @@ em { color: var(--text-dim); }
   <h3>On-Chain Evidence: What the Settlement Contract Shows</h3>
 
   <p>
-    Decoding raw dip4 settlement events from <em>intents.near</em> (52,995 fills across 20,281
-    settlements, a contiguous window beginning Oct 28, 2026, ingestion ongoing) reveals something
+    Decoding raw dip4 settlement events from <em>intents.near</em> (more than 50,000 fills across more than 20,000
+    settlements, a contiguous window beginning Oct 28, 2026, frozen Nov 13, 2026) reveals something
     the aggregate data cannot: the settlement contract itself collects an explicit fee of roughly
     <strong>0.01 bps per fill side</strong>, several hundred times below the 5.03 bps revenue rate
     implied by DefiLlama. Protocol revenue is therefore generated off the settlement contract,
@@ -277,11 +277,12 @@ em { color: var(--text-dim); }
     These are screens that failed to find a problem, not evidence that none exists.
   </p>
   <p>
-    These figures come from roughly 68 chain hours beginning October 28 and are recomputed as
-    ingestion extends; they are structure measurements, not long-run averages. They describe the
+    These figures come from roughly 70 chain hours beginning October 28; they are structure
+    measurements, not long-run averages. They describe the
     public side of the protocol only: a confidential settlement path, quantified under Key Risks,
-    receives more stablecoin value than public settlement does. The ingestion pipeline continues
-    to run, and every figure in this subsection regenerates from the raw events with one command.
+    receives more stablecoin value than public settlement does. Ingestion was stopped on
+    November 13, 2026 so that the published dataset is byte-identical to the file behind these
+    numbers, and every figure in this subsection regenerates from those raw events with one command.
   </p>
 
   <h2>4. HSP-029: The Governance Catalyst</h2>
@@ -412,7 +413,15 @@ em { color: var(--text-dim); }
     account inside <em>intents.near</em>, receiving roughly <strong>57%, 63% and 71%</strong> of
     stablecoin value across the three chain days fully covered, counted once per settlement on
     both sides. That account is a routing hub rather than a sink: over the window it received
-    $42.0M and paid out $43.9M, so it moves value rather than capturing it. Settlement on that
+    $43.2M and paid out $45.5M, so it moves value rather than capturing it. Reading the same
+    account from contract state rather than from events extends that picture to <strong>268
+    consecutive days</strong>: one <em>mt_batch_balance_of</em> view call per UTC day at the
+    matching archival block height shows the stablecoin float growing from zero on February 18,
+    2026 to <strong>$34.9M</strong>, against a median of $6.2M, and at the gross routing measured
+    on the decoded days that float is 1.21 days of flow. The account therefore turns over rather
+    than accumulates across the entire history, not merely across the ingested window. What state
+    cannot show is the fee charged on that path, because a balance records where value sits, not
+    what was taken to move it. Settlement on that
     path nonetheless happens outside the public event stream. Two consequences follow. First, chain-visible
     evidence, including this memo's own on-chain measurements, describes a shrinking slice of
     total protocol activity, and that boundary is stated wherever those numbers appear. Second,

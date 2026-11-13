@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+Project name: **Basanos**.
+
 Instructions for an AI agent reviewing this repository. Every command below has been run and verified on this exact codebase before committing this file.
 
 ## What this project is
@@ -20,7 +22,7 @@ pip install pandas pyarrow numpy scipy pytest
 pytest tests/
 ```
 
-Expected: 167 passed, 1 skipped. The skipped test is the full pipeline smoke test.
+Expected: 189 passed, 1 skipped. The skipped test is the full pipeline smoke test.
 
 2. Verify data integrity, about 1 second, no network:
 
@@ -36,7 +38,7 @@ Expected: PASS for every tracked file, then "All integrity checks passed". This 
 python3 run_all.py --no-fetch
 ```
 
-Expected: steps 1 through 8 complete, ending with headline metrics and "Done." Dropping the flag (`python3 run_all.py`) additionally refetches the DefiLlama daily series first.
+Expected: steps 1 through 9 complete, ending with headline metrics and "Done." Dropping the flag (`python3 run_all.py`) additionally refetches the DefiLlama daily series first, and reads any treasury days missing from the cache.
 
 4. Run the full pipeline smoke test, about 25 seconds:
 
@@ -52,6 +54,7 @@ RUN_SLOW=1 pytest tests/test_run_all_smoke.py
 | Volume forecast (sustained crossing) | model/forecast.py | docs/data/forecast.json | tests/test_forecast.py |
 | Fee switch DiD | model/fee_switch.py | docs/data/fee_switch.json | tests/test_fee_switch.py |
 | On-chain evidence (0.01 bps fee, solvers, wash screen) | analysis/onchain.py | docs/data/onchain.json | tests/test_onchain.py |
+| Confidential treasury float from contract state | analysis/treasury.py | docs/data/treasury.json | tests/test_treasury.py |
 | Revenue vs issuance day count | analysis/frequency.py | docs/data/frequency.json | smoke test |
 | Buyback price regression | analysis/price_link.py | docs/data/price_link.json | tests/test_price_link.py |
 | Integrity manifest | analysis/manifest.py | data/manifest.json | tests/test_manifest.py |
@@ -63,8 +66,9 @@ RUN_SLOW=1 pytest tests/test_run_all_smoke.py
 ## Things to know before judging discrepancies
 
 1. The dashboard (docs/dashboard.html) fetches live DefiLlama data in the browser, so its numbers move daily and will not match the dated prose in the memo or README exactly. This is by design: the memo states it is a snapshot as of its date, the dashboard header badge states which mode it is in, and docs/claims.md explains the split.
-2. The raw events file (data/raw/fastnear/events.jsonl) is not in the repository because it grows continuously. It is published with hash-pinned revisions at https://huggingface.co/datasets/bomankari/near-intents-onchain-events, and the manifest records each upload's SHA-256 and Hugging Face commit id. analysis/onchain.py needs this file locally; run_all.py skips that step cleanly when it is absent and keeps the committed output.
+2. The raw events file (data/raw/fastnear/events.jsonl) is not in the repository because of its size. Ingestion was stopped deliberately at 20:40 UTC on November 13, 2026, at 363,213 events ending at block 222,482,170, so that the published dataset and the file that produced the committed on-chain numbers are byte-identical; a growing file cannot be pinned, because it moves ahead of any upload within minutes. It is published with hash-pinned revisions at https://huggingface.co/datasets/bomankari/near-intents-onchain-events, and the manifest records each upload's SHA-256 and Hugging Face commit id. analysis/onchain.py needs this file locally; run_all.py skips that step cleanly when it is absent and keeps the committed output.
 3. The daily GitHub Action (.github/workflows/refresh-data.yml) refetches data, reruns the models, verifies the manifest, anchors its hash on NEAR mainnet, and commits only if verification passes. Recent bot commits named "refresh data" are that automation.
 4. analysis/anchor.py requires NEAR credentials from the environment and is not runnable from the repo alone; its on-chain record is independently checkable at account `bomanaps.near`, keys `thesis_manifest` and `thesis_predictions`, on the `social.near` contract, with transaction history at https://nearblocks.io/address/bomanaps.near.
 5. The forecast seed is fixed (42): rerunning model/forecast.py on unchanged data reproduces the committed probabilities exactly. The price regression in the browser (dashboard spec explorer) reruns the identical Newey-West math on the committed weekly rows and only displays itself after matching the Python output at load.
 6. ingest/from_dune.py, ingest/from_dune_api.py, and queries/ are an abandoned alternative data path kept for reference; nothing depends on them.
+7. analysis/treasury.py reads contract state, not events: one mt_batch_balance_of view call per UTC day on intents.near against an archival RPC. Days already in data/raw/treasury_balances.json are never refetched, so a normal run only fills in the days since the last one. Building the cache from empty takes a few minutes and several hundred RPC calls, which is why run_all.py skips the step when the cache is absent.

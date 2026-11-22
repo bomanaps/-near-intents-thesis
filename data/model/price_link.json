@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_at": "2026-11-21T13:16:42Z",
+  "generated_at": "2026-11-22T13:08:05Z",
   "question": "is NEAR's weekly return related to buyback activity, controlling for BTC and ETH",
   "sample": "weekly since 2026-02-23 (fee switch, start of buyback revenue)",
   "method": "OLS with Newey-West standard errors (4 lags); 1,000-permutation null for the headline t-stat",
@@ -16,32 +16,32 @@
  "results": {
   "headline_lagged": {
    "n_weeks": 39,
-   "coef_intensity": 410.8443,
-   "t_intensity": 0.734,
-   "coef_btc": 2.539,
-   "coef_eth": -1.104,
-   "permutation_p": 0.575
+   "coef_intensity": 365.057,
+   "t_intensity": 0.626,
+   "coef_btc": 2.729,
+   "coef_eth": -1.252,
+   "permutation_p": 0.65
   },
   "contemporaneous_secondary": {
    "n_weeks": 39,
-   "coef_intensity": 1458.7026,
-   "t_intensity": 3.125,
-   "coef_btc": 1.954,
-   "coef_eth": -0.758
+   "coef_intensity": 1405.7395,
+   "t_intensity": 2.944,
+   "coef_btc": 2.189,
+   "coef_eth": -0.921
   },
   "excluding_rally": {
    "n_weeks": 31,
-   "coef_intensity": -556.9557,
-   "t_intensity": -1.184,
-   "coef_btc": 2.11,
-   "coef_eth": -0.93
+   "coef_intensity": -699.0271,
+   "t_intensity": -1.482,
+   "coef_btc": 2.438,
+   "coef_eth": -1.198
   },
   "placebo_volume": {
    "n_weeks": 39,
-   "coef_intensity": 0.2344,
-   "t_intensity": 0.782,
-   "coef_btc": 2.448,
-   "coef_eth": -1.108
+   "coef_intensity": 0.2201,
+   "t_intensity": 0.717,
+   "coef_btc": 2.65,
+   "coef_eth": -1.257
   }
  },
  "weekly": [
@@ -427,15 +427,15 @@
   },
   {
    "date": "2026-11-22",
-   "near_ret": 0.05689,
-   "btc_ret": -0.034895,
-   "eth_ret": -0.0073,
-   "intensity": 6.63012e-05,
+   "near_ret": -0.062331,
+   "btc_ret": -0.086313,
+   "eth_ret": -0.087981,
+   "intensity": 8.28052e-05,
    "intensity_lag": 8.37271e-05,
    "vol_intensity_lag": 0.220113849,
    "in_rally": false
   }
  ],
  "nw_lags": 4,
- "interpretation": "Lagged buyback intensity shows t = 0.734 with permutation p = 0.575: no detectable price effect of buyback intensity after market controls. With this sample size that is the expected result, and it is published as found. The thesis's break-even mechanism does not depend on a short-run price effect."
+ "interpretation": "Lagged buyback intensity shows t = 0.626 with permutation p = 0.65: no detectable price effect of buyback intensity after market controls. With this sample size that is the expected result, and it is published as found. The thesis's break-even mechanism does not depend on a short-run price effect."
 }

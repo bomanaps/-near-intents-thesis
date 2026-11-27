@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-26T14:48:40Z",
+ "generated_at": "2026-11-27T14:46:54Z",
  "note": "SHA-256 of every raw input and model output; the manifest excludes itself",
  "sources": {
   "volume_fees_revenue": "https://api.llama.fi/summary/{dexs,fees}/near-intents",
@@ -14,60 +14,60 @@
    "bytes": 3109
   },
   "data/raw/daily_metrics.parquet": {
-   "sha256": "ee734b6bd711f5710ffec62fbab118299b5d20efee915c1ac1c58050e4985c96",
-   "bytes": 27186
+   "sha256": "0bc5d94d435336d9589a5fca5c936ca4b92f5754de2e8c0721a565671a745aa1",
+   "bytes": 27228
   },
   "data/model/forecast.json": {
-   "sha256": "3e0e57383769cbc288f0dd2477fb80d16e3572ce2b95aa205a522db4d8123d92",
+   "sha256": "ea6ad1586b793dfc23fb4f395bef7d169c0db8f200ec943d0fb9652d5f162a9d",
    "bytes": 4027
   },
   "data/model/fee_switch.json": {
-   "sha256": "f75c8e19caad7234c901b7966074cff694fd28ae30ad6d56a733a47a292cbc51",
-   "bytes": 4925
+   "sha256": "26c2942fcd781065974ee2f493324c470ba461c186db3577673bcc964d9fdcee",
+   "bytes": 4924
   },
   "data/model/onchain.json": {
    "sha256": "1f60d1e6edfc18df78aa67520d0cd31bf832d241a52bf3d7f76995a2b74cbc0d",
    "bytes": 6624
   },
   "data/model/frequency.json": {
-   "sha256": "3431482e4cd508fd9ed2672cce7a6be42a1e558890b36b6dae4b3e06f365c11d",
+   "sha256": "147f2066b3915565a07ea3d966927bfb41c7b6eaaa474f73939a6d50dcb4c6a8",
    "bytes": 1093
   },
   "data/model/price_link.json": {
-   "sha256": "69428baf3ed692c616012c9d2e4d0e91c07e5cf24990617266777a4f1b3137ae",
-   "bytes": 11071
+   "sha256": "8a9c52e1ee2f0e35da53c41fcfdd166e6ce2237a4761bbda3b79c529b05e2567",
+   "bytes": 11066
   },
   "data/raw/treasury_balances.json": {
-   "sha256": "513e44f5c80d55a13e240e29709275efb35b1c088c000501d8ff47209291385b",
-   "bytes": 127203
+   "sha256": "1835084f4c9ab9482d6aca604973963a89b8b3f735014a3dd3805eb341619b18",
+   "bytes": 127669
   },
   "data/model/treasury.json": {
-   "sha256": "3944af360e46c9f2e4f33b28425e7b0acbcabf12fe14b226fbe5c4d5c260dcdf",
-   "bytes": 143672
+   "sha256": "662130824c733e2c3846f384dfe8e683e98bd7174aa1e7b9f0da5fc7466966e3",
+   "bytes": 144190
   },
   "docs/data/forecast.json": {
-   "sha256": "3e0e57383769cbc288f0dd2477fb80d16e3572ce2b95aa205a522db4d8123d92",
+   "sha256": "ea6ad1586b793dfc23fb4f395bef7d169c0db8f200ec943d0fb9652d5f162a9d",
    "bytes": 4027
   },
   "docs/data/fee_switch.json": {
-   "sha256": "f75c8e19caad7234c901b7966074cff694fd28ae30ad6d56a733a47a292cbc51",
-   "bytes": 4925
+   "sha256": "26c2942fcd781065974ee2f493324c470ba461c186db3577673bcc964d9fdcee",
+   "bytes": 4924
   },
   "docs/data/onchain.json": {
    "sha256": "1f60d1e6edfc18df78aa67520d0cd31bf832d241a52bf3d7f76995a2b74cbc0d",
    "bytes": 6624
   },
   "docs/data/frequency.json": {
-   "sha256": "3431482e4cd508fd9ed2672cce7a6be42a1e558890b36b6dae4b3e06f365c11d",
+   "sha256": "147f2066b3915565a07ea3d966927bfb41c7b6eaaa474f73939a6d50dcb4c6a8",
    "bytes": 1093
   },
   "docs/data/price_link.json": {
-   "sha256": "69428baf3ed692c616012c9d2e4d0e91c07e5cf24990617266777a4f1b3137ae",
-   "bytes": 11071
+   "sha256": "8a9c52e1ee2f0e35da53c41fcfdd166e6ce2237a4761bbda3b79c529b05e2567",
+   "bytes": 11066
   },
   "docs/data/treasury.json": {
-   "sha256": "3944af360e46c9f2e4f33b28425e7b0acbcabf12fe14b226fbe5c4d5c260dcdf",
-   "bytes": 143672
+   "sha256": "662130824c733e2c3846f384dfe8e683e98bd7174aa1e7b9f0da5fc7466966e3",
+   "bytes": 144190
   }
  },
  "events_snapshot": null

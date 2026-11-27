@@ -1,29 +1,29 @@
 {
  "meta": {
-  "generated_at": "2026-11-26T14:48:02Z",
-  "data_through": "2026-11-25",
+  "generated_at": "2026-11-27T14:46:22Z",
+  "data_through": "2026-11-26",
   "n_sims": 10000,
   "horizon_days": 1095,
   "seed": 42,
-  "start_smooth_vol_usd": 143508071.0,
-  "capture_bps_30d": 3.98,
-  "near_price": 3.0445,
+  "start_smooth_vol_usd": 142936651.0,
+  "capture_bps_30d": 3.89,
+  "near_price": 2.9886,
   "price_source": "coins.llama.fi live",
   "supply": 1309640573,
   "break_even_thresholds": {
    "cap25": {
-    "usd": 685610495.0,
-    "label": "$686M (2.5% cap)"
+    "usd": 688499924.0,
+    "label": "$688M (2.5% cap)"
    },
    "cap16": {
-    "usd": 438790717.0,
-    "label": "$439M (1.6% cap)"
+    "usd": 440639951.0,
+    "label": "$441M (1.6% cap)"
    }
   },
   "crossing_definition": "sustained: 30-day average volume reaches the threshold, not a one-day touch",
   "model_rationale": "GBM on daily volume was tested and rejected: the calibration double-counted the Ito correction, and daily volatility near 0.35 compounds to a one-year dispersion that makes any crossing probability an artifact. An unconstrained AR(1) on the log 30-day average was also tested and rejected: the fitted phi of roughly 0.998 cannot be distinguished from a unit root, so its implied stationary level is an unstable extrapolation. The model is therefore a random walk with drift on the log 30-day average with bootstrapped residuals, plus a 30-day block bootstrap of daily returns as a non-parametric check.",
   "caveats": [
-   "Drift estimated from a trending window extrapolates that trend; +16%/yr (365d) and +452%/yr (180d) are not sustainable indefinitely, so long-horizon probabilities are upper bounds",
+   "Drift estimated from a trending window extrapolates that trend; +16%/yr (365d) and +404%/yr (180d) are not sustainable indefinitely, so long-horizon probabilities are upper bounds",
    "A random walk cannot anticipate structural breaks, new integrations, or saturation of the current growth driver",
    "Thresholds move with NEAR price and capture rate; they are recomputed at every run and shown in the header",
    "Residual bootstrap preserves the empirical error distribution but assumes errors are exchangeable over time",
@@ -37,21 +37,21 @@
    "label": "Trend 365d",
    "note": "positive drift (+16%/yr) \u00b7 unit root imposed (fitted phi 1.000)",
    "params": {
-    "daily_drift": 0.000416,
-    "annualized_drift": 0.1639,
-    "sigma_resid": 0.02088,
-    "phi_unconstrained": 0.9996
+    "daily_drift": 0.000397,
+    "annualized_drift": 0.1557,
+    "sigma_resid": 0.02089,
+    "phi_unconstrained": 0.9995
    },
    "crossing_probs": {
     "cap25": {
      "12": 0.0001,
-     "24": 0.0196,
-     "36": 0.0825
+     "24": 0.0176,
+     "36": 0.0778
     },
     "cap16": {
-     "12": 0.0113,
-     "24": 0.1131,
-     "36": 0.2529
+     "12": 0.0095,
+     "24": 0.1109,
+     "36": 0.2526
     }
    }
   },
@@ -59,21 +59,21 @@
    "method": "random walk with drift on log 30d-average volume, residual bootstrap",
    "window": "180d",
    "label": "Trend 180d",
-   "note": "positive drift (+452%/yr) \u00b7 unit root imposed (fitted phi 0.996)",
+   "note": "positive drift (+404%/yr) \u00b7 unit root imposed (fitted phi 0.997)",
    "params": {
-    "daily_drift": 0.004682,
-    "annualized_drift": 4.5235,
-    "sigma_resid": 0.01965,
-    "phi_unconstrained": 0.9959
+    "daily_drift": 0.00443,
+    "annualized_drift": 4.0371,
+    "sigma_resid": 0.01947,
+    "phi_unconstrained": 0.9967
    },
    "crossing_probs": {
     "cap25": {
-     "12": 0.6759,
-     "24": 0.9999,
+     "12": 0.5758,
+     "24": 0.9997,
      "36": 1.0
     },
     "cap16": {
-     "12": 0.9544,
+     "12": 0.928,
      "24": 1.0,
      "36": 1.0
     }
@@ -85,41 +85,41 @@
    "label": "Bootstrap 180d",
    "note": "30d blocks of daily log returns \u00b7 positive drift",
    "params": {
-    "mean_daily_log_ret": 0.00618,
-    "sigma_daily": 0.3697
+    "mean_daily_log_ret": 0.00419,
+    "sigma_daily": 0.3702
    },
    "crossing_probs": {
     "cap25": {
-     "12": 0.8523,
-     "24": 0.9875,
-     "36": 0.9983
+     "12": 0.4965,
+     "24": 0.8882,
+     "36": 0.9761
     },
     "cap16": {
-     "12": 0.9344,
-     "24": 0.9946,
-     "36": 0.9994
+     "12": 0.6898,
+     "24": 0.9453,
+     "36": 0.9904
     }
    }
   },
   "block_bootstrap_full": {
    "method": "30d block bootstrap of daily log returns",
-   "window": "715d",
-   "label": "Bootstrap 715d",
+   "window": "716d",
+   "label": "Bootstrap 716d",
    "note": "30d blocks of daily log returns \u00b7 positive drift \u00b7 includes early growth phase \u00b7 upper bound",
    "params": {
-    "mean_daily_log_ret": 0.01191,
-    "sigma_daily": 0.6126
+    "mean_daily_log_ret": 0.01151,
+    "sigma_daily": 0.6122
    },
    "crossing_probs": {
     "cap25": {
-     "12": 0.9279,
-     "24": 0.9884,
-     "36": 0.9972
+     "12": 0.9062,
+     "24": 0.9846,
+     "36": 0.9962
     },
     "cap16": {
-     "12": 0.96,
-     "24": 0.9945,
-     "36": 0.9984
+     "12": 0.9423,
+     "24": 0.9914,
+     "36": 0.9977
     }
    }
   }
